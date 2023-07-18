@@ -1,0 +1,22 @@
+Set of periods in the planning horizon T: 
+20
+Set of products P: 
+2
+Capacity reduction coefficient alpha: 
+0.79
+Relative decrease of capacity per set up gamma: 
+0.22
+Capacity reduction coefficient due to product types beta: 
+[0.23, 0.36]
+Fixed production cost of each product in each period f: 
+[[9728, 7659, 9687, 9784, 5830, 9195, 8845, 2339, 8664, 5264, 4692, 2842, 2024, 4405, 8492, 5079, 7855, 5140, 7245, 2035], [7754, 4711, 7175, 8151, 2488, 9592, 4532, 6259, 6522, 2134, 7324, 4472, 6889, 8895, 5502, 4234, 5515, 6880, 8425, 3650]]
+Variable production cost per unit of each product in each period p: 
+[[23, 26, 29, 22, 26, 28, 23, 24, 24, 25, 28, 20, 29, 26, 20, 21, 25, 24, 20, 29], [25, 22, 21, 25, 24, 20, 28, 23, 26, 25, 27, 24, 21, 21, 26, 27, 22, 24, 24, 24]]
+Inventory holding cost per unit of each product by the end of each period h: 
+[[17, 15, 13, 16, 13, 19, 13, 19, 12, 12, 12, 15, 16, 18, 12, 17, 12, 19, 15, 18], [14, 11, 12, 18, 19, 15, 17, 11, 15, 15, 13, 19, 17, 13, 12, 13, 11, 11, 16, 18]]
+Demand for each product in each period d: 
+[[29, 42, 47, 18, 7, 39, 46, 12, 14, 10, 45, 38, 42, 38, 7, 10, 9, 48, 6, 26], [21, 9, 7, 11, 22, 17, 49, 31, 6, 27, 13, 20, 30, 13, 6, 28, 28, 5, 17, 21]]
+Maintenance cost in each period m: 
+[65205, 47742, 97008, 68584, 21798, 34979, 74740, 74536, 43232, 75849, 81629, 61263, 51016, 84901, 32367, 34537, 59456, 62800, 96682, 66493]
+Maximum capacity of the machine cmax: 
+94

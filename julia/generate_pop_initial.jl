@@ -1,0 +1,73 @@
+using LinearAlgebra
+include("./functions.jl")
+include("./model.jl")
+
+
+function generate_pop_initial(len_pop,instance_dict)
+    P = instance_dict["P"]
+    T = instance_dict["T"]
+    p = instance_dict["p"]
+    t = instance_dict["t"]
+    alpha = instance_dict["alpha"]
+    cmax = instance_dict["cmax"]
+    mtn_cost = instance_dict["mtn_cost"]
+    set_up_cost = instance_dict["set_up_cost"]
+    pop_initial_list = []
+
+    clsp_obj = 0
+    
+    nbr_mtn = t
+    feasibility = true
+    c_prime = 0
+    compt_y = 1
+    model = build_model(instance_dict)
+    while feasibility
+        #println(nbr_mtn)
+        z = vcat(ones(Int64, nbr_mtn-1), zeros(Int64, t-nbr_mtn+1))
+        shuffle!(z)
+        z[1] = 1
+        nbr_mtn -= 1
+        
+        c = construct_capacities(z, t, alpha, cmax)
+
+        y = zeros(Int64, p,t)
+        for item in P
+            line = vcat(ones(Int64, t-compt_y), zeros(Int64, compt_y))
+            shuffle!(line)
+            y[item, :] = line
+        end
+        y[:,1] = [1 for _ in P]
+        compt_y += 1 
+
+        clsp_sol = resolve_CLSP(model,y,c,instance_dict)
+        model, x, I, u, clsp_obj = clsp_sol["model"], clsp_sol["x"], clsp_sol["I"], clsp_sol["u"], clsp_sol["clsp_obj"]
+        if sum(u) > 0
+            feasibility = false
+        else
+            feasibility = true
+        end 
+    end
+    nbr_mtn += 1
+    compt_y -= 1
+    for i in 1:len_pop
+        #println("------------------", i, "--------------------")
+        z = vcat(ones(Int64, nbr_mtn-1), zeros(Int64, t-nbr_mtn+1))
+        shuffle!(z)
+        z[1] = 1
+        
+        c = construct_capacities(z, t, alpha, cmax)
+
+        y = zeros(Int64, p,t)
+        for item in P
+            line = vcat(ones(Int64, t-compt_y), zeros(Int64, compt_y))
+            shuffle!(line)
+            y[item, :] = line
+        end
+        y[:,1] = [1 for _ in P]
+        clsp_sol = resolve_CLSP(model,y,c,instance_dict)
+        model, x, I, u, clsp_obj = clsp_sol["model"], clsp_sol["x"], clsp_sol["I"], clsp_sol["u"], clsp_sol["clsp_obj"]
+        sol_obj = clsp_obj + sum(set_up_cost .* y) + dot(mtn_cost,z)
+        push!(pop_initial_list, solution(x,I,y,z,c,u,sol_obj));
+    end
+    return pop_initial_list, model
+end 

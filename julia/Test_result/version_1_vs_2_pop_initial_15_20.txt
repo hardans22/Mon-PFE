@@ -1,0 +1,220 @@
+COMPARAISON DE DEUX VERSION POUR GÉNÉRER LA POPULATION INITIALE
+p = 15
+t = 20
+len_pop = 200
+
+Temps de generate_pop_initial : version 1
+ 21.573467 seconds (121.04 M allocations: 21.910 GiB, 10.42% gc time, 47.08% compilation time: 0% of which was recompilation)
+
+Temps de generate_pop_initial : version 2
+  1.399417 seconds (11.62 M allocations: 2.512 GiB, 16.70% gc time, 12.23% compilation time)
+----------------------------INSTANCE TYPE 1----------------------------------
+
+Temps de generate_pop_initial : version 1
+11.666793372 second
+266678.72407
+
+Temps de generate_pop_initial : version 2
+1.299095273 second
+281182.037
+GAP : 5.44%
+----------------------------INSTANCE TYPE 2----------------------------------
+
+Temps de generate_pop_initial : version 1
+13.67080089 second
+251011.636
+
+Temps de generate_pop_initial : version 2
+1.237306406 second
+256009.13734876
+GAP : 1.99%
+----------------------------INSTANCE TYPE 3----------------------------------
+
+Temps de generate_pop_initial : version 1
+14.967979398 second
+253695.0
+
+Temps de generate_pop_initial : version 2
+1.358515572 second
+274143.6
+GAP : 8.06%
+----------------------------INSTANCE TYPE 4----------------------------------
+
+Temps de generate_pop_initial : version 1
+8.393460234 second
+265664.35444
+
+Temps de generate_pop_initial : version 2
+1.326171336 second
+308093.352
+GAP : 15.97%
+----------------------------INSTANCE TYPE 5----------------------------------
+
+Temps de generate_pop_initial : version 1
+11.135462533 second
+266957.9814
+
+Temps de generate_pop_initial : version 2
+1.299764244 second
+288529.32
+GAP : 8.08%
+----------------------------INSTANCE TYPE 6----------------------------------
+
+Temps de generate_pop_initial : version 1
+13.033220866 second
+237620.0
+
+Temps de generate_pop_initial : version 2
+1.287666117 second
+265583.0
+GAP : 11.77%
+----------------------------INSTANCE TYPE 7----------------------------------
+
+Temps de generate_pop_initial : version 1
+10.067986638 second
+259282.71616
+
+Temps de generate_pop_initial : version 2
+1.322985306 second
+293183.696
+GAP : 13.07%
+----------------------------INSTANCE TYPE 8----------------------------------
+
+Temps de generate_pop_initial : version 1
+11.211512397 second
+258996.032
+
+Temps de generate_pop_initial : version 2
+1.22985045 second
+275198.8
+GAP : 6.26%
+----------------------------INSTANCE TYPE 9----------------------------------
+
+Temps de generate_pop_initial : version 1
+14.992310102 second
+239865.6981765
+
+Temps de generate_pop_initial : version 2
+1.285352835 second
+256180.0
+GAP : 6.8%
+----------------------------INSTANCE TYPE 10----------------------------------
+
+Temps de generate_pop_initial : version 1
+14.998073072 second
+248995.68000000002
+
+Temps de generate_pop_initial : version 2
+1.365101715 second
+267711.28
+GAP : 7.52%
+----------------------------INSTANCE TYPE 11----------------------------------
+
+Temps de generate_pop_initial : version 1
+11.077980174 second
+255316.8816
+
+Temps de generate_pop_initial : version 2
+1.239314737 second
+272276.48
+GAP : 6.64%
+----------------------------INSTANCE TYPE 12----------------------------------
+
+Temps de generate_pop_initial : version 1
+12.731938507 second
+252255.0
+
+Temps de generate_pop_initial : version 2
+1.324239565 second
+277599.0
+GAP : 10.05%
+----------------------------INSTANCE TYPE 13----------------------------------
+
+Temps de generate_pop_initial : version 1
+13.754286059 second
+249251.0305
+
+Temps de generate_pop_initial : version 2
+1.28678963 second
+262768.796605
+GAP : 5.42%
+----------------------------INSTANCE TYPE 14----------------------------------
+
+Temps de generate_pop_initial : version 1
+9.400365754 second
+269710.501568
+
+Temps de generate_pop_initial : version 2
+1.332810535 second
+308334.27999999997
+GAP : 14.32%
+----------------------------INSTANCE TYPE 15----------------------------------
+
+Temps de generate_pop_initial : version 1
+10.403970109 second
+270503.48232
+
+Temps de generate_pop_initial : version 2
+1.349174051 second
+320848.0
+GAP : 18.61%
+----------------------------INSTANCE TYPE 16----------------------------------
+
+Temps de generate_pop_initial : version 1
+10.731091707 second
+266198.722
+
+Temps de generate_pop_initial : version 2
+1.256027789 second
+282325.3
+GAP : 6.06%
+----------------------------INSTANCE TYPE 17----------------------------------
+
+Temps de generate_pop_initial : version 1
+11.93856287 second
+255382.66712
+
+Temps de generate_pop_initial : version 2
+1.362263343 second
+308932.716
+GAP : 20.97%
+----------------------------INSTANCE TYPE 18----------------------------------
+
+Temps de generate_pop_initial : version 1
+13.789430085 second
+240089.8066368
+
+Temps de generate_pop_initial : version 2
+1.318346137 second
+261582.5
+GAP : 8.95%
+----------------------------INSTANCE TYPE 19----------------------------------
+
+Temps de generate_pop_initial : version 1
+13.113405887 second
+249209.5
+
+Temps de generate_pop_initial : version 2
+1.316472158 second
+273743.720625
+GAP : 9.84%
+----------------------------INSTANCE TYPE 20----------------------------------
+
+Temps de generate_pop_initial : version 1
+12.959489378 second
+246302.8
+
+Temps de generate_pop_initial : version 2
+1.280725618 second
+270597.0
+GAP : 9.86%
+
+Moyenne des temps de la version 1 : 12.2019060016
+
+Moyenne des objectifs du meilleur de la pop version 1 : 255149.41069956502
+
+Moyenne des temps de la version 2 : 1.3038986408499997
+
+Moyenne des objectifs du meilleur de la pop version 2 : 280241.1007789379
+
+GAP des moyennes : 9.83 %
