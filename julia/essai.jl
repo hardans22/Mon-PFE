@@ -1,12 +1,13 @@
-using  PyCall, Base, BenchmarkTools
+using JuMP, PyCall, Base, BenchmarkTools
 
+include("./")
 
 include("./genetic_algorithm.jl")
 pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
-p = 5
-t = 10
+p = 10
+t = 15
 version = 1
 println("p = ", p)
 println("t = ", t)
@@ -18,13 +19,39 @@ instance_dict["t"] = t
 instance_dict["p"] = p
 alpha = instance_dict["alpha"]
 cmax = instance_dict["cmax"]
-
-len_pop = 200
+demand = instance_dict["demand"]
+len_pop = 100
 
 @time current_pop, model1 = generate_pop_initial(len_pop,instance_dict);
 #print_pop(current_pop)
 
 sol1, sol2 = current_pop[1], current_pop[2]
+
+sc = sol1.c 
+
+windowSize = 5
+windowType = 1
+overlap = 0.4
+timeLimit = 10
+rf_or_fo = "RF"
+mdl = buildM(sc, instance_dict, rf_or_fo)
+@time result = RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_dict)
+sx = result["sx"]
+sI = result["sI"]
+sy = result["sy"]
+
+println("\nMatrice y")
+display(sy)
+println("\nMatrice x")
+display(sx)
+println("\nMatrice I")
+display(sI)
+println("\nMatrice des demandes")
+display(demand)
+println("\n Capacité : ")
+println(sc)
+
+println("Feasibility : ", verify_solution(sx,sI,sy,sol1.z,sc,instance_dict))
 
 #=
 println("CROSSOVER")
@@ -54,7 +81,6 @@ println(sol2.u)
 print("\n x fils1 : ")
 display(list_fils_sol[1].x)
 println(list_fils_sol[1].u)
-=#
 
 println("\nMUTATION")
 fils_z, fils_y = mutation(sol1,instance_dict, false, 0.1)
@@ -71,3 +97,4 @@ println(sol1.u)
 print("\nx fils : ")
 display(fils_sol.x)
 println(fils_sol.u)
+=#
