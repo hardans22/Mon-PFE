@@ -60,7 +60,7 @@ for version in 1:1
 		push!(l, sum(best_sol.y[i,:]))
 	end
 
-	println("Feasibility of solution : ", verify_solution(best_sol, instance_dict))
+	println("Feasibility of solution : ", verify_solution(best_sol.x, best_sol.I, best_sol.y, best_sol.z, best_sol.c, instance_dict))
 	sz = best_sol.z
 	sc = construct_capacities(sz, t, alpha, cmax)
 	sy = best_sol.y

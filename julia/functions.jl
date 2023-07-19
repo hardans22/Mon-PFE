@@ -87,17 +87,15 @@ function selection(list_pop, nbr)
     return new_pop
 end
 
-function verify_solution(sol, instance_dict)
+function verify_solution(x,I,y,z,c,instance_dict)
     P = instance_dict["P"]
     T = instance_dict["T"]
     demand = instance_dict["demand"]
-
-    x, y, z, c, I = sol.x, sol.y, sol.z, sol.c, sol.I
     feasibility = true
     for t in T
         for i in P
-            if t!= 1 && x[i,t] + I[i,t-1] != demand[i,t] + I[i,t]
-                println("Problème d'inventaire")
+            if t!= 1 && !(x[i,t] + I[i,t-1] == demand[i,t] + I[i,t])
+                println("Problème d'inventaire : ", i," ",t)
                 return false
             end 
             if y[i,t] == 0 && x[i,t] > 0
@@ -105,7 +103,7 @@ function verify_solution(sol, instance_dict)
                 return false 
             end 
         end
-        if sum(x[:,t]) > c[t] 
+        if (sum(x[:,t]) - c[t]) > 0.0005 
             println("Production au-delà de la capacité ")
             return false 
         end 

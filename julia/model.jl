@@ -3,7 +3,7 @@ using JuMP, CPLEX, Gurobi
 function model(instance_dict, pl = false)
     P = instance_dict["P"]
     T = instance_dict["T"]
-    len_T = length(T)
+    len_T = instance_dict["t"]
     set_up_cost = instance_dict["set_up_cost"]
     variable_prod_cost = instance_dict["variable_prod_cost"]
     holding_cost = instance_dict["holding_cost"]
@@ -32,9 +32,9 @@ function model(instance_dict, pl = false)
     
     @constraint(model, c4[t in T], sum(x[i,t] for i in P) <= c[t])
     
-    @constraint(model, c5[t in T], c[t] <= cmax )
+    @constraint(model, c5[t in T], c[t] <= cmax)
     
-    @constraint(model, z[1] == 1 )
+    @constraint(model, z[1] == 1)
     
     @constraint(model, c6[t in 2:len_T], c[t] <= alpha*c[t-1] + cmax*z[t])
     
@@ -73,8 +73,8 @@ end
 function build_model(instance_dict)
     P = instance_dict["P"]
     T = instance_dict["T"]
-    len_T = length(T)
-    len_P = length(P)
+    len_T = instance_dict["t"]
+    len_P = instance_dict["p"]
     demand = instance_dict["demand"]
     variable_prod_cost = instance_dict["variable_prod_cost"]
     holding_cost = instance_dict["holding_cost"]
