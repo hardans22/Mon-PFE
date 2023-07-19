@@ -1,4 +1,4 @@
-using JuMP, CPLEX
+using JuMP, Gurobi
 
 function buildM(sc, instance_dict,rf_or_fo)
     P = instance_dict["P"]
@@ -9,7 +9,7 @@ function buildM(sc, instance_dict,rf_or_fo)
     variable_prod_cost = instance_dict["variable_prod_cost"]
     holding_cost = instance_dict["holding_cost"]
     set_up_cost = instance_dict["set_up_cost"]
-    model = Model(CPLEX.Optimizer)
+    model = Model(Gurobi.Optimizer)
 
     #Les vaiables
 
@@ -87,13 +87,12 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_d
     sy = JuMP.value.(y)
     display(sy)
 
-    #Initialisation de l'ensemble de toutes les cases de la matrices selon l'orientation choisi (windowType)
-    sol_window = initWindow(windowType, instance_dict)
-
     curseur = 1
     step = overlap*windowSize
     println("step = ", step)
 
+    #Initialisation de l'ensemble de toutes les cases de la matrices selon l'orientation choisi (windowType)
+    sol_window = initWindow(windowType, instance_dict)
     window = sol_window[1:windowSize]
     w_fix = []
     w_mip = window
@@ -102,7 +101,7 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_d
     iter = 0
     while true
         iter+=1
-        #println("-------------------Itération", iter, "--------------------")
+        println("-------------------Itération", iter, "--------------------")
         #=
         println("window : ", length(window))
         println("w_fix : ", length(w_fix))
@@ -140,5 +139,11 @@ function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dic
     p = instance_dict["p"]
     
     windowType = 0
+    while true
+        sol_window = initWindow(windowType, instance_dict)
+        window = sol_window[1:windowSize]
+        w_fix = []
+        w_mip = window
+    end
 
 end 

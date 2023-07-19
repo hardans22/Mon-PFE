@@ -1,6 +1,6 @@
 using JuMP, PyCall, Base, BenchmarkTools
 
-include("./")
+include("./RelaxAndFix _ FixAndOptimize.jl")
 
 include("./genetic_algorithm.jl")
 pushfirst!(PyVector(pyimport("sys")."path"), "")
@@ -20,7 +20,7 @@ instance_dict["p"] = p
 alpha = instance_dict["alpha"]
 cmax = instance_dict["cmax"]
 demand = instance_dict["demand"]
-len_pop = 100
+len_pop = 200
 
 @time current_pop, model1 = generate_pop_initial(len_pop,instance_dict);
 #print_pop(current_pop)
@@ -30,7 +30,7 @@ sol1, sol2 = current_pop[1], current_pop[2]
 sc = sol1.c 
 
 windowSize = 5
-windowType = 1
+windowType = 0
 overlap = 0.4
 timeLimit = 10
 rf_or_fo = "RF"
