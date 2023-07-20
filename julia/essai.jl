@@ -30,8 +30,8 @@ current_pop = sort(current_pop, by = x -> x.obj)
 
 sol1, sol2 = current_pop[1], current_pop[2]
 
+#=
 sc = sol1.c 
-
 windowSize = 5
 windowType = 0
 overlap = 0.4
@@ -55,8 +55,9 @@ println("\n Capacité : ")
 println(sc)
 
 println("Feasibility : ", verify_solution(sx,sI,sy,sol1.z,sc,instance_dict))
+=#
 
-#=
+
 println("CROSSOVER")
 list_fils_z, list_fils_y = crossover(sol1, sol2, instance_dict);
 list_fils_sol = []
@@ -77,14 +78,15 @@ display(list_fils_sol[1].y)
 
 print("\nx parent1 : ")
 display(sol1.x)
-println(sol1.u)
+println("u = ", sol1.u)
 print("\n x parent2 : ")
 display(sol2.x)
-println(sol2.u)
+println("u = ", sol2.u)
 print("\n x fils1 : ")
 display(list_fils_sol[1].x)
-println(list_fils_sol[1].u)
+println("u = ",list_fils_sol[1].u)
 
+#=
 println("\nMUTATION")
 fils_z, fils_y = mutation(sol1,instance_dict, false, 0.1)
 fils_c = construct_capacities(fils_z, t, alpha, cmax) 
