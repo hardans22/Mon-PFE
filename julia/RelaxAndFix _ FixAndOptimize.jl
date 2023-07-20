@@ -1,4 +1,4 @@
-using JuMP, Gurobi
+using JuMP, Gurobi, CPLEX
 
 function buildM(sc, instance_dict,rf_or_fo)
     P = instance_dict["P"]
@@ -40,7 +40,7 @@ function buildM(sc, instance_dict,rf_or_fo)
 end
 
 
-function solve_model(model, w_fix, w_mip, w_lp,sy,instance_dict)
+function solve_model(model, w_fix, w_mip, sy, instance_dict)
     x = model[:x]
     I = model[:I]
     y = model[:y]
@@ -108,7 +108,7 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_d
         println("w_mip : ", length(w_mip))
         println("w_lp : ", length(w_lp))
         =#
-        result = solve_model(mdl, w_fix, w_mip, w_lp, sy, instance_dict)
+        result = solve_model(mdl, w_fix, w_mip, sy, instance_dict)
         sy = result["sy"]
         mdl = result["model"]
         display(sy)
@@ -133,17 +133,42 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_d
 end
 
 function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dict)
-    P = instance_dict["P"]
-    T = instance_dict["T"]
     t = instance_dict["t"]
     p = instance_dict["p"]
-    
+    sy = sol.y
+    curseur = 1
+    step = overlap*windowSize
+    println("step = ", step)
+
     windowType = 0
     while true
         sol_window = initWindow(windowType, instance_dict)
         window = sol_window[1:windowSize]
-        w_fix = []
         w_mip = window
+        w_fix = [elt for elt in sol_window if !(elt in window)]
+
+        while true
+            result = solve_model(mdl, w_fix, w_mip, sy, instance_dict)
+            sy = result["sy"]
+            mdl = result["model"]
+            display(sy)
+
+            curseur += floor(Int64, step)
+
+            if curseur + windowSize <= t*p
+                window = sol_window[curseur+1:(curseur+windowSize)]
+            else
+                window = sol_window[curseur:end]
+            end
+
+            w_mip = window
+
+            w_fix = [elt for elt in sol_window if !(elt in window)]
+            
+            sx = result["sx"]
+            sI = result["sI"]
+
+        end
     end
 
 end 

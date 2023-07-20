@@ -94,10 +94,7 @@ function verify_solution(x,I,y,z,c,instance_dict)
     feasibility = true
     for t in T
         for i in P
-            if t != 1
-                println(x[i,t] + I[i,t-1] - demand[i,t] - I[i,t])
-            end    
-            if t!= 1 && !(x[i,t] + I[i,t-1] - demand[i,t] - I[i,t] <= 0.00005)
+            if t!= 1 && !(abs(x[i,t] + I[i,t-1] - demand[i,t] - I[i,t]) <= 0.00005)
                 return false
             end 
             if y[i,t] == 0 && x[i,t] > 0

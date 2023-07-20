@@ -23,6 +23,9 @@ demand = instance_dict["demand"]
 len_pop = 200
 
 @time current_pop, model1 = generate_pop_initial(len_pop,instance_dict);
+
+current_pop = sort(current_pop, by = x -> x.obj)
+
 #print_pop(current_pop)
 
 sol1, sol2 = current_pop[1], current_pop[2]
