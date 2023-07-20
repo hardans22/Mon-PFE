@@ -6,8 +6,8 @@ include("./genetic_algorithm.jl")
 pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
-p = 10
-t = 15
+p = 7
+t = 10
 version = 1
 println("p = ", p)
 println("t = ", t)
@@ -57,7 +57,7 @@ println(sc)
 println("Feasibility : ", verify_solution(sx,sI,sy,sol1.z,sc,instance_dict))
 =#
 
-
+#=
 println("CROSSOVER")
 list_fils_z, list_fils_y = crossover(sol1, sol2, instance_dict);
 list_fils_sol = []
@@ -86,7 +86,14 @@ print("\n x fils1 : ")
 display(list_fils_sol[1].x)
 println("u = ",list_fils_sol[1].u)
 
-#=
+print("\n\n\nI parent1 : ")
+display(sol1.I)
+print("\n I parent2 : ")
+display(sol2.I)
+print("\n I fils1 : ")
+display(list_fils_sol[1].I)
+=#
+
 println("\nMUTATION")
 fils_z, fils_y = mutation(sol1,instance_dict, false, 0.1)
 fils_c = construct_capacities(fils_z, t, alpha, cmax) 
@@ -98,8 +105,12 @@ display(fils_sol.y)
 
 print("\nx parent1 : ")
 display(sol1.x)
-println(sol1.u)
+println("u = ",sol1.u)
 print("\nx fils : ")
 display(fils_sol.x)
-println(fils_sol.u)
-=#
+println("u = ",fils_sol.u)
+
+print("\n\n\nI parent1 : ")
+display(sol1.I)
+print("\n I fils : ")
+display(fils_sol.I)

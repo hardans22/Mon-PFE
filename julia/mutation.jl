@@ -103,7 +103,7 @@ function mutation(sol_parent,instance_dict,rst,rd)
         fils_y[temp[1], temp[2]] = 0
     end
     if rd > 0.9
-        #println("-----------------AJOUT DE 1--------------")
+        println("-----------------AJOUT DE 1--------------")
         ind_zeros_y = []
         for i in P
             for j in 2:t
