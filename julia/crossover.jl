@@ -30,7 +30,7 @@ function crossover(sol_parent1, sol_parent2, instance_dict)
     
     for item in P
         list_pts = sort(randperm(t-1)[1:2] .+ 1)
-        println("Les points de croisement :", list_pts)
+        #println("Les points de croisement :", list_pts)
 
         ind_1, ind_2  = list_pts[1], list_pts[2]
         fils3_y[item,:] = vcat(parent1_y[item,1:ind_1], parent2_y[item,ind_1+1:ind_2], parent1_y[item,ind_2+1:t])

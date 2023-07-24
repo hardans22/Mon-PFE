@@ -1,13 +1,14 @@
 using JuMP, Random, PyCall, Profile
 
 include("./genetic_algorithm.jl")
+include("RelaxAndFix _ FixAndOptimize.jl")
 
 pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 10
-t = 15 
+p = 20
+t = 20 
 version = 1
 println("p = ", p)
 println("t = ", t)
@@ -24,60 +25,74 @@ best_sol_obj = []
 sol_opt_obj = []
 
 #version = 1
-for version in 1:1
-	println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
-	file_path = "my_instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
-	instance_dict = init.gen_instance(p,t, fp=file_path); 
-	instance_dict["P"] = 1:p;
-	instance_dict["T"] = 1:t;
-	t = length(T)
-    p = length(P)
-    instance_dict["t"] = t
-    instance_dict["p"] = p
-	alpha = instance_dict["alpha"]
-	cmax = instance_dict["cmax"]
-	mtn_cost = instance_dict["mtn_cost"]
-    set_up_cost = instance_dict["set_up_cost"]
+println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
+file_path = "my_instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+instance_dict = init.gen_instance(p,t, fp=file_path); 
+instance_dict["P"] = 1:p;
+instance_dict["T"] = 1:t;
+instance_dict["t"] = t
+instance_dict["p"] = p
+alpha = instance_dict["alpha"]
+cmax = instance_dict["cmax"]
+mtn_cost = instance_dict["mtn_cost"]
+set_up_cost = instance_dict["set_up_cost"]
 
-	println("Algorithme génétique")
-	len_pop = 200
-	nbr_iteration = 200
-	println("len_pop = ", len_pop)
-	println("nbr_iteration = ", nbr_iteration)
+println("Algorithme génétique")
+len_pop = 200
+nbr_iteration = 200
+println("len_pop = ", len_pop)
+println("nbr_iteration = ", nbr_iteration)
 
-	rst = true
+rst = true
 
-	@time result =  genetic_algorithm(instance_dict, len_pop, nbr_iteration, rst)   
+@time result =  genetic_algorithm(instance_dict, len_pop, nbr_iteration, rst)   
 
-	objectives = result["objectives"]
-	best_sol = result["best_sol"]
-	#push!(best_sol_list, best_sol.obj)
-	push!(best_sol_obj, best_sol.obj)
-	println(best_sol.obj)
-	println(sum(best_sol.z))
-	l = []
-	for i in 1:p
-		push!(l, sum(best_sol.y[i,:]))
-	end
-
-	println("Feasibility of solution : ", verify_solution(best_sol.x, best_sol.I, best_sol.y, best_sol.z, best_sol.c, instance_dict))
-	sz = best_sol.z
-	sc = construct_capacities(sz, t, alpha, cmax)
-	sy = best_sol.y
-	println("Maintenance : ",best_sol.z)
-	println("Surplus : ",best_sol.u) 
-	println("Matrice des setup : ")
-	display(best_sol.y)
-	println(l)
-	#=
-	model = build_model(instance_dict)
-	r = resolve_CLSP(model,sy,sc,instance_dict,1)
-	cost = sum(set_up_cost .* sy) + dot(mtn_cost,sz)
-	println(r["clsp_obj"] + cost)
-	println(r["z_prime"])
-	println(r["z"])
-	=#
+objectives = result["objectives"]
+best_sol = result["best_sol"]
+#push!(best_sol_list, best_sol.obj)
+push!(best_sol_obj, best_sol.obj)
+println(best_sol.obj)
+println(sum(best_sol.z))
+l = []
+for i in 1:p
+	push!(l, sum(best_sol.y[i,:]))
 end
+
+println("Feasibility of solution : ", verify_solution(best_sol.x, best_sol.I, best_sol.y, best_sol.z, best_sol.c, instance_dict))
+sz = best_sol.z
+sc = construct_capacities(sz, t, alpha, cmax)
+sy = best_sol.y
+println("Maintenance : ",best_sol.z)
+println("Surplus : ",best_sol.u) 
+println("Matrice des setup : ")
+display(best_sol.y)
+println(l)
+
+println("\nFIX AND OPTIMIZE")
+windowSize = 5
+overlap = 0.2
+timeLimit = 10
+
+rf_or_fo = "FO"
+mdl = buildM(sz, sc, instance_dict, "FO")
+sol_y = sy
+@time result1 = FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dict)
+sx = result1["sx"]
+sI = result1["sI"]
+sy = result1["sy"]
+su = result1["su"]
+
+println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
+
+#=
+model = build_model(instance_dict)
+r = resolve_CLSP(model,sy,sc,instance_dict,1)
+cost = sum(set_up_cost .* sy) + dot(mtn_cost,sz)
+println(r["clsp_obj"] + cost)
+println(r["z_prime"])
+println(r["z"])
+	=#
+
 #=
 println("Capacité : ",best_sol.c) 
 println("Surplus : ",best_sol.u) 

@@ -1,6 +1,20 @@
-using JuMP, Gurobi, CPLEX
+using JuMP, Gurobi, CPLEX, LinearAlgebra
 
-function buildM(sc, instance_dict,rf_or_fo)
+
+function initWindow(windowType, instance_dict)
+    P = instance_dict["P"]
+    T = instance_dict["T"]
+
+    if windowType == 0
+        sol_window = [(i,t) for i in P for t in T]
+    elseif windowType == 1
+        sol_window = [(i,t) for t in T for i in P]
+    end 
+    return sol_window
+end 
+
+
+function buildM(sz, sc, instance_dict,rf_or_fo)
     P = instance_dict["P"]
     T = instance_dict["T"]
     len_T = instance_dict["t"]
@@ -9,6 +23,8 @@ function buildM(sc, instance_dict,rf_or_fo)
     variable_prod_cost = instance_dict["variable_prod_cost"]
     holding_cost = instance_dict["holding_cost"]
     set_up_cost = instance_dict["set_up_cost"]
+    mtn_cost = instance_dict["mtn_cost"]
+
     model = Model(Gurobi.Optimizer)
 
     #Les vaiables
@@ -16,6 +32,9 @@ function buildM(sc, instance_dict,rf_or_fo)
     model[:x] = @variable(model, 0 <= x[P,T])
 
     model[:I] = @variable(model, 0 <= I[P,T])
+
+    model[:u] = @variable(model, 0<= u[T])
+
 
     if rf_or_fo == "RF"
         model[:y] = @variable(model, 0 <= y[P,T] <= 1)
@@ -31,53 +50,60 @@ function buildM(sc, instance_dict,rf_or_fo)
     
     @constraint(model, c3[i in P, t in T], x[i,t] <= (sum(demand[i,s] for s in t:len_T))*y[i,t])
 
-    @constraint(model, c4[t in T], sum(x[i,t] for i in P) <= sc[t])
+    @constraint(model, c4[t in T], sum(x[i,t] for i in P) - u[t] <= sc[t])
     
     #objective
-    @objective(model, Min, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T))
+    obj = sum(set_up_cost .* y + variable_prod_cost .*x + holding_cost .*I) + dot(mtn_cost, sz)
+    coef = maximum(mtn_cost)/(len_T)
+    obj += sum(coef*u[t] for t in T)
+
+    @objective(model, Min, obj)
     
     return model
 end
 
 
-function solve_model(model, w_fix, w_mip, sy, instance_dict)
+function solve_model(model, w_fix, w_mip, sy, rf_or_fo)
     x = model[:x]
     I = model[:I]
     y = model[:y]
+    u = model[:u]
 
+    cts = []
     for elt in w_fix
         i, t = elt[1], elt[2]
-        @constraint(model, y[i,t] == sy[i,t])
+        ct = @constraint(model, y[i,t] == sy[i,t])
+        push!(cts,ct)
     end
-
-    for elt in w_mip 
-        i, t = elt[1], elt[2]
-        set_binary(y[i,t])
-    end 
-
+    
+    if rf_or_fo == "RF"
+        for elt in w_mip 
+            i, t = elt[1], elt[2]
+            set_binary(y[i,t])
+        end 
+    end
+    
     set_silent(model)
     JuMP.optimize!(model)
     
+    obj = objective_value(model)
     sx = JuMP.value.(x)
     sI = JuMP.value.(I)
     sy = JuMP.value.(y)
-    
-    return Dict("sx" => sx, "sI" => sI, "sy" => sy, "model" => model)
+    su = JuMP.value.(u)
+
+    if rf_or_fo == "FO"
+        for ct in cts
+            delete(mdl, ct)
+        end
+    end 
+
+    return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "su" => su,"model" => model)
 end
 
-function initWindow(windowType, instance_dict)
-    P = instance_dict["P"]
-    T = instance_dict["T"]
-
-    if windowType == 0
-        sol_window = [(i,t) for i in P for t in T]
-    elseif windowType == 1
-        sol_window = [(i,t) for t in T for i in P]
-    end 
-    return sol_window
-end 
 
 function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_dict)
+    begin_time = time()
     t = instance_dict["t"]
     p = instance_dict["p"]
     #Résolution du problème linéaire avec y continue
@@ -87,7 +113,7 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_d
     sy = JuMP.value.(y)
     display(sy)
 
-    curseur = 1
+    curseur = 0
     step = overlap*windowSize
     println("step = ", step)
 
@@ -97,21 +123,21 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_d
     w_fix = []
     w_mip = window
     w_lp = [elt for elt in sol_window if !(elt in window)]
-
+    rf_or_fo = "RF"
     iter = 0
     while true
         iter+=1
-        println("-------------------Itération", iter, "--------------------")
+        println("-------------------Itération ", iter, "--------------------")
         #=
         println("window : ", length(window))
         println("w_fix : ", length(w_fix))
         println("w_mip : ", length(w_mip))
         println("w_lp : ", length(w_lp))
         =#
-        result = solve_model(mdl, w_fix, w_mip, sy, instance_dict)
+        result = solve_model(mdl, w_fix, w_mip, sy, rf_or_fo)
         sy = result["sy"]
         mdl = result["model"]
-        display(sy)
+        #display(sy)
         curseur += floor(Int64, step)
 
         if curseur + windowSize <= t*p
@@ -123,36 +149,54 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_d
         w_fix = vcat(w_fix, [elt for elt in w_mip if !(elt in window)])
         w_mip = window
         w_lp = [elt for elt in w_lp if !(elt in window)]
+        obj = result["obj"]
         sx = result["sx"]
         sI = result["sI"]
-
-        if all(isinteger, sy)
-            return Dict("sx" => sx, "sI" => sI, "sy" => sy)
+        su = result["su"]
+        println("Objectif : ", obj)
+        if all(isinteger, sy) || (time() - begin_time)>= timeLimit
+            return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "su" => su)
         end
     end
 end
 
+
 function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dict)
+    begin_time = time()
     t = instance_dict["t"]
     p = instance_dict["p"]
-    sy = sol.y
-    curseur = 1
+    #display(sol_y)
+    sy = sol_y
+    sx, sI, su = [], [], []
+    obj = 0
+    display(sx)
+    
     step = overlap*windowSize
     println("step = ", step)
 
+    rf_or_fo = "FO"
     windowType = 0
     while true
+        println("windowType = ", windowType)
+        curseur = 0
         sol_window = initWindow(windowType, instance_dict)
         window = sol_window[1:windowSize]
         w_mip = window
         w_fix = [elt for elt in sol_window if !(elt in window)]
-
+        iter = 0
         while true
-            result = solve_model(mdl, w_fix, w_mip, sy, instance_dict)
+            iter+=1
+            println("\t-------------------Itération ", iter, "--------------------")
+            #=
+            println("window : ", window)
+            println("w_fix : ", w_fix)
+            println("w_mip : ", w_mip)
+            =#          
+            result = solve_model(mdl, w_fix, w_mip, sy, rf_or_fo)
             sy = result["sy"]
             mdl = result["model"]
-            display(sy)
-
+            #display(sy)
+            
             curseur += floor(Int64, step)
 
             if curseur + windowSize <= t*p
@@ -162,13 +206,22 @@ function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dic
             end
 
             w_mip = window
-
             w_fix = [elt for elt in sol_window if !(elt in window)]
             
+            obj = result["obj"]
             sx = result["sx"]
             sI = result["sI"]
+            su = result["su"]
+            println("\tObjectif : ", obj)
+
+            if curseur + windowSize >= t*p
+                break
+            end 
 
         end
+        windowType = 1 - windowType
+        if (time() - begin_time) >= timeLimit || windowType == 0
+            return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "su" => su)
+        end 
     end
-
 end 

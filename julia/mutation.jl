@@ -27,7 +27,7 @@ function mutation(sol_parent,instance_dict,rst,rd)
     end
 
     if  rd <= 0.3
-        println("-------------SWAP-----------")
+        #println("-------------SWAP-----------")
         fils_z = copy(sol_parent.z)
 
         fils_z[ind_ones[1]] = 0
@@ -46,14 +46,14 @@ function mutation(sol_parent,instance_dict,rst,rd)
             shuffle!(i_ones)
             shuffle!(i_zeros)
             if length(i_ones) != 0 && length(i_zeros) != 0
-                println(i_ones[1], " : ", i_zeros[1])
+                #println(i_ones[1], " : ", i_zeros[1])
                 fils_y[item, i_ones[1]] = 0
                 fils_y[item, i_zeros[1]] = 1
             end 
         end
     end
     if  0.3 < rd <= 0.6
-        println("-----------------DÉCALAGE--------------")
+        #println("-----------------DÉCALAGE--------------")
         ind = ind_ones[1]
         #Décalage d'un pas de maintenance à droite à partir d'une période où une maintenance est effectué 
         fils1_z = vcat(parent_z[1:ind-1], [0], parent_z[ind:t-1])
@@ -77,12 +77,12 @@ function mutation(sol_parent,instance_dict,rst,rd)
             end
             shuffle!(i_ones)
             ind = i_ones[1]
-            println(ind)
+            #println(ind)
             fils_y[item,:] = vcat(parent_y[item,1:ind-1], [0], parent_y[item,ind:t-1])        
         end
     end
     if  0.6 < rd <= 0.9
-        println("------------------ENLÈVE UN 1-----------------")
+        #println("------------------ENLÈVE UN 1-----------------")
         ind_ones_y = []
         for i in P
             for j in 2:t
@@ -99,11 +99,11 @@ function mutation(sol_parent,instance_dict,rst,rd)
         
         fils_y = copy(sol_parent.y)
         temp = ind_ones_y[1]
-        println(temp)
+        #println(temp)
         fils_y[temp[1], temp[2]] = 0
     end
     if rd > 0.9
-        println("-----------------AJOUT DE 1--------------")
+        #println("-----------------AJOUT DE 1--------------")
         ind_zeros_y = []
         for i in P
             for j in 2:t
@@ -118,7 +118,7 @@ function mutation(sol_parent,instance_dict,rst,rd)
         fils_z = copy(sol_parent.z)
         fils_z[ind_zeros[1]] = 1
         fils_y = copy(sol_parent.y)
-        println(temp)
+        #println(temp)
         temp = ind_zeros_y[1]
         fils_y[temp[1], temp[2]] = 1
     end

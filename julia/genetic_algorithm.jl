@@ -45,8 +45,6 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
         #println("c_prime = ", c_prime)
         new_pop = current_pop[1:len_clonage] 
         
-        #new_pop = selection(current_pop, len_clonage) 
-        
         len_new_pop = len_clonage
         
         println("CROSSOVER")

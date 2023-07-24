@@ -6,8 +6,8 @@ include("./genetic_algorithm.jl")
 pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
-p = 7
-t = 10
+p = 10
+t = 15
 version = 1
 println("p = ", p)
 println("t = ", t)
@@ -20,25 +20,29 @@ instance_dict["p"] = p
 alpha = instance_dict["alpha"]
 cmax = instance_dict["cmax"]
 demand = instance_dict["demand"]
-len_pop = 200
+len_pop = 100
 
 @time current_pop, model1 = generate_pop_initial(len_pop,instance_dict);
 
-current_pop = sort(current_pop, by = x -> x.obj)
+#current_pop = sort(current_pop, by = x -> x.obj)
 
 #print_pop(current_pop)
 
 sol1, sol2 = current_pop[1], current_pop[2]
 
-#=
+sz = sol1.z
 sc = sol1.c 
 windowSize = 5
 windowType = 0
 overlap = 0.4
 timeLimit = 10
 rf_or_fo = "RF"
-mdl = buildM(sc, instance_dict, rf_or_fo)
+mdl = buildM(sz, sc, instance_dict, rf_or_fo)
 @time result = RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_dict)
+
+#mdl = buildM(sc, instance_dict, rf_or_fo)
+#@time result = RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_dict)
+
 sx = result["sx"]
 sI = result["sI"]
 sy = result["sy"]
@@ -55,7 +59,40 @@ println("\n Capacité : ")
 println(sc)
 
 println("Feasibility : ", verify_solution(sx,sI,sy,sol1.z,sc,instance_dict))
-=#
+
+windowSize = 5
+overlap = 0.4
+timeLimit = 10
+
+rf_or_fo = "FO"
+mdl = buildM(sz, sc, instance_dict, "FO")
+sol_y = sy
+@time result = FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dict)
+sx = result["sx"]
+sI = result["sI"]
+sy = result["sy"]
+su = result["su"]
+
+println("\nMatrice y")
+display(sy)
+println("\nMatrice x")
+display(sx)
+println("\nMatrice I")
+display(sI)
+println("\vecteur u", su)
+println("\n\nMatrice des demandes")
+display(demand)
+println("\n Capacité : ")
+println(sc)
+
+println("Feasibility : ", verify_solution(sx,sI,sy,sol1.z,sc,instance_dict))
+if sol_y == sy
+    println("Sans changement")
+else 
+    println("changement")
+end
+
+
 
 #=
 println("CROSSOVER")
@@ -92,7 +129,7 @@ print("\n I parent2 : ")
 display(sol2.I)
 print("\n I fils1 : ")
 display(list_fils_sol[1].I)
-=#
+
 
 println("\nMUTATION")
 fils_z, fils_y = mutation(sol1,instance_dict, false, 0.1)
@@ -114,3 +151,4 @@ print("\n\n\nI parent1 : ")
 display(sol1.I)
 print("\n I fils : ")
 display(fils_sol.I)
+=#
