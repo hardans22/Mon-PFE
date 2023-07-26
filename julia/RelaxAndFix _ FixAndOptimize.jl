@@ -25,7 +25,7 @@ function buildM(sz, sc, instance_dict,rf_or_fo)
     set_up_cost = instance_dict["set_up_cost"]
     mtn_cost = instance_dict["mtn_cost"]
 
-    model = Model(Gurobi.Optimizer)
+    model = Model(CPLEX.Optimizer)
 
     #Les vaiables
 
@@ -50,11 +50,11 @@ function buildM(sz, sc, instance_dict,rf_or_fo)
     
     @constraint(model, c3[i in P, t in T], x[i,t] <= (sum(demand[i,s] for s in t:len_T))*y[i,t])
 
-    @constraint(model, c4[t in T], sum(x[i,t] for i in P) - u[t] <= sc[t])
+    model[:c4] = @constraint(model, c4[t in T], sum(x[i,t] for i in P) - u[t] <= sc[t])
     
     #objective
-    obj = sum(set_up_cost .* y + variable_prod_cost .*x + holding_cost .*I) + dot(mtn_cost, sz)
-    coef = maximum(mtn_cost)/(len_T)
+    obj = sum(set_up_cost .* y + variable_prod_cost .*x + holding_cost .*I) 
+    coef = sum(mtn_cost)/(len_T)
     obj += sum(coef*u[t] for t in T)
 
     @objective(model, Min, obj)
@@ -87,14 +87,15 @@ function solve_model(model, w_fix, w_mip, sy, rf_or_fo)
     JuMP.optimize!(model)
     
     obj = objective_value(model)
-    sx = JuMP.value.(x)
-    sI = JuMP.value.(I)
+
+    sx = round.(JuMP.value.(x), digits = 3)
+    sI = round.(JuMP.value.(I), digits = 3)
     sy = JuMP.value.(y)
     su = JuMP.value.(u)
 
     if rf_or_fo == "FO"
         for ct in cts
-            delete(mdl, ct)
+            delete(model, ct)
         end
     end 
 
@@ -102,7 +103,7 @@ function solve_model(model, w_fix, w_mip, sy, rf_or_fo)
 end
 
 
-function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_dict)
+function RelaxAndFix(mdl, windowSize, windowType, overlap, instance_dict)
     begin_time = time()
     t = instance_dict["t"]
     p = instance_dict["p"]
@@ -111,11 +112,11 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_d
     JuMP.optimize!(mdl)
     y = mdl[:y]
     sy = JuMP.value.(y)
-    display(sy)
+    #display(sy)
 
     curseur = 0
     step = overlap*windowSize
-    println("step = ", step)
+    #println("step = ", step)
 
     #Initialisation de l'ensemble de toutes les cases de la matrices selon l'orientation choisi (windowType)
     sol_window = initWindow(windowType, instance_dict)
@@ -127,7 +128,7 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_d
     iter = 0
     while true
         iter+=1
-        println("-------------------Itération ", iter, "--------------------")
+        println("\t\t-------------------Itération ", iter, "--------------------")
         #=
         println("window : ", length(window))
         println("w_fix : ", length(w_fix))
@@ -153,8 +154,8 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, timeLimit, instance_d
         sx = result["sx"]
         sI = result["sI"]
         su = result["su"]
-        println("Objectif : ", obj)
-        if all(isinteger, sy) || (time() - begin_time)>= timeLimit
+        #println("Objectif : ", obj)
+        if all(isinteger, sy)
             return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "su" => su)
         end
     end
@@ -217,7 +218,6 @@ function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dic
             if curseur + windowSize >= t*p
                 break
             end 
-
         end
         windowType = 1 - windowType
         if (time() - begin_time) >= timeLimit || windowType == 0
@@ -225,3 +225,39 @@ function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dic
         end 
     end
 end 
+
+
+function general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increment, instance_dict )
+    begin_time = time()
+    sz = best_sol.z
+    sc = best_sol.c
+    sy = best_sol.y
+    model = buildM(sz,sc,instance_dict, "FO")
+    prev_cost = best_sol.obj
+    timeElapsed = time() - begin_time 
+    timeRemaining = timeLimit - timeElapsed
+
+    result = Dict()
+    mtnCost = dot(mtn_cost, sz)
+    while true 
+        result = FixAndOptimize(model, sy, windowSize, overlap, timeRemaining, instance_dict)
+        sy = result["sy"]
+        result["obj"] += mtnCost
+        if (result["obj"] - prev_cost)/prev_cost < tolerance
+            windowSize += increment
+        end
+        timeElapsed = time() - begin_time
+        timeRemaining = timeLimit - timeElapsed
+        if timeElapsed > timeLimit 
+            break
+        end 
+    end
+    result["sz"] = sz
+    result["sc"] = sc
+    sx = result["sx"]
+    sI = result["sI"]
+    println("OBJECTIF = ", result["obj"])
+    println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
+
+    return result
+end

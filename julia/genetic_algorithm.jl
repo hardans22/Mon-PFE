@@ -4,6 +4,8 @@ include("./generate_pop_initial.jl")
 include("./crossover.jl")
 include("./mutation.jl")
 include("./functions.jl")
+include("restart.jl")
+include("RelaxAndFix _ FixAndOptimize.jl")
 
 
 function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
@@ -14,31 +16,31 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
     alpha = instance_dict["alpha"]
     cmax = instance_dict["cmax"]
     println("--------------------------Itération 0 --------------------------")
+    
+    #Population initiale 
     @time begin
         current_pop, model = generate_pop_initial(len_pop,instance_dict)
     end
-    best_sol_list = []
-    objectives = []
-    snd_objectives = []
-    trd_objectives = []
     current_pop = sort(current_pop, by = x -> x.obj)
-     
     best_sol = copy_solution(current_pop[1])
+
+    #Les définitions
+    best_sol_list, objectives, snd_objectives, trd_objectives = [], [], [], []
+
     stop = 15
-    #println("POPULATION")
-    #print_pop(current_pop)
+    len_clonage = div(len_pop, 5)*3
+    nbr_crossover = div(len_pop, 5)
+    nbr_mutation = div(len_pop, 5)
+    compt = 0
+
+    nbr_fo = div(len_pop, 40)
     
     push!(objectives, best_sol.obj)
     push!(snd_objectives, current_pop[2].obj)
     push!(trd_objectives, current_pop[3].obj)
     println(best_sol.obj)
-    compt = 0
     it = 1
 
-    len_clonage = div(len_pop, 3)*2
-    nbr_crossover = div(len_pop, 3)
-    nbr_mutation = div(len_pop, 3)
-    #c_prime = nbr_iteration
     for iter in 1:nbr_iteration
         println("--------------------------Itération ", iter, " --------------------------")
         new_pop = []
@@ -49,7 +51,7 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
         
         println("CROSSOVER")
         @time begin
-            compt_fils = 0
+            cpt_cross = 0
             for i in 1:nbr_crossover
                 #println("Crossover : ", i)
                 ind = randperm(len_clonage)[1:2]
@@ -62,20 +64,22 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
                     for fils_z in list_fils_z
                         fils_c = construct_capacities(fils_z, t, alpha, cmax)  
                         for fils_y in list_fils_y
-                            fils_sol, model = create_solution(model,fils_y,fils_z,fils_c,instance_dict)
+                            result_sol, model =  evaluation(model,fils_y,fils_z,fils_c,instance_dict)
+                            fils_sol = create_solution(result_sol)
                             if !sol_in_list(new_pop, fils_sol)
-                                compt_fils +=1
+                                cpt_cross +=1
                                 push!(new_pop, fils_sol)
                             end
                         end
                     end
                 end
             end
+            len_new_pop += cpt_cross
         end
+
         println("MUTATION")
-        cpt = 0
+        cpt_mut = 0
         @time begin
-            len_new_pop += compt_fils
             indices = randperm(len_new_pop)
             for i in 1: nbr_mutation
                 shuffle!(indices)
@@ -85,50 +89,82 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
                 if temp > 1 || temp != 1 
                     fils_z, fils_y = mutation(sol,instance_dict, false, 0.1)
                     fils_c = construct_capacities(fils_z, t, alpha, cmax) 
-                    fils_sol, model = create_solution(model,fils_y,fils_z,fils_c,instance_dict)
+                    result_sol, model = evaluation(model,fils_y,fils_z,fils_c,instance_dict)
+                    fils_sol = create_solution(result_sol)
                     if !sol_in_list(new_pop, fils_sol)
-                        cpt +=1
+                        cpt_mut +=1
                         push!(new_pop, fils_sol)
                     end
                 end
                 indices = filter!(e->e!=ind, indices)
             end
+            len_new_pop += cpt_mut
         end  
-        len_new_pop += cpt
+        
+        #=
+        if iter % 50 == 0
+            windowSize = 5
+            windowType = 0
+            overlap = 0.4
+            timeLimit = 10
+
+            println("Fix and Optimize")
+            cpt_fo = 0
+            indices = randperm(len_new_pop)
+            for i in 1:nbr_fo
+                shuffle!(indices)
+                ind = indices[1]
+                sol = new_pop[ind]   
+                model_fo = buildM(sol.z, sol.c, instance_dict, "FO")
+                @time result_sol = RelaxAndFix(model_fo, windowSize, windowType, overlap, timeLimit, instance_dict)
+                result_sol["z"] = sol.z
+                result_sol["c"] = sol.c
+                fils_sol = create_solution(result_sol)
+                if !sol_in_list(new_pop, fils_sol)
+                    cpt_fo +=1
+                    push!(new_pop, fils_sol)
+                end
+                indices = filter!(e->e!=ind, indices) 
+            end
+        end
+        =#
+
+        #Mise à jour et trie de la population
         current_pop = new_pop
-        #current_pop = unique(new_pop, sol_equal)
         current_pop = sort(current_pop, by = x -> x.obj)
         
+        #Vérification et mise à jour de la meilleure solution
         if current_pop[1].obj < best_sol.obj
             compt = 0
             best_sol = copy_solution(current_pop[1])
         else
             compt += 1
         end
-        if compt == stop
-            if rst
-                println("RESTART")
-                push!(best_sol_list, best_sol)
-                #current_pop, model = generate_pop_initial2(len_pop, instance_dict)
-                current_pop, model = restart(model, best_sol, instance_dict, len_pop)
-                #current_pop, model = restart2(model, best_sol, instance_dict, len_pop)
-                current_pop = sort(current_pop, by = x -> x.obj)
-                best_sol = copy_solution(current_pop[1])
-                stop += 5
-                print_pop(current_pop)
-                len_clonage = div(len_pop, 3)*2
-                nbr_crossover = div(len_pop, 3)
-                nbr_mutation = div(len_pop, 3) 
-            else 
-                break
-            end    
-        end
-        it += 1 
         push!(objectives, best_sol.obj)
         push!(snd_objectives, current_pop[2].obj)
         push!(trd_objectives, current_pop[3].obj)
 
-        #println([x.obj for x in current_pop])
+        #Restart
+        if compt == stop
+            if rst
+                println("RESTART")
+                push!(best_sol_list, best_sol)
+                #current_pop, model = restart(model, best_sol, instance_dict, len_pop)
+                windowSize = 15
+                windowType = 0
+                overlap = 0.6
+                current_pop = new_restart(current_pop, windowSize, windowType, overlap, instance_dict)
+                current_pop = sort(current_pop, by = x -> x.obj)
+                best_sol = copy_solution(current_pop[1])
+                stop += 5
+                print_pop(current_pop)
+            else 
+                break
+            end    
+        end
+
+        it += 1 
+        
         println()
         println("best_sol = ",best_sol.obj)
         println()
@@ -137,25 +173,20 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
         #println(len_new_pop)
         #println(length(current_pop))
         
-        
-        if iter % 50 == 0
-            nbr_crossover = round(nbr_crossover*0.9)
-            nbr_mutation = round(nbr_mutation*0.9)
+        if iter % 30 == 0
+            nbr_crossover = round(nbr_crossover*1.2)
+            nbr_mutation = round(nbr_mutation*1.2)
         end 
         
-        #print(model)
-        #=
-        if c_prime > 0.05
-            c_prime *= 0.9
-        else
-            c_prime = 0
-        end
-        =# 
+        if stop == 40
+            break
+        end 
     end 
     #println("Nombre d'itération = ", it)
     push!(best_sol_list, best_sol)
     print_pop(best_sol_list)
     best_sol_list = sort(best_sol_list, by = x -> x.obj)
     best_sol = best_sol_list[1]
+    
     return Dict("objectives" => objectives, "snd_objectives" => snd_objectives, "trd_objectives" => trd_objectives, "best_sol" => best_sol)
 end

@@ -24,18 +24,22 @@ function construct_capacities(z, t, alpha, cmax)
     return c      
 end 
 
-function create_solution(model,y,z,c,instance_dict)
-    #Créer un objet solution à partir de y,z et c
+function evaluation(model,y,z,c,instance_dict)
+    #Évaluation d'une solution, résoudre le LP 
     mtn_cost = instance_dict["mtn_cost"]
     set_up_cost = instance_dict["set_up_cost"]
     clsp_sol = resolve_CLSP(model,y,c,instance_dict)
     model,x, I, u, clsp_obj = clsp_sol["model"], clsp_sol["x"], clsp_sol["I"],clsp_sol["u"], clsp_sol["clsp_obj"]
     set_up_mtn_costs = sum(set_up_cost .* y) + dot(mtn_cost,z)
-    sol_obj = clsp_obj + set_up_mtn_costs
-    fils_sol =  solution(x, I, y, z, c, u, sol_obj);
-    return fils_sol, model
+    obj = clsp_obj + set_up_mtn_costs
+    return Dict("sx" => x, "sI" => I, "sy" => y, "sz" => z, "sc" => c, "su" => u, "obj" => obj), model
 end
 
+function create_solution(eval_result :: Dict)
+    x, I, y, z = eval_result["sx"], eval_result["sI"], eval_result["sy"], eval_result["sz"]
+    c, u, obj = eval_result["sc"], eval_result["su"], eval_result["obj"]
+    return solution(x, I, y, z, c, u, obj)
+end 
 
 function copy_solution(sol)
     return solution(sol.x,sol.I,sol.y,sol.z,sol.c,sol.u,sol.obj)
@@ -94,7 +98,7 @@ function verify_solution(x,I,y,z,c,instance_dict)
     feasibility = true
     for t in T
         for i in P
-            if t!= 1 && !(abs(x[i,t] + I[i,t-1] - demand[i,t] - I[i,t]) <= 0.00005)
+            if t!= 1 && !(abs(x[i,t] + I[i,t-1] - demand[i,t] - I[i,t]) <= 0.0000000005)
                 println("Problème d'inventaire")
                 return false
             end 
