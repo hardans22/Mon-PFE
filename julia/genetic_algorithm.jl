@@ -28,7 +28,7 @@ function genetic_algorithm(instance_dict,len_pop, timeAG)
     #Les définitions
     best_sol_list, objectives, snd_objectives, trd_objectives = [], [], [], []
 
-    stop = 15
+    stop = 10
     len_clonage = div(len_pop, 5)*3
     nbr_crossover = div(len_pop, 5)
     nbr_mutation = div(len_pop, 5)
@@ -127,7 +127,7 @@ function genetic_algorithm(instance_dict,len_pop, timeAG)
             current_pop, model = restart(model, best_sol, instance_dict, len_pop)
             current_pop = sort(current_pop, by = x -> x.obj)
             best_sol = copy_solution(current_pop[1])
-            stop += 5
+            #stop += 5
             print_pop(current_pop)   
         end
         
@@ -140,8 +140,8 @@ function genetic_algorithm(instance_dict,len_pop, timeAG)
         #println(length(current_pop))
         
         if iter % 30 == 0
-            nbr_crossover = round(nbr_crossover*1.3)
-            nbr_mutation = round(nbr_mutation*1.3)
+            nbr_crossover = round(nbr_crossover*1.2)
+            nbr_mutation = round(nbr_mutation*1.2)
         end 
         
         if time() - begin_time > timeAG

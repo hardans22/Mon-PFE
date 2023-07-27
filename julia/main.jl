@@ -9,7 +9,7 @@ init  = pyimport("__init__")
 
 p = 20
 t = 20
-version = 6
+version = 12 
 println("p = ", p)
 println("t = ", t)
 
@@ -34,7 +34,7 @@ set_up_cost = instance_dict["set_up_cost"]
 println("\n\nALGORITHME GÉNÉTIQUE")
 
 len_pop = 200
-timeAG = 150
+timeAG = 100
 println("len_pop = ", len_pop)
 println("Temps d'exécution = ", timeAG)
 
@@ -63,8 +63,8 @@ println(l)
 
 println("\nFIX AND OPTIMIZE")
 windowSize = 15
-overlap = 0.4
-timeLimit = 70
+overlap = 0.6
+timeLimit = 50
 
 tolerance = 1
 increment = 2
