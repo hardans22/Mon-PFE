@@ -8,7 +8,8 @@ include("restart.jl")
 include("RelaxAndFix _ FixAndOptimize.jl")
 
 
-function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
+function genetic_algorithm(instance_dict,len_pop, timeAG)
+    begin_time = time()
     P = instance_dict["P"] 
     T = instance_dict["T"]
     t = instance_dict["t"]
@@ -39,9 +40,9 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
     push!(snd_objectives, current_pop[2].obj)
     push!(trd_objectives, current_pop[3].obj)
     println(best_sol.obj)
-    it = 1
+    iter = 1
 
-    for iter in 1:nbr_iteration
+    while true
         println("--------------------------Itération ", iter, " --------------------------")
         new_pop = []
         #println("c_prime = ", c_prime)
@@ -83,51 +84,26 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
             indices = randperm(len_new_pop)
             for i in 1: nbr_mutation
                 shuffle!(indices)
-                ind = indices[1]
-                sol = new_pop[ind]
-                temp = sum(sol.z)
-                if temp > 1 || temp != 1 
-                    fils_z, fils_y = mutation(sol,instance_dict, false, 0.1)
-                    fils_c = construct_capacities(fils_z, t, alpha, cmax) 
-                    result_sol, model = evaluation(model,fils_y,fils_z,fils_c,instance_dict)
-                    fils_sol = create_solution(result_sol)
-                    if !sol_in_list(new_pop, fils_sol)
-                        cpt_mut +=1
-                        push!(new_pop, fils_sol)
+                if length(indices) != 0
+                    ind = indices[1]
+                    sol = new_pop[ind]
+                    temp = sum(sol.z)
+                    if temp > 1 || temp != 1 
+                        fils_z, fils_y = mutation(sol,instance_dict, false, 0.1)
+                        fils_c = construct_capacities(fils_z, t, alpha, cmax) 
+                        result_sol, model = evaluation(model,fils_y,fils_z,fils_c,instance_dict)
+                        fils_sol = create_solution(result_sol)
+                        if !sol_in_list(new_pop, fils_sol)
+                            cpt_mut +=1
+                            push!(new_pop, fils_sol)
+                        end
                     end
+                    indices = filter!(e->e!=ind, indices)
                 end
-                indices = filter!(e->e!=ind, indices)
             end
             len_new_pop += cpt_mut
         end  
         
-        #=
-        if iter % 50 == 0
-            windowSize = 5
-            windowType = 0
-            overlap = 0.4
-            timeLimit = 10
-
-            println("Fix and Optimize")
-            cpt_fo = 0
-            indices = randperm(len_new_pop)
-            for i in 1:nbr_fo
-                shuffle!(indices)
-                ind = indices[1]
-                sol = new_pop[ind]   
-                model_fo = buildM(sol.z, sol.c, instance_dict, "FO")
-                @time result_sol = RelaxAndFix(model_fo, windowSize, windowType, overlap, timeLimit, instance_dict)
-                result_sol["z"] = sol.z
-                result_sol["c"] = sol.c
-                fils_sol = create_solution(result_sol)
-                if !sol_in_list(new_pop, fils_sol)
-                    cpt_fo +=1
-                    push!(new_pop, fils_sol)
-                end
-                indices = filter!(e->e!=ind, indices) 
-            end
-        end
-        =#
 
         #Mise à jour et trie de la population
         current_pop = new_pop
@@ -146,24 +122,14 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
 
         #Restart
         if compt == stop
-            if rst
-                println("RESTART")
-                push!(best_sol_list, best_sol)
-                #current_pop, model = restart(model, best_sol, instance_dict, len_pop)
-                windowSize = 15
-                windowType = 0
-                overlap = 0.6
-                current_pop = new_restart(current_pop, windowSize, windowType, overlap, instance_dict)
-                current_pop = sort(current_pop, by = x -> x.obj)
-                best_sol = copy_solution(current_pop[1])
-                stop += 5
-                print_pop(current_pop)
-            else 
-                break
-            end    
+            println("RESTART")
+            push!(best_sol_list, best_sol)
+            current_pop, model = restart(model, best_sol, instance_dict, len_pop)
+            current_pop = sort(current_pop, by = x -> x.obj)
+            best_sol = copy_solution(current_pop[1])
+            stop += 5
+            print_pop(current_pop)   
         end
-
-        it += 1 
         
         println()
         println("best_sol = ",best_sol.obj)
@@ -174,15 +140,17 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration,rst)
         #println(length(current_pop))
         
         if iter % 30 == 0
-            nbr_crossover = round(nbr_crossover*1.2)
-            nbr_mutation = round(nbr_mutation*1.2)
+            nbr_crossover = round(nbr_crossover*1.3)
+            nbr_mutation = round(nbr_mutation*1.3)
         end 
         
-        if stop == 40
+        if time() - begin_time > timeAG
             break
         end 
+        iter += 1 
+
     end 
-    #println("Nombre d'itération = ", it)
+    println("Nombre d'itération = ", iter)
     push!(best_sol_list, best_sol)
     print_pop(best_sol_list)
     best_sol_list = sort(best_sol_list, by = x -> x.obj)

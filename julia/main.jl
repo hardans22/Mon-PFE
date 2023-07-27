@@ -9,18 +9,10 @@ init  = pyimport("__init__")
 
 p = 20
 t = 20
-version = 2
+version = 6
 println("p = ", p)
 println("t = ", t)
 
-println("\nLes pararmètres choisis")
-println("Mise à jour des contraintes pour l'évaluation d'une solution")
-println("Les deux tiers premiers pour la sélection")
-println("Stop au bout de 15 itération sans amélioration")
-println("Sans restart")
-println("len_clonage = div(len_pop, 3)*2")
-println("nbr_crossover = div(len_pop, 3)")
-println("nbr_mutation = div(len_pop, 3)")
 best_sol_obj = [] 
 sol_opt_obj = []
 
@@ -37,15 +29,16 @@ cmax = instance_dict["cmax"]
 mtn_cost = instance_dict["mtn_cost"]
 set_up_cost = instance_dict["set_up_cost"]
 
-println("Algorithme génétique")
+@time result =  genetic_algorithm(instance_dict, 10, 5)   
+
+println("\n\nALGORITHME GÉNÉTIQUE")
+
 len_pop = 200
-nbr_iteration = 200
+timeAG = 150
 println("len_pop = ", len_pop)
-println("nbr_iteration = ", nbr_iteration)
+println("Temps d'exécution = ", timeAG)
 
-rst = true
-
-@time result =  genetic_algorithm(instance_dict, len_pop, nbr_iteration, rst)   
+@time result =  genetic_algorithm(instance_dict, len_pop,timeAG)   
 
 objectives = result["objectives"]
 best_sol = result["best_sol"]
@@ -54,18 +47,18 @@ push!(best_sol_obj, best_sol.obj)
 println(best_sol.obj)
 println(sum(best_sol.z))
 l = []
-for i in 1:p
-	push!(l, sum(best_sol.y[i,:]))
-end
-
-println("Feasibility of solution : ", verify_solution(best_sol.x, best_sol.I, best_sol.y, best_sol.z, best_sol.c, instance_dict))
 sz = best_sol.z
 sc = best_sol.c
 sy = best_sol.y
-println("Maintenance : ",best_sol.z)
-println("Surplus : ",best_sol.u) 
+su = best_sol.u
+println("Feasibility of solution : ", verify_solution(best_sol.x, best_sol.I, sy, sz, sc, instance_dict))
+println("Maintenance : ",sz)
+println("Surplus : ",su) 
 println("Matrice des setup : ")
-display(best_sol.y)
+display(sy)
+for i in 1:p
+	push!(l, sum(sy[i,:]))
+end
 println(l)
 
 println("\nFIX AND OPTIMIZE")
@@ -73,14 +66,11 @@ windowSize = 15
 overlap = 0.4
 timeLimit = 70
 
-#=
-rf_or_fo = "FO"
-mdl = buildM(sz, sc, instance_dict, "FO")
-sol_y = sy
-@time result1 = FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dict)
-=#
 tolerance = 1
 increment = 2
+
+result1 = general_FO(best_sol, windowSize, overlap, 2, tolerance, increment, instance_dict)
+
 @time result1 = general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increment, instance_dict)
 sx = result1["sx"]
 sI = result1["sI"]
