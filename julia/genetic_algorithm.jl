@@ -138,12 +138,12 @@ function genetic_algorithm(instance_dict,len_pop, timeAG)
         #print_pop(current_pop)
         #println(len_new_pop)
         #println(length(current_pop))
-        
+        #=
         if iter % 30 == 0
-            nbr_crossover = round(nbr_crossover*1.2)
-            nbr_mutation = round(nbr_mutation*1.2)
+            nbr_crossover = round(nbr_crossover*1.3)
+            nbr_mutation = round(nbr_mutation*1.3)
         end 
-        
+        =#
         if time() - begin_time > timeAG
             break
         end 

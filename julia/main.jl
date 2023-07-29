@@ -7,9 +7,9 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 20
+p = 25
 t = 20
-version = 12 
+version = 9
 println("p = ", p)
 println("t = ", t)
 
@@ -18,7 +18,7 @@ sol_opt_obj = []
 
 #version = 1
 println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
-file_path = "my_instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+file_path = "instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 instance_dict = init.gen_instance(p,t, fp=file_path); 
 instance_dict["P"] = 1:p;
 instance_dict["T"] = 1:t;
@@ -33,8 +33,8 @@ set_up_cost = instance_dict["set_up_cost"]
 
 println("\n\nALGORITHME GÉNÉTIQUE")
 
-len_pop = 200
-timeAG = 100
+len_pop = 300
+timeAG = 130
 println("len_pop = ", len_pop)
 println("Temps d'exécution = ", timeAG)
 
@@ -64,12 +64,12 @@ println(l)
 println("\nFIX AND OPTIMIZE")
 windowSize = 15
 overlap = 0.6
-timeLimit = 50
+timeLimit = 70
 
 tolerance = 1
 increment = 2
 
-result1 = general_FO(best_sol, windowSize, overlap, 2, tolerance, increment, instance_dict)
+result1 = general_FO(best_sol, windowSize, overlap, 5, tolerance, increment, instance_dict)
 
 @time result1 = general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increment, instance_dict)
 sx = result1["sx"]

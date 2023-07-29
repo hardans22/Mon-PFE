@@ -1,6 +1,6 @@
 using JuMP, CPLEX, Gurobi
 
-function model(instance_dict, pl = false)
+function model_mip(instance_dict, pl = false)
     P = instance_dict["P"]
     T = instance_dict["T"]
     len_T = instance_dict["t"]
@@ -39,8 +39,8 @@ function model(instance_dict, pl = false)
     @constraint(model, c6[t in 2:len_T], c[t] <= alpha*c[t-1] + cmax*z[t])
     
     @objective(model, Min, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T) + sum(mtn_cost[t]*z[t] for t in T))
-    set_silent(model)
-    set_time_limit_sec(model, 300.0)
+    #set_silent(model)
+    set_time_limit_sec(model, 1800.0)
     JuMP.optimize!(model)
     obj = objective_value(model)
     sx = JuMP.value.(x)
@@ -54,19 +54,10 @@ function model(instance_dict, pl = false)
     end
     =# 
     nbr_set_up = []
-    println("MILP_obj = ", obj)
+    println("\nMILP_obj = ", obj)
     println("Temps de résolution MILP = ", solve_time(model), "s")
-    println(sum(sz))
-    ssz = []
-    for j in T
-        push!(ssz, sz[j])
-    end 
-    println(ssz)
-    for i in P
-        push!(nbr_set_up, sum(sy[i,:]))
-    end
-    println(nbr_set_up)
-    return obj, sz, sc, sy, sx, sI
+    
+    return Dict("obj" => obj, "z" => sz, "c" => sc, "y" => sy, "x" => sx, "I" => sI)
 end
 
 
