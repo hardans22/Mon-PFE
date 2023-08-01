@@ -187,7 +187,7 @@ function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dic
         iter = 0
         while true
             iter+=1
-            println("\t-------------------Itération ", iter, "--------------------")
+            #println("\t-------------------Itération ", iter, "--------------------")
             #=
             println("window : ", window)
             println("w_fix : ", w_fix)
@@ -213,7 +213,7 @@ function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dic
             sx = result["sx"]
             sI = result["sI"]
             su = result["su"]
-            println("\tObjectif : ", obj)
+            #println("\tObjectif : ", obj)
 
             if curseur + windowSize >= t*p
                 break
@@ -234,6 +234,7 @@ function general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increme
     sy = best_sol.y
     model = buildM(sz,sc,instance_dict, "FO")
     prev_cost = best_sol.obj
+    mtn_cost = instance_dict["mtn_cost"]
     timeElapsed = time() - begin_time 
     timeRemaining = timeLimit - timeElapsed
 
@@ -243,6 +244,7 @@ function general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increme
         result = FixAndOptimize(model, sy, windowSize, overlap, timeRemaining, instance_dict)
         sy = result["sy"]
         result["obj"] += mtnCost
+        println("OBJECTIF = ", result["obj"])
         if (result["obj"] - prev_cost)/prev_cost < tolerance
             windowSize += increment
         end
@@ -257,7 +259,6 @@ function general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increme
     sx = result["sx"]
     sI = result["sI"]
     println("OBJECTIF = ", result["obj"])
-    println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
-
+    
     return result
 end
