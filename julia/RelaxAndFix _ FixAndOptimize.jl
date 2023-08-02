@@ -173,7 +173,7 @@ function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dic
     display(sx)
     
     step = overlap*windowSize
-    println("step = ", step)
+    #println("step = ", step)
 
     rf_or_fo = "FO"
     windowType = 0
@@ -237,22 +237,32 @@ function general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increme
     mtn_cost = instance_dict["mtn_cost"]
     timeElapsed = time() - begin_time 
     timeRemaining = timeLimit - timeElapsed
-
+    compt = 0
     result = Dict()
     mtnCost = dot(mtn_cost, sz)
     while true 
+        println("windowSize = ", windowSize)
+        println("Previous cost = ", prev_cost)
         result = FixAndOptimize(model, sy, windowSize, overlap, timeRemaining, instance_dict)
         sy = result["sy"]
         result["obj"] += mtnCost
         println("OBJECTIF = ", result["obj"])
-        if (result["obj"] - prev_cost)/prev_cost < tolerance
+        dev = (result["obj"] - prev_cost)/prev_cost
+        if dev < tolerance
             windowSize += increment
         end
+        if dev == 0
+            compt+=1
+        end
+        if compt == 3
+            break 
+        end 
         timeElapsed = time() - begin_time
         timeRemaining = timeLimit - timeElapsed
         if timeElapsed > timeLimit 
             break
         end 
+        prev_cost = result["obj"]
     end
     result["sz"] = sz
     result["sc"] = sc

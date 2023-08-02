@@ -25,7 +25,7 @@ instance["p"] = p
 @time result2 =  genetic_algorithm(instance, 10, 5)   
 
 #version = 1
-for version in 1:10
+for version in 1:1
 	println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
 	file_path = "instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 	instance_dict = init.gen_instance(p,t, fp=file_path); 
@@ -42,7 +42,7 @@ for version in 1:10
 	println("\n\nALGORITHME GÉNÉTIQUE")
 
 	len_pop = 250
-	timeAG = 20
+	timeAG = 25
 	println("len_pop = ", len_pop)
 	println("Temps d'exécution = ", timeAG)
 
@@ -70,12 +70,12 @@ for version in 1:10
 	println(l)
 
 	println("\nFIX AND OPTIMIZE")
-	windowSize = 10
-	overlap = 0.4
+	windowSize = 20
+	overlap = 0.8
 	timeLimit = 30
 
-	tolerance = 1
-	increment = 5
+	tolerance = 0.1
+	increment = 4
 
 	result1 = general_FO(best_sol, windowSize, overlap, 5, tolerance, increment, instance_dict)
 
