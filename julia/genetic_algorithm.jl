@@ -8,7 +8,7 @@ include("restart.jl")
 include("RelaxAndFix _ FixAndOptimize.jl")
 
 
-function genetic_algorithm(instance_dict,len_pop, timeAG)
+function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
     begin_time = time()
     P = instance_dict["P"] 
     T = instance_dict["T"]
@@ -38,11 +38,11 @@ function genetic_algorithm(instance_dict,len_pop, timeAG)
     push!(objectives, best_sol.obj)
     push!(snd_objectives, current_pop[2].obj)
     push!(trd_objectives, current_pop[3].obj)
-    #println(best_sol.obj)
+    println(best_sol.obj)
     iter = 1
 
-    while true
-        #println("--------------------------Itération ", iter, " --------------------------")
+    while iter in 1:nbr_iteration
+        println("--------------------------Itération ", iter, " --------------------------")
         new_pop = []
         #println("c_prime = ", c_prime)
         new_pop = current_pop[1:len_clonage] 
@@ -128,7 +128,7 @@ function genetic_algorithm(instance_dict,len_pop, timeAG)
         end
         
         #println()
-        #println("best_sol = ",best_sol.obj)
+        println("best_sol = ",best_sol.obj)
         #println()
         #println("POPULATION")
         #print_pop(current_pop)
@@ -140,9 +140,9 @@ function genetic_algorithm(instance_dict,len_pop, timeAG)
             nbr_mutation = round(nbr_mutation*1.3)
         end 
         =#
-        if time() - begin_time > timeAG
-            break
-        end 
+        #if time() - begin_time > timeAG
+        #    break
+        #end 
         iter += 1 
 
     end 

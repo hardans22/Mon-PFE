@@ -22,7 +22,7 @@ instance["P"] = 1:p;
 instance["T"] = 1:t;
 instance["t"] = t
 instance["p"] = p 
-@time result2 =  genetic_algorithm(instance, 10, 5)   
+@time result2 =  genetic_algorithm(instance, 10, 10)   
 
 #version = 1
 for version in 1:1
@@ -42,11 +42,11 @@ for version in 1:1
 	println("\n\nALGORITHME GÉNÉTIQUE")
 
 	len_pop = 250
-	timeAG = 25
+	nbr_iteration = 75
 	println("len_pop = ", len_pop)
-	println("Temps d'exécution = ", timeAG)
+	println("Temps d'exécution = ", nbr_iteration)
 
-	@time result =  genetic_algorithm(instance_dict, len_pop,timeAG)   
+	@time result =  genetic_algorithm(instance_dict, len_pop,nbr_iteration)   
 
 	objectives = result["objectives"]
 	best_sol = result["best_sol"]
@@ -69,15 +69,15 @@ for version in 1:1
 	end
 	println(l)
 
-	println("\nFIX AND OPTIMIZE")
-	windowSize = 20
-	overlap = 0.8
-	timeLimit = 30
+	windowSize = 15
+	overlap = 0.6
+	timeLimit = 15
 
 	tolerance = 0.1
-	increment = 4
+	increment = 3
 
 	result1 = general_FO(best_sol, windowSize, overlap, 5, tolerance, increment, instance_dict)
+	println("\nFIX AND OPTIMIZE")
 
 	@time result1 = general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increment, instance_dict)
 	sx = result1["sx"]

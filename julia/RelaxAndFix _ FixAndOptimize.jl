@@ -248,15 +248,21 @@ function general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increme
         result["obj"] += mtnCost
         println("OBJECTIF = ", result["obj"])
         dev = (result["obj"] - prev_cost)/prev_cost
+    
         if dev < tolerance
             windowSize += increment
         end
-        if dev == 0
+        if prev_cost - result["obj"] < 0.000005 
             compt+=1
+        else 
+            compt = 0
         end
-        if compt == 3
+        #=
+        if compt == 5
             break 
         end 
+        =#
+        println("compt = ", compt)
         timeElapsed = time() - begin_time
         timeRemaining = timeLimit - timeElapsed
         if timeElapsed > timeLimit 
