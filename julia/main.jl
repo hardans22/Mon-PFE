@@ -8,7 +8,7 @@ init  = pyimport("__init__")
 
 
 p = 25
-t = 15
+t = 20
 version = 2
 println("p = ", p)
 println("t = ", t)
@@ -25,7 +25,7 @@ instance["p"] = p
 @time result2 =  genetic_algorithm(instance, 10, 10)   
 
 #version = 1
-for version in 1:1
+for version in 9:9
 	println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
 	file_path = "instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 	instance_dict = init.gen_instance(p,t, fp=file_path); 
@@ -41,8 +41,8 @@ for version in 1:1
 
 	println("\n\nALGORITHME GÉNÉTIQUE")
 
-	len_pop = 250
-	nbr_iteration = 75
+	len_pop = 400
+	nbr_iteration = 150
 	println("len_pop = ", len_pop)
 	println("Temps d'exécution = ", nbr_iteration)
 
@@ -69,23 +69,26 @@ for version in 1:1
 	end
 	println(l)
 
-	windowSize = 15
-	overlap = 0.6
-	timeLimit = 15
+	windowSize = 25
+	overlap = 0.8
+	timeLimit = 40
 
 	tolerance = 0.1
-	increment = 3
+	increment = 6
 
+	
 	result1 = general_FO(best_sol, windowSize, overlap, 5, tolerance, increment, instance_dict)
 	println("\nFIX AND OPTIMIZE")
+	for increment in 4:10
+		print("increment = ", increment, "\n \n")
+		@time best_sol1 = general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increment, instance_dict)
+		sx = best_sol1.x
+		sI = best_sol1.I
+		sy = best_sol1.y
+		su = best_sol1.u
 
-	@time result1 = general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increment, instance_dict)
-	sx = result1["sx"]
-	sI = result1["sI"]
-	sy = result1["sy"]
-	su = result1["su"]
-
-	println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
+		println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
+	end 
 end
 
 #=

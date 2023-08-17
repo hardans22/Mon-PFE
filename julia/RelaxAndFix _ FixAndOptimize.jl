@@ -1,5 +1,5 @@
 using JuMP, Gurobi, CPLEX, LinearAlgebra
-
+include("functions.jl")
 
 function initWindow(windowType, instance_dict)
     P = instance_dict["P"]
@@ -90,8 +90,8 @@ function solve_model(model, w_fix, w_mip, sy, rf_or_fo)
 
     sx = round.(JuMP.value.(x), digits = 3)
     sI = round.(JuMP.value.(I), digits = 3)
-    sy = JuMP.value.(y)
-    su = JuMP.value.(u)
+    sy = round.(JuMP.value.(y), digits = 3)
+    su = round.(JuMP.value.(u), digits = 3)
 
     if rf_or_fo == "FO"
         for ct in cts
@@ -170,7 +170,6 @@ function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dic
     sy = sol_y
     sx, sI, su = [], [], []
     obj = 0
-    display(sx)
     
     step = overlap*windowSize
     #println("step = ", step)
@@ -178,7 +177,7 @@ function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dic
     rf_or_fo = "FO"
     windowType = 0
     while true
-        println("windowType = ", windowType)
+        #println("windowType = ", windowType)
         curseur = 0
         sol_window = initWindow(windowType, instance_dict)
         window = sol_window[1:windowSize]
@@ -237,32 +236,26 @@ function general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increme
     mtn_cost = instance_dict["mtn_cost"]
     timeElapsed = time() - begin_time 
     timeRemaining = timeLimit - timeElapsed
-    compt = 0
     result = Dict()
     mtnCost = dot(mtn_cost, sz)
     while true 
         println("windowSize = ", windowSize)
-        println("Previous cost = ", prev_cost)
+        #println("Previous cost = ", prev_cost)
+        
         result = FixAndOptimize(model, sy, windowSize, overlap, timeRemaining, instance_dict)
         sy = result["sy"]
         result["obj"] += mtnCost
-        println("OBJECTIF = ", result["obj"])
-        dev = (result["obj"] - prev_cost)/prev_cost
+        result["sz"] = sz
+        result["sc"] = sc
     
-        if dev < tolerance
-            windowSize += increment
-        end
-        if prev_cost - result["obj"] < 0.000005 
-            compt+=1
-        else 
-            compt = 0
-        end
-        #=
-        if compt == 5
-            break 
+        if result["obj"] < best_sol.obj
+            best_sol = create_solution(result)
         end 
-        =#
-        println("compt = ", compt)
+        println("OBJECTIF = ", best_sol.obj)
+
+        println("Time : ", timeElapsed)
+        windowSize += increment
+        
         timeElapsed = time() - begin_time
         timeRemaining = timeLimit - timeElapsed
         if timeElapsed > timeLimit 
@@ -270,11 +263,8 @@ function general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increme
         end 
         prev_cost = result["obj"]
     end
-    result["sz"] = sz
-    result["sc"] = sc
-    sx = result["sx"]
-    sI = result["sI"]
+    
     println("OBJECTIF = ", result["obj"])
     
-    return result
+    return best_sol
 end

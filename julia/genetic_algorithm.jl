@@ -16,6 +16,8 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
     p = instance_dict["p"]
     alpha = instance_dict["alpha"]
     cmax = instance_dict["cmax"]
+    mtn_cost = instance_dict["mtn_cost"]
+    
     #println("--------------------------Itération 0 --------------------------")
     
     #Population initiale 
@@ -33,13 +35,15 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
     nbr_mutation = div(len_pop, 5)
     compt = 0
 
-    nbr_fo = div(len_pop, 40)
-    
     push!(objectives, best_sol.obj)
     push!(snd_objectives, current_pop[2].obj)
     push!(trd_objectives, current_pop[3].obj)
     println(best_sol.obj)
     iter = 1
+
+    windowSize = 15
+    overlap = 0.8
+    timeLimit = 10
 
     while iter in 1:nbr_iteration
         println("--------------------------Itération ", iter, " --------------------------")
@@ -118,13 +122,26 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
 
         #Restart
         if compt == stop
-            #println("RESTART")
+            println("RESTART")
             push!(best_sol_list, best_sol)
-            current_pop, model = restart(model, best_sol, instance_dict, len_pop)
-            current_pop = sort(current_pop, by = x -> x.obj)
+            new_pop, model = restart(model, best_sol, instance_dict, len_pop)
+            #new_pop = sort(new_pop, by = x -> x.obj)
+            #best_sol = copy_solution(current_pop[1])
+            #=
+            for i in 1:5
+                println("yes")
+                sol = current_pop[i]
+                model_fo = buildM(sol.z, sol.c, instance, "FO")
+                rslt = FixAndOptimize(model_fo, sol.y, windowSize, overlap, timeLimit, instance_dict)
+                rslt["obj"] += dot(mtn_cost, sol.z) 
+                println(rslt["obj"])
+                new_sol = solution(rslt["sx"], rslt["sI"], rslt["sy"], sol.z, sol.c, rslt["su"], rslt["obj"])
+                push!(new_pop, new_sol)
+            end   
+            new_pop = sort(new_pop, by = x -> x.obj)
             best_sol = copy_solution(current_pop[1])
-            #stop += 5
-            #print_pop(current_pop)   
+            =#
+            current_pop = new_pop
         end
         
         #println()
