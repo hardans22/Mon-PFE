@@ -25,14 +25,19 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
     current_pop, model = generate_pop_initial(len_pop,instance_dict)
     current_pop = sort(current_pop, by = x -> x.obj)
     best_sol = copy_solution(current_pop[1])
+    display(current_pop[1].y)
+    println(current_pop[1].z)
+    display(current_pop[2].y)
+    println(current_pop[2].z)
+
 
     #Les définitions
     best_sol_list, objectives, snd_objectives, trd_objectives = [], [], [], []
 
-    stop = 10
-    len_clonage = div(len_pop, 5)*3
-    nbr_crossover = div(len_pop, 5)
-    nbr_mutation = div(len_pop, 5)
+    stop = 100
+    len_clonage = div(len_pop, 3)
+    nbr_crossover = div(len_pop, 3)
+    nbr_mutation = div(len_pop, 3)
     compt = 0
 
     push!(objectives, best_sol.obj)
@@ -122,9 +127,11 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
 
         #Restart
         if compt == stop
+            println("COMPT = ", compt)
             println("RESTART")
             push!(best_sol_list, best_sol)
-            new_pop, model = restart(model, best_sol, instance_dict, len_pop)
+            new_pop, model = generate_pop_initial(len_pop,instance_dict)
+            print_pop(new_pop)
             #new_pop = sort(new_pop, by = x -> x.obj)
             #best_sol = copy_solution(current_pop[1])
             #=
@@ -141,6 +148,7 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
             new_pop = sort(new_pop, by = x -> x.obj)
             best_sol = copy_solution(current_pop[1])
             =#
+            compt = 0
             current_pop = new_pop
         end
         

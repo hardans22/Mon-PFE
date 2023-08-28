@@ -226,7 +226,7 @@ function FixAndOptimize(mdl, sol_y, windowSize, overlap, timeLimit, instance_dic
 end 
 
 
-function general_FO(best_sol, windowSize, overlap, timeLimit, tolerance, increment, instance_dict )
+function general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict )
     begin_time = time()
     sz = best_sol.z
     sc = best_sol.c

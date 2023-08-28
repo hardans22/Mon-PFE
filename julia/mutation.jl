@@ -76,7 +76,11 @@ function mutation(sol_parent,instance_dict,rst,rd)
                 end
             end
             shuffle!(i_ones)
-            ind = i_ones[1]
+            if length(i_ones) != 0
+                ind = i_ones[1]
+            else
+                ind = rand(1:t)
+            end
             #println(ind)
             fils_y[item,:] = vcat(parent_y[item,1:ind-1], [0], parent_y[item,ind:t-1])        
         end

@@ -16,28 +16,28 @@ function generate_pop_initial(len_pop,instance_dict)
 
     clsp_obj = 0
     
-    nbr_mtn = t
+    
     feasibility = true
     c_prime = 0
-    compt_y = 1
+    compt = 1
     model = build_model(instance_dict)
     while feasibility
         #println(nbr_mtn)
-        z = vcat(ones(Int64, nbr_mtn-1), zeros(Int64, t-nbr_mtn+1))
-        shuffle!(z)
-        z[1] = 1
-        nbr_mtn -= 1
+        temp = vcat(ones(Int64, t-1-compt), zeros(Int64, compt))
+        shuffle!(temp)
+        z = vcat([1], temp)
+        #z[1] = 1
         
         c = construct_capacities(z, t, alpha, cmax)
 
         y = zeros(Int64, p,t)
         for item in P
-            line = vcat(ones(Int64, t-compt_y), zeros(Int64, compt_y))
+            line = vcat(ones(Int64, t-1-compt), zeros(Int64, compt))
             shuffle!(line)
-            y[item, :] = line
+            y[item, :] = vcat([1], line)
         end
-        y[:,1] = [1 for _ in P]
-        compt_y += 1 
+        #y[:,1] = [1 for _ in P]
+        compt += 1 
 
         clsp_sol = resolve_CLSP(model,y,c,instance_dict)
         model, x, I, u, clsp_obj = clsp_sol["model"], clsp_sol["x"], clsp_sol["I"], clsp_sol["u"], clsp_sol["clsp_obj"]
@@ -47,23 +47,23 @@ function generate_pop_initial(len_pop,instance_dict)
             feasibility = true
         end 
     end
-    nbr_mtn += 1
-    compt_y -= 1
+    compt -= 1
     for i in 1:len_pop
         #println("------------------", i, "--------------------")
-        z = vcat(ones(Int64, nbr_mtn-1), zeros(Int64, t-nbr_mtn+1))
-        shuffle!(z)
-        z[1] = 1
+        temp = vcat(ones(Int64, t-1-compt), zeros(Int64, compt))
+        shuffle!(temp)
+        z = vcat([1], temp)
+        #z[1] = 1
         
         c = construct_capacities(z, t, alpha, cmax)
 
         y = zeros(Int64, p,t)
         for item in P
-            line = vcat(ones(Int64, t-compt_y), zeros(Int64, compt_y))
+            line = vcat(ones(Int64, t-1-compt), zeros(Int64, compt))
             shuffle!(line)
-            y[item, :] = line
+            y[item, :] = vcat([1],line)
         end
-        y[:,1] = [1 for _ in P]
+        #y[:,1] = [1 for _ in P]
         clsp_sol = resolve_CLSP(model,y,c,instance_dict)
         model, x, I, u, clsp_obj = clsp_sol["model"], clsp_sol["x"], clsp_sol["I"], clsp_sol["u"], clsp_sol["clsp_obj"]
         sol_obj = clsp_obj + sum(set_up_cost .* y) + dot(mtn_cost,z)

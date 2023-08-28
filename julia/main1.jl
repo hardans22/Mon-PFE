@@ -9,21 +9,8 @@ init  = pyimport("__init__")
 
 p = 25
 t = 20
-version = 2
-println("p = ", p)
-println("t = ", t)
-
-println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
-file_p = "instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
-instance = init.gen_instance(p,t, fp=file_p); 
-instance["P"] = 1:p;
-instance["T"] = 1:t;
-instance["t"] = t
-instance["p"] = p 
-@time result2 =  genetic_algorithm(instance, 10, 10)   
-
-#version = 1
-for version in 9:9
+println("3/5")
+for version in 1:1
 	println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
 	file_path = "instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 	instance_dict = init.gen_instance(p,t, fp=file_path); 
@@ -39,18 +26,18 @@ for version in 9:9
 
 	println("\n\nALGORITHME GÉNÉTIQUE")
 
-	len_pop = 400
-	nbr_iteration = 150
+	len_pop = 40
+	nbr_iteration = 1000
 	println("len_pop = ", len_pop)
-	println("Temps d'exécution = ", nbr_iteration)
+	println("Nbr_iteration = ", nbr_iteration)
 
 	@time result =  genetic_algorithm(instance_dict, len_pop,nbr_iteration)   
 
 	objectives = result["objectives"]
 	best_sol = result["best_sol"]
+	
 	println(best_sol.obj)
-	println(sum(best_sol.z))
-	l = []
+	println("Nombre de maintenance = ",sum(best_sol.z))
 	sz = best_sol.z
 	sc = best_sol.c
 	sy = best_sol.y
@@ -60,30 +47,9 @@ for version in 9:9
 	println("Surplus : ",su) 
 	#println("Matrice des setup : ")
 	#display(sy)
+    l = []
 	for i in 1:p
 		push!(l, sum(sy[i,:]))
 	end
 	println(l)
-
-	windowSize = 25
-	overlap = 0.8
-	timeLimit = 40
-
-	tolerance = 0.1
-	increment = 6
-
-	
-	result1 = general_FO(best_sol, windowSize, overlap, 5, increment, instance_dict)
-	println("\nFIX AND OPTIMIZE")
-	for increment in 4:10
-		print("increment = ", increment, "\n \n")
-		@time best_sol1 = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
-		sx = best_sol1.x
-		sI = best_sol1.I
-		sy = best_sol1.y
-		su = best_sol1.u
-
-		println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
-	end 
 end
-
