@@ -4,22 +4,22 @@ import json
 from numpy import random as rd
 
 
-def gen_instance(p, t fp=False, complexity=False, cyclic=False):
+def gen_instance(p, t, fp=False, complexity=False, cyclic=False):
     if os.path.isfile(fp):
         T, P, alpha, gamma, beta, set_up_cost,variable_prod_cost, holding_cost, demand, mtn_cost, cmax = read_instance(fp)
 
     else:
         T = range(t)
         P = range(p)
-        alpha = float(round(rd.uniform(0.6, 0.9), 2))
+        alpha = float(0.8)
         gamma = float(round(rd.uniform(0.2, 0.4), 2))
         beta = [float(round(rd.uniform(0.2, 0.4), 2)) for _ in P]
-        set_up_cost = [[rd.randint(10*t, 50*t) for _ in T] for _ in P]
-        variable_prod_cost = [[rd.randint(20, 30) for _ in T] for _ in P]
-        holding_cost = [[rd.randint(10, 20) for _ in T] for _ in P]
-        demand = [[rd.randint(50, 500) for _ in T] for _ in P]
-        mtn_cost = [rd.randint(100*t, 500*t) for _ in T]
-        cmax = p * rd.randint(400, 500)
+        set_up_cost = [[rd.randint(500, 1000) for _ in T] for _ in P]
+        variable_prod_cost = [[rd.randint(10, 14) for _ in T] for _ in P]
+        holding_cost = [[rd.randint(5, 10) for _ in T] for _ in P]
+        demand = [[rd.randint(0, 50) if rd.random() >= 0.05 else 0 for _ in T] for _ in P]
+        mtn_cost = [rd.randint(1000 + 35 * p *t , 5000 + 35 * p *t) for _ in T]
+        cmax = p * rd.randint(40, 50)
         if fp:
             file = open(fp, "w+")
             file.write('Set of periods in the planning horizon T: \n' + str(t) + '\n' +
@@ -65,7 +65,7 @@ def read_instance(fp):
     file = open(fp)
     data = file.read()
     file.close()
-    print(data)
+    #print(data)
     data = data.split("\n")
     t = int(data[1])
     p = int(data[3])
