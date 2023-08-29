@@ -1,0 +1,121 @@
+p =  25
+t =  20
+-----------------------Instance  1 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 1.220501184463501 secondes
+
+
+---------DYNAMIC PROGRAMING---------
+RMP optimal
+Temps d'exécution : 0.3064117431640625 secondes
+
+
+-----------------------Instance  2 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 1.0118792057037354 secondes
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.30761003494262695 secondes
+
+
+-----------------------Instance  3 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 1.0179150104522705 secondes
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.2180783748626709 secondes
+
+
+-----------------------Instance  4 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 1.0395801067352295 secondes
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.18735074996948242 secondes
+
+
+-----------------------Instance  5 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 0.9088189601898193 secondes
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.1877880096435547 secondes
+
+
+-----------------------Instance  6 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 1.025557279586792 secondes
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.19709277153015137 secondes
+
+
+-----------------------Instance  7 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+RMP optimal
+Temps d'exécution : 1.0895264148712158 secondes
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.3082566261291504 secondes
+
+
+-----------------------Instance  8 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 1.1394331455230713 secondes
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.23504161834716797 secondes
+
+
+-----------------------Instance  9 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 0.8333745002746582 secondes
+
+
+---------DYNAMIC PROGRAMING---------
+RMP optimal
+Temps d'exécution : 0.17774105072021484 secondes
+
+
+-----------------------Instance  10 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+RMP optimal
+Temps d'exécution : 0.892012357711792 secondes
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.19869661331176758 secondes
+
