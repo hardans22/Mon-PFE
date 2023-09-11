@@ -7,25 +7,33 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 25
-t = 20
-version = 2
+p = 30
+t = 25
+version = 1
 println("p = ", p)
 println("t = ", t)
 
-println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
-file_p = "instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+println("\nEssai pour compilation\n")
+file_p = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 instance = init.gen_instance(p,t, fp=file_p); 
 instance["P"] = 1:p;
 instance["T"] = 1:t;
 instance["t"] = t
 instance["p"] = p 
-@time result2 =  genetic_algorithm(instance, 10, 10)   
+@time result2 =  genetic_algorithm(instance, 10, 50)   
+wSize = 15
+olap = 0.4
+tLimit = 15
+
+inc = 5
+bSol1 = result2["best_sol"]
+result3 = general_FO(bSol1, wSize, olap, tLimit, inc, instance)
+
 
 #version = 1
-for version in 9:9
-	println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
-	file_path = "instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+for version in 1:1
+	println("\n--------------------INSTANCE ", version, "------------------------\n")
+	file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 	instance_dict = init.gen_instance(p,t, fp=file_path); 
 	instance_dict["P"] = 1:p;
 	instance_dict["T"] = 1:t;
@@ -39,8 +47,8 @@ for version in 9:9
 
 	println("\n\nALGORITHME GÉNÉTIQUE")
 
-	len_pop = 400
-	nbr_iteration = 150
+	len_pop = 30
+	nbr_iteration = 1500
 	println("len_pop = ", len_pop)
 	println("Temps d'exécution = ", nbr_iteration)
 
@@ -65,25 +73,24 @@ for version in 9:9
 	end
 	println(l)
 
-	windowSize = 25
-	overlap = 0.8
-	timeLimit = 40
+	windowSize = 20
+	overlap = 0.6
+	timeLimit = 180
 
-	tolerance = 0.1
-	increment = 6
+	increment = 3
 
 	
-	result1 = general_FO(best_sol, windowSize, overlap, 5, increment, instance_dict)
 	println("\nFIX AND OPTIMIZE")
-	for increment in 4:10
-		print("increment = ", increment, "\n \n")
-		@time best_sol1 = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
-		sx = best_sol1.x
-		sI = best_sol1.I
-		sy = best_sol1.y
-		su = best_sol1.u
+	print("increment = ", increment, "\n \n")
+	print("overlap = ", overlap, "\n \n")
 
-		println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
-	end 
+	@time best_sol1 = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
+	sx = best_sol1.x
+	sI = best_sol1.I
+	sy = best_sol1.y
+	su = best_sol1.u
+
+	println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
+	
 end
 

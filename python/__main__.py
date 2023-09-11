@@ -7,23 +7,23 @@ import matplotlib.pyplot as plt
 from verify import *
 import time 
 
-P = 55
-T = 40
+P = 35
+T = 25
 
-nb_iteration = 500
+nb_iteration = 300
 var_delete_proba = 0.3
 epsilon = 1e-7
 resolve_mdl_mip = False
 sp_MIP_vs_PD = 1
 one_method = 0
 sp_method = "PD"
-plot_figure = 1
+plot_figure = 0
 verbose = False
 pl = 1
 version = 1
 print("p = ", P)
 print("t = ",T)
-     
+
 print("-----------------------Instance ", version,"----------------------" )
 file_path = "instances/instances_alpha0.8/rd_instance{}_{}_{}.txt".format(P, T,version)
 if __name__ == '__main__':
@@ -59,6 +59,7 @@ if __name__ == '__main__':
         iteration_mip, master_objectives_mip, pricing_objectives_mip, best_bounds_mip, new_cols, master_sol_dict_mip, rmp_run_time_mip, sp_run_time_mip, cg_time_mip = run_column_generation(
             instance_dict, master, master_variables, master_constraints, first_column, nb_iteration, sp_method, epsilon, var_delete_proba, verbose)
         print("Temps d'exécution :", cg_time_mip, "secondes")
+        print("Objective : ", master_objectives_mip[-1])
         
         sp_method = "PD"
         print()
@@ -68,6 +69,7 @@ if __name__ == '__main__':
         iteration_pd, master_objectives_pd, pricing_objectives_pd, best_bounds_pd, new_cols, master_sol_dict_pd, rmp_run_time_pd, sp_run_time_pd, cg_time_pd = run_column_generation(
             instance_dict, master, master_variables, master_constraints, first_column, nb_iteration, sp_method, epsilon, var_delete_proba, verbose)
         print("Temps d'exécution :", cg_time_pd, "secondes")
+        print("Objective : ", master_objectives_pd[-1])
     if one_method:
         print()
         print("---------------------------------------Columns Generation------------------------------------")
@@ -110,6 +112,10 @@ if __name__ == '__main__':
     print()
     print()
     
+    if sp_MIP_vs_PD:
+        plt.figure(figsize=(8, 6))
+        plt.plot(range(iteration_mip+1), master_objectives_mip, 'b')
+        plt.show()
 
     if plot_figure:
         if sp_MIP_vs_PD:

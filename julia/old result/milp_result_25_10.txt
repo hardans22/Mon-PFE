@@ -1,0 +1,142 @@
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+p = 25
+t = 10
+
+--------------------------------------------------INSTANCE 1-----------------------------------------------------------
+
+
+MILP_obj = 157947.70799999946
+Temps de résolution MILP = 0.3386411666870117s
+
+Nombre de maintenance : 2.0
+Plan de maintenance optimal : 
+[1.0, -0.0, -0.0, -0.0, -0.0, 1.0, -0.0, -0.0, -0.0, -0.0]
+Nombre de setup par produit : 
+Any[4.0, 3.0, 4.0, 3.0, 5.0, 3.0, 4.0, 3.0, 3.0, 3.0, 3.0, 2.0, 4.0, 3.0, 3.0, 4.0, 3.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, 4.0, 4.0]
+
+--------------------------------------------------INSTANCE 2-----------------------------------------------------------
+
+
+MILP_obj = 184725.35463527957
+Temps de résolution MILP = 0.39946413040161133s
+
+Nombre de maintenance : 2.0
+Plan de maintenance optimal : 
+[1.0, -0.0, -0.0, -0.0, 0.0, -0.0, 1.0, -0.0, -0.0, -0.0]
+Nombre de setup par produit : 
+Any[4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 4.0, 4.0, 4.0, 3.0, 4.0, 4.0, 4.0, 3.0, 5.0, 3.0, 4.0, 4.0, 4.0, 4.0]
+
+--------------------------------------------------INSTANCE 3-----------------------------------------------------------
+
+
+MILP_obj = 165976.14214999968
+Temps de résolution MILP = 1.5850310325622559s
+
+Nombre de maintenance : 3.0
+Plan de maintenance optimal : 
+[1.0, -0.0, -0.0, -0.0, 1.0, -0.0, 1.0, -0.0, -0.0, -0.0]
+Nombre de setup par produit : 
+Any[3.0, 4.0, 4.0, 3.0, 4.0, 3.0, 3.0, 2.0, 3.0, 3.0, 5.0, 4.0, 3.0, 4.0, 3.0, 5.0, 4.0, 3.0, 4.0, 4.0, 3.0, 4.0, 4.0, 3.0, 4.0]
+
+--------------------------------------------------INSTANCE 4-----------------------------------------------------------
+
+
+MILP_obj = 158875.19000000003
+Temps de résolution MILP = 0.5537548065185547s
+
+Nombre de maintenance : 3.0
+Plan de maintenance optimal : 
+[1.0, -0.0, -0.0, 1.0, -0.0, -0.0, -0.0, 1.0, -0.0, -0.0]
+Nombre de setup par produit : 
+Any[3.0, 3.0, 4.0, 3.0, 2.0, 3.0, 3.0, 4.0, 4.0, 4.0, 3.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, 3.0, 4.0, 3.0, 3.0, 4.0, 4.0, 3.0]
+
+--------------------------------------------------INSTANCE 5-----------------------------------------------------------
+
+
+MILP_obj = 172464.9999999997
+Temps de résolution MILP = 1.0086679458618164s
+
+Nombre de maintenance : 3.0
+Plan de maintenance optimal : 
+[1.0, -0.0, -0.0, 1.0, -0.0, -0.0, -0.0, 1.0, -0.0, -0.0]
+Nombre de setup par produit : 
+Any[3.0, 4.0, 4.0, 3.0, 4.0, 4.0, 5.0, 4.0, 4.0, 5.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 3.0, 4.0, 3.0]
+
+--------------------------------------------------INSTANCE 6-----------------------------------------------------------
+
+
+MILP_obj = 172735.9999999998
+Temps de résolution MILP = 1.4191398620605469s
+
+Nombre de maintenance : 3.0
+Plan de maintenance optimal : 
+[1.0, 0.0, 0.0, -0.0, 1.0, -0.0, -0.0, 1.0, 0.0, 0.0]
+Nombre de setup par produit : 
+Any[4.0, 3.0, 4.0, 3.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 3.0, 5.0, 4.0, 4.0, 4.0, 3.0, 5.0]
+
+--------------------------------------------------INSTANCE 7-----------------------------------------------------------
+
+
+MILP_obj = 162038.2499999997
+Temps de résolution MILP = 0.5383458137512207s
+
+Nombre de maintenance : 3.0
+Plan de maintenance optimal : 
+[1.0, -0.0, 1.0, -0.0, -0.0, 1.0, -0.0, -0.0, -0.0, -0.0]
+Nombre de setup par produit : 
+Any[4.0, 4.0, 3.0, 3.0, 5.0, 3.0, 3.0, 3.0, 4.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 4.0, 4.0, 4.0, 4.0]
+
+--------------------------------------------------INSTANCE 8-----------------------------------------------------------
+
+
+MILP_obj = 169589.00000000038
+Temps de résolution MILP = 10.082907915115356s
+
+Nombre de maintenance : 3.0
+Plan de maintenance optimal : 
+[1.0, -0.0, 1.0, -0.0, -0.0, 1.0, -0.0, -0.0, -0.0, 0.0]
+Nombre de setup par produit : 
+Any[4.0, 3.0, 3.0, 4.0, 3.0, 4.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 2.0, 4.0, 4.0, 3.0, 2.0, 4.0, 3.0, 4.0, 3.0, 3.0, 4.0, 5.0, 3.0]
+
+--------------------------------------------------INSTANCE 9-----------------------------------------------------------
+
+
+MILP_obj = 159597.30832499982
+Temps de résolution MILP = 2.1209399700164795s
+
+Nombre de maintenance : 2.0
+Plan de maintenance optimal : 
+[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+Nombre de setup par produit : 
+Any[3.0, 3.0, 4.0, 4.0, 3.0, 4.0, 4.0, 3.0, 4.0, 4.0, 4.0, 5.0, 4.0, 3.0, 3.0, 2.0, 3.0, 3.0, 3.0, 3.0, 4.0, 4.0, 3.0, 4.0, 3.0]
+
+--------------------------------------------------INSTANCE 10-----------------------------------------------------------
+
+
+MILP_obj = 164308.99999999988
+Temps de résolution MILP = 0.38789916038513184s
+
+Nombre de maintenance : 3.0
+Plan de maintenance optimal : 
+[1.0, -0.0, -0.0, 1.0, -0.0, -0.0, 1.0, -0.0, -0.0, -0.0]
+Nombre de setup par produit : 
+Any[2.0, 3.0, 3.0, 3.0, 4.0, 3.0, 3.0, 3.0, 4.0, 4.0, 3.0, 3.0, 4.0, 3.0, 4.0, 3.0, 3.0, 3.0, 3.0, 5.0, 5.0, 4.0, 4.0, 3.0, 3.0]

@@ -1,6 +1,5 @@
 include("./model.jl")
 using Random
-
 mutable struct solution
     x :: Matrix{Float64}
     I :: Matrix{Float64}

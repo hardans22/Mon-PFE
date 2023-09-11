@@ -1,0 +1,146 @@
+p = 25
+t = 20
+
+Essai pour compilation
+
+  9.368334 seconds (18.47 M allocations: 1.069 GiB, 5.01% gc time, 96.33% compilation time: 2% of which was recompilation)
+
+------------------------------INSTANCE 1----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 31.311599 seconds (260.33 M allocations: 6.217 GiB, 2.46% gc time, 0.05% compilation time)
+best_sol = 449808.4
+Nombre de maintenance = 4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 10, 7, 6, 8, 7, 10, 9, 9, 10, 10, 9, 9, 10, 7, 12, 12, 11, 9, 8, 9, 10, 8, 11, 9]
+
+------------------------------INSTANCE 2----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 34.026815 seconds (263.32 M allocations: 6.204 GiB, 2.62% gc time)
+best_sol = 430931.88639999996
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[9, 9, 6, 9, 8, 6, 6, 8, 9, 9, 7, 6, 9, 8, 5, 8, 5, 5, 7, 5, 5, 7, 6, 8, 9]
+
+------------------------------INSTANCE 3----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 30.904380 seconds (253.96 M allocations: 5.948 GiB, 2.88% gc time)
+best_sol = 448823.88
+Nombre de maintenance = 4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[9, 6, 8, 7, 8, 11, 8, 8, 5, 8, 9, 9, 10, 8, 8, 10, 10, 10, 9, 6, 9, 8, 7, 8, 10]
+
+------------------------------INSTANCE 4----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 30.996729 seconds (263.30 M allocations: 6.254 GiB, 3.10% gc time)
+best_sol = 469322.0
+Nombre de maintenance = 5
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 10, 8, 9, 8, 8, 9, 10, 6, 10, 7, 9, 7, 10, 10, 6, 10, 9, 11, 8, 7, 8, 7, 10, 8]
+
+------------------------------INSTANCE 5----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 31.839965 seconds (258.72 M allocations: 6.155 GiB, 3.06% gc time)
+best_sol = 462109.39999999997
+Nombre de maintenance = 4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[11, 11, 6, 11, 11, 8, 12, 11, 11, 10, 10, 8, 9, 10, 10, 11, 7, 10, 12, 10, 11, 9, 8, 11, 7]
+
+------------------------------INSTANCE 6----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 33.132123 seconds (260.88 M allocations: 6.229 GiB, 3.07% gc time, 0.04% compilation time)
+best_sol = 456882.704
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[9, 8, 9, 7, 6, 8, 6, 9, 10, 9, 9, 8, 9, 8, 7, 10, 11, 8, 10, 9, 10, 10, 9, 8, 8]
+
+------------------------------INSTANCE 7----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 34.508969 seconds (260.73 M allocations: 6.188 GiB, 3.01% gc time)
+best_sol = 424400.61919999996
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 10, 6, 8, 7, 6, 8, 6, 9, 8, 6, 8, 7, 8, 9, 11, 7, 6, 8, 7, 10, 7, 7, 7, 7]
+
+------------------------------INSTANCE 8----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 36.095743 seconds (260.40 M allocations: 6.214 GiB, 2.96% gc time)
+best_sol = 434341.64800000004
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[9, 8, 9, 10, 9, 8, 6, 8, 8, 6, 9, 11, 8, 8, 9, 9, 8, 10, 8, 9, 7, 10, 7, 6, 8]
+
+------------------------------INSTANCE 9----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 33.755946 seconds (260.03 M allocations: 6.165 GiB, 3.20% gc time)
+best_sol = 429973.6224
+Nombre de maintenance = 4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 9, 8, 7, 8, 7, 8, 7, 8, 8, 8, 7, 7, 9, 9, 7, 9, 9, 7, 6, 6, 6, 8, 6, 7]
+
+------------------------------INSTANCE 10----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 32.625147 seconds (259.58 M allocations: 6.118 GiB, 3.38% gc time)
+best_sol = 431486.0
+Nombre de maintenance = 4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[10, 10, 9, 10, 8, 10, 10, 8, 8, 8, 7, 10, 9, 7, 6, 8, 9, 8, 8, 9, 6, 7, 9, 7, 8]

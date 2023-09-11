@@ -1,0 +1,866 @@
+p = 25
+t = 15
+
+Essai pour compilation
+
+  9.264610 seconds (17.86 M allocations: 1.044 GiB, 5.00% gc time, 96.39% compilation time: 2% of which was recompilation)
+
+------------------------------INSTANCE 1----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 500
+---------RUN 1----------
+ 11.458850 seconds (100.03 M allocations: 2.366 GiB, 2.32% gc time, 0.12% compilation time)
+best_sol = 289119.4
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 5, 6, 7, 8, 6, 4, 5, 6, 6, 4, 7, 5, 6, 6, 7, 4, 5, 6, 5, 5, 4, 5, 6, 6]
+---------RUN 2----------
+ 11.084829 seconds (101.09 M allocations: 2.371 GiB, 2.64% gc time)
+best_sol = 287307.2
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 4, 4, 6, 6, 6, 5, 5, 5, 5, 3, 5, 5, 5, 6, 6, 6, 5, 6, 7, 6, 5, 8, 5, 7]
+---------RUN 3----------
+ 11.491832 seconds (99.57 M allocations: 2.372 GiB, 2.64% gc time)
+best_sol = 295412.3119999999
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 5, 3, 5, 6, 7, 6, 6, 5, 6, 5, 5, 7, 6, 8, 6, 7, 6, 6, 6, 6, 3, 7, 4, 6]
+---------RUN 4----------
+ 10.371955 seconds (100.53 M allocations: 2.376 GiB, 3.09% gc time)
+best_sol = 292701.4
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 5, 5, 4, 6, 5, 5, 5, 6, 4, 4, 5, 5, 6, 6, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5]
+---------RUN 5----------
+ 11.684224 seconds (100.30 M allocations: 2.371 GiB, 2.81% gc time)
+best_sol = 287589.0
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 5, 5, 5, 5, 7, 5, 4, 5, 5, 5, 5, 6, 6, 4, 4, 7, 7, 6, 5, 7, 5, 7, 4, 6]
+---------RUN 6----------
+ 10.845295 seconds (99.95 M allocations: 2.363 GiB, 3.11% gc time)
+best_sol = 288567.048
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 5, 6, 5, 5, 5, 6, 5, 6, 5, 4, 5, 6, 5, 4, 5, 5, 5, 5, 6, 5, 4, 5, 5, 6]
+---------RUN 7----------
+ 10.905052 seconds (100.13 M allocations: 2.351 GiB, 3.17% gc time)
+best_sol = 287753.76
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 4, 8, 9, 7, 5, 7, 7, 7, 4, 5, 7, 6, 6, 8, 4, 9, 5, 6, 6, 8, 6, 7, 7, 6]
+---------RUN 8----------
+ 11.403769 seconds (99.27 M allocations: 2.365 GiB, 3.14% gc time)
+best_sol = 303916.2
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 5, 6, 5, 6, 7, 8, 6, 7, 8, 5, 5, 6, 7, 6, 6, 7, 8, 6, 6, 6, 8, 4, 6, 6]
+---------RUN 9----------
+ 10.994823 seconds (99.48 M allocations: 2.352 GiB, 3.25% gc time)
+best_sol = 285742.26399999997
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 5, 5, 6, 5, 5, 5, 4, 7, 5, 4, 5, 5, 5, 9, 4, 7, 5, 5, 5, 6, 4, 5, 5, 5]
+---------RUN 10----------
+ 11.187893 seconds (100.66 M allocations: 2.378 GiB, 3.22% gc time)
+best_sol = 299123.8
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[4, 6, 6, 5, 5, 6, 5, 4, 5, 6, 5, 6, 6, 6, 5, 6, 7, 5, 5, 5, 7, 7, 4, 6, 7]
+
+------------------------------INSTANCE 2----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 500
+---------RUN 1----------
+ 10.749802 seconds (96.45 M allocations: 2.321 GiB, 3.40% gc time)
+best_sol = 310965.14431999996
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 7, 6, 8, 6, 6, 6, 8, 5, 7, 6, 6, 5, 6, 5, 5, 8, 6, 6, 7, 6, 6, 7, 6, 7]
+---------RUN 2----------
+ 12.269483 seconds (97.57 M allocations: 2.363 GiB, 2.99% gc time)
+best_sol = 305225.84959999996
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 6, 7, 7, 4, 4, 6, 7, 7, 6, 7, 6, 6, 5, 4, 5, 4, 5, 7, 5, 5, 6, 5, 5]
+---------RUN 3----------
+ 12.410936 seconds (97.30 M allocations: 2.339 GiB, 2.96% gc time)
+best_sol = 306763.5584
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 5, 8, 6, 5, 4, 6, 5, 5, 6, 8, 7, 7, 5, 5, 5, 6, 6, 4, 6, 5, 6, 4, 6, 5]
+---------RUN 4----------
+ 11.144971 seconds (97.25 M allocations: 2.339 GiB, 3.32% gc time)
+best_sol = 305044.104
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 4, 5, 5, 5, 4, 4, 6, 5, 5, 5, 5, 5, 4, 5, 4, 6, 5, 6, 5, 6, 5, 5, 4, 4]
+---------RUN 5----------
+ 12.048476 seconds (98.76 M allocations: 2.372 GiB, 3.11% gc time)
+best_sol = 308388.44992
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 6, 7, 8, 8, 7, 6, 7, 7, 6, 8, 6, 5, 8, 6, 6, 10, 6, 8, 7, 6, 6, 7, 5, 7]
+---------RUN 6----------
+ 11.288426 seconds (96.75 M allocations: 2.311 GiB, 3.28% gc time)
+best_sol = 301076.27712
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 7, 7, 7, 6, 8, 5, 5, 8, 5, 7, 7, 4, 5, 7, 5, 8, 6, 7, 8, 7, 6, 5, 7, 7]
+---------RUN 7----------
+ 11.772409 seconds (98.12 M allocations: 2.375 GiB, 3.30% gc time)
+best_sol = 304806.13344
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 9, 6, 8, 5, 7, 7, 10, 8, 5, 7, 8, 6, 6, 6, 4, 6, 6, 7, 8, 7, 5, 6, 6, 6]
+---------RUN 8----------
+ 11.262132 seconds (99.00 M allocations: 2.360 GiB, 3.43% gc time)
+best_sol = 310620.4
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 5, 7, 7, 6, 5, 6, 9, 7, 6, 5, 5, 6, 7, 6, 7, 7, 7, 7, 8, 8, 7, 5, 7]
+---------RUN 9----------
+ 11.120072 seconds (96.94 M allocations: 2.332 GiB, 3.55% gc time)
+best_sol = 305072.8832
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 5, 7, 5, 6, 5, 6, 5, 6, 7, 5, 6, 5, 6, 6, 7, 5, 6, 6, 6, 7, 6, 4, 7, 6]
+---------RUN 10----------
+ 11.654079 seconds (97.60 M allocations: 2.364 GiB, 3.43% gc time)
+best_sol = 306718.0304
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 7, 6, 5, 6, 4, 4, 5, 8, 5, 6, 7, 6, 6, 4, 5, 5, 5, 6, 4, 6, 5, 5, 4, 7]
+
+------------------------------INSTANCE 3----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 500
+---------RUN 1----------
+ 11.213016 seconds (99.22 M allocations: 2.365 GiB, 3.61% gc time)
+best_sol = 327458.83999999997
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 9, 7, 6, 5, 5, 7, 10, 7, 8, 7, 8, 8, 6, 9, 7, 4, 6, 6, 7, 6, 8, 6, 8, 9]
+---------RUN 2----------
+ 11.338826 seconds (99.32 M allocations: 2.367 GiB, 3.66% gc time)
+best_sol = 320849.12
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 9, 5, 6, 6, 5, 6, 8, 6, 7, 5, 6, 6, 5, 7, 7, 8, 5, 7, 7, 6, 6, 5, 6, 5]
+---------RUN 3----------
+ 11.283896 seconds (95.75 M allocations: 2.272 GiB, 3.52% gc time)
+best_sol = 322952.2
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 5, 5, 7, 5, 7, 8, 6, 6, 6, 7, 6, 7, 7, 6, 6, 8, 7, 6, 8, 7, 7, 7, 6, 8]
+---------RUN 4----------
+ 11.404193 seconds (98.51 M allocations: 2.349 GiB, 3.64% gc time)
+best_sol = 336671.25599999994
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 5, 7, 7, 8, 7, 7, 9, 9, 11, 7, 8, 9, 7, 6, 7, 9, 9, 6, 7, 8, 9, 7, 7, 6]
+---------RUN 5----------
+ 11.168319 seconds (94.95 M allocations: 2.255 GiB, 3.60% gc time)
+best_sol = 323743.92
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 8, 5, 7, 6, 7, 7, 7, 7, 8, 7, 8, 8, 7, 8, 7, 5, 8, 7, 6, 5, 8, 8, 7, 6]
+---------RUN 6----------
+ 11.498116 seconds (99.26 M allocations: 2.349 GiB, 3.64% gc time)
+best_sol = 313325.0
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 7, 7, 6, 6, 6, 6, 8, 8, 5, 6, 6, 5, 5, 8, 7, 5, 5, 4, 7, 6, 6, 4, 6, 3]
+---------RUN 7----------
+ 11.272999 seconds (98.60 M allocations: 2.351 GiB, 3.74% gc time)
+best_sol = 326464.36
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 7, 8, 6, 6, 7, 6, 6, 6, 7, 6, 6, 8, 9, 8, 7, 6, 8, 5, 6, 6, 6, 6, 7, 6]
+---------RUN 8----------
+ 11.481896 seconds (96.65 M allocations: 2.291 GiB, 3.59% gc time)
+best_sol = 317355.0
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 6, 5, 5, 6, 8, 8, 6, 6, 6, 6, 6, 6, 5, 7, 7, 5, 5, 4, 6, 5, 5, 5, 4, 5]
+---------RUN 9----------
+ 10.877687 seconds (96.19 M allocations: 2.264 GiB, 3.81% gc time)
+best_sol = 317911.16
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 6, 6, 6, 6, 6, 7, 6, 6, 8, 7, 6, 6, 6, 6, 6, 5, 7, 5, 6, 6, 8, 7, 6, 5]
+---------RUN 10----------
+ 11.239431 seconds (99.30 M allocations: 2.366 GiB, 3.89% gc time)
+best_sol = 324156.0
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 7, 6, 4, 5, 6, 5, 6, 6, 7, 6, 5, 5, 5, 7, 5, 6, 6, 7, 6, 6, 6, 5, 7, 6]
+
+------------------------------INSTANCE 4----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 500
+---------RUN 1----------
+ 11.611055 seconds (97.29 M allocations: 2.323 GiB, 3.66% gc time)
+best_sol = 325099.32
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 8, 7, 8, 8, 7, 7, 7, 7, 7, 5, 4, 5, 9, 7, 7, 7, 6, 7, 5, 4, 6, 5, 7, 8]
+---------RUN 2----------
+ 11.471861 seconds (100.47 M allocations: 2.409 GiB, 3.87% gc time)
+best_sol = 325791.8
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 5, 6, 8, 9, 8, 6, 5, 6, 6, 6, 6, 4, 6, 4, 7, 8, 7, 5, 6, 5, 8, 6, 8, 7]
+---------RUN 3----------
+ 11.130608 seconds (98.42 M allocations: 2.364 GiB, 4.04% gc time)
+best_sol = 332047.2
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 6, 7, 8, 7, 5, 6, 8, 6, 5, 8, 6, 7, 7, 7, 7, 7, 6, 7, 7, 5, 7, 7, 8]
+---------RUN 4----------
+ 11.136664 seconds (97.00 M allocations: 2.316 GiB, 3.90% gc time)
+best_sol = 328390.6
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 7, 6, 7, 6, 7, 7, 7, 7, 9, 8, 5, 7, 6, 5, 8, 8, 7, 6, 7, 6, 7, 7, 9, 8]
+---------RUN 5----------
+ 11.013099 seconds (97.71 M allocations: 2.315 GiB, 3.97% gc time)
+best_sol = 328472.80000000005
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 10, 5, 8, 9, 10, 7, 7, 7, 8, 7, 6, 7, 7, 5, 5, 6, 7, 6, 9, 7, 8, 7, 6, 9]
+---------RUN 6----------
+ 11.922522 seconds (98.95 M allocations: 2.376 GiB, 3.83% gc time)
+best_sol = 328228.92
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 9, 5, 4, 6, 7, 7, 6, 6, 7, 5, 6, 6, 8, 7, 6, 5, 7, 5, 6, 6, 5, 6, 8, 9]
+---------RUN 7----------
+ 11.169618 seconds (96.97 M allocations: 2.316 GiB, 3.99% gc time)
+best_sol = 319775.48
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 9, 6, 6, 5, 7, 5, 7, 5, 7, 6, 5, 8, 6, 7, 8, 7, 7, 7, 7, 5, 5, 5, 7, 6]
+---------RUN 8----------
+ 11.063899 seconds (97.50 M allocations: 2.327 GiB, 4.06% gc time)
+best_sol = 331693.24
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 7, 6, 9, 7, 6, 7, 6, 8, 6, 7, 8, 8, 8, 6, 8, 6, 7, 8, 6, 6, 7, 9, 7, 5]
+---------RUN 9----------
+ 11.100819 seconds (97.72 M allocations: 2.349 GiB, 4.17% gc time)
+best_sol = 333074.6
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 7, 7, 6, 7, 6, 7, 7, 7, 6, 6, 8, 7, 7, 7, 6, 8, 6, 7, 7, 6, 7, 8, 6, 6]
+---------RUN 10----------
+ 11.413404 seconds (98.89 M allocations: 2.375 GiB, 4.18% gc time)
+best_sol = 331149.43200000003
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 11, 7, 7, 6, 8, 6, 6, 6, 7, 6, 6, 7, 9, 8, 5, 7, 7, 6, 6, 7, 5, 8, 6, 8]
+
+------------------------------INSTANCE 5----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 500
+---------RUN 1----------
+ 10.877761 seconds (98.24 M allocations: 2.343 GiB, 4.34% gc time)
+best_sol = 331140.0
+Nombre de maintenance = 4
+Feasibility of solution : true
+Maintenance : [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 6, 5, 5, 4, 5, 7, 6, 7, 5, 6, 8, 7, 5, 5, 7, 6, 6, 8, 5, 5, 7, 6, 7, 7]
+---------RUN 2----------
+ 11.537425 seconds (97.10 M allocations: 2.319 GiB, 4.05% gc time)
+best_sol = 333749.032
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 6, 7, 7, 7, 8, 7, 6, 7, 6, 7, 7, 7, 8, 6, 7, 5, 6, 5, 7, 6, 8, 7, 7, 7]
+---------RUN 3----------
+ 11.759794 seconds (98.21 M allocations: 2.360 GiB, 4.06% gc time)
+best_sol = 334205.56799999997
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 6, 7, 10, 8, 8, 8, 5, 6, 7, 5, 5, 8, 8, 6, 9, 10, 7, 7, 6, 9, 6, 7, 8, 7]
+---------RUN 4----------
+ 11.558375 seconds (97.63 M allocations: 2.330 GiB, 4.18% gc time)
+best_sol = 329941.12
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 5, 6, 6, 9, 9, 6, 7, 9, 6, 8, 10, 7, 8, 8, 5, 9, 9, 6, 6, 8, 6, 8, 9, 9]
+---------RUN 5----------
+ 11.357414 seconds (96.86 M allocations: 2.297 GiB, 4.17% gc time)
+best_sol = 328525.64
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 6, 7, 8, 7, 7, 7, 8, 6, 7, 8, 7, 7, 8, 6, 9, 8, 8, 7, 9, 6, 5, 8, 7]
+---------RUN 6----------
+ 11.730055 seconds (100.39 M allocations: 2.356 GiB, 4.14% gc time)
+best_sol = 315343.52
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 4, 7, 6, 6, 8, 6, 8, 7, 7, 6, 7, 7, 5, 5, 5, 5, 6, 5, 8, 9, 7, 6, 7, 7]
+---------RUN 7----------
+ 11.492798 seconds (97.21 M allocations: 2.338 GiB, 4.27% gc time)
+best_sol = 331364.24
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 7, 7, 6, 6, 7, 7, 6, 6, 7, 6, 7, 5, 7, 8, 7, 7, 7, 7, 7, 7, 8, 6, 8, 6]
+---------RUN 8----------
+ 10.961766 seconds (98.63 M allocations: 2.335 GiB, 4.43% gc time)
+best_sol = 331507.0
+Nombre de maintenance = 4
+Feasibility of solution : true
+Maintenance : [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 6, 5, 6, 7, 7, 6, 6, 8, 5, 5, 7, 6, 6, 5, 5, 8, 7, 4, 6, 6, 5, 6, 6, 7]
+---------RUN 9----------
+ 11.432786 seconds (97.72 M allocations: 2.335 GiB, 4.37% gc time)
+best_sol = 337582.2
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 7, 7, 7, 7, 7, 7, 6, 6, 7, 6, 7, 6, 7, 6, 6, 6, 7, 6, 7, 8, 8, 6, 7, 6]
+---------RUN 10----------
+ 12.106359 seconds (100.55 M allocations: 2.358 GiB, 4.15% gc time)
+best_sol = 317302.11199999996
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 6, 7, 6, 8, 6, 6, 5, 6, 4, 6, 7, 4, 7, 5, 6, 6, 5, 6, 7, 5, 5, 5, 5]
+
+------------------------------INSTANCE 6----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 500
+---------RUN 1----------
+ 12.053054 seconds (98.18 M allocations: 2.360 GiB, 4.21% gc time)
+best_sol = 334005.72
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 8, 7, 9, 7, 4, 6, 6, 3, 7, 8, 4, 10, 8, 10, 6, 9, 7, 6, 9, 7, 7, 5, 9, 6]
+---------RUN 2----------
+ 11.999733 seconds (97.49 M allocations: 2.362 GiB, 4.33% gc time)
+best_sol = 345610.92000000004
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 9, 9, 9, 9, 10, 11, 8, 9, 9, 8, 10, 7, 6, 8, 7, 7, 10, 9, 10, 10, 9, 11, 10, 7]
+---------RUN 3----------
+ 12.176843 seconds (98.74 M allocations: 2.372 GiB, 4.23% gc time, 0.10% compilation time)
+best_sol = 340538.83999999997
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[10, 10, 10, 8, 6, 8, 6, 7, 7, 8, 8, 9, 7, 9, 7, 9, 9, 6, 8, 7, 8, 7, 10, 9, 8]
+---------RUN 4----------
+ 10.790428 seconds (98.94 M allocations: 2.341 GiB, 4.82% gc time)
+best_sol = 337035.44
+Nombre de maintenance = 4
+Feasibility of solution : true
+Maintenance : [1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 7, 5, 5, 6, 6, 6, 5, 7, 4, 7, 5, 6, 5, 5, 6, 8, 7, 7, 5, 6, 5, 5, 6]
+---------RUN 5----------
+ 12.108362 seconds (97.18 M allocations: 2.338 GiB, 4.32% gc time)
+best_sol = 332915.16000000003
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 8, 7, 8, 9, 9, 8, 7, 5, 7, 8, 5, 7, 9, 7, 8, 9, 10, 7, 8, 6, 7, 6, 6, 8]
+---------RUN 6----------
+ 11.944553 seconds (97.92 M allocations: 2.355 GiB, 4.42% gc time)
+best_sol = 340135.24
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 9, 10, 10, 8, 7, 9, 9, 8, 9, 7, 8, 8, 7, 7, 8, 5, 8, 7, 6, 8, 7, 8, 10, 9]
+---------RUN 7----------
+ 11.982754 seconds (95.78 M allocations: 2.290 GiB, 4.30% gc time)
+best_sol = 344439.528
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[9, 9, 8, 7, 5, 8, 10, 8, 9, 8, 8, 9, 8, 8, 10, 8, 6, 9, 9, 10, 7, 7, 10, 6, 10]
+---------RUN 8----------
+ 11.464799 seconds (94.95 M allocations: 2.288 GiB, 4.61% gc time)
+best_sol = 338742.0
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 8, 9, 6, 8, 6, 7, 7, 6, 8, 8, 7, 8, 6, 6, 7, 7, 8, 8, 6, 7, 7, 6, 6, 6]
+---------RUN 9----------
+ 12.466377 seconds (98.60 M allocations: 2.385 GiB, 4.45% gc time)
+best_sol = 340098.6
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 8, 8, 9, 8, 8, 8, 6, 8, 8, 9, 7, 7, 8, 8, 8, 6, 8, 7, 6, 7, 9, 7, 8, 8]
+---------RUN 10----------
+ 11.516485 seconds (96.67 M allocations: 2.293 GiB, 4.60% gc time)
+best_sol = 329962.19999999995
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 8, 8, 6, 7, 6, 8, 7, 7, 8, 6, 7, 7, 8, 8, 8, 7, 8, 8, 5, 7, 6, 5, 4, 8]
+
+------------------------------INSTANCE 7----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 500
+---------RUN 1----------
+ 11.484874 seconds (95.92 M allocations: 2.293 GiB, 4.74% gc time)
+best_sol = 330793.58400000003
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 5, 7, 7, 8, 6, 9, 7, 8, 7, 7, 7, 8, 6, 8, 7, 7, 7, 7, 7, 8, 8, 6, 7, 7]
+---------RUN 2----------
+ 12.273134 seconds (98.43 M allocations: 2.365 GiB, 4.54% gc time)
+best_sol = 336530.67999999993
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 5, 7, 7, 7, 7, 9, 5, 7, 7, 7, 6, 8, 6, 7, 8, 5, 8, 8, 7, 9, 8, 8, 7, 8]
+---------RUN 3----------
+ 11.566631 seconds (97.20 M allocations: 2.322 GiB, 4.84% gc time)
+best_sol = 332134.4
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 7, 7, 7, 6, 6, 8, 6, 6, 8, 8, 9, 6, 8, 8, 5, 8, 6, 7, 7, 5, 7, 7, 8, 9]
+---------RUN 4----------
+ 12.012638 seconds (99.22 M allocations: 2.383 GiB, 4.75% gc time)
+best_sol = 340452.44
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 7, 9, 8, 7, 8, 7, 7, 11, 7, 9, 6, 6, 6, 7, 8, 8, 8, 11, 7, 8, 8, 10, 6, 10]
+---------RUN 5----------
+ 11.535567 seconds (97.77 M allocations: 2.350 GiB, 4.87% gc time)
+best_sol = 337657.344
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 8, 5, 7, 6, 5, 6, 7, 7, 6, 8, 7, 5, 8, 5, 6, 6, 6, 8, 7, 10, 6, 8, 6, 8]
+---------RUN 6----------
+ 11.639607 seconds (98.94 M allocations: 2.376 GiB, 4.84% gc time)
+best_sol = 338017.8
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 7, 9, 6, 6, 7, 5, 9, 7, 7, 9, 7, 5, 6, 6, 7, 8, 4, 6, 6, 6, 8, 6, 7, 7]
+---------RUN 7----------
+ 11.674558 seconds (96.90 M allocations: 2.315 GiB, 4.78% gc time)
+best_sol = 342425.64
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 7, 6, 9, 9, 9, 5, 7, 8, 8, 7, 10, 9, 8, 6, 8, 10, 6, 8, 7, 9, 9, 7, 6, 8]
+---------RUN 8----------
+ 11.292590 seconds (98.25 M allocations: 2.344 GiB, 5.05% gc time)
+best_sol = 337754.528
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 7, 5, 7, 6, 7, 6, 5, 6, 5, 7, 7, 7, 7, 7, 9, 8, 7, 7, 8, 6, 7, 5, 7, 6]
+---------RUN 9----------
+ 11.724590 seconds (98.80 M allocations: 2.392 GiB, 5.00% gc time)
+best_sol = 340004.52
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 8, 7, 8, 7, 8, 7, 7, 7, 8, 8, 8, 8, 7, 5, 8, 7, 5, 8, 8, 9, 9, 8, 7, 9]
+---------RUN 10----------
+ 11.691049 seconds (99.17 M allocations: 2.363 GiB, 4.94% gc time)
+best_sol = 321488.99679999996
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 5, 6, 8, 6, 7, 9, 6, 6, 7, 8, 7, 7, 6, 7, 5, 7, 4, 6, 7, 8, 5, 9, 6, 7]
+
+------------------------------INSTANCE 8----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 500
+---------RUN 1----------
+ 12.022286 seconds (98.25 M allocations: 2.361 GiB, 4.86% gc time)
+best_sol = 299720.2208
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 6, 5, 5, 6, 7, 6, 5, 7, 6, 6, 4, 6, 5, 5, 7, 6, 6, 7, 5, 7, 8, 6, 8, 8]
+---------RUN 2----------
+ 11.822823 seconds (98.28 M allocations: 2.344 GiB, 4.98% gc time)
+best_sol = 297117.0
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 5, 4, 5, 4, 6, 6, 6, 6, 5, 5, 6, 5, 5, 6, 6, 5, 5, 5, 5, 5, 5, 4, 8, 6]
+---------RUN 3----------
+ 11.941874 seconds (98.26 M allocations: 2.377 GiB, 4.97% gc time)
+best_sol = 311641.5648
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 7, 8, 8, 7, 5, 6, 7, 5, 7, 7, 6, 7, 5, 6, 5, 6, 5, 6, 3, 3, 7, 6, 7, 6]
+---------RUN 4----------
+ 11.090542 seconds (97.77 M allocations: 2.316 GiB, 5.28% gc time)
+best_sol = 300508.8
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 4, 5, 7, 6, 5, 6, 6, 7, 5, 7, 6, 5, 5, 5, 8, 5, 7, 4, 7, 7, 6, 6, 5]
+---------RUN 5----------
+ 11.254255 seconds (97.84 M allocations: 2.335 GiB, 5.32% gc time)
+best_sol = 307350.83999999997
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 6, 5, 7, 6, 7, 6, 9, 7, 6, 5, 7, 6, 7, 8, 6, 5, 6, 6, 5, 7, 6, 7, 7, 7]
+---------RUN 6----------
+ 11.486506 seconds (95.49 M allocations: 2.300 GiB, 5.15% gc time)
+best_sol = 300635.79519999993
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 4, 5, 6, 4, 5, 7, 8, 7, 4, 5, 6, 4, 6, 5, 8, 6, 4, 6, 5, 5, 5, 8, 6, 6]
+---------RUN 7----------
+ 12.015735 seconds (99.40 M allocations: 2.386 GiB, 5.16% gc time)
+best_sol = 307120.0
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 5, 6, 7, 7, 4, 7, 5, 6, 5, 6, 5, 6, 7, 6, 7, 7, 7, 6, 5, 9, 8, 7, 6]
+---------RUN 8----------
+ 11.591283 seconds (97.44 M allocations: 2.292 GiB, 5.11% gc time)
+best_sol = 298448.0
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 6, 6, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 5, 5, 7, 6, 5, 5, 4, 6, 4]
+---------RUN 9----------
+ 11.855457 seconds (99.89 M allocations: 2.380 GiB, 5.31% gc time)
+best_sol = 307172.6
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 4, 6, 6, 8, 7, 8, 6, 5, 5, 6, 5, 5, 5, 6, 7, 5, 7, 7, 5, 5, 5, 6, 8]
+---------RUN 10----------
+ 12.429415 seconds (94.29 M allocations: 2.272 GiB, 4.84% gc time)
+best_sol = 306301.74879999994
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 5, 8, 7, 7, 6, 4, 6, 8, 5, 5, 7, 4, 4, 5, 5, 6, 6, 4, 7, 8, 6, 5, 6]
+
+------------------------------INSTANCE 9----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 500
+---------RUN 1----------
+ 11.705659 seconds (97.35 M allocations: 2.358 GiB, 5.47% gc time)
+best_sol = 325872.04000000004
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[9, 8, 5, 7, 8, 7, 7, 7, 8, 9, 8, 8, 6, 8, 9, 9, 8, 9, 7, 7, 10, 6, 7, 9, 8]
+---------RUN 2----------
+ 12.269209 seconds (100.44 M allocations: 2.409 GiB, 5.27% gc time)
+best_sol = 324077.08
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 8, 7, 7, 9, 7, 6, 7, 7, 9, 7, 7, 9, 7, 6, 8, 7, 6, 6, 7, 5, 8, 8, 6, 6]
+---------RUN 3----------
+ 11.826038 seconds (99.72 M allocations: 2.359 GiB, 5.41% gc time)
+best_sol = 318016.864
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 9, 6, 6, 7, 7, 7, 6, 5, 7, 6, 9, 5, 9, 4, 8, 8, 9, 6, 6, 8, 7, 8, 10, 7]
+---------RUN 4----------
+ 11.668139 seconds (98.61 M allocations: 2.317 GiB, 5.39% gc time)
+best_sol = 315838.04799999995
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 8, 8, 8, 6, 8, 8, 6, 7, 6, 7, 6, 8, 5, 7, 7, 6, 6, 6, 6, 5, 4, 8, 8, 6]
+---------RUN 5----------
+ 11.583319 seconds (96.30 M allocations: 2.319 GiB, 5.55% gc time)
+best_sol = 318493.768
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 7, 8, 6, 6, 7, 9, 5, 9, 5, 6, 6, 7, 7, 6, 7, 6, 6, 7, 6, 5, 7, 5, 8, 5]
+---------RUN 6----------
+ 11.872461 seconds (100.20 M allocations: 2.386 GiB, 5.46% gc time)
+best_sol = 314435.8
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 7, 5, 6, 7, 8, 7, 6, 5, 6, 5, 6, 5, 5, 7, 5, 5, 6, 7, 9, 9, 7, 7, 5]
+---------RUN 7----------
+ 11.279811 seconds (98.97 M allocations: 2.342 GiB, 5.79% gc time)
+best_sol = 311271.2799999999
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 7, 6, 4, 6, 8, 8, 6, 5, 7, 7, 5, 6, 6, 7, 5, 6, 6, 4, 6, 7, 7, 9, 8, 8]
+---------RUN 8----------
+ 11.609457 seconds (98.70 M allocations: 2.388 GiB, 5.69% gc time)
+best_sol = 322858.12
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 6, 6, 6, 8, 8, 8, 7, 6, 6, 7, 7, 10, 7, 7, 5, 7, 8, 4, 9, 5, 7, 8, 10, 6]
+---------RUN 9----------
+ 11.767762 seconds (97.16 M allocations: 2.320 GiB, 5.45% gc time)
+best_sol = 314043.944
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 10, 8, 5, 7, 5, 7, 4, 7, 7, 6, 7, 7, 7, 6, 6, 5, 7, 8, 4, 8, 7, 8, 7, 6]
+---------RUN 10----------
+ 11.854075 seconds (99.25 M allocations: 2.383 GiB, 5.65% gc time)
+best_sol = 321420.368
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 7, 9, 7, 7, 9, 6, 6, 6, 8, 7, 8, 7, 7, 7, 8, 9, 6, 5, 8, 8, 9, 8, 8, 8]
+
+------------------------------INSTANCE 10----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 500
+---------RUN 1----------
+ 11.750863 seconds (97.20 M allocations: 2.337 GiB, 5.63% gc time)
+best_sol = 319815.0
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 7, 7, 6, 7, 5, 7, 6, 6, 6, 6, 6, 6, 5, 4, 3, 5, 8, 5, 6, 5, 6, 5, 4, 7]
+---------RUN 2----------
+ 12.634769 seconds (97.99 M allocations: 2.372 GiB, 5.30% gc time)
+best_sol = 317349.4
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 4, 7, 7, 6, 4, 4, 5, 7, 4, 6, 6, 7, 6, 6, 8, 6, 6, 6, 4, 7, 7, 6, 5, 9]
+---------RUN 3----------
+ 12.190477 seconds (97.66 M allocations: 2.365 GiB, 5.61% gc time)
+best_sol = 317778.37119999994
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 7, 7, 6, 7, 7, 7, 6, 6, 6, 8, 5, 6, 6, 6, 5, 7, 6, 5, 6, 5, 5, 7, 5, 6]
+---------RUN 4----------
+ 11.871364 seconds (95.92 M allocations: 2.310 GiB, 5.63% gc time)
+best_sol = 317546.3024
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 7, 5, 5, 5, 6, 6, 6, 4, 6, 6, 6, 5, 7, 6, 6, 6, 5, 6, 6, 6, 5, 6, 6]
+---------RUN 5----------
+ 11.816106 seconds (99.59 M allocations: 2.407 GiB, 5.89% gc time)
+best_sol = 319688.6
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 4, 6, 7, 4, 6, 6, 6, 9, 7, 7, 7, 4, 7, 7, 7, 8, 4, 8, 8, 7, 8, 4, 7, 4]
+---------RUN 6----------
+ 11.031308 seconds (97.45 M allocations: 2.343 GiB, 6.24% gc time)
+best_sol = 320682.39999999997
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[8, 5, 4, 5, 4, 5, 7, 6, 5, 7, 5, 7, 4, 7, 5, 5, 5, 6, 5, 6, 8, 6, 7, 6, 6]
+---------RUN 7----------
+ 11.599279 seconds (96.94 M allocations: 2.332 GiB, 5.95% gc time)
+best_sol = 319997.4
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[7, 8, 8, 7, 5, 5, 6, 8, 7, 5, 5, 5, 7, 6, 7, 7, 9, 8, 5, 9, 7, 6, 7, 5, 5]
+---------RUN 8----------
+ 11.847829 seconds (98.07 M allocations: 2.374 GiB, 5.87% gc time)
+best_sol = 324526.75999999995
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[5, 6, 8, 8, 6, 6, 5, 7, 6, 6, 7, 6, 5, 5, 5, 6, 7, 8, 6, 7, 6, 8, 9, 6, 8]
+---------RUN 9----------
+ 11.181961 seconds (96.74 M allocations: 2.328 GiB, 6.26% gc time)
+best_sol = 326899.0
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 6, 6, 6, 5, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 7, 6, 6, 6]
+---------RUN 10----------
+ 11.410546 seconds (98.34 M allocations: 2.345 GiB, 6.20% gc time)
+best_sol = 312954.256
+Nombre de maintenance = 2
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[6, 5, 7, 6, 6, 6, 6, 6, 6, 5, 5, 4, 6, 6, 7, 4, 5, 5, 6, 6, 6, 6, 6, 7, 6]

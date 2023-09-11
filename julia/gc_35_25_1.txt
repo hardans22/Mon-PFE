@@ -1,0 +1,41 @@
+p = 35
+t = 25
+
+Essai pour compilation
+
+  9.835708 seconds (20.78 M allocations: 1.159 GiB, 4.82% gc time, 94.56% compilation time: 2% of which was recompilation)
+
+------------------------------INSTANCE 1----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1500
+---------RUN 1----------
+ 74.923409 seconds (687.43 M allocations: 16.035 GiB, 2.69% gc time, 0.02% compilation time)
+best_sol = 676245.48
+Nombre de maintenance = 6
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[10, 8, 8, 10, 13, 10, 15, 10, 11, 11, 12, 11, 11, 14, 11, 14, 11, 11, 14, 10, 9, 13, 14, 10, 7, 14, 12, 11, 11, 11, 9, 11, 12, 11, 12]
+
+------------------------------INSTANCE 2----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1500
+---------RUN 1----------
+ 75.879513 seconds (679.17 M allocations: 15.852 GiB, 3.28% gc time)
+best_sol = 705889.2
+Nombre de maintenance = 6
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[11, 10, 12, 12, 16, 14, 12, 13, 14, 14, 11, 13, 13, 13, 12, 14, 13, 9, 12, 12, 13, 13, 13, 13, 10, 13, 8, 11, 14, 12, 11, 14, 12, 15, 12]
+
+------------------------------INSTANCE 3----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1500
+---------RUN 1----------

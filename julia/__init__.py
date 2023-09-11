@@ -11,7 +11,7 @@ def gen_instance(p, t, fp=False, complexity=False, cyclic=False):
     else:
         T = range(t)
         P = range(p)
-        alpha = float(round(rd.uniform(0.6, 0.9), 2))
+        alpha = float(0.8)
         gamma = float(round(rd.uniform(0.2, 0.4), 2))
         beta = [float(round(rd.uniform(0.2, 0.4), 2)) for _ in P]
 

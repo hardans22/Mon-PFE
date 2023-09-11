@@ -7,12 +7,24 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 25
-t = 20
-println("3/5")
-for version in 1:1
-	println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
-	file_path = "instances/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+p = 35
+t = 25
+println("p = ", p)
+println("t = ", t)
+
+version = 1
+println("\nEssai pour compilation\n")
+file_p = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+instance = init.gen_instance(p,t, fp=file_p); 
+instance["P"] = 1:p;
+instance["T"] = 1:t;
+instance["t"] = t
+instance["p"] = p 
+@time result2 =  genetic_algorithm(instance, 10, 20)   
+
+for version in 1:10
+	println("\n------------------------------INSTANCE ", version, "----------------------------\n")
+	file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 	instance_dict = init.gen_instance(p,t, fp=file_path); 
 	instance_dict["P"] = 1:p;
 	instance_dict["T"] = 1:t;
@@ -24,32 +36,34 @@ for version in 1:1
 	set_up_cost = instance_dict["set_up_cost"]
 
 
-	println("\n\nALGORITHME GÉNÉTIQUE")
+	println("ALGORITHME GÉNÉTIQUE")
 
-	len_pop = 40
-	nbr_iteration = 1000
+	len_pop = 30
+	nbr_iteration = 1500
 	println("len_pop = ", len_pop)
 	println("Nbr_iteration = ", nbr_iteration)
+	for i in 1:1
+		println("---------RUN ", i, "----------")
+		@time result =  genetic_algorithm(instance_dict, len_pop,nbr_iteration)   
 
-	@time result =  genetic_algorithm(instance_dict, len_pop,nbr_iteration)   
-
-	objectives = result["objectives"]
-	best_sol = result["best_sol"]
-	
-	println(best_sol.obj)
-	println("Nombre de maintenance = ",sum(best_sol.z))
-	sz = best_sol.z
-	sc = best_sol.c
-	sy = best_sol.y
-	su = best_sol.u
-	println("Feasibility of solution : ", verify_solution(best_sol.x, best_sol.I, sy, sz, sc, instance_dict))
-	println("Maintenance : ",sz)
-	println("Surplus : ",su) 
-	#println("Matrice des setup : ")
-	#display(sy)
-    l = []
-	for i in 1:p
-		push!(l, sum(sy[i,:]))
+		objectives = result["objectives"]
+		best_sol = result["best_sol"]
+		
+		println("best_sol = ", best_sol.obj)
+		println("Nombre de maintenance = ",sum(best_sol.z))
+		sz = best_sol.z
+		sc = best_sol.c
+		sy = best_sol.y
+		su = best_sol.u
+		println("Feasibility of solution : ", verify_solution(best_sol.x, best_sol.I, sy, sz, sc, instance_dict))
+		println("Maintenance : ",sz)
+		println("Surplus : ",su) 
+		#println("Matrice des setup : ")
+		#display(sy)
+		l = []
+		for i in 1:p
+			push!(l, sum(sy[i,:]))
+		end
+		println(l)
 	end
-	println(l)
 end

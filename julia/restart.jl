@@ -1,7 +1,7 @@
 include("RelaxAndFix _ FixAndOptimize.jl")
 
 
-function restart(model, current_pop, instance_dict,len_pop)
+function restart(model, best_sol, instance_dict,len_pop)
     #=
         On fait les quatre type de mutation sur la 
         meilleure solution obtenu jusque là. 
@@ -13,17 +13,15 @@ function restart(model, current_pop, instance_dict,len_pop)
     new_pop =[]
     #Mutation sur la meilleure solution obtenue
     list_rd = [0.2, 0.5, 0.7, 0.95]
-    nbr = div(len_pop, 20)
+    nbr = div(len_pop, 4)
     for i in 1:nbr
-        for sol in current_pop[1:5]
-            for rd in list_rd
-                fils_z, fils_y = mutation(sol,instance_dict,rst,rd)
-                fils_c = construct_capacities(fils_z, t, alpha, cmax) 
-                result_sol, model = evaluation(model,fils_y,fils_z,fils_c,instance_dict)
-                fils_sol = create_solution(result_sol)
-                if !sol_in_list(new_pop, fils_sol)  
-                    push!(new_pop, fils_sol)
-                end
+        for rd in list_rd
+            fils_z, fils_y = mutation(best_sol,instance_dict,rst,rd)
+            fils_c = construct_capacities(fils_z, t, alpha, cmax) 
+            result_sol, model = evaluation(model,fils_y,fils_z,fils_c,instance_dict)
+            fils_sol = create_solution(result_sol)
+            if !sol_in_list(new_pop, fils_sol)  
+                push!(new_pop, fils_sol)
             end
         end
     end

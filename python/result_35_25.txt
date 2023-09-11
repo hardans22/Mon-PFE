@@ -1,0 +1,142 @@
+p =  35
+t =  25
+-----------------------Instance  1 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 1.9964573383331299 secondes
+Objective :  442578.3829018701
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.45001721382141113 secondes
+Objective :  442578.38290187024
+
+
+-----------------------Instance  2 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 1.7536873817443848 secondes
+Objective :  443321.8310275563
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.48545384407043457 secondes
+Objective :  443321.8310275564
+
+
+-----------------------Instance  3 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 1.829956293106079 secondes
+Objective :  427702.5241477554
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.48378729820251465 secondes
+Objective :  427702.52414775535
+
+
+-----------------------Instance  4 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 1.7156896591186523 secondes
+Objective :  415472.56493140163
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.5321507453918457 secondes
+Objective :  415472.56493140163
+
+
+-----------------------Instance  5 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+RMP optimal
+Temps d'exécution : 2.097520589828491 secondes
+Objective :  457118.263979687
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.5435502529144287 secondes
+Objective :  457118.2639796869
+
+
+-----------------------Instance  6 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 2.1354072093963623 secondes
+Objective :  437615.1238809771
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.5953154563903809 secondes
+Objective :  437615.1238809772
+
+
+-----------------------Instance  7 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 2.3477299213409424 secondes
+Objective :  455736.458777472
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.6143271923065186 secondes
+Objective :  455736.4587774721
+
+
+-----------------------Instance  8 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+RMP optimal
+Temps d'exécution : 2.7094812393188477 secondes
+Objective :  463745.11456997227
+
+
+---------DYNAMIC PROGRAMING---------
+RMP optimal
+Temps d'exécution : 0.5745172500610352 secondes
+Objective :  463745.1145699722
+
+
+-----------------------Instance  9 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 2.540269374847412 secondes
+Objective :  453077.3300091292
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.6779425144195557 secondes
+Objective :  453077.3300091291
+
+
+-----------------------Instance  10 ----------------------
+------------------Columns Generation------------------
+---------MIP---------
+STOP
+Temps d'exécution : 2.634629964828491 secondes
+Objective :  435648.52643450495
+
+
+---------DYNAMIC PROGRAMING---------
+STOP
+Temps d'exécution : 0.669842004776001 secondes
+Objective :  435648.52643450507
+
+

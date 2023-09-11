@@ -24,43 +24,32 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
     
     current_pop, model = generate_pop_initial(len_pop,instance_dict)
     current_pop = sort(current_pop, by = x -> x.obj)
-    best_sol = copy_solution(current_pop[1])
-    display(current_pop[1].y)
-    println(current_pop[1].z)
-    display(current_pop[2].y)
-    println(current_pop[2].z)
-
+    cbest_sol = copy_solution(current_pop[1])
+    best_sol = copy_solution(cbest_sol)
+    
 
     #Les définitions
     best_sol_list, objectives, snd_objectives, trd_objectives = [], [], [], []
 
-    stop = 100
-    len_clonage = div(len_pop, 3)
-    nbr_crossover = div(len_pop, 3)
-    nbr_mutation = div(len_pop, 3)
+    stop = 50
+    len_clonage = round(Int, len_pop*0.4)
+    nbr_crossover = round(Int, (len_pop*0.3)/4)
+    nbr_mutation = round(Int, len_pop*0.3)
     compt = 0
 
-    push!(objectives, best_sol.obj)
+    push!(objectives, cbest_sol.obj)
     push!(snd_objectives, current_pop[2].obj)
     push!(trd_objectives, current_pop[3].obj)
-    println(best_sol.obj)
-    iter = 1
+    
 
-    windowSize = 15
-    overlap = 0.8
-    timeLimit = 10
-
-    while iter in 1:nbr_iteration
-        println("--------------------------Itération ", iter, " --------------------------")
+    for iter in 1:nbr_iteration
+        #println("--------------------------Itération ", iter, " --------------------------")
         new_pop = []
         #println("c_prime = ", c_prime)
         new_pop = current_pop[1:len_clonage] 
         
-        len_new_pop = len_clonage
-        
         #println("CROSSOVER")
-    
-        cpt_cross = 0
+
         for i in 1:nbr_crossover
             #println("Crossover : ", i)
             ind = randperm(len_clonage)[1:2]
@@ -76,106 +65,76 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
                         result_sol, model =  evaluation(model,fils_y,fils_z,fils_c,instance_dict)
                         fils_sol = create_solution(result_sol)
                         if !sol_in_list(new_pop, fils_sol)
-                            cpt_cross +=1
                             push!(new_pop, fils_sol)
                         end
                     end
                 end
             end
         end
-        len_new_pop += cpt_cross
     
         #println("MUTATION")
-        cpt_mut = 0
-        indices = randperm(len_new_pop)
+        indices = randperm(len_clonage)
         for i in 1: nbr_mutation
             shuffle!(indices)
             if length(indices) != 0
                 ind = indices[1]
                 sol = new_pop[ind]
-                temp = sum(sol.z)
-                if temp > 1 || temp != 1 
-                    fils_z, fils_y = mutation(sol,instance_dict, false, 0.1)
-                    fils_c = construct_capacities(fils_z, t, alpha, cmax) 
-                    result_sol, model = evaluation(model,fils_y,fils_z,fils_c,instance_dict)
-                    fils_sol = create_solution(result_sol)
-                    if !sol_in_list(new_pop, fils_sol)
-                        cpt_mut +=1
-                        push!(new_pop, fils_sol)
-                    end
+                fils_z, fils_y = mutation(sol,instance_dict, false, 0.1)
+                fils_c = construct_capacities(fils_z, t, alpha, cmax) 
+                result_sol, model = evaluation(model,fils_y,fils_z,fils_c,instance_dict)
+                fils_sol = create_solution(result_sol)
+                if !sol_in_list(new_pop, fils_sol)
+                    push!(new_pop, fils_sol)
                 end
-                indices = filter!(e->e!=ind, indices)
             end
         end
-        len_new_pop += cpt_mut
-        
+
 
         #Mise à jour et trie de la population
         current_pop = new_pop
         current_pop = sort(current_pop, by = x -> x.obj)
         
         #Vérification et mise à jour de la meilleure solution
-        if current_pop[1].obj < best_sol.obj
+        if current_pop[1].obj < cbest_sol.obj
             compt = 0
-            best_sol = copy_solution(current_pop[1])
+            cbest_sol = copy_solution(current_pop[1])
         else
             compt += 1
         end
-        push!(objectives, best_sol.obj)
+
+        if cbest_sol.obj < best_sol.obj
+            best_sol = copy_solution(cbest_sol)
+        end 
+
+        push!(objectives, cbest_sol.obj)
         push!(snd_objectives, current_pop[2].obj)
         push!(trd_objectives, current_pop[3].obj)
 
         #Restart
         if compt == stop
-            println("COMPT = ", compt)
-            println("RESTART")
-            push!(best_sol_list, best_sol)
-            new_pop, model = generate_pop_initial(len_pop,instance_dict)
-            print_pop(new_pop)
-            #new_pop = sort(new_pop, by = x -> x.obj)
-            #best_sol = copy_solution(current_pop[1])
-            #=
-            for i in 1:5
-                println("yes")
-                sol = current_pop[i]
-                model_fo = buildM(sol.z, sol.c, instance, "FO")
-                rslt = FixAndOptimize(model_fo, sol.y, windowSize, overlap, timeLimit, instance_dict)
-                rslt["obj"] += dot(mtn_cost, sol.z) 
-                println(rslt["obj"])
-                new_sol = solution(rslt["sx"], rslt["sI"], rslt["sy"], sol.z, sol.c, rslt["su"], rslt["obj"])
-                push!(new_pop, new_sol)
-            end   
-            new_pop = sort(new_pop, by = x -> x.obj)
-            best_sol = copy_solution(current_pop[1])
-            =#
+            #println("COMPT = ", compt)
+            #println("RESTART")
+            current_pop, model = generate_pop_initial(len_pop,instance_dict)
+            #print_pop(current_pop)
+            current_pop = sort(current_pop, by = x -> x.obj)
+            cbest_sol = copy_solution(current_pop[1])
+    
             compt = 0
-            current_pop = new_pop
         end
         
         #println()
-        println("best_sol = ",best_sol.obj)
+        #println("cbest_sol = ", cbest_sol.obj)
+        #println("best_sol = ", best_sol.obj)
+        #println("mtn = ", sum(best_sol.z))
+
+
         #println()
         #println("POPULATION")
         #print_pop(current_pop)
         #println(len_new_pop)
         #println(length(current_pop))
-        #=
-        if iter % 30 == 0
-            nbr_crossover = round(nbr_crossover*1.3)
-            nbr_mutation = round(nbr_mutation*1.3)
-        end 
-        =#
-        #if time() - begin_time > timeAG
-        #    break
-        #end 
-        iter += 1 
 
-    end 
-    #println("Nombre d'itération = ", iter)
-    push!(best_sol_list, best_sol)
-    #print_pop(best_sol_list)
-    best_sol_list = sort(best_sol_list, by = x -> x.obj)
-    best_sol = best_sol_list[1]
+    end
     
     return Dict("objectives" => objectives, "snd_objectives" => snd_objectives, "trd_objectives" => trd_objectives, "best_sol" => best_sol)
 end
