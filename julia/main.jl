@@ -7,8 +7,8 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 35
-t = 25
+p = 25
+t = 15
 version = 1
 println("p = ", p)
 println("t = ", t)
@@ -48,7 +48,7 @@ for version in 1:1
 	println("\n\nALGORITHME GÉNÉTIQUE")
 
 	len_pop = 30
-	nbr_iteration = 2000
+	nbr_iteration = 1000
 	println("len_pop = ", len_pop)
 	println("Temps d'exécution = ", nbr_iteration)
 

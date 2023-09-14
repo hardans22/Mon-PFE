@@ -45,7 +45,7 @@ function model_mip(instance_dict, pl = false)
     
     @objective(model, Min, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T) + sum(mtn_cost[t]*z[t,t] for t in T))
     #set_silent(model)
-    set_time_limit_sec(model, 1800.0)
+    set_time_limit_sec(model, 3600.0)
     JuMP.optimize!(model)
     obj = objective_value(model)
     sx = JuMP.value.(x)
