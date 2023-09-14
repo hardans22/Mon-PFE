@@ -1,6 +1,6 @@
 include("./functions.jl")
 
-function mutation(sol_parent,instance_dict,rst,rd)
+function mutation(sol_parent,instance_dict)
     T = instance_dict["T"]
     P = instance_dict["P"]
     t = length(T)
@@ -23,25 +23,11 @@ function mutation(sol_parent,instance_dict,rst,rd)
     shuffle!(z_ones)
     shuffle!(z_zeros)
 
-    y_ones, y_zeros = [], []
-    for i in P
-        for j in 2:t
-            temp = (i,j)
-            if parent_y[i,j] == 1
-                push!(y_ones, temp)
-            else
-                push!(y_zeros, temp)
-            end
-        end
-    end
-    shuffle!(y_ones)
-    shuffle!(y_zeros)
 
-    if !rst
-        rd = rand()
-    end
     fils_z = copy(sol_parent.z)
     fils_y = copy(sol_parent.y)
+
+    rd = rand()
 
     if  rd <= 1/3
         #println("-------------SWAP-----------")
@@ -49,8 +35,21 @@ function mutation(sol_parent,instance_dict,rst,rd)
         fils_z[z_ones[1]] = 0
         fils_z[z_zeros[1]] = 1
 
-        fils_y[y_ones[1][1], y_ones[1][2]] = 0
-        fils_y[y_zeros[1][1], y_zeros[1][2]] = 1 
+        item = rand(2:p)
+        
+        item_ones, item_zeros = [], []
+        for j in 2:t
+            if fils_y[item,j] == 1
+                push!(item_ones,j)
+            else
+                push!(item_zeros,j)
+            end
+        end
+        shuffle!(item_ones)
+        shuffle!(item_zeros)
+
+        fils_y[item, item_ones[1]] = 0
+        fils_y[item, item_zeros[1]] = 1 
         
     end
     if  1/3 < rd <= 2/3
@@ -58,6 +57,17 @@ function mutation(sol_parent,instance_dict,rst,rd)
         ind = z_ones[1]
         #Décalage d'un pas de maintenance à droite à partir d'une période où une maintenance est effectué 
         fils_z = vcat(parent_z[1:ind-1], [0], parent_z[ind:t-1])
+        
+        y_ones = []
+        for i in P
+            for j in 2:t
+                temp = (i,j)
+                if parent_y[i,j] == 1
+                    push!(y_ones, temp)
+                end
+            end
+        end
+        shuffle!(y_ones)
 
         item = y_ones[1][1]
         ind = y_ones[1][2]

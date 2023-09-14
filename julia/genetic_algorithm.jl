@@ -32,9 +32,9 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
     best_sol_list, objectives, snd_objectives, trd_objectives = [], [], [], []
 
     stop = 50
-    len_clonage = round(Int, len_pop*0.4)
-    nbr_crossover = round(Int, (len_pop*0.3)/4)
-    nbr_mutation = round(Int, len_pop*0.3)
+    len_clonage = round(Int, len_pop*0.2)
+    nbr_crossover = round(Int, (len_pop*0.4)/4)
+    nbr_mutation = round(Int, len_pop*0.4)
     compt = 0
 
     push!(objectives, cbest_sol.obj)
@@ -79,7 +79,7 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
             if length(indices) != 0
                 ind = indices[1]
                 sol = new_pop[ind]
-                fils_z, fils_y = mutation(sol,instance_dict, false, 0.1)
+                fils_z, fils_y = mutation(sol,instance_dict)
                 fils_c = construct_capacities(fils_z, t, alpha, cmax) 
                 result_sol, model = evaluation(model,fils_y,fils_z,fils_c,instance_dict)
                 fils_sol = create_solution(result_sol)

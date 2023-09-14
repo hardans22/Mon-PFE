@@ -22,7 +22,7 @@ instance["t"] = t
 instance["p"] = p 
 @time result2 =  genetic_algorithm(instance, 10, 20)   
 
-for version in 1:10
+for version in 1:1
 	println("\n------------------------------INSTANCE ", version, "----------------------------\n")
 	file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 	instance_dict = init.gen_instance(p,t, fp=file_path); 
@@ -39,10 +39,10 @@ for version in 1:10
 	println("ALGORITHME GÉNÉTIQUE")
 
 	len_pop = 30
-	nbr_iteration = 1500
+	nbr_iteration = 2000
 	println("len_pop = ", len_pop)
 	println("Nbr_iteration = ", nbr_iteration)
-	for i in 1:1
+	for i in 1:5
 		println("---------RUN ", i, "----------")
 		@time result =  genetic_algorithm(instance_dict, len_pop,nbr_iteration)   
 

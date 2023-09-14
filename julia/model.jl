@@ -4,6 +4,7 @@ function model_mip(instance_dict, pl = false)
     P = instance_dict["P"]
     T = instance_dict["T"]
     len_T = instance_dict["t"]
+    len_P = instance_dict["p"]
     set_up_cost = instance_dict["set_up_cost"]
     variable_prod_cost = instance_dict["variable_prod_cost"]
     holding_cost = instance_dict["holding_cost"]
@@ -106,7 +107,8 @@ function build_model(instance_dict)
     obj = sum(variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T)
 
     
-    coef = maximum(mtn_cost)/(len_T)
+    #coef = maximum(mtn_cost)/(len_T^2)
+    coef = minimum(variable_prod_cost)
     obj += sum(coef*u[t] for t in T)
     
     #obj += z

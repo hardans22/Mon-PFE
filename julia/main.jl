@@ -7,7 +7,7 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 30
+p = 35
 t = 25
 version = 1
 println("p = ", p)
@@ -48,7 +48,7 @@ for version in 1:1
 	println("\n\nALGORITHME GÉNÉTIQUE")
 
 	len_pop = 30
-	nbr_iteration = 1500
+	nbr_iteration = 2000
 	println("len_pop = ", len_pop)
 	println("Temps d'exécution = ", nbr_iteration)
 
@@ -73,9 +73,9 @@ for version in 1:1
 	end
 	println(l)
 
-	windowSize = 20
+	windowSize = 15
 	overlap = 0.6
-	timeLimit = 180
+	timeLimit = 200
 
 	increment = 3
 
