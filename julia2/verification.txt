@@ -1,0 +1,595 @@
+p = 10
+t = 15
+
+--------------------------------------------------INSTANCE 1-----------------------------------------------------------
+
+Algorithme génétique
+len_pop = 200
+nbr_iteration = 200
+--------------------------Itération 0 ----------------------------
+  9.816573 seconds (18.44 M allocations: 1.499 GiB, 5.60% gc time, 93.01% compilation time: 0% of which was recompilation)
+145651.3
+-------------------------------------------------------------ITÉRATION 1 ----------------------------------------------------------
+CROSSOVER
+  1.392381 seconds (8.96 M allocations: 1009.232 MiB, 10.78% gc time, 50.60% compilation time)
+MUTATION
+  0.322859 seconds (1.89 M allocations: 234.792 MiB, 10.95% gc time, 45.60% compilation time)
+
+best_sol = 140241.675
+
+-------------------------------------------------------------ITÉRATION 2 ----------------------------------------------------------
+CROSSOVER
+  0.653950 seconds (6.26 M allocations: 851.683 MiB, 15.05% gc time)
+MUTATION
+  0.167198 seconds (1.60 M allocations: 218.001 MiB, 14.42% gc time)
+
+best_sol = 137990.38125
+
+-------------------------------------------------------------ITÉRATION 3 ----------------------------------------------------------
+CROSSOVER
+  0.650949 seconds (6.38 M allocations: 868.867 MiB, 13.09% gc time)
+MUTATION
+  0.166132 seconds (1.58 M allocations: 217.242 MiB, 14.79% gc time)
+
+best_sol = 135514.33875
+
+-------------------------------------------------------------ITÉRATION 4 ----------------------------------------------------------
+CROSSOVER
+  0.651741 seconds (6.38 M allocations: 868.731 MiB, 13.22% gc time)
+MUTATION
+  0.165898 seconds (1.58 M allocations: 217.664 MiB, 14.79% gc time)
+
+best_sol = 132584.84125
+
+-------------------------------------------------------------ITÉRATION 5 ----------------------------------------------------------
+CROSSOVER
+  0.648974 seconds (6.32 M allocations: 860.000 MiB, 13.28% gc time)
+MUTATION
+  0.168081 seconds (1.59 M allocations: 217.533 MiB, 14.77% gc time)
+
+best_sol = 132584.84125
+
+-------------------------------------------------------------ITÉRATION 6 ----------------------------------------------------------
+CROSSOVER
+  0.649511 seconds (6.32 M allocations: 860.524 MiB, 13.34% gc time)
+MUTATION
+  0.168696 seconds (1.59 M allocations: 217.870 MiB, 14.69% gc time)
+
+best_sol = 131942.733375
+
+-------------------------------------------------------------ITÉRATION 7 ----------------------------------------------------------
+CROSSOVER
+  0.644459 seconds (6.26 M allocations: 852.233 MiB, 13.46% gc time)
+MUTATION
+  0.167500 seconds (1.59 M allocations: 217.630 MiB, 14.93% gc time)
+
+best_sol = 130504.25999999998
+
+-------------------------------------------------------------ITÉRATION 8 ----------------------------------------------------------
+CROSSOVER
+  0.625807 seconds (6.19 M allocations: 842.707 MiB, 11.92% gc time)
+MUTATION
+  0.169108 seconds (1.59 M allocations: 218.052 MiB, 14.80% gc time)
+
+best_sol = 129554.92856249999
+
+-------------------------------------------------------------ITÉRATION 9 ----------------------------------------------------------
+CROSSOVER
+  0.630265 seconds (6.06 M allocations: 824.095 MiB, 13.88% gc time)
+MUTATION
+  0.169914 seconds (1.59 M allocations: 217.109 MiB, 14.85% gc time)
+
+best_sol = 126594.57525
+
+-------------------------------------------------------------ITÉRATION 10 ----------------------------------------------------------
+CROSSOVER
+  0.616828 seconds (6.06 M allocations: 825.330 MiB, 12.31% gc time)
+MUTATION
+  0.171448 seconds (1.60 M allocations: 217.698 MiB, 14.73% gc time)
+
+best_sol = 126594.57525
+
+-------------------------------------------------------------ITÉRATION 11 ----------------------------------------------------------
+CROSSOVER
+  0.654268 seconds (6.32 M allocations: 859.206 MiB, 13.55% gc time)
+MUTATION
+  0.170042 seconds (1.59 M allocations: 217.715 MiB, 14.90% gc time)
+
+best_sol = 126409.63875
+
+-------------------------------------------------------------ITÉRATION 12 ----------------------------------------------------------
+CROSSOVER
+  0.595371 seconds (5.81 M allocations: 790.221 MiB, 12.75% gc time)
+MUTATION
+  0.170273 seconds (1.58 M allocations: 217.265 MiB, 15.20% gc time)
+
+best_sol = 125183.2434375
+
+-------------------------------------------------------------ITÉRATION 13 ----------------------------------------------------------
+CROSSOVER
+  0.561944 seconds (5.42 M allocations: 739.396 MiB, 13.54% gc time)
+MUTATION
+  0.172962 seconds (1.60 M allocations: 217.348 MiB, 14.84% gc time)
+
+best_sol = 124373.64125
+
+-------------------------------------------------------------ITÉRATION 14 ----------------------------------------------------------
+CROSSOVER
+  0.590037 seconds (5.74 M allocations: 781.795 MiB, 12.97% gc time)
+MUTATION
+  0.172151 seconds (1.59 M allocations: 218.055 MiB, 14.87% gc time)
+
+best_sol = 123822.19625000001
+
+-------------------------------------------------------------ITÉRATION 15 ----------------------------------------------------------
+CROSSOVER
+  0.543692 seconds (5.36 M allocations: 729.526 MiB, 11.83% gc time)
+MUTATION
+  0.170463 seconds (1.59 M allocations: 218.050 MiB, 15.13% gc time)
+
+best_sol = 122863.18
+
+-------------------------------------------------------------ITÉRATION 16 ----------------------------------------------------------
+CROSSOVER
+  0.571418 seconds (5.42 M allocations: 738.738 MiB, 13.63% gc time)
+MUTATION
+  0.174827 seconds (1.60 M allocations: 218.038 MiB, 14.71% gc time)
+
+best_sol = 122630.99249999996
+
+-------------------------------------------------------------ITÉRATION 17 ----------------------------------------------------------
+CROSSOVER
+  0.563726 seconds (5.42 M allocations: 738.282 MiB, 13.70% gc time)
+MUTATION
+  0.157159 seconds (1.59 M allocations: 217.207 MiB, 8.21% gc time)
+
+best_sol = 120810.4275
+
+-------------------------------------------------------------ITÉRATION 18 ----------------------------------------------------------
+CROSSOVER
+  0.509071 seconds (4.78 M allocations: 651.193 MiB, 15.29% gc time)
+MUTATION
+  0.157973 seconds (1.59 M allocations: 218.088 MiB, 8.21% gc time)
+
+best_sol = 120294.51999999999
+
+-------------------------------------------------------------ITÉRATION 19 ----------------------------------------------------------
+CROSSOVER
+  0.479078 seconds (4.59 M allocations: 625.669 MiB, 13.59% gc time)
+MUTATION
+  0.172986 seconds (1.59 M allocations: 217.326 MiB, 15.05% gc time)
+
+best_sol = 119624.744625
+
+-------------------------------------------------------------ITÉRATION 20 ----------------------------------------------------------
+CROSSOVER
+  0.466498 seconds (4.47 M allocations: 608.838 MiB, 13.99% gc time)
+MUTATION
+  0.155724 seconds (1.59 M allocations: 217.188 MiB, 8.35% gc time)
+
+best_sol = 119624.744625
+
+-------------------------------------------------------------ITÉRATION 21 ----------------------------------------------------------
+CROSSOVER
+  0.470363 seconds (4.47 M allocations: 609.159 MiB, 14.13% gc time)
+MUTATION
+  0.171359 seconds (1.58 M allocations: 217.684 MiB, 15.23% gc time)
+
+best_sol = 119122.725
+
+-------------------------------------------------------------ITÉRATION 22 ----------------------------------------------------------
+CROSSOVER
+  0.418469 seconds (4.08 M allocations: 556.711 MiB, 12.47% gc time)
+MUTATION
+  0.170761 seconds (1.58 M allocations: 217.666 MiB, 15.22% gc time)
+
+best_sol = 117135.57625000001
+
+-------------------------------------------------------------ITÉRATION 23 ----------------------------------------------------------
+CROSSOVER
+  0.412970 seconds (4.02 M allocations: 547.240 MiB, 12.72% gc time)
+MUTATION
+  0.173330 seconds (1.59 M allocations: 217.888 MiB, 15.32% gc time)
+
+best_sol = 117135.57625000001
+
+-------------------------------------------------------------ITÉRATION 24 ----------------------------------------------------------
+CROSSOVER
+  0.412515 seconds (4.02 M allocations: 548.559 MiB, 12.72% gc time)
+MUTATION
+  0.174509 seconds (1.59 M allocations: 217.692 MiB, 15.05% gc time)
+
+best_sol = 116632.82593749999
+
+-------------------------------------------------------------ITÉRATION 25 ----------------------------------------------------------
+CROSSOVER
+  0.434366 seconds (4.27 M allocations: 581.929 MiB, 12.17% gc time)
+MUTATION
+  0.173240 seconds (1.59 M allocations: 217.292 MiB, 15.29% gc time)
+
+best_sol = 116614.0975
+
+-------------------------------------------------------------ITÉRATION 26 ----------------------------------------------------------
+CROSSOVER
+  0.380632 seconds (3.64 M allocations: 495.828 MiB, 13.88% gc time)
+MUTATION
+  0.157997 seconds (1.59 M allocations: 217.292 MiB, 8.41% gc time)
+
+best_sol = 116614.0975
+
+-------------------------------------------------------------ITÉRATION 27 ----------------------------------------------------------
+CROSSOVER
+  0.385188 seconds (3.70 M allocations: 504.993 MiB, 13.75% gc time)
+MUTATION
+  0.173772 seconds (1.60 M allocations: 217.879 MiB, 15.29% gc time)
+
+best_sol = 116303.59156249999
+
+-------------------------------------------------------------ITÉRATION 28 ----------------------------------------------------------
+CROSSOVER
+  0.369942 seconds (3.51 M allocations: 478.071 MiB, 14.44% gc time)
+MUTATION
+  0.156306 seconds (1.58 M allocations: 217.946 MiB, 8.58% gc time)
+
+best_sol = 116078.0149375
+
+-------------------------------------------------------------ITÉRATION 29 ----------------------------------------------------------
+CROSSOVER
+  0.352000 seconds (3.32 M allocations: 452.637 MiB, 15.07% gc time)
+MUTATION
+  0.157419 seconds (1.59 M allocations: 217.751 MiB, 8.48% gc time)
+
+best_sol = 115149.95
+
+-------------------------------------------------------------ITÉRATION 30 ----------------------------------------------------------
+CROSSOVER
+  0.373678 seconds (3.57 M allocations: 487.220 MiB, 14.29% gc time)
+MUTATION
+  0.171739 seconds (1.58 M allocations: 217.493 MiB, 15.47% gc time)
+
+best_sol = 114668.88875000001
+
+-------------------------------------------------------------ITÉRATION 31 ----------------------------------------------------------
+CROSSOVER
+  0.381369 seconds (3.64 M allocations: 496.318 MiB, 14.07% gc time)
+MUTATION
+  0.157711 seconds (1.60 M allocations: 217.344 MiB, 8.46% gc time)
+
+best_sol = 114668.88875000001
+
+-------------------------------------------------------------ITÉRATION 32 ----------------------------------------------------------
+CROSSOVER
+  0.370698 seconds (3.51 M allocations: 478.021 MiB, 14.48% gc time)
+MUTATION
+  0.173535 seconds (1.59 M allocations: 217.285 MiB, 15.53% gc time)
+
+best_sol = 112692.1455
+
+-------------------------------------------------------------ITÉRATION 33 ----------------------------------------------------------
+CROSSOVER
+  0.354078 seconds (3.51 M allocations: 478.037 MiB, 11.49% gc time)
+MUTATION
+  0.174160 seconds (1.59 M allocations: 217.897 MiB, 15.49% gc time)
+
+best_sol = 112692.1455
+
+-------------------------------------------------------------ITÉRATION 34 ----------------------------------------------------------
+CROSSOVER
+  0.349148 seconds (3.45 M allocations: 469.717 MiB, 11.58% gc time)
+MUTATION
+  0.172141 seconds (1.58 M allocations: 217.822 MiB, 15.60% gc time)
+
+best_sol = 112692.1455
+
+-------------------------------------------------------------ITÉRATION 35 ----------------------------------------------------------
+CROSSOVER
+  0.365449 seconds (3.44 M allocations: 470.094 MiB, 14.84% gc time)
+MUTATION
+  0.157528 seconds (1.59 M allocations: 217.963 MiB, 8.87% gc time)
+
+best_sol = 111581.76768749999
+
+-------------------------------------------------------------ITÉRATION 36 ----------------------------------------------------------
+CROSSOVER
+  0.370606 seconds (3.51 M allocations: 478.815 MiB, 14.56% gc time)
+MUTATION
+  0.155927 seconds (1.58 M allocations: 217.937 MiB, 8.62% gc time)
+
+best_sol = 111581.76768749999
+
+-------------------------------------------------------------ITÉRATION 37 ----------------------------------------------------------
+CROSSOVER
+  0.358566 seconds (3.38 M allocations: 460.230 MiB, 15.13% gc time)
+MUTATION
+  0.172778 seconds (1.58 M allocations: 217.608 MiB, 15.66% gc time)
+
+best_sol = 111581.76768749999
+
+-------------------------------------------------------------ITÉRATION 38 ----------------------------------------------------------
+CROSSOVER
+  0.343022 seconds (3.38 M allocations: 461.448 MiB, 11.92% gc time)
+MUTATION
+  0.172340 seconds (1.58 M allocations: 217.402 MiB, 15.74% gc time)
+
+best_sol = 111581.76768749999
+
+-------------------------------------------------------------ITÉRATION 39 ----------------------------------------------------------
+CROSSOVER
+  0.332022 seconds (3.25 M allocations: 444.572 MiB, 12.34% gc time)
+MUTATION
+  0.172418 seconds (1.59 M allocations: 217.980 MiB, 15.81% gc time)
+
+best_sol = 111220.2293125
+
+-------------------------------------------------------------ITÉRATION 40 ----------------------------------------------------------
+CROSSOVER
+  0.337988 seconds (3.32 M allocations: 451.539 MiB, 12.09% gc time)
+MUTATION
+  0.173403 seconds (1.59 M allocations: 217.314 MiB, 15.87% gc time)
+
+best_sol = 110775.35056250001
+
+-------------------------------------------------------------ITÉRATION 41 ----------------------------------------------------------
+CROSSOVER
+  0.327731 seconds (3.19 M allocations: 435.897 MiB, 12.58% gc time)
+MUTATION
+  0.155975 seconds (1.58 M allocations: 217.493 MiB, 8.81% gc time)
+
+best_sol = 109850.1613125
+
+-------------------------------------------------------------ITÉRATION 42 ----------------------------------------------------------
+CROSSOVER
+  0.342533 seconds (3.19 M allocations: 434.781 MiB, 16.00% gc time)
+MUTATION
+  0.155709 seconds (1.59 M allocations: 217.645 MiB, 8.79% gc time)
+
+best_sol = 109850.1613125
+
+-------------------------------------------------------------ITÉRATION 43 ----------------------------------------------------------
+CROSSOVER
+  0.326818 seconds (3.19 M allocations: 435.170 MiB, 12.60% gc time)
+MUTATION
+  0.173596 seconds (1.60 M allocations: 217.742 MiB, 15.91% gc time)
+
+best_sol = 109850.1613125
+
+-------------------------------------------------------------ITÉRATION 44 ----------------------------------------------------------
+CROSSOVER
+  0.326293 seconds (3.19 M allocations: 434.849 MiB, 12.76% gc time)
+MUTATION
+  0.170790 seconds (1.58 M allocations: 217.217 MiB, 16.14% gc time)
+
+best_sol = 109191.2875
+
+-------------------------------------------------------------ITÉRATION 45 ----------------------------------------------------------
+CROSSOVER
+  0.325513 seconds (3.19 M allocations: 435.085 MiB, 12.70% gc time)
+MUTATION
+  0.173056 seconds (1.58 M allocations: 217.009 MiB, 15.92% gc time)
+
+best_sol = 108878.4708125
+
+-------------------------------------------------------------ITÉRATION 46 ----------------------------------------------------------
+CROSSOVER
+  0.325619 seconds (3.19 M allocations: 434.210 MiB, 12.75% gc time)
+MUTATION
+  0.156312 seconds (1.59 M allocations: 217.152 MiB, 8.80% gc time)
+
+best_sol = 108878.4708125
+
+-------------------------------------------------------------ITÉRATION 47 ----------------------------------------------------------
+CROSSOVER
+  0.342247 seconds (3.19 M allocations: 435.305 MiB, 16.17% gc time)
+MUTATION
+  0.162662 seconds (1.59 M allocations: 217.705 MiB, 8.75% gc time)
+
+best_sol = 108878.4708125
+
+-------------------------------------------------------------ITÉRATION 48 ----------------------------------------------------------
+CROSSOVER
+  0.336304 seconds (3.19 M allocations: 435.177 MiB, 12.82% gc time)
+MUTATION
+  0.181806 seconds (1.60 M allocations: 217.419 MiB, 15.88% gc time)
+
+best_sol = 108631.7760625
+
+-------------------------------------------------------------ITÉRATION 49 ----------------------------------------------------------
+CROSSOVER
+  0.344775 seconds (3.19 M allocations: 435.023 MiB, 12.71% gc time)
+MUTATION
+  0.185525 seconds (1.59 M allocations: 217.919 MiB, 15.91% gc time)
+
+best_sol = 108570.6375
+
+-------------------------------------------------------------ITÉRATION 50 ----------------------------------------------------------
+CROSSOVER
+  0.325313 seconds (3.19 M allocations: 434.401 MiB, 12.81% gc time)
+MUTATION
+  0.160873 seconds (1.58 M allocations: 217.755 MiB, 8.92% gc time)
+
+best_sol = 108570.6375
+
+-------------------------------------------------------------ITÉRATION 51 ----------------------------------------------------------
+CROSSOVER
+  0.341712 seconds (3.19 M allocations: 435.787 MiB, 16.36% gc time)
+MUTATION
+  0.155241 seconds (1.59 M allocations: 217.644 MiB, 9.05% gc time)
+
+best_sol = 108461.1070625
+
+-------------------------------------------------------------ITÉRATION 52 ----------------------------------------------------------
+CROSSOVER
+  0.325713 seconds (3.19 M allocations: 435.152 MiB, 12.82% gc time)
+MUTATION
+  0.180485 seconds (1.58 M allocations: 217.185 MiB, 16.66% gc time)
+
+best_sol = 107919.1320625
+
+-------------------------------------------------------------ITÉRATION 53 ----------------------------------------------------------
+CROSSOVER
+  0.335099 seconds (3.18 M allocations: 435.473 MiB, 12.95% gc time)
+MUTATION
+  0.179478 seconds (1.59 M allocations: 217.925 MiB, 16.15% gc time)
+
+best_sol = 107919.1320625
+
+-------------------------------------------------------------ITÉRATION 54 ----------------------------------------------------------
+CROSSOVER
+  0.334721 seconds (3.18 M allocations: 434.068 MiB, 12.85% gc time)
+MUTATION
+  0.157345 seconds (1.58 M allocations: 217.534 MiB, 9.46% gc time)
+
+best_sol = 107911.2875
+
+-------------------------------------------------------------ITÉRATION 55 ----------------------------------------------------------
+CROSSOVER
+  0.329498 seconds (3.19 M allocations: 435.273 MiB, 13.08% gc time)
+MUTATION
+  0.172052 seconds (1.59 M allocations: 218.083 MiB, 16.38% gc time)
+
+best_sol = 107911.2875
+
+-------------------------------------------------------------ITÉRATION 56 ----------------------------------------------------------
+CROSSOVER
+  0.323839 seconds (3.18 M allocations: 434.295 MiB, 12.97% gc time)
+MUTATION
+  0.172639 seconds (1.59 M allocations: 217.797 MiB, 16.31% gc time)
+
+best_sol = 107751.1320625
+
+-------------------------------------------------------------ITÉRATION 57 ----------------------------------------------------------
+CROSSOVER
+  0.325233 seconds (3.18 M allocations: 434.474 MiB, 13.00% gc time)
+MUTATION
+  0.156191 seconds (1.58 M allocations: 218.116 MiB, 9.02% gc time)
+
+best_sol = 107717.50125
+
+-------------------------------------------------------------ITÉRATION 58 ----------------------------------------------------------
+CROSSOVER
+  0.340728 seconds (3.18 M allocations: 435.680 MiB, 16.52% gc time)
+MUTATION
+  0.153759 seconds (1.58 M allocations: 217.444 MiB, 9.11% gc time)
+
+best_sol = 107717.50125
+
+-------------------------------------------------------------ITÉRATION 59 ----------------------------------------------------------
+CROSSOVER
+  0.325159 seconds (3.18 M allocations: 435.322 MiB, 13.06% gc time)
+MUTATION
+  0.173869 seconds (1.59 M allocations: 217.140 MiB, 16.40% gc time)
+
+best_sol = 107706.19625000001
+
+-------------------------------------------------------------ITÉRATION 60 ----------------------------------------------------------
+CROSSOVER
+  0.324232 seconds (3.18 M allocations: 434.222 MiB, 13.07% gc time)
+MUTATION
+  0.155291 seconds (1.58 M allocations: 217.489 MiB, 9.07% gc time)
+
+best_sol = 107706.19625000001
+
+-------------------------------------------------------------ITÉRATION 61 ----------------------------------------------------------
+CROSSOVER
+  0.341278 seconds (3.18 M allocations: 434.602 MiB, 16.61% gc time)
+MUTATION
+  0.153706 seconds (1.58 M allocations: 217.769 MiB, 9.27% gc time)
+
+best_sol = 107706.19625000001
+
+-------------------------------------------------------------ITÉRATION 62 ----------------------------------------------------------
+CROSSOVER
+  0.325211 seconds (3.18 M allocations: 435.331 MiB, 13.13% gc time)
+MUTATION
+  0.174386 seconds (1.59 M allocations: 217.268 MiB, 16.24% gc time)
+
+best_sol = 107446.65625
+
+-------------------------------------------------------------ITÉRATION 63 ----------------------------------------------------------
+CROSSOVER
+  0.325587 seconds (3.18 M allocations: 435.263 MiB, 13.16% gc time)
+MUTATION
+  0.157078 seconds (1.59 M allocations: 217.625 MiB, 9.06% gc time)
+
+best_sol = 107446.65625
+
+-------------------------------------------------------------ITÉRATION 64 ----------------------------------------------------------
+CROSSOVER
+  0.325610 seconds (3.18 M allocations: 434.587 MiB, 13.15% gc time)
+MUTATION
+  0.173174 seconds (1.59 M allocations: 217.822 MiB, 16.45% gc time)
+
+best_sol = 107446.65625
+
+-------------------------------------------------------------ITÉRATION 65 ----------------------------------------------------------
+CROSSOVER
+  0.325327 seconds (3.18 M allocations: 435.100 MiB, 13.10% gc time)
+MUTATION
+  0.175606 seconds (1.59 M allocations: 217.934 MiB, 16.26% gc time)
+
+best_sol = 107446.65625
+
+-------------------------------------------------------------ITÉRATION 66 ----------------------------------------------------------
+CROSSOVER
+  0.325111 seconds (3.18 M allocations: 435.130 MiB, 13.11% gc time)
+MUTATION
+  0.156832 seconds (1.59 M allocations: 217.755 MiB, 9.10% gc time)
+
+best_sol = 107446.65625
+
+-------------------------------------------------------------ITÉRATION 67 ----------------------------------------------------------
+CROSSOVER
+  0.325096 seconds (3.18 M allocations: 434.424 MiB, 13.21% gc time)
+MUTATION
+  0.172604 seconds (1.58 M allocations: 217.908 MiB, 16.57% gc time)
+
+best_sol = 107446.65625
+
+-------------------------------------------------------------ITÉRATION 68 ----------------------------------------------------------
+CROSSOVER
+  0.324697 seconds (3.17 M allocations: 434.810 MiB, 13.16% gc time)
+MUTATION
+  0.155456 seconds (1.58 M allocations: 217.025 MiB, 9.23% gc time)
+
+best_sol = 107446.65625
+
+-------------------------------------------------------------ITÉRATION 69 ----------------------------------------------------------
+CROSSOVER
+  0.325344 seconds (3.17 M allocations: 433.988 MiB, 13.25% gc time)
+MUTATION
+  0.173357 seconds (1.60 M allocations: 217.681 MiB, 16.52% gc time)
+
+best_sol = 107446.65625
+
+-------------------------------------------------------------ITÉRATION 70 ----------------------------------------------------------
+CROSSOVER
+  0.324194 seconds (3.18 M allocations: 435.094 MiB, 13.20% gc time)
+MUTATION
+  0.173875 seconds (1.59 M allocations: 217.523 MiB, 16.54% gc time)
+
+best_sol = 107446.65625
+
+-------------------------------------------------------------ITÉRATION 71 ----------------------------------------------------------
+CROSSOVER
+  0.325003 seconds (3.17 M allocations: 435.061 MiB, 13.17% gc time)
+MUTATION
+  0.154185 seconds (1.58 M allocations: 217.584 MiB, 9.24% gc time)
+
+best_sol = 107446.65625
+
+-------------------------------------------------------------ITÉRATION 72 ----------------------------------------------------------
+CROSSOVER
+  0.324369 seconds (3.17 M allocations: 434.373 MiB, 13.24% gc time)
+MUTATION
+  0.171879 seconds (1.58 M allocations: 217.827 MiB, 16.67% gc time)
+Nombre d'itération = 72
+ 54.530155 seconds (433.03 M allocations: 56.030 GiB, 11.74% gc time, 21.38% compilation time: 0% of which was recompilation)
+107446.65625
+4
+[1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0]
+Any[5, 7, 5, 5, 6, 5, 7, 6, 5, 5]
+
+
+true
+Moyenne = 107446.65625
+Écart type = NaN
