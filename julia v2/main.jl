@@ -31,7 +31,7 @@ result3 = general_FO(bSol1, wSize, olap, tLimit, inc, instance)
 
 
 #version = 1
-for version in 1:1
+for version in 10:10
 	println("\n--------------------INSTANCE ", version, "------------------------\n")
 	file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 	instance_dict = init.gen_instance(p,t, fp=file_path); 
@@ -48,7 +48,7 @@ for version in 1:1
 	println("\n\nALGORITHME GÉNÉTIQUE")
 
 	len_pop = 30
-	nbr_iteration = 1000
+	nbr_iteration = 500
 	println("len_pop = ", len_pop)
 	println("Temps d'exécution = ", nbr_iteration)
 
@@ -74,10 +74,10 @@ for version in 1:1
 	println(l)
 
 	windowSize = 15
-	overlap = 0.6
-	timeLimit = 200
+	overlap = 0.4
+	timeLimit = 300
 
-	increment = 3
+	increment = 5
 
 	
 	println("\nFIX AND OPTIMIZE")

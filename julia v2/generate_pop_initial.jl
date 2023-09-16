@@ -30,13 +30,8 @@ function generate_pop_initial(len_pop,instance_dict)
         
         c = construct_capacities(z, t, alpha, cmax)
 
-        y = zeros(Int64, p,t)
-        for item in P
-            line = vcat(ones(Int64, t-1-compt), zeros(Int64, compt))
-            shuffle!(line)
-            y[item, :] = vcat([1], line)
-        end
-        #y[:,1] = [1 for _ in P]
+        y = ones(Int64, p,t)
+        
         compt += 1 
 
         clsp_sol = resolve_CLSP(model,y,c,instance_dict)
@@ -57,13 +52,8 @@ function generate_pop_initial(len_pop,instance_dict)
         
         c = construct_capacities(z, t, alpha, cmax)
 
-        y = zeros(Int64, p,t)
-        for item in P
-            line = vcat(ones(Int64, t-1-compt), zeros(Int64, compt))
-            shuffle!(line)
-            y[item, :] = vcat([1],line)
-        end
-        #y[:,1] = [1 for _ in P]
+        y = ones(Int64, p,t)
+        
         clsp_sol = resolve_CLSP(model,y,c,instance_dict)
         model, x, I, u, clsp_obj = clsp_sol["model"], clsp_sol["x"], clsp_sol["I"], clsp_sol["u"], clsp_sol["clsp_obj"]
         sol_obj = clsp_obj + sum(set_up_cost .* y) + dot(mtn_cost,z)
