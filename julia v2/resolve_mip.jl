@@ -6,13 +6,13 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 50
-t = 35
+p = 35
+t = 25
 version = 1
 println("p = ", p)
 println("t = ", t)
 
-for version in 2:10
+for version in 1:10
     println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
     file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
     instance_dict = init.gen_instance(p,t, fp=file_path); 
@@ -25,9 +25,17 @@ for version in 2:10
 
     result = model_mip(instance_dict)
 
+    x = result["x"]
+    I = result["I"]
     z = result["z"]
     y = result["y"]
     z_prime = [z[t,t] for t in 1:t]
+    #=
+    println("Matrice x : ")
+    display(x)
+    println("Matrice I : ")
+    display(I)
+    =#
     println("\nNombre de maintenance : ", sum(z_prime))
     println("Plan de maintenance optimal : ")
     println(z_prime)

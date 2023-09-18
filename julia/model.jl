@@ -33,6 +33,8 @@ function model_mip(instance_dict, pl = false)
     @constraint(model, c3[i in P, t in T], x[i,t] <= (sum(demand[i,s] for s in t:len_T))*y[i,t])
     
     @constraint(model, c4[t in T], sum(x[i,t] for i in P) <= c[t])
+
+    #@constraint(model, c8[i in P, t in T], y[i,t] == 1)
     
     #@constraint(model, c5[t in T], c[t] <= cmax)
     #@constraint(model, z[1] == 1)
@@ -107,8 +109,8 @@ function build_model(instance_dict)
     obj = sum(variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T)
 
     
-    #coef = maximum(mtn_cost)/(len_T^2)
-    coef = minimum([minimum(variable_prod_cost), minimum(holding_cost)])
+    coef = maximum(mtn_cost)/(len_T^2)
+    #coef = minimum([minimum(variable_prod_cost), minimum(holding_cost)])
     
     obj += sum(coef*u[t] for t in T)
     

@@ -67,12 +67,14 @@ for version in 1:10
 		println(l)
 		objectives = result["objectives"]
 		len = length(objectives)
+		#=
 		gr()
 		plt = plot(1:len, objectives, label = "", xlabelfontsize=8, ylabelfontsize=8, title="Evolution de la fonction objectif ", titlefontsize=10, lw=1, size=(700, 400))
 		xlabel!("Nombre d'itération")
 		ylabel!("Valeur de la fonction objectif")
 		#savefig("img35-25-1.png")
 		display(plt)  # Affiche le graphique
+		=#
 	end
 end
 
