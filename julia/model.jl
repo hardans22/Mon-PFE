@@ -108,7 +108,8 @@ function build_model(instance_dict)
 
     
     #coef = maximum(mtn_cost)/(len_T^2)
-    coef = minimum(variable_prod_cost)
+    coef = minimum([minimum(variable_prod_cost), minimum(holding_cost)])
+    
     obj += sum(coef*u[t] for t in T)
     
     #obj += z
