@@ -1,0 +1,84 @@
+p = 25
+t = 15
+
+Essai pour compilation
+
+ 12.336844 seconds (28.40 M allocations: 1.357 GiB, 3.67% gc time, 96.27% compilation time: 0% of which was recompilation)
+windowSize = 15
+OBJECTIF = 266949.53887999954
+Time : 0.8479499816894531
+windowSize = 20
+OBJECTIF = 263588.4815999997
+Time : 7.194782018661499
+windowSize = 25
+OBJECTIF = 262637.8463999999
+Time : 10.937676906585693
+windowSize = 30
+OBJECTIF = 262635.3683199991
+Time : 14.232255935668945
+OBJECTIF = 262635.3683199991
+
+--------------------INSTANCE 1------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 100
+  2.382456 seconds (25.60 M allocations: 622.402 MiB, 5.30% gc time)
+308130.00928
+2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 234.61919999999992, 0.0, 0.0, 0.0, 0.0, 16.680000000000007, 20.74399999999997, 199.19519999999994, 48.55615999999995]
+Any[5, 8, 7, 7, 8, 7, 7, 5, 8, 8, 6, 8, 9, 10, 9, 6, 7, 8, 9, 10, 7, 6, 7, 6, 8]
+
+FIX AND OPTIMIZE
+increment = 20
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 261140.04319999972
+Time : 0.0025298595428466797
+windowSize = 35
+OBJECTIF = 259084.99999999997
+Time : 4.236064910888672
+windowSize = 55
+OBJECTIF = 258040.18399999986
+Time : 6.539624929428101
+windowSize = 75
+OBJECTIF = 257465.1039999998
+Time : 8.419100999832153
+windowSize = 95
+OBJECTIF = 257311.43199999965
+Time : 10.113332033157349
+windowSize = 115
+OBJECTIF = 257230.4319999996
+Time : 11.826401948928833
+windowSize = 135
+OBJECTIF = 257230.43199999927
+Time : 13.647773027420044
+windowSize = 155
+OBJECTIF = 257230.43199999927
+Time : 16.34150195121765
+windowSize = 175
+OBJECTIF = 257062.6063999991
+Time : 21.10279107093811
+windowSize = 195
+OBJECTIF = 257002.15519999928
+Time : 28.497691869735718
+windowSize = 215
+OBJECTIF = 256955.63039999953
+Time : 34.124719858169556
+windowSize = 235
+OBJECTIF = 256685.57919999846
+Time : 43.90640306472778
+windowSize = 255
+OBJECTIF = 256685.57919999846
+Time : 57.03948092460632
+OBJECTIF = 256685.57919999846
+ 65.541208 seconds (5.80 M allocations: 188.368 MiB, 0.08% gc time)
+Feasibility of solution : true
+

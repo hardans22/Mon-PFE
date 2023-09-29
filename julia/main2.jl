@@ -1,7 +1,7 @@
-
+using  PyCall
 
 include("./genetic_algorithm.jl")
-include("RelaxAndFix _ FixAndOptimize.jl")
+include("RelaxAndFix _ FixAndOptimize2.jl")
 
 pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
@@ -50,7 +50,7 @@ for version in 1:1
 
 	println("\n\nALGORITHME GÉNÉTIQUE")
 
-	len_pop = 40
+	len_pop = 30
 	nbr_iteration = 500
 	println("len_pop = ", len_pop)
 	println("Temps d'exécution = ", nbr_iteration)
@@ -78,30 +78,47 @@ for version in 1:1
 
 	windowSize = 15
 	overlap = 0.6
-	timeLimit = 400
-
-	increment = 15
+	timeLimit = 60
+    
+	increment = 10
 
 	
 	println("\nFIX AND OPTIMIZE")
 	print("increment = ", increment, "\n \n")
 	print("overlap = ", overlap, "\n \n")
 
+	@time best_sol = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
+
+    windowSize = 15
+	overlap = 0.6
+	timeLimit = 120
+
+    @time best_sol = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
+
+    windowSize = 15
+	overlap = 0.6
+	timeLimit = 620 
+
+	
 	@time best_sol1 = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
+
 	sx = best_sol1.x
 	sI = best_sol1.I
-	sy = best_sol1.y
+    sy = best_sol1.y
+    sz = best_sol1.z
+    sc = best_sol1.c
 	su = best_sol1.u
-
-    println(sum(best_sol.z))
+    println(sum(sz))
 	println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
 	println("Maintenance : ",sz)
 	println("Surplus : ",su) 
+    println("Capacité : ", sc)
 	#println("Matrice des setup : ")
 	#display(sy)
 	for i in 1:p
 		push!(l, sum(sy[i,:]))
 	end
 	println(l)
+
 end
 

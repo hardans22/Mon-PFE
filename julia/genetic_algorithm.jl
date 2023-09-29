@@ -17,12 +17,12 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
     alpha = instance_dict["alpha"]
     cmax = instance_dict["cmax"]
     mtn_cost = instance_dict["mtn_cost"]
-    
+    cst = instance_dict["cst"]
     #println("--------------------------Itération 0 --------------------------")
     
     #Population initiale 
-    
-    current_pop, model = generate_pop_initial(len_pop,instance_dict)
+    model = build_model(instance_dict,cst)
+    current_pop = generate_pop_initial(len_pop,instance_dict, model)
     current_pop = sort(current_pop, by = x -> x.obj)
     cbest_sol = copy_solution(current_pop[1])
     best_sol = copy_solution(cbest_sol)
@@ -114,7 +114,7 @@ function genetic_algorithm(instance_dict,len_pop, nbr_iteration)
         if compt == stop
             #println("COMPT = ", compt)
             #println("RESTART")
-            current_pop, model = generate_pop_initial(len_pop,instance_dict)
+            current_pop = generate_pop_initial(len_pop,instance_dict,model)
             #print_pop(current_pop)
             current_pop = sort(current_pop, by = x -> x.obj)
             cbest_sol = copy_solution(current_pop[1])

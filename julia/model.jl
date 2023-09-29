@@ -13,7 +13,7 @@ function model_mip(instance_dict, pl = false)
     alpha = instance_dict["alpha"]
     cmax = instance_dict["cmax"]
     
-    model = Model(Gurobi.Optimizer)
+    model = Model(optimizer_with_attributes(Gurobi.Optimizer,  "Threads" => 1))
     @variable(model, 0 <= x[P,T])
     @variable(model, 0 <= I[P,T])
     @variable(model, 0 <= c[T])
@@ -68,7 +68,7 @@ function model_mip(instance_dict, pl = false)
 end
 
 
-function build_model(instance_dict)
+function build_model(instance_dict, cst)
     P = instance_dict["P"]
     T = instance_dict["T"]
     len_T = instance_dict["t"]
@@ -81,9 +81,9 @@ function build_model(instance_dict)
     cmax = instance_dict["cmax"]
     #=
     c_prime = 0
-    coeff = maximum(mtn_cost)/(len_T)
-    beta = coeff
-    alpha = coeff/2
+    cstf = maximum(mtn_cost)/(len_T)
+    beta = cstf
+    alpha = cstf/2
     model[:z_prime] = @variable(model, 0 <= z_prime)
     model[:z] = @variable(model, 0 <= z)
     =#
@@ -108,11 +108,11 @@ function build_model(instance_dict)
 
     obj = sum(variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T)
 
-    
-    coef = maximum(mtn_cost)/(len_T^2)
-    #coef = minimum([minimum(variable_prod_cost), minimum(holding_cost)])
-    
-    obj += sum(coef*u[t] for t in T)
+    #=
+    cst = maximum(mtn_cost)/(len_T^2)
+    cst = (minimum(variable_prod_cost) + minimum(holding_cost))/2
+    =#
+    obj += sum(cst*u[t] for t in T)
     
     #obj += z
 

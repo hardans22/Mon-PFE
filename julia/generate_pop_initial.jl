@@ -3,7 +3,7 @@ include("./functions.jl")
 include("./model.jl")
 
 
-function generate_pop_initial(len_pop,instance_dict)
+function generate_pop_initial(len_pop,instance_dict, model)
     P = instance_dict["P"]
     T = instance_dict["T"]
     p = instance_dict["p"]
@@ -20,7 +20,7 @@ function generate_pop_initial(len_pop,instance_dict)
     feasibility = true
     c_prime = 0
     compt = 1
-    model = build_model(instance_dict)
+    #model = build_model(instance_dict)
     while feasibility
         #println(nbr_mtn)
         temp = vcat(ones(Int64, t-1-compt), zeros(Int64, compt))
@@ -69,5 +69,5 @@ function generate_pop_initial(len_pop,instance_dict)
         sol_obj = clsp_obj + sum(set_up_cost .* y) + dot(mtn_cost,z)
         push!(pop_initial_list, solution(x,I,y,z,c,u,sol_obj));
     end
-    return pop_initial_list, model
+    return pop_initial_list
 end 
