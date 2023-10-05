@@ -91,13 +91,8 @@ for version in 1:1
 
     windowSize = 15
 	overlap = 0.6
-	timeLimit = 120
-
-    @time best_sol = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
-
-    windowSize = 15
-	overlap = 0.6
-	timeLimit = 620 
+	increment = 10
+	timeLimit = 580
 
 	
 	@time best_sol1 = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)

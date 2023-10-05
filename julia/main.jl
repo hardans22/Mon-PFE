@@ -1,3 +1,4 @@
+using PyCall
 
 
 include("./genetic_algorithm.jl")
@@ -7,9 +8,9 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 35
-t = 25
-cst = 5  #COÛT DE PÉNÉLISATION DES SOLUTIONS INFAISABLES
+p = 25
+t = 15
+cst = 17  #COÛT DE PÉNÉLISATION DES SOLUTIONS INFAISABLES
 version = 1
 println("p = ", p)
 println("t = ", t)
@@ -50,8 +51,8 @@ for version in 1:1
 
 	println("\n\nALGORITHME GÉNÉTIQUE")
 
-	len_pop = 40
-	nbr_iteration = 500
+	len_pop = 30
+	nbr_iteration = 200
 	println("len_pop = ", len_pop)
 	println("Temps d'exécution = ", nbr_iteration)
 
@@ -78,9 +79,9 @@ for version in 1:1
 
 	windowSize = 15
 	overlap = 0.6
-	timeLimit = 400
+	timeLimit = 180
 
-	increment = 15
+	increment = 20
 
 	
 	println("\nFIX AND OPTIMIZE")
