@@ -13,7 +13,7 @@ function model_mip(instance_dict, pl = false)
     alpha = instance_dict["alpha"]
     cmax = instance_dict["cmax"]
     
-    model = Model(optimizer_with_attributes(Gurobi.Optimizer,  "Threads" => 1))
+    model = Model(optimizer_with_attributes(Gurobi.Optimizer, "Threads" => 1))
     @variable(model, 0 <= x[P,T])
     @variable(model, 0 <= I[P,T])
     @variable(model, 0 <= c[T])
@@ -47,7 +47,7 @@ function model_mip(instance_dict, pl = false)
     
     @objective(model, Min, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T) + sum(mtn_cost[t]*z[t,t] for t in T))
     #set_silent(model)
-    set_time_limit_sec(model, 3600.0)
+    set_time_limit_sec(model, 7200.0)
     JuMP.optimize!(model)
     obj = objective_value(model)
     sx = JuMP.value.(x)
@@ -62,9 +62,10 @@ function model_mip(instance_dict, pl = false)
     =# 
     nbr_set_up = []
     println("\nMILP_obj = ", obj)
-    println("Temps de résolution MILP = ", solve_time(model), "s")
+    time = solve_time(model)
+    println("Temps de résolution MILP = ", time, "s")
     
-    return Dict("obj" => obj, "z" => sz, "c" => sc, "y" => sy, "x" => sx, "I" => sI)
+    return Dict("obj" => obj, "z" => sz, "c" => sc, "y" => sy, "x" => sx, "I" => sI, "time" => time)
 end
 
 

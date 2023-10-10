@@ -28,7 +28,7 @@ function buildM(instance_dict,rf_or_fo)
     alpha = instance_dict["alpha"]
     cmax = instance_dict["cmax"]
 
-    model = Model(CPLEX.Optimizer)
+    model = Model(optimizer_with_attributes(Gurobi.Optimizer, "Threads" => 1))
 
     #Les vaiables
 
@@ -127,7 +127,7 @@ function solve_model(model, w_fix, w_mip, sy, sz, rf_or_fo)
 end
 
 
-function RelaxAndFix(mdl, windowSize, windowType, overlap, instance_dict)
+function RelaxAndFix(mdl, foSize, windowType, overlap, instance_dict)
     begin_time = time()
     t = instance_dict["t"]
     p = instance_dict["p"]
@@ -141,13 +141,13 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, instance_dict)
     #display(sy)
 
     curseur = 0
-    step = overlap*windowSize
+    step = overlap*foSize
     #println("step = ", step)
 
     #Initialisation de l'ensemble de toutes les cases de la matrices selon l'orientation choisi (windowType)
     sol_window = initWindow(windowType, instance_dict)
-    window = sol_window[1:windowSize]
-    w_fix = []
+    window = sol_window[1:foSize]
+    w_fix = [] #Ensemble de variables fixé
     w_mip = window
     w_lp = [elt for elt in sol_window if !(elt in window)]
     rf_or_fo = "RF"
@@ -169,8 +169,8 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, instance_dict)
         #display(sy)
         curseur += floor(Int64, step)
 
-        if curseur + windowSize <= t*p
-            window = sol_window[curseur+1:(curseur+windowSize)]
+        if curseur + foSize <= t*p
+            window = sol_window[curseur+1:(curseur+foSize)]
         else
             window = sol_window[curseur:end]
         end
@@ -190,7 +190,7 @@ function RelaxAndFix(mdl, windowSize, windowType, overlap, instance_dict)
 end
 
 
-function FixAndOptimize(mdl, sol_y, sol_z, windowSize, overlap, timeLimit, instance_dict)
+function FixAndOptimize(mdl, sol_y, sol_z, foSize, overlap, instance_dict)
     begin_time = time()
     t = instance_dict["t"]
     p = instance_dict["p"]
@@ -201,16 +201,16 @@ function FixAndOptimize(mdl, sol_y, sol_z, windowSize, overlap, timeLimit, insta
     sx, sI, su = [], [], []
     obj = 0
     
-    step = overlap*windowSize
+    step = overlap*foSize
     #println("step = ", step)
 
     rf_or_fo = "FO"
     windowType = 0
-    while true
+    for windowType in [0 1]
         #println("windowType = ", windowType)
         curseur = 0
         sol_window = initWindow(windowType, instance_dict)
-        window = sol_window[1:windowSize]
+        window = sol_window[1:foSize]
         w_mip = window
         w_fix = [elt for elt in sol_window if !(elt in window)]
         iter = 0
@@ -231,8 +231,8 @@ function FixAndOptimize(mdl, sol_y, sol_z, windowSize, overlap, timeLimit, insta
             
             curseur += floor(Int64, step)
 
-            if curseur + windowSize <= t*p
-                window = sol_window[curseur+1:(curseur+windowSize)]
+            if curseur + foSize <= t*p
+                window = sol_window[curseur+1:(curseur+foSize)]
             else
                 window = sol_window[curseur:end]
             end
@@ -246,56 +246,63 @@ function FixAndOptimize(mdl, sol_y, sol_z, windowSize, overlap, timeLimit, insta
             su = result["su"]
             #println("\tObjectif : ", obj)
 
-            if curseur + windowSize >= t*p
+            if curseur + foSize >= t*p
                 break
             end 
         end
-        windowType = 1 - windowType
-        if (time() - begin_time) >= timeLimit || windowType == 0
-            return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "sz" => sz, "sc" => sc, "su" => su)
-        end 
+        
     end
+    return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "sz" => sz, "sc" => sc, "su" => su)
 end 
 
 
-function general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict )
+function IFO(sol, foSize, foOverlap, sizeLimit, inc, instance_dict )
+    p = instance_dict["p"]
+    t = instance_dict["t"]
     begin_time = time()
-    sz = best_sol.z
-    sc = best_sol.c
-    sy = best_sol.y
-    model = buildM(instance_dict,"FO")
-    prev_cost = best_sol.obj
+    sz = sol.z
+    sc = sol.c
+    sy = sol.y
+    prev_cost = sol.obj
+
+    begin_time = time()
+    fomodel = buildM(instance_dict,"FO")
     mtn_cost = instance_dict["mtn_cost"]
+    
     timeElapsed = time() - begin_time 
-    timeRemaining = timeLimit - timeElapsed
+    
     result = Dict()
     mtnCost = dot(mtn_cost, sz)
     while true 
-        println("windowSize = ", windowSize)
+        println("foSize = ", foSize)
         #println("Previous cost = ", prev_cost)
         
-        result = FixAndOptimize(model, sy, sz, windowSize, overlap, timeRemaining, instance_dict)
+        result = FixAndOptimize(fomodel, sy, sz, foSize, foOverlap, instance_dict)
         sy = result["sy"]
         sz = result["sz"]
         sc = result["sc"]
     
-        if result["obj"] < best_sol.obj
-            best_sol = create_solution(result)
+        if result["obj"] < sol.obj
+            sol = create_solution(result)
         end 
-        println("OBJECTIF = ", best_sol.obj)
-
-        println("Time : ", timeElapsed)
-        windowSize += increment
+        println("OBJECTIF = ", sol.obj)
         
+        println("Time : ", timeElapsed)
+        dev = abs((sol.obj - prev_cost)/prev_cost)*100
+        println("Déviation = ", dev)
+        
+        foSize += inc
+    
         timeElapsed = time() - begin_time
-        timeRemaining = timeLimit - timeElapsed
-        if timeElapsed > timeLimit 
+        
+        if foSize > sizeLimit
             break
         end 
-        prev_cost = result["obj"]
     end
     
     println("OBJECTIF = ", result["obj"])
     
-    return best_sol
+    return sol
 end
+
+

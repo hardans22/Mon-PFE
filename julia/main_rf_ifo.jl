@@ -1,40 +1,32 @@
 using  PyCall
 
-include("RelaxAndFix _ FixAndOptimize2.jl")
-include("functions.jl")
+include("methods.jl")
 
 
 pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 25
-t = 15 
-cst = 5  #COÛT DE PÉNÉLISATION DES SOLUTIONS INFAISABLES
+p = 20
+t = 10 
 version = 1
 println("p = ", p)
 println("t = ", t)
 
 println("\nEssai pour compilation\n")
-file_p = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt"
-instance = init.gen_instance(p,t, fp=file_p)
-instance["P"] = 1:p
-instance["T"] = 1:t
+file_p = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+instance = init.gen_instance(p,t, fp=file_p); 
+instance["P"] = 1:p;
+instance["T"] = 1:t;
 instance["t"] = t
 instance["p"] = p 
-instance["cst"] = cst
-mdl = buildM(instance,"RF")
-wSize = 20
-wType = 0
-olap = 0.6
-tLimit = 15
-inc = 5
-@time rslt_rf = RelaxAndFix(mdl, wSize, wType, olap, instance)
+wSize = 50
+overlap= 0.8
+sLimit = 55
+increment = 5
+@time sol =  RF_IFO(wSize, overlap, wSize, overlap, increment, sLimit, instance)
 
-bsol = create_solution(rslt_rf)
-
-@time rslt_fo = general_FO(bsol, wSize, olap, tLimit, inc, instance)
-
+println("\n\n EXPÉRIMENTATION")
 for version in 1:1
 	println("\n--------------------INSTANCE ", version, "------------------------\n")
 	file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
@@ -43,51 +35,22 @@ for version in 1:1
 	instance_dict["T"] = 1:t;
 	instance_dict["t"] = t
 	instance_dict["p"] = p 
-	instance_dict["cst"] = cst
 	alpha = instance_dict["alpha"]
 	cmax = instance_dict["cmax"]
 	mtn_cost = instance_dict["mtn_cost"]
 	set_up_cost = instance_dict["set_up_cost"]
 
-    windowSize = 15
-    windowType = 0
-	overlap = 0.6
+    rfSize = 50
+	rfOverlap = 0.8
 	
-
-	increment = 10
-
+	foSize = 75
+	foOverlap = 0.6
+    inc = 5
+	sizeLimit = round(Int, p*t*0.9)
 	
-	println("\nRELAX AND FIX")
-	print("increment = ", increment, "\n \n")
-	print("overlap = ", overlap, "\n \n")
-    model = buildM(instance_dict,"RF")
-    @time result_rf = RelaxAndFix(model, windowSize, windowType, overlap, instance_dict)
+	println("\n\nRELAX AND FIX - FIX AND OPTIMIZE")
+	@time best_sol1 =  RF_IFO(rfSize, rfOverlap, foSize, foOverlap, inc, sizeLimit, instance_dict )
 
-    best_sol = create_solution(rslt_rf)
-    sx = best_sol.x
-	sI = best_sol.I
-	sy = best_sol.y
-	su = best_sol.u
-	sz = best_sol.z
-    sc = best_sol.c
-    println(sum(sz))
-	println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
-	println("Maintenance : ",sz)
-	println("Surplus : ",su) 
-	#println("Matrice des setup : ")
-	#display(sy)
-    l = []
-	for i in 1:p
-		push!(l, sum(sy[i,:]))
-	end
-	println(l)
-
-    timeLimit = 60
-    @time best_sol = general_FO(best_sol, wSize, olap, timeLimit, increment, instance)
-    
-    increment = 5
-    timeLimit = 240
-    @time best_sol1 = general_FO(best_sol, wSize, olap, timeLimit, increment, instance)
     sx = best_sol1.x
 	sI = best_sol1.I
 	sy = best_sol1.y

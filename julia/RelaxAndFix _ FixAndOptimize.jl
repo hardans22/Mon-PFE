@@ -86,7 +86,7 @@ function solve_model(model, w_fix, w_mip, sy, rf_or_fo)
     set_silent(model)
     JuMP.optimize!(model)
     
-    obj = objective_value(model)
+    obj = round(objective_value(model), digits = 2)
 
     sx = round.(JuMP.value.(x), digits = 3)
     sI = round.(JuMP.value.(I), digits = 3)
@@ -227,6 +227,8 @@ end
 
 
 function general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict )
+    p = instance_dict["p"]
+    t = instance_dict["t"]
     begin_time = time()
     sz = best_sol.z
     sc = best_sol.c
@@ -234,11 +236,11 @@ function general_FO(best_sol, windowSize, overlap, timeLimit, increment, instanc
     model = buildM(sz,sc,instance_dict, "FO")
     prev_cost = best_sol.obj
     mtn_cost = instance_dict["mtn_cost"]
-    timeElapsed = time() - begin_time 
+    timeElapsed = round(time() - begin_time, digits = 2)
     timeRemaining = timeLimit - timeElapsed
     result = Dict()
     mtnCost = dot(mtn_cost, sz)
-    while true 
+    while true && windowSize <= p*t
         println("windowSize = ", windowSize)
         #println("Previous cost = ", prev_cost)
         
@@ -256,7 +258,7 @@ function general_FO(best_sol, windowSize, overlap, timeLimit, increment, instanc
         println("Time : ", timeElapsed)
         windowSize += increment
         
-        timeElapsed = time() - begin_time
+        timeElapsed = round(time() - begin_time, digits = 2)
         timeRemaining = timeLimit - timeElapsed
         if timeElapsed > timeLimit 
             break

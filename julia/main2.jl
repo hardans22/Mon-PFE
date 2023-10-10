@@ -1,4 +1,4 @@
-using  PyCall
+using JuMP, Random, PyCall, Profile
 
 include("./genetic_algorithm.jl")
 include("RelaxAndFix _ FixAndOptimize2.jl")
@@ -9,7 +9,7 @@ init  = pyimport("__init__")
 
 p = 35
 t = 25
-cst = 5  #COÛT DE PÉNÉLISATION DES SOLUTIONS INFAISABLES
+cst = 13  #COÛT DE PÉNÉLISATION DES SOLUTIONS INFAISABLES
 version = 1
 println("p = ", p)
 println("t = ", t)
@@ -32,88 +32,99 @@ bSol1 = result2["best_sol"]
 result3 = general_FO(bSol1, wSize, olap, tLimit, inc, instance)
 
 
-#version = 1
+BestSolutions = []
 for version in 1:1
 	println("\n--------------------INSTANCE ", version, "------------------------\n")
-	file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
-	instance_dict = init.gen_instance(p,t, fp=file_path); 
-	instance_dict["P"] = 1:p;
-	instance_dict["T"] = 1:t;
-	instance_dict["t"] = t
-	instance_dict["p"] = p 
-	instance_dict["cst"] = cst
-	alpha = instance_dict["alpha"]
-	cmax = instance_dict["cmax"]
-	mtn_cost = instance_dict["mtn_cost"]
-	set_up_cost = instance_dict["set_up_cost"]
+	LesSolutions = []
+	for run in 1:1
+		println("----------------RUN ", run, "----------------")
+		file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+		instance_dict = init.gen_instance(p,t, fp=file_path); 
+		instance_dict["P"] = 1:p;
+		instance_dict["T"] = 1:t;
+		instance_dict["t"] = t
+		instance_dict["p"] = p 
+		instance_dict["cst"] = cst
+		alpha = instance_dict["alpha"]
+		cmax = instance_dict["cmax"]
+		mtn_cost = instance_dict["mtn_cost"]
+		set_up_cost = instance_dict["set_up_cost"]
 
 
-	println("\n\nALGORITHME GÉNÉTIQUE")
+		println("\n\nALGORITHME GÉNÉTIQUE")
 
-	len_pop = 30
-	nbr_iteration = 500
-	println("len_pop = ", len_pop)
-	println("Temps d'exécution = ", nbr_iteration)
+		len_pop = 30
+		nbr_iteration = 500
+		println("len_pop = ", len_pop)
+		println("Temps d'exécution = ", nbr_iteration)
 
-	@time result =  genetic_algorithm(instance_dict, len_pop,nbr_iteration)   
+		@time result =  genetic_algorithm(instance_dict, len_pop,nbr_iteration)   
 
-	objectives = result["objectives"]
-	best_sol = result["best_sol"]
-	println(best_sol.obj)
-	println(sum(best_sol.z))
-	l = []
-	sz = best_sol.z
-	sc = best_sol.c
-	sy = best_sol.y
-	su = best_sol.u
-	println("Feasibility of solution : ", verify_solution(best_sol.x, best_sol.I, sy, sz, sc, instance_dict))
-	println("Maintenance : ",sz)
-	println("Surplus : ",su) 
-	#println("Matrice des setup : ")
-	#display(sy)
-	for i in 1:p
-		push!(l, sum(sy[i,:]))
+		objectives = result["objectives"]
+		best_sol = result["best_sol"]
+		println(best_sol.obj)
+		println(sum(best_sol.z))
+		l = []
+		sz = best_sol.z
+		sc = best_sol.c
+		sy = best_sol.y
+		su = best_sol.u
+		println("Feasibility of solution : ", verify_solution(best_sol.x, best_sol.I, sy, sz, sc, instance_dict))
+		println("Maintenance : ",sz)
+		println("Surplus : ",su) 
+		#println("Matrice des setup : ")
+		#display(sy)
+		for i in 1:p
+			push!(l, sum(sy[i,:]))
+		end
+		println(l)
+
+		windowSize = 15
+		overlap = 0.6
+		timeLimit = 120
+		
+		increment = 10
+
+		
+		println("\nFIX AND OPTIMIZE")
+		print("increment = ", increment, "\n \n")
+		print("overlap = ", overlap, "\n \n")
+
+		@time best_sol = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
+
+		windowSize = 15
+		overlap = 0.6
+		timeLimit = 300
+		
+		increment = 10
+		@time best_sol1 = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
+
+		sx = best_sol1.x
+		sI = best_sol1.I
+		sy = best_sol1.y
+		sz = best_sol1.z
+		sc = best_sol1.c
+		su = best_sol1.u
+		obj = best_sol1.obj
+		push!(LesSolutions, best_sol1)
+		LesSolutions = sort(LesSolutions, by = x -> x.obj)
+		println("Best solution = ", obj)
+		println(sum(sz))
+		println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
+		println("Maintenance : ",sz)
+		println("Surplus : ",su) 
+		println("Capacité : ", sc)
+		#println("Matrice des setup : ")
+		#display(sy)
+		for i in 1:p
+			push!(l, sum(sy[i,:]))
+		end
+		println(l)
+		print_pop(LesSolutions)
 	end
-	println(l)
-
-	windowSize = 15
-	overlap = 0.6
-	timeLimit = 60
-    
-	increment = 10
-
-	
-	println("\nFIX AND OPTIMIZE")
-	print("increment = ", increment, "\n \n")
-	print("overlap = ", overlap, "\n \n")
-
-	@time best_sol = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
-
-    windowSize = 15
-	overlap = 0.6
-	increment = 10
-	timeLimit = 580
-
-	
-	@time best_sol1 = general_FO(best_sol, windowSize, overlap, timeLimit, increment, instance_dict)
-
-	sx = best_sol1.x
-	sI = best_sol1.I
-    sy = best_sol1.y
-    sz = best_sol1.z
-    sc = best_sol1.c
-	su = best_sol1.u
-    println(sum(sz))
-	println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
-	println("Maintenance : ",sz)
-	println("Surplus : ",su) 
-    println("Capacité : ", sc)
-	#println("Matrice des setup : ")
-	#display(sy)
-	for i in 1:p
-		push!(l, sum(sy[i,:]))
-	end
-	println(l)
-
+	push!(BestSolutions, LesSolutions[1])
 end
+println("\n")
+print_pop(BestSolutions)
+
 

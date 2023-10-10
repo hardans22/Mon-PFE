@@ -1,0 +1,936 @@
+p = 5
+t = 5
+
+Essai pour compilation
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  3.339363 seconds (7.92 M allocations: 500.642 MiB, 6.30% gc time, 99.24% compilation time: 5% of which was recompilation)
+1
+OBJECTIF =  15459.999999999995
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[1, 1, 2, 2, 1]
+
+ITERATED FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+foSize = 15
+OBJECTIF = 15459.999999999995
+Time : 0.06883907318115234
+Déviation = 0.0
+OBJECTIF = 15460.0
+1
+OBJECTIF =  15459.999999999995
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[1, 1, 2, 2, 1]
+OBJECTIF = 15459.999999999995
+  9.447042 seconds (16.94 M allocations: 1.067 GiB, 4.41% gc time, 99.29% compilation time: 2% of which was recompilation)
+
+
+TEST DE PARAMÈTRE rfSize DE 5 à 30
+
+PARCOURS HORIZONTAL
+windowType = 0
+
+rfOverlap = 0.4
+
+rfSize = 5
+
+--------------------INSTANCE 1------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.015921 seconds (23.50 k allocations: 889.766 KiB)
+1
+OBJECTIF =  15675.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[1, 1, 2, 2, 2]
+
+--------------------INSTANCE 2------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.020527 seconds (23.76 k allocations: 897.953 KiB)
+1
+OBJECTIF =  20659.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 2, 3, 3]
+
+--------------------INSTANCE 3------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.020691 seconds (23.72 k allocations: 896.797 KiB)
+1
+OBJECTIF =  21139.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 1, 3, 3]
+
+--------------------INSTANCE 4------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.031574 seconds (23.35 k allocations: 885.172 KiB)
+1
+OBJECTIF =  18307.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 2, 2, 2]
+
+--------------------INSTANCE 5------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.019761 seconds (23.52 k allocations: 890.578 KiB)
+1
+OBJECTIF =  20618.4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 1, 2, 2, 3]
+
+--------------------INSTANCE 6------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.017852 seconds (23.25 k allocations: 882.234 KiB)
+1
+OBJECTIF =  17534.6
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 2, 2]
+
+--------------------INSTANCE 7------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.018158 seconds (23.70 k allocations: 896.297 KiB)
+1
+OBJECTIF =  18948.48
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 3, 1, 3, 3]
+
+--------------------INSTANCE 8------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.020121 seconds (23.63 k allocations: 894.109 KiB)
+1
+OBJECTIF =  21885.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 2, 2]
+
+--------------------INSTANCE 9------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.036385 seconds (24.09 k allocations: 908.484 KiB)
+1
+OBJECTIF =  23917.6
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 2, 2, 3, 3]
+
+--------------------INSTANCE 10------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.026865 seconds (24.34 k allocations: 916.203 KiB)
+1
+OBJECTIF =  19651.879999999997
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 3, 2, 3, 3]
+
+Objectifs : Any[15675.0, 20659.0, 21139.0, 18307.0, 20618.4, 17534.6, 18948.48, 21885.0, 23917.6, 19651.88]
+Times : Any[0.02, 0.02, 0.02, 0.03, 0.02, 0.02, 0.02, 0.02, 0.04, 0.03]
+Les gap :Any[1.39, 1.07, 8.12, 0.0, 0.39, 0.49, 0.0, 0.0, 5.57, 1.98]
+La moyenne du gap est : 1.9
+La moyenne du temps est : 0.024
+
+rfSize = 10
+
+--------------------INSTANCE 1------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.008259 seconds (10.22 k allocations: 405.750 KiB)
+1
+OBJECTIF =  15459.999999999995
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[1, 1, 2, 2, 1]
+
+--------------------INSTANCE 2------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.022373 seconds (10.43 k allocations: 412.188 KiB)
+1
+OBJECTIF =  20440.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 3, 3]
+
+--------------------INSTANCE 3------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.011862 seconds (10.38 k allocations: 410.750 KiB)
+1
+OBJECTIF =  19856.800000000003
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 2, 2, 2]
+
+--------------------INSTANCE 4------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.010906 seconds (10.15 k allocations: 403.500 KiB)
+1
+OBJECTIF =  18307.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 2, 2, 2]
+
+--------------------INSTANCE 5------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.026352 seconds (10.41 k allocations: 411.812 KiB)
+1
+OBJECTIF =  20618.4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 1, 2, 2, 3]
+
+--------------------INSTANCE 6------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.012467 seconds (10.20 k allocations: 405.125 KiB)
+1
+OBJECTIF =  17534.6
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 2, 2]
+
+--------------------INSTANCE 7------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.010835 seconds (10.40 k allocations: 411.438 KiB)
+1
+OBJECTIF =  18948.48
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 3, 1, 3, 3]
+
+--------------------INSTANCE 8------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.013091 seconds (10.42 k allocations: 411.906 KiB)
+1
+OBJECTIF =  21885.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 2, 2]
+
+--------------------INSTANCE 9------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.018235 seconds (10.52 k allocations: 415.188 KiB)
+1
+OBJECTIF =  22656.4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 2, 3, 2, 2]
+
+--------------------INSTANCE 10------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.016433 seconds (10.50 k allocations: 414.438 KiB)
+1
+OBJECTIF =  19431.879999999997
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 3, 3, 2, 3]
+
+Objectifs : Any[15460.0, 20440.0, 19856.8, 18307.0, 20618.4, 17534.6, 18948.48, 21885.0, 22656.4, 19431.88]
+Times : Any[0.01, 0.02, 0.01, 0.01, 0.03, 0.01, 0.01, 0.01, 0.02, 0.02]
+Les gap :Any[0.0, 0.0, 1.56, 0.0, 0.39, 0.49, 0.0, 0.0, 0.0, 0.84]
+La moyenne du gap est : 0.33
+La moyenne du temps est : 0.015
+
+rfSize = 15
+
+--------------------INSTANCE 1------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.005942 seconds (6.63 k allocations: 286.641 KiB)
+1
+OBJECTIF =  15459.999999999995
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[1, 1, 2, 2, 1]
+
+--------------------INSTANCE 2------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.022787 seconds (6.93 k allocations: 296.047 KiB)
+1
+OBJECTIF =  20440.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 3, 3]
+
+--------------------INSTANCE 3------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.010565 seconds (6.67 k allocations: 288.172 KiB)
+1
+OBJECTIF =  19856.800000000003
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 2, 2, 2]
+
+--------------------INSTANCE 4------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.018873 seconds (6.68 k allocations: 288.391 KiB)
+1
+OBJECTIF =  18307.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 2, 2, 2]
+
+--------------------INSTANCE 5------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.014615 seconds (6.73 k allocations: 289.984 KiB)
+1
+OBJECTIF =  20618.4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 1, 2, 2, 3]
+
+--------------------INSTANCE 6------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.008903 seconds (6.55 k allocations: 284.297 KiB)
+1
+OBJECTIF =  17534.6
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 2, 2]
+
+--------------------INSTANCE 7------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.010775 seconds (6.76 k allocations: 291.016 KiB)
+1
+OBJECTIF =  18948.48
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 3, 1, 3, 3]
+
+--------------------INSTANCE 8------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.015539 seconds (7.06 k allocations: 300.297 KiB)
+1
+OBJECTIF =  21885.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 2, 2]
+
+--------------------INSTANCE 9------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.029691 seconds (7.29 k allocations: 307.422 KiB)
+1
+OBJECTIF =  22656.4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 2, 3, 2, 2]
+
+--------------------INSTANCE 10------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.022322 seconds (6.87 k allocations: 294.391 KiB)
+1
+OBJECTIF =  19431.879999999997
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 3, 3, 2, 3]
+
+Objectifs : Any[15460.0, 20440.0, 19856.8, 18307.0, 20618.4, 17534.6, 18948.48, 21885.0, 22656.4, 19431.88]
+Times : Any[0.01, 0.02, 0.01, 0.02, 0.01, 0.01, 0.01, 0.02, 0.03, 0.02]
+Les gap :Any[0.0, 0.0, 1.56, 0.0, 0.39, 0.49, 0.0, 0.0, 0.0, 0.84]
+La moyenne du gap est : 0.33
+La moyenne du temps est : 0.016
+
+rfSize = 20
+
+--------------------INSTANCE 1------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.005211 seconds (4.83 k allocations: 215.484 KiB)
+1
+OBJECTIF =  15459.999999999995
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[1, 1, 2, 2, 1]
+
+--------------------INSTANCE 2------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.021143 seconds (5.45 k allocations: 234.891 KiB)
+1
+OBJECTIF =  20440.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 3, 3]
+
+--------------------INSTANCE 3------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.008027 seconds (4.84 k allocations: 216.016 KiB)
+1
+OBJECTIF =  19551.999999999996
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 2, 2, 2, 2]
+
+--------------------INSTANCE 4------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.013153 seconds (4.84 k allocations: 215.953 KiB)
+1
+OBJECTIF =  18307.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 2, 2, 2]
+
+--------------------INSTANCE 5------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.025091 seconds (5.49 k allocations: 236.078 KiB)
+1
+OBJECTIF =  20590.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 1, 2, 2, 3]
+
+--------------------INSTANCE 6------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.006158 seconds (4.71 k allocations: 211.859 KiB)
+1
+OBJECTIF =  17449.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 1, 2]
+
+--------------------INSTANCE 7------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.019039 seconds (5.57 k allocations: 238.609 KiB)
+1
+OBJECTIF =  18948.48
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 3, 1, 3, 3]
+
+--------------------INSTANCE 8------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.007474 seconds (4.83 k allocations: 215.703 KiB)
+1
+OBJECTIF =  21885.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 2, 2]
+
+--------------------INSTANCE 9------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.037199 seconds (5.44 k allocations: 234.547 KiB)
+1
+OBJECTIF =  22656.399999999994
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 2, 3, 2, 2]
+
+--------------------INSTANCE 10------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.020349 seconds (5.29 k allocations: 230.078 KiB)
+1
+OBJECTIF =  19269.879999999997
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 3, 3, 2, 2]
+
+Objectifs : Any[15460.0, 20440.0, 19552.0, 18307.0, 20590.0, 17449.0, 18948.48, 21885.0, 22656.4, 19269.88]
+Times : Any[0.01, 0.02, 0.01, 0.01, 0.03, 0.01, 0.02, 0.01, 0.04, 0.02]
+Les gap :Any[0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0]
+La moyenne du gap est : 0.02
+La moyenne du temps est : 0.018
+
+rfSize = 25
+
+--------------------INSTANCE 1------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.004847 seconds (4.85 k allocations: 218.406 KiB)
+1
+OBJECTIF =  15459.999999999995
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[1, 1, 2, 2, 1]
+
+--------------------INSTANCE 2------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.043502 seconds (6.19 k allocations: 260.219 KiB)
+1
+OBJECTIF =  20440.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 3, 3]
+
+--------------------INSTANCE 3------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.007280 seconds (4.91 k allocations: 220.375 KiB)
+1
+OBJECTIF =  19552.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 2, 2, 2, 2]
+
+--------------------INSTANCE 4------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.011544 seconds (4.87 k allocations: 218.844 KiB)
+1
+OBJECTIF =  18307.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 2, 2, 2]
+
+--------------------INSTANCE 5------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.012030 seconds (5.35 k allocations: 234.000 KiB)
+1
+OBJECTIF =  20590.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 1, 2, 2, 3]
+
+--------------------INSTANCE 6------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.006327 seconds (4.77 k allocations: 215.906 KiB)
+1
+OBJECTIF =  17534.6
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 2, 2]
+
+--------------------INSTANCE 7------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.011139 seconds (5.57 k allocations: 240.969 KiB)
+1
+OBJECTIF =  18948.48
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 3, 1, 3, 3]
+
+--------------------INSTANCE 8------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.008805 seconds (4.93 k allocations: 220.875 KiB)
+1
+OBJECTIF =  21885.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 2, 2]
+
+--------------------INSTANCE 9------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.022940 seconds (5.39 k allocations: 235.156 KiB)
+1
+OBJECTIF =  22656.4
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 2, 3, 2, 2]
+
+--------------------INSTANCE 10------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.027016 seconds (5.51 k allocations: 238.875 KiB)
+1
+OBJECTIF =  19431.88
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 3, 3, 2, 3]
+
+Objectifs : Any[15460.0, 20440.0, 19552.0, 18307.0, 20590.0, 17534.6, 18948.48, 21885.0, 22656.4, 19431.88]
+Times : Any[0.0, 0.04, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.02, 0.03]
+Les gap :Any[0.0, 0.0, 0.0, 0.0, 0.25, 0.49, 0.0, 0.0, 0.0, 0.84]
+La moyenne du gap est : 0.16
+La moyenne du temps est : 0.015
+
+rfSize = 30
+
+--------------------INSTANCE 1------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.002967 seconds (3.04 k allocations: 158.844 KiB)
+1
+OBJECTIF =  15459.999999999993
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[1, 1, 2, 2, 1]
+
+--------------------INSTANCE 2------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.026728 seconds (4.18 k allocations: 194.562 KiB)
+1
+OBJECTIF =  20440.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 3, 3]
+
+--------------------INSTANCE 3------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.004230 seconds (3.05 k allocations: 159.312 KiB)
+1
+OBJECTIF =  19551.999999999993
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 2, 2, 2, 2]
+
+--------------------INSTANCE 4------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.013377 seconds (3.12 k allocations: 161.531 KiB)
+1
+OBJECTIF =  18306.999999999978
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 2, 2, 2]
+
+--------------------INSTANCE 5------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.025514 seconds (3.63 k allocations: 177.344 KiB)
+1
+OBJECTIF =  20538.399999999998
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 1, 2, 2, 2]
+
+--------------------INSTANCE 6------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.003620 seconds (2.98 k allocations: 157.031 KiB)
+1
+OBJECTIF =  17449.0
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 1, 2]
+
+--------------------INSTANCE 7------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.013542 seconds (3.73 k allocations: 180.750 KiB)
+1
+OBJECTIF =  18948.48
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 3, 1, 3, 3]
+
+--------------------INSTANCE 8------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.004545 seconds (3.05 k allocations: 159.375 KiB)
+1
+OBJECTIF =  21884.999999999993
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[2, 2, 3, 2, 2]
+
+--------------------INSTANCE 9------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.033344 seconds (3.63 k allocations: 177.500 KiB)
+1
+OBJECTIF =  22656.399999999987
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 2, 3, 2, 2]
+
+--------------------INSTANCE 10------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  0.029782 seconds (3.35 k allocations: 168.844 KiB)
+1
+OBJECTIF =  19269.88
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0]
+Any[3, 3, 3, 2, 2]
+
+Objectifs : Any[15460.0, 20440.0, 19552.0, 18307.0, 20538.4, 17449.0, 18948.48, 21885.0, 22656.4, 19269.88]
+Times : Any[0.0, 0.03, 0.0, 0.01, 0.03, 0.0, 0.01, 0.0, 0.03, 0.03]
+Les gap :Any[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+La moyenne du gap est : 0.0
+La moyenne du temps est : 0.014
+
+ 
+Listes des gaps moyens de chaque valeur: Any[1.9, 0.33, 0.33, 0.02, 0.16, 0.0]
+
+ 
+Listes des temps moyens de chaque valeur: Any[0.024, 0.015, 0.016, 0.018, 0.015, 0.014]

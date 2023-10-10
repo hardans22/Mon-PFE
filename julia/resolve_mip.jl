@@ -1,4 +1,4 @@
-using PyCall
+using PyCall, Statistics
 
 include("model.jl")
 
@@ -6,13 +6,13 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 25
-t = 15
-version = 1
+p = 5
+t = 25
 println("p = ", p)
 println("t = ", t)
-
-for version in 2:2
+allobj = []
+alltime = []
+for version in 1:10
     println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
     file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
     instance_dict = init.gen_instance(p,t, fp=file_path); 
@@ -29,7 +29,11 @@ for version in 2:2
     I = result["I"]
     z = result["z"]
     y = result["y"]
-    z_prime = [z[t,t] for t in 1:t]
+    obj = result["obj"]
+    time = result["time"]
+    push!(allobj, round(obj, digits = 2))
+    push!(alltime, round(time, digits = 4))
+    z_prime = [floor(Int, z[t,t]) for t in 1:t]
     #=
     println("Matrice x : ")
     display(x)
@@ -41,8 +45,12 @@ for version in 2:2
     println(z_prime)
     nbr_setup = []
     for i in 1:p
-        push!(nbr_setup, sum(y[i,:]))
+        push!(nbr_setup, floor(Int,sum(y[i,:])))
     end
     println("Nombre de setup par produit : ")
     println(nbr_setup)
 end
+println("\n \nListes des objectifs de chaque instance: ", allobj)
+println("\n \nListes des temps de résolution de chaque instance: ", alltime)
+println("\nMoyenne des temps : ", round(mean(alltime), digits = 4))
+
