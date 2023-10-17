@@ -14,6 +14,20 @@ function initWindow(windowType, instance_dict)
     return sol_window
 end 
 
+function croissant_holding_cost(x::Tuple, y::Tuple, set_up_cost)
+    x_i, x_t = x[1]-1, x[2]
+    y_i, y_t = y[1]-1, y[2]
+    return set_up_cost[x_i,x_t] > set_up_cost[y_i,y_t]
+end
+
+function order_variable(sol_window, instance_dict)
+    t = instance_dict["t"]
+    set_up_cost = instance_dict["set_up_cost"]
+    temp = sol_window[1:t]
+    sol_w = sort(sol_window[t+1:end], lt = (x, y) -> croissant_holding_cost(x, y, set_up_cost))
+    sol_window = vcat(temp, sol_w)
+    return sol_window
+end 
 
 function buildM(instance_dict,rf_or_fo)
     P = instance_dict["P"]
@@ -28,7 +42,7 @@ function buildM(instance_dict,rf_or_fo)
     alpha = instance_dict["alpha"]
     cmax = instance_dict["cmax"]
 
-    model = Model(optimizer_with_attributes(Gurobi.Optimizer, "Threads" => 1))
+    model = Model(optimizer_with_attributes(CPLEX.Optimizer, "Threads" => 1))
 
     #Les vaiables
 
@@ -146,6 +160,10 @@ function RelaxAndFix(mdl, foSize, windowType, overlap, instance_dict)
 
     #Initialisation de l'ensemble de toutes les cases de la matrices selon l'orientation choisi (windowType)
     sol_window = initWindow(windowType, instance_dict)
+    #println(sol_window)
+    #sol_window = order_variable(sol_window, instance_dict)
+    #println(sol_window)
+
     window = sol_window[1:foSize]
     w_fix = [] #Ensemble de variables fixé
     w_mip = window
