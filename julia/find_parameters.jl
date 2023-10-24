@@ -6,8 +6,8 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 50
-t = 5
+p = 5
+t = 10
 version = 1
 println("p = ", p)
 println("t = ", t)
@@ -20,7 +20,7 @@ instance["T"] = 1:t
 instance["t"] = t
 instance["p"] = p 
 
-wSize = 100
+wSize = 25
 olap = 0.6
 sLimit = 0
 
@@ -31,30 +31,30 @@ println("\n\nTEST DE PARAMÈTRE ")
 
 phi = 1.618
 
-milp_obj = [164257.0, 170422.0, 177472.0, 173467.0, 165798.0, 171770.0, 180896.0, 161965.0, 172486.0, 161851.0]
+milp_obj = [65821.0, 71523.0, 72914.0, 77234.8, 64474.0, 74472.0, 64012.0, 67394.0, 66733.0, 69388.0]
+
 allgap = Dict()
 alltimes = Dict()
 nbr_instance = 10
+dict_gap = Dict()
+dict_temps = Dict()
 for windowType in [0 1]
     println("windowType = ", windowType)
-    rfSize = 75
-    y_l = 0.1
-    y_r = 1
-    for k in 1:25
-        println("K = ", k)
-        temp = (y_r - y_l)/phi
-        y_1 = round(y_r - temp, digits = 1)
-        y_2 = round(y_l + temp, digits = 1)
+    list_rfSize = []
+    list_rfoverlap = []
+    list_gap = []
+    list_temps = []
+    for rfSize in 10:5:60
         println("rfSize = ", rfSize)
-        temp_list = []
-        for rfOverlap in [y_1, y_2]
+        for rfOverlap in 0.2:0.1:0.6
+            
             println("rfOverlap = ", rfOverlap)
+            
             if windowType == 0
                 key ="H_" * string(rfSize) * "_" * string(rfOverlap)
             else 
                 key ="V_" * string(rfSize) * "_" * string(rfOverlap)
             end
-        
             Objectifs = []
             times = []
             gap_value = [] 
@@ -87,49 +87,49 @@ for windowType in [0 1]
                 sc = sol.c
                 obj = sol.obj
                 push!(Objectifs, round(obj, digits = 2))
-                #=
-                println(sum(sz))
-                println("OBJECTIF =  ", obj)
-                println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
-                println("Maintenance : ",sz)
-                println("Surplus : ",su) 
-                l = []
-                for i in 1:p
-                    push!(l, sum(sy[i,:]))
-                end
-                println(l)
-                =#
-
             end 
-            #println("\nObjectifs : ", Objectifs)
-            #println("Times : ", times)
             for j in 1:nbr_instance
                 push!(gap_value, round((Objectifs[j]-milp_obj[j])/milp_obj[j]*100, digits = 2))
             end
-            #println("Les gap :", gap_value)
+            push!(list_rfSize, rfSize)
+            push!(list_rfoverlap, rfOverlap)
+
             g = round(mean(gap_value),digits = 2)
-            #println("La moyenne du gap est : ", g)
             allgap[key] = g
-            push!(temp_list, g)
             tm = round(mean(times), digits = 4)
-            #println("La moyenne du temps est : ", tm)
             alltimes[key] =  tm
-            if (y_r - y_l) < 0.001
-                break
-            end   
+            push!(list_gap, g)
+            push!(list_temps, tm)
         end
-        if temp_list[1] < temp_list[2]
-            y_r = y_2
-            y_2 = y_1
-        else
-            y_r = y_2
-            y_2 = y_1
-        end 
-       
-         
     end
+    if windowType == 0
+        dict_gap["H"] = list_gap
+        dict_temps["H"] = list_temps
+    else 
+        dict_gap["V"] = list_gap
+        dict_temps["V"] = list_temps 
+    end
+    println("\nListe des rfSize")
+    println(list_rfSize)
+    println("\nListe des rfOverlap")
+    println(list_rfoverlap)
 end
 
+println("Pour le parcours horizontal")
+println("Liste des gaps")
+println(dict_gap["H"])
+println("Liste des temps")
+println(dict_temps["H"])
+
+println("\n\nPour le parcours vertical")
+println("Liste des gaps")
+println(dict_gap["V"])
+println("Liste des temps")
+println(dict_temps["V"])
+
+
+
+"""
 function print_dict(d)
     for k in collect(keys(d))
         println(k, " : ", d[k])
@@ -157,3 +157,4 @@ println("\n \nListes des temps moyens pour les gap zéro: \n")
 print_dict(dict_t)
 println("\n \nListes des temps moyens de chaque valeur: \n")
 print_dict(alltimes)
+"""

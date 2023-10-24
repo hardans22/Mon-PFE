@@ -95,7 +95,7 @@ Best objective 3.443685440000e+04, best bound 3.443685440000e+04, gap 0.0000%
 User-callback calls 647, time in user-callback 0.00 sec
 
 MILP_obj = 34436.85439999996
-Temps de résolution MILP = 0.08878493309020996s
+Temps de résolution MILP = 0.09264206886291504s
 
 Nombre de maintenance : 2
 Plan de maintenance optimal : 
@@ -174,7 +174,7 @@ Cutting planes:
   Flow cover: 43
   Flow path: 29
 
-Explored 878 nodes (9752 simplex iterations) in 0.31 seconds (0.20 work units)
+Explored 878 nodes (9752 simplex iterations) in 0.33 seconds (0.20 work units)
 Thread count was 1 (of 12 available processors)
 
 Solution count 10: 38259.3 38404.3 38410.2 ... 49560
@@ -182,10 +182,10 @@ Solution count 10: 38259.3 38404.3 38410.2 ... 49560
 Optimal solution found (tolerance 1.00e-04)
 Best objective 3.825933856000e+04, best bound 3.825932867315e+04, gap 0.0000%
 
-User-callback calls 2344, time in user-callback 0.00 sec
+User-callback calls 2352, time in user-callback 0.00 sec
 
 MILP_obj = 38259.33855999999
-Temps de résolution MILP = 0.3124370574951172s
+Temps de résolution MILP = 0.3273029327392578s
 
 Nombre de maintenance : 2
 Plan de maintenance optimal : 
@@ -279,7 +279,7 @@ Cutting planes:
   Flow cover: 21
   Flow path: 13
 
-Explored 35 nodes (1328 simplex iterations) in 0.13 seconds (0.08 work units)
+Explored 35 nodes (1328 simplex iterations) in 0.14 seconds (0.08 work units)
 Thread count was 1 (of 12 available processors)
 
 Solution count 8: 41255.2 41289.2 41355.6 ... 65627
@@ -287,10 +287,10 @@ Solution count 8: 41255.2 41289.2 41355.6 ... 65627
 Optimal solution found (tolerance 1.00e-04)
 Best objective 4.125523200000e+04, best bound 4.125523200000e+04, gap 0.0000%
 
-User-callback calls 717, time in user-callback 0.00 sec
+User-callback calls 720, time in user-callback 0.00 sec
 
 MILP_obj = 41255.23199999998
-Temps de résolution MILP = 0.12907791137695312s
+Temps de résolution MILP = 0.13648200035095215s
 
 Nombre de maintenance : 2
 Plan de maintenance optimal : 
@@ -386,10 +386,10 @@ Solution count 9: 35847 35981 36192 ... 58649
 Optimal solution found (tolerance 1.00e-04)
 Best objective 3.584700000000e+04, best bound 3.584700000000e+04, gap 0.0000%
 
-User-callback calls 586, time in user-callback 0.00 sec
+User-callback calls 587, time in user-callback 0.00 sec
 
 MILP_obj = 35847.0
-Temps de résolution MILP = 0.06624984741210938s
+Temps de résolution MILP = 0.0694730281829834s
 
 Nombre de maintenance : 2
 Plan de maintenance optimal : 
@@ -481,7 +481,7 @@ Cutting planes:
   Flow path: 20
   Relax-and-lift: 1
 
-Explored 453 nodes (3940 simplex iterations) in 0.18 seconds (0.10 work units)
+Explored 453 nodes (3940 simplex iterations) in 0.20 seconds (0.10 work units)
 Thread count was 1 (of 12 available processors)
 
 Solution count 10: 39499 39502 39605.8 ... 50272.4
@@ -489,10 +489,10 @@ Solution count 10: 39499 39502 39605.8 ... 50272.4
 Optimal solution found (tolerance 1.00e-04)
 Best objective 3.949900000000e+04, best bound 3.949900000000e+04, gap 0.0000%
 
-User-callback calls 1526, time in user-callback 0.00 sec
+User-callback calls 1531, time in user-callback 0.00 sec
 
 MILP_obj = 39498.99999999999
-Temps de résolution MILP = 0.18203997611999512s
+Temps de résolution MILP = 0.19553613662719727s
 
 Nombre de maintenance : 2
 Plan de maintenance optimal : 
@@ -584,7 +584,7 @@ Cutting planes:
   Flow cover: 36
   Flow path: 21
 
-Explored 285 nodes (3991 simplex iterations) in 0.19 seconds (0.11 work units)
+Explored 285 nodes (3991 simplex iterations) in 0.20 seconds (0.11 work units)
 Thread count was 1 (of 12 available processors)
 
 Solution count 9: 37237.7 37276 37762.1 ... 52289
@@ -592,10 +592,10 @@ Solution count 9: 37237.7 37276 37762.1 ... 52289
 Optimal solution found (tolerance 1.00e-04)
 Best objective 3.723765600000e+04, best bound 3.723765600000e+04, gap 0.0000%
 
-User-callback calls 1211, time in user-callback 0.00 sec
+User-callback calls 1215, time in user-callback 0.00 sec
 
 MILP_obj = 37237.65599999996
-Temps de résolution MILP = 0.1917250156402588s
+Temps de résolution MILP = 0.1993091106414795s
 
 Nombre de maintenance : 2
 Plan de maintenance optimal : 
@@ -684,7 +684,7 @@ Cutting planes:
   Flow path: 20
   Relax-and-lift: 1
 
-Explored 372 nodes (4463 simplex iterations) in 0.18 seconds (0.12 work units)
+Explored 372 nodes (4463 simplex iterations) in 0.19 seconds (0.12 work units)
 Thread count was 1 (of 12 available processors)
 
 Solution count 10: 36087.6 36135.9 36305.7 ... 48089.4
@@ -692,10 +692,10 @@ Solution count 10: 36087.6 36135.9 36305.7 ... 48089.4
 Optimal solution found (tolerance 1.00e-04)
 Best objective 3.608756000000e+04, best bound 3.608643631817e+04, gap 0.0031%
 
-User-callback calls 1330, time in user-callback 0.00 sec
+User-callback calls 1342, time in user-callback 0.00 sec
 
 MILP_obj = 36087.559999999925
-Temps de résolution MILP = 0.17743897438049316s
+Temps de résolution MILP = 0.18859004974365234s
 
 Nombre de maintenance : 2
 Plan de maintenance optimal : 
@@ -789,7 +789,7 @@ Cutting planes:
   Inf proof: 1
   Relax-and-lift: 1
 
-Explored 1216 nodes (13722 simplex iterations) in 0.44 seconds (0.25 work units)
+Explored 1216 nodes (13722 simplex iterations) in 0.46 seconds (0.25 work units)
 Thread count was 1 (of 12 available processors)
 
 Solution count 8: 35852.4 35963 36073.1 ... 58333
@@ -797,10 +797,10 @@ Solution count 8: 35852.4 35963 36073.1 ... 58333
 Optimal solution found (tolerance 1.00e-04)
 Best objective 3.585242400000e+04, best bound 3.584889927271e+04, gap 0.0098%
 
-User-callback calls 3133, time in user-callback 0.00 sec
+User-callback calls 3150, time in user-callback 0.00 sec
 
 MILP_obj = 35852.42399999997
-Temps de résolution MILP = 0.43831896781921387s
+Temps de résolution MILP = 0.4625260829925537s
 
 Nombre de maintenance : 2
 Plan de maintenance optimal : 
@@ -895,10 +895,10 @@ Solution count 9: 36894.1 36908.8 37290 ... 60272
 Optimal solution found (tolerance 1.00e-04)
 Best objective 3.689410400000e+04, best bound 3.689310400000e+04, gap 0.0027%
 
-User-callback calls 1019, time in user-callback 0.00 sec
+User-callback calls 1025, time in user-callback 0.00 sec
 
 MILP_obj = 36894.104000000036
-Temps de résolution MILP = 0.1477510929107666s
+Temps de résolution MILP = 0.15426993370056152s
 
 Nombre de maintenance : 2
 Plan de maintenance optimal : 
@@ -981,7 +981,7 @@ Cutting planes:
   Flow cover: 16
   Flow path: 19
 
-Explored 247 nodes (3301 simplex iterations) in 0.16 seconds (0.09 work units)
+Explored 247 nodes (3301 simplex iterations) in 0.17 seconds (0.09 work units)
 Thread count was 1 (of 12 available processors)
 
 Solution count 8: 41932.4 42527.1 43696.8 ... 71401
@@ -989,10 +989,10 @@ Solution count 8: 41932.4 42527.1 43696.8 ... 71401
 Optimal solution found (tolerance 1.00e-04)
 Best objective 4.193244000000e+04, best bound 4.193244000000e+04, gap 0.0000%
 
-User-callback calls 1091, time in user-callback 0.00 sec
+User-callback calls 1098, time in user-callback 0.00 sec
 
 MILP_obj = 41932.43999999998
-Temps de résolution MILP = 0.15556693077087402s
+Temps de résolution MILP = 0.16575098037719727s
 
 Nombre de maintenance : 2
 Plan de maintenance optimal : 
@@ -1004,6 +1004,6 @@ Any[4, 4, 3, 4, 3]
 Listes des objectifs de chaque instance: Any[34436.85, 38259.34, 41255.23, 35847.0, 39499.0, 37237.66, 36087.56, 35852.42, 36894.1, 41932.44]
 
  
-Listes des temps de résolution de chaque instance: Any[0.0888, 0.3124, 0.1291, 0.0662, 0.182, 0.1917, 0.1774, 0.4383, 0.1478, 0.1556]
+Listes des temps de résolution de chaque instance: Any[0.0926, 0.3273, 0.1365, 0.0695, 0.1955, 0.1993, 0.1886, 0.4625, 0.1543, 0.1658]
 
-Moyenne des temps : 0.1889
+Moyenne des temps : 0.1992

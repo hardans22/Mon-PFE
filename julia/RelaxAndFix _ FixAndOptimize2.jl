@@ -42,7 +42,9 @@ function buildM(instance_dict,rf_or_fo)
     alpha = instance_dict["alpha"]
     cmax = instance_dict["cmax"]
 
-    model = Model(optimizer_with_attributes(CPLEX.Optimizer, "Threads" => 1))
+    model = Model(optimizer_with_attributes(Gurobi.Optimizer, "Threads" => 1))
+    #model = Model(CPLEX.Optimizer)
+    #set_optimizer_attribute(model, "CPXPARAM_Threads", 1)
 
     #Les vaiables
 
@@ -171,6 +173,7 @@ function RelaxAndFix(mdl, foSize, windowType, overlap, instance_dict)
     rf_or_fo = "RF"
     iter = 0
     while true
+        #println("YYYYYYYYYYYYYYYYYYEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSS")
         iter+=1
         #println("\t\t-------------------Itération ", iter, "--------------------")
         #=
