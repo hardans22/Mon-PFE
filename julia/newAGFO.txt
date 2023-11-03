@@ -1,0 +1,499 @@
+p = 20
+t = 10
+
+Essai pour compilation
+
+
+ALGORITHME GÉNÉTIQUE
+ 10.037445 seconds (18.12 M allocations: 935.976 MiB, 3.23% gc time, 98.89% compilation time: 0% of which was recompilation)
+181236.0
+3
+Production au-delà de la capacité 
+Feasibility of solution : false
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  3.332987 seconds (5.53 M allocations: 292.901 MiB, 2.56% gc time, 63.69% compilation time)
+OBJECTIF =  131772.32
+Feasibility of solution : true
+ 19.131689 seconds (40.91 M allocations: 2.091 GiB, 3.67% gc time, 93.03% compilation time: 0% of which was recompilation)
+
+--------------------INSTANCE 1------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.124593 seconds (1.37 M allocations: 39.309 MiB)
+155834.0
+3
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  2.714695 seconds (53.50 k allocations: 2.102 MiB)
+OBJECTIF =  131695.0
+Feasibility of solution : true
+
+--------------------INSTANCE 2------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.188929 seconds (1.50 M allocations: 43.506 MiB, 14.91% gc time, 14.77% compilation time)
+164110.168
+2
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  0.730855 seconds (40.57 k allocations: 1.708 MiB)
+OBJECTIF =  132328.0
+Feasibility of solution : true
+
+--------------------INSTANCE 3------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.135299 seconds (1.42 M allocations: 40.503 MiB)
+160109.68
+2
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  0.412619 seconds (37.41 k allocations: 1.611 MiB)
+OBJECTIF =  132119.0
+Feasibility of solution : true
+
+--------------------INSTANCE 4------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.158012 seconds (1.47 M allocations: 41.706 MiB, 16.35% gc time)
+161485.0
+3
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  0.851948 seconds (41.98 k allocations: 1.751 MiB)
+OBJECTIF =  130755.0
+Feasibility of solution : true
+
+--------------------INSTANCE 5------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.121475 seconds (1.39 M allocations: 39.815 MiB)
+150193.32
+2
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  0.214912 seconds (37.22 k allocations: 1.605 MiB)
+OBJECTIF =  126478.0
+Feasibility of solution : true
+
+--------------------INSTANCE 6------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.165023 seconds (1.43 M allocations: 40.732 MiB, 14.18% gc time)
+153837.6144
+2
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  1.083585 seconds (41.10 k allocations: 1.724 MiB)
+OBJECTIF =  131482.0
+Feasibility of solution : true
+
+--------------------INSTANCE 7------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.132777 seconds (1.51 M allocations: 42.572 MiB)
+154827.8
+2
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  1.231863 seconds (42.08 k allocations: 1.754 MiB)
+OBJECTIF =  135600.0
+Feasibility of solution : true
+
+--------------------INSTANCE 8------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.163007 seconds (1.58 M allocations: 44.164 MiB)
+152414.176
+2
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  0.587590 seconds (38.84 k allocations: 1.655 MiB, 3.40% gc time)
+OBJECTIF =  129495.0
+Feasibility of solution : true
+
+--------------------INSTANCE 9------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.132764 seconds (1.46 M allocations: 41.373 MiB)
+161971.488
+2
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  0.980082 seconds (39.45 k allocations: 1.674 MiB)
+OBJECTIF =  132536.0
+Feasibility of solution : true
+
+--------------------INSTANCE 10------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.156353 seconds (1.57 M allocations: 44.019 MiB)
+157656.04
+2
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+  0.449838 seconds (38.40 k allocations: 1.641 MiB)
+OBJECTIF =  130526.41
+Feasibility of solution : true
+
+
+Moyenne des objectifs : 131301.441
+Moyenne des gaps : 0.006
+Moyenne des temps de AG : 0.1479
+Moyenne des temps de FO : 0.9259
+Moyenne des temps total : 1.0737
+
+
+
+
+p = 20
+t = 25
+
+Essai pour compilation
+
+
+ALGORITHME GÉNÉTIQUE
+ 10.238838 seconds (19.69 M allocations: 992.924 MiB, 3.01% gc time, 97.03% compilation time: 0% of which was recompilation)
+437201.7792
+6
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+ 12.722910 seconds (6.10 M allocations: 312.221 MiB, 0.70% gc time, 16.72% compilation time)
+OBJECTIF =  334217.18
+Feasibility of solution : true
+ 28.774587 seconds (43.11 M allocations: 2.168 GiB, 2.46% gc time, 61.96% compilation time: 0% of which was recompilation)
+
+--------------------INSTANCE 1------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.381313 seconds (3.84 M allocations: 116.266 MiB, 6.93% gc time)
+426298.288
+6
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+ 32.657091 seconds (271.02 k allocations: 9.216 MiB)
+OBJECTIF =  332225.78
+Feasibility of solution : true
+
+--------------------INSTANCE 2------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.407772 seconds (3.96 M allocations: 120.093 MiB, 5.58% gc time, 6.99% compilation time)
+403639.6256
+6
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+ 51.068764 seconds (358.35 k allocations: 11.882 MiB)
+OBJECTIF =  312873.11
+Feasibility of solution : true
+
+--------------------INSTANCE 3------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.388106 seconds (3.95 M allocations: 118.670 MiB, 6.31% gc time)
+424539.296
+6
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+ 86.985249 seconds (484.21 k allocations: 15.723 MiB)
+OBJECTIF =  329088.83
+Feasibility of solution : true
+
+--------------------INSTANCE 4------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.325741 seconds (3.91 M allocations: 117.849 MiB, 5.58% gc time)
+448992.2
+10
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+648.122437 seconds (2.38 M allocations: 73.440 MiB, 0.00% gc time)
+OBJECTIF =  339154.52
+Feasibility of solution : true
+
+--------------------INSTANCE 5------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.392918 seconds (4.03 M allocations: 120.430 MiB, 4.23% gc time)
+420103.784
+7
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+100.138271 seconds (579.54 k allocations: 18.632 MiB)
+OBJECTIF =  324784.29
+Feasibility of solution : true
+
+--------------------INSTANCE 6------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.366964 seconds (3.97 M allocations: 119.031 MiB, 6.19% gc time)
+417997.152
+6
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+ 39.267992 seconds (299.46 k allocations: 10.084 MiB)
+OBJECTIF =  334860.0
+Feasibility of solution : true
+
+--------------------INSTANCE 7------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.364167 seconds (3.88 M allocations: 116.979 MiB, 5.00% gc time)
+418825.4144
+7
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+ 34.928862 seconds (279.98 k allocations: 9.490 MiB, 0.06% gc time)
+OBJECTIF =  338631.0
+Feasibility of solution : true
+
+--------------------INSTANCE 8------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.328805 seconds (3.85 M allocations: 116.573 MiB, 5.11% gc time)
+425122.22400000005
+7
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+ 41.946546 seconds (319.86 k allocations: 10.707 MiB)
+OBJECTIF =  330162.44
+Feasibility of solution : true
+
+--------------------INSTANCE 9------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.335186 seconds (3.76 M allocations: 114.304 MiB, 5.04% gc time)
+451626.2
+8
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+114.995765 seconds (566.12 k allocations: 18.222 MiB)
+OBJECTIF =  338707.53
+Feasibility of solution : true
+
+--------------------INSTANCE 10------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE
+len_pop = 15
+Nombre d'itération = 15
+
+ALGORITHME GÉNÉTIQUE
+  0.403906 seconds (3.96 M allocations: 118.885 MiB, 4.14% gc time)
+398609.488
+5
+Feasibility of solution : true
+
+FIX AND OPTIMIZE
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-05-10
+Set parameter Threads to value 1
+204.975161 seconds (792.28 k allocations: 25.124 MiB, 0.01% gc time)
+OBJECTIF =  320031.27
+Feasibility of solution : true
+
+
+Moyenne des objectifs : 330051.877
+Moyenne des gaps : 0.061
+Moyenne des temps de AG : 0.3696
+Moyenne des temps de FO : 135.5086
+Moyenne des temps total : 135.8782

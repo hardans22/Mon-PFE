@@ -6,13 +6,13 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 5
+p = 50
 t = 25
 println("p = ", p)
 println("t = ", t)
 allobj = []
 alltime = []
-for version in 1:10
+for version in 1:2
     println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
     file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
     instance_dict = init.gen_instance(p,t, fp=file_path); 

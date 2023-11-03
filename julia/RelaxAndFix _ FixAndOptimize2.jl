@@ -1,10 +1,20 @@
 using JuMP, Gurobi, CPLEX, LinearAlgebra
 include("functions.jl")
 
+#Cette version combine les variables de mintenances et de setup
+
 function initWindow(windowType, instance_dict)
-    p = instance_dict["p"] + 1
+    #= 
+        Cette fonction permet d'initialiser 
+        le type de parcours. 
+        windowType = 0 : parcours horizontal
+        windowType = 1 : parcours vertical  
+        On retourne ensemble contenant des couple (item, temps)
+    =#
+
+    p = instance_dict["p"] + 1 #Ajout de la liste des variables de maintenance comme un produit 
     P = 1:p
-    T = instance_dict["T"]
+    T = instance_dict["T"] #Ensemble des périodes 
     
     if windowType == 0
         sol_window = [(i,t) for i in P for t in T]
@@ -15,38 +25,57 @@ function initWindow(windowType, instance_dict)
 end 
 
 function croissant_holding_cost(x::Tuple, y::Tuple, set_up_cost)
+    #=
+    Compare les coûts associés à deux variables de décision 
+    représentées par leurs couples (item, temps) respectifs 
+    qui sont x et y. On fait -1 à x[1] et à y[1] parce que 
+    par exemple (2,1) reperesente (1,1) dans la matrice des 
+    coûts 
+    =#
     x_i, x_t = x[1]-1, x[2]
     y_i, y_t = y[1]-1, y[2]
     return set_up_cost[x_i,x_t] > set_up_cost[y_i,y_t]
 end
 
 function order_variable(sol_window, instance_dict)
+    #=
+        Permet d'ordorner les positions des variables 
+        suivant leur valeurs dans l'une des matrice 
+        de coûts. Pour le moment, cela est fait 
+        uniquement pour le parcours horizontal  
+    =# 
     t = instance_dict["t"]
     set_up_cost = instance_dict["set_up_cost"]
-    temp = sol_window[1:t]
+    temp = sol_window[1:t] #Recupère la première ligne qui est le vecteur de maintenance
     sol_w = sort(sol_window[t+1:end], lt = (x, y) -> croissant_holding_cost(x, y, set_up_cost))
-    sol_window = vcat(temp, sol_w)
+    sol_window = vcat(temp, sol_w) #On remet le vecteur de maintenanceà sa place après le tri 
     return sol_window
 end 
 
 function buildM(instance_dict,rf_or_fo)
-    P = instance_dict["P"]
-    T = instance_dict["T"]
-    len_T = instance_dict["t"]
-    len_P = instance_dict["p"]
-    demand = instance_dict["demand"]
-    variable_prod_cost = instance_dict["variable_prod_cost"]
-    holding_cost = instance_dict["holding_cost"]
-    set_up_cost = instance_dict["set_up_cost"]
-    mtn_cost = instance_dict["mtn_cost"]
-    alpha = instance_dict["alpha"]
-    cmax = instance_dict["cmax"]
+    #=
+        Construction d'un modèle qui est 
+        réutilisé dans la suite. Il existe 
+        deux options lors de la création du 
+        modele : RF et RF (voir dans la suite).
+    =#
+    P = instance_dict["P"] #Ensemble d'items
+    T = instance_dict["T"] #Ensemble de périodes
+    len_T = instance_dict["t"] #Nombre de période 
+    len_P = instance_dict["p"] 
+    demand = instance_dict["demand"] #Matrice des demandes par item et par période
+    variable_prod_cost = instance_dict["variable_prod_cost"] #Matrice des coûts variable de production par item et par période
+    holding_cost = instance_dict["holding_cost"] #Matrice des coûts de stackoge par item et par période
+    set_up_cost = instance_dict["set_up_cost"] #Matrice des mise en route par item et par période
+    mtn_cost = instance_dict["mtn_cost"] #Matrice des coûts de maintenance par période
+    alpha = instance_dict["alpha"]  #Coefficient de réduction de  capacité 
+    cmax = instance_dict["cmax"]  #Capacité maximale de la machine
 
     model = Model(optimizer_with_attributes(Gurobi.Optimizer, "Threads" => 1))
     #model = Model(CPLEX.Optimizer)
     #set_optimizer_attribute(model, "CPXPARAM_Threads", 1)
 
-    #Les vaiables
+    #Les variables
 
     model[:x] = @variable(model, 0 <= x[P,T])
 
@@ -92,6 +121,17 @@ end
 
 
 function solve_model(model, w_fix, w_mip, sy, sz, rf_or_fo)
+    #=
+        Résolution du modèle
+        model : le modèle crée
+        w_fix : ensemble d'indices des variables à fixer
+        w_mip : ensemble d'indices des variables qui seront 
+        binaires et libres dans le modèle
+        sy : la matrice des décisions de mise en route 
+        sz : le vecteur des décisions de maintenances
+        rf_or_fo : permet de définir si c'est "RF" ou "FO"
+    =# 
+    #Récupération des variables dans modèle
     x = model[:x]
     I = model[:I]
     y = model[:y]
@@ -100,17 +140,18 @@ function solve_model(model, w_fix, w_mip, sy, sz, rf_or_fo)
     u = model[:u]
 
     cts = []
+    #Ajout des contraintes pour fixer les variables
     for elt in w_fix
         i, t = elt[1], elt[2]
-        if i == 1
+        if i == 1 # Si i =1 alors c'est une variable de maintenance
             ct = @constraint(model, z[t] == sz[t])
-        else
+        else # Sinon c'est une variable de mise en route 
             ct = @constraint(model, y[i-1,t] == sy[i-1,t])
         end
-        push!(cts,ct)
+        push!(cts,ct)  #On ajoute à la liste des contraintes 
     end
     
-    if rf_or_fo == "RF"
+    if rf_or_fo == "RF"  #Si c'est le Relax-and-fix, on ajoute ceci
         for elt in w_mip 
             i, t = elt[1], elt[2]
             if i == 1
@@ -133,7 +174,7 @@ function solve_model(model, w_fix, w_mip, sy, sz, rf_or_fo)
     sc = round.(JuMP.value.(c), digits = 3)
     su = round.(JuMP.value.(u), digits = 3)
     
-    if rf_or_fo == "FO"
+    if rf_or_fo == "FO" #Suppression des contraintes si c'est le Fix-and-optimize
         for ct in cts
             delete(model, ct)
         end
@@ -143,10 +184,22 @@ function solve_model(model, w_fix, w_mip, sy, sz, rf_or_fo)
 end
 
 
-function RelaxAndFix(mdl, foSize, windowType, overlap, instance_dict)
+function RelaxAndFix(mdl, rfSize, windowType, overlap, instance_dict)
+    #=
+        mdl = modèle crée 
+        rfSize = Taille de la fenêtre de variable libres binaires 
+        à chaque itération
+        windowType = type de parcours (0 ou 1)
+        overlap = proportion de variable par rapport à rfSize à 
+        fixer (entre 0 et 1)
+        Notons que overlap est également la proportion de nouvelles 
+        variables ajoutées dans la fenêtre. Ainsi 1- overlap est la 
+        proportion de variable par rapport à rf Size qui sont réoptimisées 
+    =#
     begin_time = time()
-    t = instance_dict["t"]
-    p = instance_dict["p"]
+    t = instance_dict["t"] #Nombre de période 
+    p = instance_dict["p"] #Nombrede produits 
+
     #Résolution du problème linéaire avec y continue
     set_silent(mdl)
     JuMP.optimize!(mdl)
@@ -156,8 +209,8 @@ function RelaxAndFix(mdl, foSize, windowType, overlap, instance_dict)
     sz = JuMP.value.(z)
     #display(sy)
 
-    curseur = 0
-    step = overlap*foSize
+    curseur = 0 #curseur est comme un pointeur sur l'évolution dans la matrice des variables
+    step = overlap*rfSize
     #println("step = ", step)
 
     #Initialisation de l'ensemble de toutes les cases de la matrices selon l'orientation choisi (windowType)
@@ -166,17 +219,17 @@ function RelaxAndFix(mdl, foSize, windowType, overlap, instance_dict)
     #sol_window = order_variable(sol_window, instance_dict)
     #println(sol_window)
 
-    window = sol_window[1:foSize]
-    w_fix = [] #Ensemble de variables fixé
-    w_mip = window
-    w_lp = [elt for elt in sol_window if !(elt in window)]
+    window = sol_window[1:rfSize] #Initialisation de window
+    w_fix = [] #Ensemble de variables fixées
+    w_mip = window #Ensemble des variables binaires libres dans le modèle
+    w_lp = [elt for elt in sol_window if !(elt in window)] #Ensemble des variables relaxées daans le modèle
     rf_or_fo = "RF"
     iter = 0
     while true
         #println("YYYYYYYYYYYYYYYYYYEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSS")
         iter+=1
-        #println("\t\t-------------------Itération ", iter, "--------------------")
         #=
+        println("\t\t-------------------Itération ", iter, "--------------------")
         println("window : ", length(window))
         println("w_fix : ", length(w_fix))
         println("w_mip : ", length(w_mip))
@@ -188,14 +241,15 @@ function RelaxAndFix(mdl, foSize, windowType, overlap, instance_dict)
         sc = result["sc"]
         mdl = result["model"]
         #display(sy)
-        curseur += floor(Int64, step)
+        curseur += floor(Int64, step)  #On déplace le curseur
 
-        if curseur + foSize <= t*p
-            window = sol_window[curseur+1:(curseur+foSize)]
-        else
+        if curseur + rfSize <= t*p #On vérifie si depuis curseur on peut avoir rfSize variables
+            window = sol_window[curseur+1:(curseur+rfSize)]
+        else  #Sinon on prend de curseur jusqu'à la fin
             window = sol_window[curseur:end]
         end
-            
+        
+        #Mise en jour des ensembles 
         w_fix = vcat(w_fix, [elt for elt in w_mip if !(elt in window)])
         w_mip = window
         w_lp = [elt for elt in w_lp if !(elt in window)]

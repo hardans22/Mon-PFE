@@ -1,7 +1,7 @@
 using JuMP, Random, PyCall, Profile, Plots
 
 include("./genetic_algorithm.jl")
-include("RelaxAndFix _ FixAndOptimize.jl")
+include("RelaxAndFix _ FixAndOptimize2.jl")
 
 pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")

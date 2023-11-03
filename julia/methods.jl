@@ -1,11 +1,13 @@
 
 include("./genetic_algorithm.jl")
-include("RelaxAndFix _ FixAndOptimize2.jl")
+include("RelaxAndFix _ FixAndOptimize3.jl")
 
-function AG_IFO(len_pop, nbr_iter, foSize, foOverlap,sizeLimit, inc, instance_dict)
+function AG_FO(len_pop, nbr_iter, foSize, foStep,instance_dict)
 
 	println("\nALGORITHME GÉNÉTIQUE")
+	begin_time = time()
 	@time result =  genetic_algorithm(instance_dict, len_pop,nbr_iter)   
+	ag_timeElapsed = round(time() - begin_time, digits = 4)
 
 	best_sol = result["best_sol"]
 	println(best_sol.obj)
@@ -16,40 +18,33 @@ function AG_IFO(len_pop, nbr_iter, foSize, foOverlap,sizeLimit, inc, instance_di
 	sy = best_sol.y
 	su = best_sol.u
 	println("Feasibility of solution : ", verify_solution(best_sol.x, best_sol.I, sy, sz, sc, instance_dict))
-	println("Maintenance : ",sz)
-	println("Surplus : ",su) 
+	#println("Maintenance : ",sz)
+	#println("Surplus : ",su) 
 	#println("Matrice des setup : ")
 	#display(sy)
-	for i in 1:p
-		push!(l, sum(sy[i,:]))
-	end
-	println(l)
 	
-	println("\nITERATED FIX AND OPTIMIZE")
-	sol = IFO(best_sol, foSize, foOverlap, sizeLimit, inc, instance_dict )
-    
-    sx = sol.x
-	sI = sol.I
-	sy = sol.y
-	su = sol.u
-	sz = sol.z
-    sc = sol.c
-    obj = sol.obj
-    println(sum(sz))
-	println("OBJECTIF =  ", obj)
+	println("\nFIX AND OPTIMIZE")
+	
+	fomodel = buildM(instance_dict, "FO")
+	begin_time = time()
+	@time result_fo = FixAndOptimize(fomodel, sy, sz, foSize, foStep, instance_dict) 
+	fo_timeElapsed = round(time() - begin_time, digits = 4)
+    sx = result_fo["sx"]
+	sI = result_fo["sI"]
+	sy = result_fo["sy"]
+	su = result_fo["su"]
+	sz = result_fo["sz"]
+	sc = result_fo["sc"]
+	fo_obj = round(result_fo["obj"], digits  = 2)
+	println("OBJECTIF =  ", fo_obj)
 	println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
-	println("Maintenance : ",sz)
-	println("Surplus : ",su) 
-    l = []
-	for i in 1:p
-		push!(l, sum(sy[i,:]))
-	end
-	println(l)
+	#println("Maintenance : ",sz)
+	#println("Surplus : ",su) 
 
+	return create_solution(result_fo), ag_timeElapsed, fo_timeElapsed
 end 
 
-function RF_IFO(rfSize, rfOverlap, foSize, foOverlap, inc, sizeLimit,instance_dict )
-    p = instance_dict["p"]
+function RF_IFO(rfSize, rfOverlap, foSize, foStep,instance_dict )    p = instance_dict["p"]
     t = instance_dict["t"]
 
     println("\nRELAX AND FIX ")
@@ -76,7 +71,7 @@ function RF_IFO(rfSize, rfOverlap, foSize, foOverlap, inc, sizeLimit,instance_di
     
     println("\nITERATED FIX AND OPTIMIZE ")
 
-    sol = IFO(sol, foSize, foOverlap, sizeLimit, inc, instance_dict )
+    sol = IFO(sol, foSize, foStep, instance_dict )
     
     sx = sol.x
 	sI = sol.I

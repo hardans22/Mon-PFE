@@ -1,0 +1,610 @@
+p = 30
+t = 25
+
+Essai pour compilation
+
+ 10.283466 seconds (24.24 M allocations: 1.225 GiB, 5.30% gc time, 90.92% compilation time: 2% of which was recompilation)
+windowSize = 15
+OBJECTIF = 501268.4799999985
+Time : 0.8643689155578613
+OBJECTIF = 501268.4799999985
+
+--------------------INSTANCE 1------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 1500
+ 65.045190 seconds (589.57 M allocations: 13.615 GiB, 2.83% gc time, 0.02% compilation time)
+575856.9024
+5
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[11, 8, 8, 11, 8, 12, 8, 12, 11, 9, 10, 10, 10, 9, 11, 9, 10, 10, 12, 10, 12, 10, 9, 12, 11, 9, 13, 10, 12, 10]
+
+FIX AND OPTIMIZE
+increment = 3
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 498215.99999999936
+Time : 0.025372982025146484
+windowSize = 18
+OBJECTIF = 496279.99999999773
+Time : 28.492905855178833
+windowSize = 21
+OBJECTIF = 495697.6831999978
+Time : 54.124605894088745
+windowSize = 24
+OBJECTIF = 495583.6831999979
+Time : 75.39997291564941
+windowSize = 27
+OBJECTIF = 495451.625599998
+Time : 93.5056049823761
+windowSize = 30
+OBJECTIF = 495451.625599998
+Time : 110.02907586097717
+windowSize = 33
+OBJECTIF = 495356.6255999998
+Time : 124.0885169506073
+windowSize = 36
+OBJECTIF = 495134.5375999997
+Time : 135.1927969455719
+windowSize = 39
+OBJECTIF = 494923.85759999964
+Time : 145.18364882469177
+windowSize = 42
+OBJECTIF = 494789.60959999985
+Time : 154.99242091178894
+windowSize = 45
+OBJECTIF = 494497.62559999997
+Time : 164.19646000862122
+windowSize = 48
+OBJECTIF = 494497.62559999997
+Time : 174.93879890441895
+OBJECTIF = 494499.9999999987
+180.476486 seconds (66.53 M allocations: 2.204 GiB, 0.23% gc time, 0.09% compilation time)
+Feasibility of solution : true
+
+--------------------INSTANCE 2------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 1500
+ 66.279262 seconds (591.19 M allocations: 13.706 GiB, 3.33% gc time)
+574788.816
+6
+Feasibility of solution : true
+Maintenance : [1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[12, 10, 12, 14, 13, 12, 13, 13, 15, 10, 11, 13, 14, 11, 12, 13, 12, 11, 11, 12, 9, 10, 11, 12, 10, 12, 13, 9, 12, 13]
+
+FIX AND OPTIMIZE
+increment = 3
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 494329.00799999945
+Time : 0.023324012756347656
+windowSize = 18
+OBJECTIF = 492938.00799999945
+Time : 30.56651496887207
+windowSize = 21
+OBJECTIF = 492938.00799999945
+Time : 53.89954900741577
+windowSize = 24
+OBJECTIF = 492938.00799999945
+Time : 70.3825478553772
+windowSize = 27
+OBJECTIF = 492911.0079999998
+Time : 84.79882884025574
+windowSize = 30
+OBJECTIF = 492781.0639999997
+Time : 98.73136496543884
+windowSize = 33
+OBJECTIF = 492559.0639999998
+Time : 114.87722396850586
+windowSize = 36
+OBJECTIF = 491559.9999999997
+Time : 129.67460989952087
+windowSize = 39
+OBJECTIF = 491115.6591999997
+Time : 144.33292293548584
+windowSize = 42
+OBJECTIF = 490559.6639999999
+Time : 157.32468390464783
+windowSize = 45
+OBJECTIF = 490331.6639999999
+Time : 171.2387659549713
+OBJECTIF = 490331.6639999999
+183.779825 seconds (64.63 M allocations: 2.135 GiB, 0.19% gc time)
+Feasibility of solution : true
+
+--------------------INSTANCE 3------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 1500
+ 66.847734 seconds (590.11 M allocations: 13.627 GiB, 3.50% gc time)
+577199.6799999999
+6
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[10, 10, 10, 10, 10, 10, 12, 11, 13, 10, 10, 12, 8, 13, 12, 10, 9, 12, 9, 10, 12, 11, 10, 10, 10, 10, 10, 9, 11, 10]
+
+FIX AND OPTIMIZE
+increment = 3
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 498805.9999999992
+Time : 0.02377796173095703
+windowSize = 18
+OBJECTIF = 496551.18399999925
+Time : 14.785465002059937
+windowSize = 21
+OBJECTIF = 495818.3199999993
+Time : 28.740204095840454
+windowSize = 24
+OBJECTIF = 495155.9999999996
+Time : 46.36119198799133
+windowSize = 27
+OBJECTIF = 494195.08799999964
+Time : 64.78151512145996
+windowSize = 30
+OBJECTIF = 494195.08799999964
+Time : 79.06674408912659
+windowSize = 33
+OBJECTIF = 494195.08799999964
+Time : 89.99338412284851
+windowSize = 36
+OBJECTIF = 494026.1679999997
+Time : 101.16642808914185
+windowSize = 39
+OBJECTIF = 493625.16799999966
+Time : 111.09539008140564
+windowSize = 42
+OBJECTIF = 493539.24799999985
+Time : 120.60170197486877
+windowSize = 45
+OBJECTIF = 493539.24799999985
+Time : 131.34566617012024
+windowSize = 48
+OBJECTIF = 493414.0
+Time : 141.13658809661865
+windowSize = 51
+OBJECTIF = 492880.24799999985
+Time : 150.44530701637268
+windowSize = 54
+OBJECTIF = 492646.8799999996
+Time : 161.71173906326294
+windowSize = 57
+OBJECTIF = 492447.14399999974
+Time : 173.594544172287
+OBJECTIF = 492447.14399999974
+185.439349 seconds (76.11 M allocations: 2.493 GiB, 0.21% gc time)
+Feasibility of solution : true
+
+--------------------INSTANCE 4------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 1500
+ 66.853602 seconds (595.16 M allocations: 13.836 GiB, 3.75% gc time)
+598447.0560000001
+6
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[12, 10, 12, 10, 11, 12, 11, 12, 10, 13, 10, 11, 12, 11, 14, 10, 13, 14, 12, 13, 14, 10, 8, 11, 11, 9, 13, 12, 14, 9]
+
+FIX AND OPTIMIZE
+increment = 3
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 512290.0799999992
+Time : 0.023922204971313477
+windowSize = 18
+OBJECTIF = 510567.0799999992
+Time : 27.62230610847473
+windowSize = 21
+OBJECTIF = 509827.9999999995
+Time : 52.52645421028137
+windowSize = 24
+OBJECTIF = 509683.99999999953
+Time : 74.36967206001282
+windowSize = 27
+OBJECTIF = 509524.99999999965
+Time : 91.5609040260315
+windowSize = 30
+OBJECTIF = 509524.99999999965
+Time : 104.78638505935669
+windowSize = 33
+OBJECTIF = 509524.99999999965
+Time : 116.152095079422
+windowSize = 36
+OBJECTIF = 509524.99999999965
+Time : 127.5715000629425
+windowSize = 39
+OBJECTIF = 509201.9999999997
+Time : 138.25585913658142
+windowSize = 42
+OBJECTIF = 508856.99999999977
+Time : 148.27169513702393
+windowSize = 45
+OBJECTIF = 508856.99999999977
+Time : 156.95045709609985
+windowSize = 48
+OBJECTIF = 508683.9999999999
+Time : 166.82604908943176
+windowSize = 51
+OBJECTIF = 508683.9999999999
+Time : 175.27816700935364
+OBJECTIF = 508702.9999999984
+180.556360 seconds (69.33 M allocations: 2.282 GiB, 0.20% gc time)
+Feasibility of solution : true
+
+--------------------INSTANCE 5------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 1500
+ 65.500713 seconds (579.58 M allocations: 13.241 GiB, 3.83% gc time)
+572952.2960000001
+5
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[12, 11, 11, 8, 10, 11, 10, 10, 10, 10, 10, 13, 16, 9, 13, 13, 15, 12, 13, 9, 13, 14, 12, 9, 13, 11, 11, 12, 7, 12]
+
+FIX AND OPTIMIZE
+increment = 3
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 497849.1439999988
+Time : 0.019897937774658203
+windowSize = 18
+OBJECTIF = 494290.3679999992
+Time : 28.577521800994873
+windowSize = 21
+OBJECTIF = 493397.3679999993
+Time : 55.44587182998657
+windowSize = 24
+OBJECTIF = 493397.3679999993
+Time : 77.45569586753845
+windowSize = 27
+OBJECTIF = 493397.3679999993
+Time : 96.48622584342957
+windowSize = 30
+OBJECTIF = 493397.3679999993
+Time : 112.36256289482117
+windowSize = 33
+OBJECTIF = 493397.3679999993
+Time : 124.09577679634094
+windowSize = 36
+OBJECTIF = 493334.36799999967
+Time : 136.04856777191162
+windowSize = 39
+OBJECTIF = 493091.36799999967
+Time : 146.4149148464203
+windowSize = 42
+OBJECTIF = 493091.36799999967
+Time : 156.67241597175598
+windowSize = 45
+OBJECTIF = 492705.1999999997
+Time : 165.41243481636047
+windowSize = 48
+OBJECTIF = 492261.3999999998
+Time : 173.7494399547577
+OBJECTIF = 492261.3999999998
+182.509957 seconds (67.85 M allocations: 2.235 GiB, 0.19% gc time)
+Feasibility of solution : true
+
+--------------------INSTANCE 6------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 1500
+ 65.282554 seconds (577.61 M allocations: 13.419 GiB, 3.96% gc time)
+548411.2239999999
+5
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[9, 8, 10, 10, 11, 10, 7, 10, 9, 9, 9, 11, 11, 8, 8, 9, 10, 10, 10, 8, 10, 10, 10, 9, 7, 9, 10, 11, 8, 10]
+
+FIX AND OPTIMIZE
+increment = 3
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 486476.77983999933
+Time : 0.02277994155883789
+windowSize = 18
+OBJECTIF = 484650.58879999927
+Time : 28.59492588043213
+windowSize = 21
+OBJECTIF = 483758.5382399996
+Time : 54.7314670085907
+windowSize = 24
+OBJECTIF = 483692.99999999953
+Time : 76.45496201515198
+windowSize = 27
+OBJECTIF = 483676.99999999977
+Time : 94.31661891937256
+windowSize = 30
+OBJECTIF = 483184.99999999965
+Time : 109.95260095596313
+windowSize = 33
+OBJECTIF = 483183.5871999997
+Time : 124.96906399726868
+windowSize = 36
+OBJECTIF = 483180.9999999997
+Time : 137.27487683296204
+windowSize = 39
+OBJECTIF = 482432.20799999975
+Time : 147.5156078338623
+windowSize = 42
+OBJECTIF = 481538.20799999987
+Time : 157.66793394088745
+windowSize = 45
+OBJECTIF = 481528.20799999987
+Time : 166.9324870109558
+windowSize = 48
+OBJECTIF = 481528.20799999987
+Time : 176.32622694969177
+OBJECTIF = 481549.0015999987
+180.453292 seconds (66.24 M allocations: 2.185 GiB, 0.19% gc time)
+Feasibility of solution : true
+
+--------------------INSTANCE 7------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 1500
+ 63.470214 seconds (594.53 M allocations: 13.832 GiB, 4.26% gc time)
+590489.1199999999
+6
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[12, 12, 11, 14, 12, 11, 12, 12, 14, 12, 12, 13, 9, 12, 13, 11, 12, 13, 13, 14, 12, 13, 12, 11, 14, 16, 12, 10, 14, 13]
+
+FIX AND OPTIMIZE
+increment = 3
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 488648.19999999914
+Time : 0.01778888702392578
+windowSize = 18
+OBJECTIF = 487230.2799999992
+Time : 28.746041774749756
+windowSize = 21
+OBJECTIF = 486301.47999999934
+Time : 55.18633985519409
+windowSize = 24
+OBJECTIF = 486036.4799999993
+Time : 77.03090500831604
+windowSize = 27
+OBJECTIF = 486036.4799999993
+Time : 96.90241289138794
+windowSize = 30
+OBJECTIF = 486017.3199999995
+Time : 113.21399283409119
+windowSize = 33
+OBJECTIF = 485125.43999999954
+Time : 129.08194184303284
+windowSize = 36
+OBJECTIF = 485032.3199999996
+Time : 144.8966028690338
+windowSize = 39
+OBJECTIF = 484997.8399999997
+Time : 159.86024498939514
+windowSize = 42
+OBJECTIF = 484997.8399999997
+Time : 170.8753628730774
+OBJECTIF = 485007.3199999996
+181.269353 seconds (61.28 M allocations: 2.030 GiB, 0.18% gc time)
+Feasibility of solution : true
+
+--------------------INSTANCE 8------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 1500
+ 64.084326 seconds (585.77 M allocations: 13.589 GiB, 4.30% gc time)
+564644.672
+5
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[13, 14, 13, 14, 13, 13, 13, 11, 12, 13, 9, 12, 12, 10, 10, 8, 12, 13, 11, 13, 10, 9, 13, 12, 12, 11, 12, 10, 10, 11]
+
+FIX AND OPTIMIZE
+increment = 3
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 482401.543999999
+Time : 0.02482008934020996
+windowSize = 18
+OBJECTIF = 481272.99999999924
+Time : 28.825586080551147
+windowSize = 21
+OBJECTIF = 481188.9999999994
+Time : 53.68676805496216
+windowSize = 24
+OBJECTIF = 481188.9999999994
+Time : 72.83048415184021
+windowSize = 27
+OBJECTIF = 481188.9999999994
+Time : 90.30465698242188
+windowSize = 30
+OBJECTIF = 481188.9999999994
+Time : 105.59701299667358
+windowSize = 33
+OBJECTIF = 481188.9999999994
+Time : 120.14607000350952
+windowSize = 36
+OBJECTIF = 480619.3199999997
+Time : 134.30707716941833
+windowSize = 39
+OBJECTIF = 479587.4319999997
+Time : 148.67315816879272
+windowSize = 42
+OBJECTIF = 479540.9999999999
+Time : 160.40656900405884
+windowSize = 45
+OBJECTIF = 479466.99999999994
+Time : 171.96913409233093
+OBJECTIF = 479466.99999999994
+183.756112 seconds (64.63 M allocations: 2.135 GiB, 0.20% gc time)
+Feasibility of solution : true
+
+--------------------INSTANCE 9------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 1500
+ 68.943674 seconds (597.04 M allocations: 13.994 GiB, 4.28% gc time)
+580762.6816
+5
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[9, 9, 9, 10, 10, 12, 10, 12, 10, 11, 10, 10, 9, 9, 10, 9, 11, 12, 11, 10, 12, 11, 12, 12, 11, 10, 15, 13, 8, 10]
+
+FIX AND OPTIMIZE
+increment = 3
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 489793.19999999925
+Time : 0.025023221969604492
+windowSize = 18
+OBJECTIF = 488670.56799999933
+Time : 23.16992211341858
+windowSize = 21
+OBJECTIF = 488670.56799999933
+Time : 48.36821722984314
+windowSize = 24
+OBJECTIF = 488670.56799999933
+Time : 69.07881617546082
+windowSize = 27
+OBJECTIF = 488670.56799999933
+Time : 86.85156917572021
+windowSize = 30
+OBJECTIF = 488298.5679999996
+Time : 103.0525221824646
+windowSize = 33
+OBJECTIF = 488298.5679999996
+Time : 117.60692715644836
+windowSize = 36
+OBJECTIF = 488221.56799999974
+Time : 131.0289192199707
+windowSize = 39
+OBJECTIF = 487700.56799999974
+Time : 143.65741109848022
+windowSize = 42
+OBJECTIF = 487685.5679999998
+Time : 155.81935906410217
+windowSize = 45
+OBJECTIF = 487685.5679999998
+Time : 167.14784002304077
+windowSize = 48
+OBJECTIF = 487674.56799999863
+Time : 177.45440220832825
+OBJECTIF = 487674.56799999863
+182.506282 seconds (66.24 M allocations: 2.185 GiB, 0.21% gc time)
+Feasibility of solution : true
+
+--------------------INSTANCE 10------------------------
+
+
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Temps d'exécution = 1500
+ 64.754281 seconds (586.52 M allocations: 13.661 GiB, 4.53% gc time)
+597214.32
+5
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[13, 12, 8, 11, 11, 14, 13, 11, 11, 12, 12, 12, 11, 11, 10, 15, 12, 12, 11, 12, 13, 12, 15, 12, 14, 13, 13, 11, 10, 13]
+
+FIX AND OPTIMIZE
+increment = 3
+ 
+overlap = 0.6
+ 
+windowSize = 15
+OBJECTIF = 499474.31999999925
+Time : 0.01872992515563965
+windowSize = 18
+OBJECTIF = 496882.4879999993
+Time : 24.358300924301147
+windowSize = 21
+OBJECTIF = 496882.4879999993
+Time : 46.099406003952026
+windowSize = 24
+OBJECTIF = 496882.4879999993
+Time : 67.27559399604797
+windowSize = 27
+OBJECTIF = 496719.4879999997
+Time : 84.79670310020447
+windowSize = 30
+OBJECTIF = 496719.48799999966
+Time : 100.9475998878479
+windowSize = 33
+OBJECTIF = 496507.1679999997
+Time : 114.9213719367981
+windowSize = 36
+OBJECTIF = 496276.5679999996
+Time : 129.225811958313
+windowSize = 39
+OBJECTIF = 496170.1679999996
+Time : 141.07472205162048
+windowSize = 42
+OBJECTIF = 495838.6479999998
+Time : 153.60578107833862
+windowSize = 45
+OBJECTIF = 495786.31999999995
+Time : 165.6805100440979
+windowSize = 48
+OBJECTIF = 495786.3199999981
+Time : 177.18875098228455
+OBJECTIF = 495786.3199999981
+183.342375 seconds (66.24 M allocations: 2.185 GiB, 0.21% gc time)
+Feasibility of solution : true

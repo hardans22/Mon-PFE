@@ -6,7 +6,7 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 5
+p = 100
 t = 10
 version = 1
 println("p = ", p)
@@ -19,6 +19,11 @@ instance["P"] = 1:p
 instance["T"] = 1:t
 instance["t"] = t
 instance["p"] = p 
+demand = instance["demand"]
+for i in 1:p
+    println("item ", i)
+    println("moyenne de la demande = ", mean(demand[i,:]))
+end
 
 wSize = 25
 olap = 0.6
@@ -29,9 +34,8 @@ inc = 5
 
 println("\n\nTEST DE PARAMÈTRE ")
 
-phi = 1.618
 
-milp_obj = [65821.0, 71523.0, 72914.0, 77234.8, 64474.0, 74472.0, 64012.0, 67394.0, 66733.0, 69388.0]
+milp_obj = [657875.0, 660381.0, 674392.0, 648278.0, 628996.0, 621788.0, 625850.0, 644203.0, 643854.0, 660441.0]
 
 allgap = Dict()
 alltimes = Dict()
@@ -44,9 +48,9 @@ for windowType in [0 1]
     list_rfoverlap = []
     list_gap = []
     list_temps = []
-    for rfSize in 10:5:60
+    for rfSize in 320:320
         println("rfSize = ", rfSize)
-        for rfOverlap in 0.2:0.1:0.6
+        for rfOverlap in 0.7:0.7
             
             println("rfOverlap = ", rfOverlap)
             
@@ -92,7 +96,7 @@ for windowType in [0 1]
                 push!(gap_value, round((Objectifs[j]-milp_obj[j])/milp_obj[j]*100, digits = 2))
             end
             push!(list_rfSize, rfSize)
-            push!(list_rfoverlap, rfOverlap)
+            push!(list_rfoverlap, string(rfOverlap))
 
             g = round(mean(gap_value),digits = 2)
             allgap[key] = g

@@ -1,0 +1,244 @@
+p = 25
+t = 15
+
+Essai pour compilation
+
+  9.879191 seconds (16.50 M allocations: 1005.284 MiB, 6.19% gc time, 98.54% compilation time: 2% of which was recompilation)
+
+------------------------------INSTANCE 1----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 14.866609 seconds (168.56 M allocations: 4.062 GiB, 4.74% gc time, 0.14% compilation time)
+best_sol = 416929.975744
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 134.024, 0.0, 0.0, 0.0, 0.0, 0.0, 155.74399999999997, 96.19519999999994, 396.55616, 406.64492799999994]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+---------RUN 2----------
+ 14.726927 seconds (168.06 M allocations: 4.033 GiB, 5.55% gc time)
+best_sol = 416929.975744
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 134.024, 0.0, 0.0, 0.0, 0.0, 0.0, 155.74399999999997, 96.19519999999994, 396.55616, 406.64492799999994]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+
+------------------------------INSTANCE 2----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 15.106412 seconds (168.01 M allocations: 4.033 GiB, 5.52% gc time)
+best_sol = 422079.67711999995
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 4.09599999999989, 258.98079999999993, 250.58463999999992, 0.0, 0.0, 0.0, 0.0, 0.0, 97.09599999999989, 330.98079999999993]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+---------RUN 2----------
+ 15.224391 seconds (168.20 M allocations: 4.036 GiB, 5.70% gc time)
+best_sol = 422079.67711999995
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 4.09599999999989, 258.98079999999993, 250.58463999999992, 0.0, 0.0, 0.0, 0.0, 0.0, 97.09599999999989, 330.98079999999993]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+
+------------------------------INSTANCE 3----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 15.397452 seconds (167.93 M allocations: 4.031 GiB, 5.93% gc time)
+best_sol = 436996.99999999994
+Nombre de maintenance = 3
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 82.07999999999981]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+---------RUN 2----------
+ 15.487240 seconds (168.49 M allocations: 4.059 GiB, 6.04% gc time)
+best_sol = 436997.0
+Nombre de maintenance = 3
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 82.07999999999981]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+
+------------------------------INSTANCE 4----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 15.322131 seconds (166.21 M allocations: 3.944 GiB, 6.04% gc time)
+best_sol = 434169.04697599995
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 25.119999999999948, 268.97599999999994, 234.98079999999993, 371.5846399999999, 303.8677119999999, 0.0, 0.0, 0.0, 0.0, 0.0, 237.0959999999999]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+---------RUN 2----------
+ 15.300755 seconds (166.70 M allocations: 3.971 GiB, 6.23% gc time)
+best_sol = 434169.04697599995
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 25.119999999999948, 268.97599999999994, 234.98079999999993, 371.5846399999999, 303.8677119999999, 0.0, 0.0, 0.0, 0.0, 0.0, 256.97599999999994]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+
+------------------------------INSTANCE 5----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 15.547329 seconds (166.51 M allocations: 3.967 GiB, 6.29% gc time)
+best_sol = 433976.888
+Nombre de maintenance = 3
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 133.1599999999999, 310.12799999999993, 0.0, 0.0, 0.0, 0.0, 16.15999999999991, 169.12799999999993, 0.0, 0.0, 0.0]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+---------RUN 2----------
+ 15.706075 seconds (167.23 M allocations: 3.999 GiB, 6.40% gc time)
+best_sol = 433976.888
+Nombre de maintenance = 3
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 133.1599999999999, 310.12799999999993, 0.0, 0.0, 0.0, 0.0, 16.15999999999991, 169.12799999999993, 0.0, 0.0, 0.0]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+
+------------------------------INSTANCE 6----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 15.477393 seconds (167.23 M allocations: 3.999 GiB, 6.73% gc time)
+best_sol = 437247.09536
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 123.35999999999984, 210.12799999999993, 251.30239999999992, 0.0, 0.0, 0.0, 0.0, 146.1599999999999, 224.12799999999993, 483.3023999999999, 301.0419199999999]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+---------RUN 2----------
+ 15.549393 seconds (167.66 M allocations: 4.025 GiB, 6.91% gc time)
+best_sol = 437247.09536
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 123.35999999999984, 210.12799999999993, 251.30239999999992, 0.0, 0.0, 0.0, 0.0, 146.1599999999999, 224.12799999999993, 483.3023999999999, 301.0419199999999]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+
+------------------------------INSTANCE 7----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 15.360657 seconds (167.33 M allocations: 4.001 GiB, 7.26% gc time)
+best_sol = 439181.784
+Nombre de maintenance = 3
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 206.1679999999999, 0.0, 0.0, 0.0, 0.0, 2.1599999999998545, 0.0, 0.0, 0.0, 0.0]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+---------RUN 2----------
+ 15.392106 seconds (167.72 M allocations: 4.026 GiB, 7.36% gc time)
+best_sol = 439181.784
+Nombre de maintenance = 3
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 206.1679999999999, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+
+------------------------------INSTANCE 8----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 15.765732 seconds (167.99 M allocations: 4.032 GiB, 7.45% gc time)
+best_sol = 420102.14015999995
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 81.32799999999975, 170.5343999999999, 0.0, 0.0, 0.0, 0.0, 0.0, 255.32799999999975, 283.5343999999999, 216.8275199999999]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+---------RUN 2----------
+ 15.868990 seconds (168.53 M allocations: 4.061 GiB, 7.56% gc time)
+best_sol = 420102.14015999995
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 81.32799999999975, 170.5343999999999, 0.0, 0.0, 0.0, 0.0, 0.0, 255.32799999999975, 283.5343999999999, 216.8275199999999]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+
+------------------------------INSTANCE 9----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 15.611444 seconds (168.36 M allocations: 4.057 GiB, 7.94% gc time)
+best_sol = 427076.64
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+---------RUN 2----------
+ 15.619221 seconds (167.93 M allocations: 4.031 GiB, 7.96% gc time)
+best_sol = 427076.64
+Nombre de maintenance = 3
+Feasibility of solution : true
+Maintenance : [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+
+------------------------------INSTANCE 10----------------------------
+
+ALGORITHME GÉNÉTIQUE
+len_pop = 30
+Nbr_iteration = 1000
+---------RUN 1----------
+ 15.947728 seconds (168.60 M allocations: 4.062 GiB, 8.05% gc time)
+best_sol = 432833.37408
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 139.8639999999997, 275.42719999999986, 0.0, 0.0, 0.0, 0.0, 0.0, 176.8639999999997, 223.42719999999986, 287.3417599999999]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+---------RUN 2----------
+ 16.058043 seconds (168.03 M allocations: 4.033 GiB, 8.12% gc time)
+best_sol = 432833.37408
+Nombre de maintenance = 2
+Production au-delà de la capacité 
+Feasibility of solution : false
+Maintenance : [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+Surplus : [0.0, 0.0, 0.0, 0.0, 0.0, 139.8639999999997, 275.42719999999986, 0.0, 0.0, 0.0, 0.0, 0.0, 176.8639999999997, 223.42719999999986, 287.3417599999999]
+Any[15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]

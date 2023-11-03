@@ -1003,6 +1003,7 @@ Any[4, 4, 3, 4, 3]
  
 Listes des objectifs de chaque instance: Any[34436.85, 38259.34, 41255.23, 35847.0, 39499.0, 37237.66, 36087.56, 35852.42, 36894.1, 41932.44]
 
+Moyenne des objectifs : 37730.160.19
  
 Listes des temps de résolution de chaque instance: Any[0.0926, 0.3273, 0.1365, 0.0695, 0.1955, 0.1993, 0.1886, 0.4625, 0.1543, 0.1658]
 

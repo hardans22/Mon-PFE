@@ -4181,7 +4181,10 @@ Any[9, 7, 7, 8, 8, 8, 8, 8, 6, 7, 8, 9, 8, 8, 7, 8, 8, 7, 8, 7]
  
 Listes des objectifs de chaque instance: Any[332225.78, 312747.79, 329088.83, 338021.59, 324334.15, 334620.0, 338631.0, 330110.68, 338707.53, 320031.27]
 
- 
+Moyenne des objectifs : 329851.86
+
+Moyenne des gaps : 0.18
+
 Listes des temps de résolution de chaque instance: Any[44.3172, 75.667, 80.7262, 7200.0031, 145.514, 236.9059, 19.0116, 257.0347, 21.485, 7200.0009]
 
 Moyenne des temps : 1528.0666
