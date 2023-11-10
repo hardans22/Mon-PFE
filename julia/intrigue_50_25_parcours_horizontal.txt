@@ -1,0 +1,217 @@
+p = 50
+t = 25
+
+Essai pour compilation
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  8.543496 seconds (11.99 M allocations: 667.743 MiB, 3.43% gc time, 46.70% compilation time: 3% of which was recompilation)
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  4.415920 seconds (2.65 M allocations: 115.002 MiB, 1.00% gc time, 12.20% compilation time)
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  4.549634 seconds (2.93 M allocations: 95.487 MiB, 0.33% gc time)
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+  3.624084 seconds (1.98 M allocations: 70.001 MiB, 0.22% gc time)
+rfSize = 30
+rfStep = 5
+
+
+--------------------INSTANCE 1------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 91.537337 seconds (445.86 k allocations: 15.005 MiB)
+Objectif = 819356.0
+FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 76.210240 seconds (533.86 k allocations: 21.190 MiB, 0.07% compilation time)
+Feasibility of solution : true
+Objectif = 819015.0
+
+
+--------------------INSTANCE 2------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+343.562125 seconds (818.47 k allocations: 26.376 MiB)
+Objectif = 819558.32
+FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+374.056413 seconds (869.88 k allocations: 28.621 MiB)
+Feasibility of solution : true
+Objectif = 818787.18
+
+
+--------------------INSTANCE 3------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 52.923782 seconds (367.87 k allocations: 12.624 MiB)
+Objectif = 809014.88
+FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 61.736315 seconds (418.28 k allocations: 14.839 MiB, 0.01% gc time)
+Feasibility of solution : true
+Objectif = 808540.97
+
+
+--------------------INSTANCE 4------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 35.420999 seconds (349.17 k allocations: 12.054 MiB)
+Objectif = 794599.2
+FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 62.265900 seconds (425.56 k allocations: 15.061 MiB, 0.00% gc time)
+Feasibility of solution : true
+Objectif = 794126.38
+
+
+--------------------INSTANCE 5------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 67.546072 seconds (400.93 k allocations: 13.634 MiB)
+Objectif = 806097.8
+FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 72.183698 seconds (439.20 k allocations: 15.478 MiB)
+Feasibility of solution : true
+Objectif = 805679.0
+
+
+--------------------INSTANCE 6------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+139.611445 seconds (501.04 k allocations: 16.689 MiB, 0.00% gc time)
+Objectif = 803837.28
+FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 55.725993 seconds (400.21 k allocations: 14.288 MiB)
+Feasibility of solution : true
+Objectif = 802937.0
+
+
+--------------------INSTANCE 7------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+110.073588 seconds (442.39 k allocations: 14.899 MiB)
+Objectif = 810567.72
+FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 57.814783 seconds (409.11 k allocations: 14.559 MiB, 0.01% gc time)
+Feasibility of solution : true
+Objectif = 809641.18
+
+
+--------------------INSTANCE 8------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+10620.955135 seconds (12.04 M allocations: 368.969 MiB, 0.00% gc time)
+Objectif = 818198.32
+FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+14950.372874 seconds (16.67 M allocations: 510.882 MiB, 0.00% gc time)
+Feasibility of solution : true
+Objectif = 817147.2
+
+
+--------------------INSTANCE 9------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+ 64.880951 seconds (400.07 k allocations: 13.607 MiB)
+Objectif = 798504.66
+FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+140.569642 seconds (546.75 k allocations: 18.760 MiB, 0.00% gc time)
+Feasibility of solution : true
+Objectif = 796086.0
+
+
+--------------------INSTANCE 10------------------------
+
+RELAX AND FIX 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+125.856852 seconds (460.02 k allocations: 15.437 MiB)
+Objectif = 819341.24
+FIX AND OPTIMIZE 
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-12-28
+Set parameter Threads to value 1
+327.008060 seconds (887.24 k allocations: 29.151 MiB)
+Feasibility of solution : true
+Objectif = 818234.41
+
+rfSize = 30
+rfStep = 5
+foSize = 30
+foStep = 5
+
+Moyenne des objectifs pour le relax-and-fix = 809907.54
+Moyenne des gaps pour le relax-and-fix = 0.2
+Moyenne des temps pour le relax-and-fix = 1165.2369
+
+Moyenne des objectifs pour le fix-and-optimize = 809019.43
+Moyenne des gaps pour le fix-and-optimize = 0.1
+Moyenne des temps pour le fix-and-optimize = 1617.7945
+
+Liste des rfSize
+Any[30]
+
+Liste des rfStep
+Any["step = 5"]
+
+Liste des gap
+Any[0.1]
+
+Liste des temps
+Any[2783.0314]

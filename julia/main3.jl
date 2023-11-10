@@ -6,7 +6,7 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 100
+p = 5
 t = 10
 version = 1
 println("p = ", p)
@@ -60,12 +60,12 @@ list_rfSize = []
 list_rfStep = []
 list_gap = []
 list_temps = []
-for rfSize in 5:5
+for rfSize in 3:3
     println("rfSize = ", rfSize)
-    for rfStep in 2:2
+    for rfStep in 1:1
         println("rfStep = ", rfStep)
-        foSize = rfSize
-        foStep = rfStep
+        foSize = 7
+        foStep = 1
         rfObjectifs = []
         foObjectifs = []
         rf_times = []
@@ -89,7 +89,7 @@ for rfSize in 5:5
             rfmodel = buildM(instance_dict,"RF")
             
             begin_time = time()
-            @time result_rf = RelaxAndFix(rfmodel, rfSize, rfStep, instance_dict)
+            @time result_rf = RelaxAndFix_1(rfmodel, rfSize, rfStep, instance_dict)
             rf_timeElapsed = round(time() - begin_time, digits = 4)
     
             sx = result_rf["sx"]
@@ -157,6 +157,7 @@ for rfSize in 5:5
         push!(list_rfStep, "step = " * string(rfStep))
         push!(list_gap, fog_mean)
         push!(list_temps, time_total)
+        println("Les objectifs avec FO : ", foObjectifs)
     end
 end
 println("\nListe des rfSize")

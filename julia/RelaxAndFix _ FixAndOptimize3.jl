@@ -186,12 +186,11 @@ end
 
 function RelaxAndFix(mdl, rfSize, step, instance_dict)
     #=
+        PARCOURS EN COLONNE PAR BLOC
         mdl = modèle crée 
         rfSize = Taille de la fenêtre de variable libres binaires 
         à chaque itération
-        windowType = type de parcours (0 ou 1)
-        overlap = proportion de variable par rapport à rfSize à 
-        fixer (entre 0 et 1)
+        step = Nombre de nouvelle variables à ajouter
         Notons que overlap est également la proportion de nouvelles 
         variables ajoutées dans la fenêtre. Ainsi 1- overlap est la 
         proportion de variable par rapport à rf Size qui sont réoptimisées 
@@ -228,8 +227,90 @@ function RelaxAndFix(mdl, rfSize, step, instance_dict)
     while true
         #println("YYYYYYYYYYYYYYYYYYEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSS")
         iter+=1
-        #=
+        
         println("\t\t-------------------Itération ", iter, "--------------------")
+        #=
+        println("window : ",window)
+        println("w_fix : ", w_fix)
+        #println("w_mip : ", w_mip)
+        println("w_lp : ", w_lp)
+        =#
+        result = solve_model(mdl, w_fix, w_mip, sy, sz, rf_or_fo)
+        sy = result["sy"]
+        sz = result["sz"]
+        sc = result["sc"]
+        mdl = result["model"]
+        display(sy)
+        curseur += ceil(Int64, step)  #On déplace le curseur
+        #println("curseur = ", curseur)
+        if curseur + rfSize <= t #On vérifie si depuis curseur on peut avoir rfSize variables
+            window = [(i,j) for i in 1:p+1 for j in curseur:curseur+rfSize-1] 
+        else  #Sinon on prend de curseur jusqu'à la fin
+            window = [(i,j) for i in 1:p+1 for j in curseur:t] 
+        end
+        
+        #Mise en jour des ensembles 
+        w_fix = vcat(w_fix, [elt for elt in w_mip if !(elt in window)])
+        w_mip = window
+        w_lp = [elt for elt in w_lp if !(elt in window)]
+        obj = result["obj"]
+        sx = result["sx"]
+        sI = result["sI"]
+        su = result["su"]
+        #println("Objectif : ", obj)
+        if all(isinteger, sy) && all(isinteger, sz)
+            return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "sz" => sz, "sc" => sc, "su" => su)
+        end
+    end
+end
+
+
+function RelaxAndFix_0(mdl, rfSize, step, instance_dict)
+    #=
+        PARCOURS EN LIGNE PAR BLOC 
+        mdl = modèle crée 
+        rfSize = Taille de la fenêtre de variable libres binaires 
+        à chaque itération
+        step = Nombre denouvelles variables à ajouter 
+        Notons que overlap est également la proportion de nouvelles 
+        variables ajoutées dans la fenêtre. Ainsi 1- overlap est la 
+        proportion de variable par rapport à rf Size qui sont réoptimisées 
+    =#
+    begin_time = time()
+    t = instance_dict["t"] #Nombre de période 
+    p = instance_dict["p"] #Nombrede produits 
+
+    #Résolution du problème linéaire avec y continue
+    set_silent(mdl)
+    JuMP.optimize!(mdl)
+    y = mdl[:y]
+    z = mdl[:z]
+    sy = JuMP.value.(y)
+    sz = JuMP.value.(z)
+    #display(sy)
+
+    curseur = 1 #curseur est comme un pointeur sur l'évolution dans la matrice des variables
+    #step = overlap*rfSize
+    #println("step = ", step)
+
+    #Initialisation de l'ensemble de toutes les cases de la matrices selon l'orientation choisi (windowType)
+    
+    #println(sol_window)
+    #sol_window = order_variable(sol_window, instance_dict)
+    #println(sol_window)
+
+    window = [(i,j) for i in 1:rfSize for j in 1:t] #Initialisation de window
+    w_fix = [] #Ensemble de variables fixées
+    w_mip = window #Ensemble des variables binaires libres dans le modèle
+    w_lp = [(i,j) for i in rfSize+1:p+1 for j in 1:t] #Ensemble des variables relaxées daans le modèle
+    rf_or_fo = "RF"
+    iter = 0
+    while true
+        #println("YYYYYYYYYYYYYYYYYYEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSS")
+        iter+=1
+        
+        #println("\t\t-------------------Itération ", iter, "--------------------")
+        #=
         println("window : ",window)
         println("w_fix : ", w_fix)
         #println("w_mip : ", w_mip)
@@ -243,12 +324,97 @@ function RelaxAndFix(mdl, rfSize, step, instance_dict)
         #display(sy)
         curseur += ceil(Int64, step)  #On déplace le curseur
         #println("curseur = ", curseur)
-        if curseur + rfSize <= t #On vérifie si depuis curseur on peut avoir rfSize variables
-            window = [(i,j) for i in 1:p+1 for j in curseur:curseur+rfSize] 
+        if curseur + rfSize <= p+1 #On vérifie si depuis curseur on peut avoir rfSize variables
+            window = [(i,j) for i in curseur:curseur+rfSize-1 for j in 1:t] 
         else  #Sinon on prend de curseur jusqu'à la fin
-            window = [(i,j) for i in 1:p+1 for j in curseur:t] 
+            window = [(i,j) for i in curseur:p+1 for j in 1:t] 
         end
         
+        #Mise en jour des ensembles 
+        w_fix = vcat(w_fix, [elt for elt in w_mip if !(elt in window)])
+        w_mip = window
+        w_lp = [elt for elt in w_lp if !(elt in window)]
+        obj = result["obj"]
+        sx = result["sx"]
+        sI = result["sI"]
+        su = result["su"]
+        #println("Objectif : ", obj)
+        if all(isinteger, sy) && all(isinteger, sz)
+            return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "sz" => sz, "sc" => sc, "su" => su)
+        end
+    end
+end
+
+
+
+function RelaxAndFix_1(mdl, rfSize, step, instance_dict)
+    #=
+        PARCOURS EN ESCALIER 
+        mdl = modèle crée 
+        rfSize = Taille de la fenêtre de variable libres binaires 
+        à chaque itération
+        step = Nombre denouvelles variables à ajouter 
+        Notons que overlap est également la proportion de nouvelles 
+        variables ajoutées dans la fenêtre. Ainsi 1- overlap est la 
+        proportion de variable par rapport à rf Size qui sont réoptimisées 
+    =#
+    begin_time = time()
+    t = instance_dict["t"] #Nombre de période 
+    p = instance_dict["p"] #Nombrede produits 
+
+    #Résolution du problème linéaire avec y continue
+    set_silent(mdl)
+    JuMP.optimize!(mdl)
+    y = mdl[:y]
+    z = mdl[:z]
+    sy = JuMP.value.(y)
+    sz = JuMP.value.(z)
+    #display(sy)
+
+    curseur = 1 #curseur est comme un pointeur sur l'évolution dans la matrice des variables
+    #step = overlap*rfSize
+    #println("step = ", step)
+
+    #Initialisation de l'ensemble de toutes les cases de la matrices selon l'orientation choisi (windowType)
+    
+    #println(sol_window)
+    #sol_window = order_variable(sol_window, instance_dict)
+    #println(sol_window)
+    if p+1 <= t
+        window = [(i,j) for i in 1:p+1 for j in 1:p+2-i] #Initialisation de window
+        w_fix = [] #Ensemble de variables fixées
+        w_mip = window #Ensemble des variables binaires libres dans le modèle
+        w_lp = [(i,j) for i in 1:p+1 for j in p+1-i+2:t] #Ensemble des variables relaxées daans le modèle
+    end
+    rf_or_fo = "RF"
+    iter = 0
+    while true
+        #println("YYYYYYYYYYYYYYYYYYEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSS")
+        iter+=1
+        
+        println("\t\t-------------------Itération ", iter, "--------------------")
+        
+        println("window : ",window)
+        println("w_fix : ", w_fix)
+        #println("w_mip : ", w_mip)
+        println("w_lp : ", w_lp)
+        
+        result = solve_model(mdl, w_fix, w_mip, sy, sz, rf_or_fo)
+        sy = result["sy"]
+        sz = result["sz"]
+        sc = result["sc"]
+        mdl = result["model"]
+        display(sy)
+        curseur += ceil(Int64, step)  #On déplace le curseur
+        #println("curseur = ", curseur)
+        if p+1 <= t
+            if curseur + p+2 <= t #On vérifie si depuis curseur on peut avoir rfSize variables
+                window = [(i,j) for i in 1:p+1 for j in curseur:curseur-1 + p+2 - i]
+            else  #Sinon on prend de curseur jusqu'à la fin
+                window = [(i,j) for i in 1:p+1 for j in curseur:t+1-i] 
+            end
+        end
+
         #Mise en jour des ensembles 
         w_fix = vcat(w_fix, [elt for elt in w_mip if !(elt in window)])
         w_mip = window
@@ -328,6 +494,74 @@ function FixAndOptimize(mdl, sol_y, sol_z, foSize, step, instance_dict)
 
     return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "sz" => sz, "sc" => sc, "su" => su)
 end 
+
+
+
+function FixAndOptimize_0(mdl, sol_y, sol_z, foSize, step, instance_dict)
+    begin_time = time()
+    t = instance_dict["t"]
+    p = instance_dict["p"]
+    #display(sol_y)
+    sy = sol_y
+    sz = sol_z
+    sc = []
+    sx, sI, su = [], [], []
+    obj = 0
+    
+    #step = overlap*foSize
+    #println("step = ", step)
+
+    rf_or_fo = "FO"
+    
+    #println("windowType = ", windowType)
+    sol_window = [(i,j) for i in 1:p+1, j in 1:t]
+    curseur = 1
+    window = [(i,j) for i in 1:foSize for j in 1:t]
+    w_mip = window
+    w_fix = [(i,j) for i in 1:p+1 for j in 1:t if !((i,j) in window)]
+    iter = 0
+    while true
+        iter+=1
+        #=
+        println("\t-------------------Itération ", iter, "--------------------")
+        println("window : ", window)
+        println("w_fix : ", w_fix)
+        println("w_mip : ", w_mip)
+        =#      
+        result = solve_model(mdl, w_fix, w_mip, sy, sz, rf_or_fo)
+        sy = result["sy"]
+        sz = result["sz"]
+        sc = result["sc"]
+        mdl = result["model"]
+        #display(sy)
+        
+        curseur += floor(Int64, step)
+
+        if curseur + foSize <= p+1
+            window = [(i,j) for i in curseur:curseur+foSize for j in 1:t]
+        else
+            window = [(i,j) for i in curseur:p+1 for j in 1:t]
+            curseur = t
+        end
+
+        w_mip = window
+        w_fix = [elt for elt in sol_window if !(elt in window)]
+        
+        obj = result["obj"]
+        sx = result["sx"]
+        sI = result["sI"]
+        su = result["su"]
+        #println("\tObjectif : ", obj)
+
+        if curseur == t
+            break
+        end 
+    end
+
+    return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "sz" => sz, "sc" => sc, "su" => su)
+end 
+
+
 
 
 function IFO(sol, foSize, foOverlap, sizeLimit, inc, instance_dict )

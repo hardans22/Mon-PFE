@@ -8,7 +8,7 @@ init  = pyimport("__init__")
 
 p = 20
 t = 25
-cst = 12  #COÛT DE PÉNÉLISATION DES SOLUTIONS INFAISABLES
+cst = 2500  #COÛT DE PÉNÉLISATION DES SOLUTIONS INFAISABLES
 version = 1
 println("p = ", p)
 println("t = ", t)
@@ -71,8 +71,8 @@ for version in 1:nbr_instance
 	println("\n\nALGORITHME GÉNÉTIQUE - ITERATED FIX AN OPTIMIZE")
 
 	len_pop = 30
-	nbr_iter = 500
-	foSize = 12
+	nbr_iter = 50
+	foSize = 7
 	foStep = 2
 	println("len_pop = ", len_pop)
 	println("Nombre d'itération = ", nbr_iter)

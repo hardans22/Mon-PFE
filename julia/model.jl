@@ -1,6 +1,6 @@
 using JuMP, CPLEX, Gurobi
 
-function model_mip(instance_dict, pl = false)
+function model_mip(instance_dict, milp_obj, pl = false)
     P = instance_dict["P"]
     T = instance_dict["T"]
     len_T = instance_dict["t"]
@@ -44,6 +44,8 @@ function model_mip(instance_dict, pl = false)
     @constraint(model, c6[t in T], c[t] <= cmax*(sum(alpha^(t-k)*z[k,t] for k in 1:t)))
     @constraint(model, c7[t in T], sum(z[k,t] for k in 1:t) <= 1)
     
+
+    @constraint(model, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T) + sum(mtn_cost[t]*z[t,t] for t in T) >= milp_obj)
     
     @objective(model, Min, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T) + sum(mtn_cost[t]*z[t,t] for t in T))
     #set_silent(model)
@@ -55,6 +57,7 @@ function model_mip(instance_dict, pl = false)
     sy = JuMP.value.(y)
     sz = JuMP.value.(z)
     sc = JuMP.value.(c)
+    gap = relative_gap(model)
      #=
     for i in P
         println(sum(sy[i,:]))
@@ -65,7 +68,7 @@ function model_mip(instance_dict, pl = false)
     time = solve_time(model)
     println("Temps de résolution MILP = ", time, "s")
     
-    return Dict("obj" => obj, "z" => sz, "c" => sc, "y" => sy, "x" => sx, "I" => sI, "time" => time)
+    return Dict("obj" => obj, "z" => sz, "c" => sc, "y" => sy, "x" => sx, "I" => sI, "time" => time, "gap" => gap)
 end
 
 
