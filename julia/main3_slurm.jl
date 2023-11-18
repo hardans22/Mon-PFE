@@ -62,14 +62,15 @@ nbr_instance = 10
 
 list_rfSize = []
 list_rfStep = []
-list_gap = []
-list_temps = []
-for rfSize in 3:3
-    println("rfSize = ", rfSize)
-    write(file, "\nSize = "*string(rfSize))
-    for rfStep in 1:1
-        println("rfStep = ", rfStep)
-        write(file, "\nStep = "*string(rfStep))
+list_gap = Dict()
+list_temps = Dict()
+for rfSize in 2:4
+    #println("rfSize = ", rfSize)
+    #write(file, "\nSize = "*string(rfSize))
+    for rfStep in 1:rfSize
+        nkey = string(rfSize)*"_"*string(rfStep)
+        #println("rfStep = ", rfStep)
+        #write(file, "\nStep = "*string(rfStep))
 
         foSize = rfSize
         foStep = rfStep
@@ -80,8 +81,8 @@ for rfSize in 3:3
         rf_gap_value = []
         fo_gap_value = [] 
         for version in 1:nbr_instance
-            println("\n\n--------------------INSTANCE ", version, "------------------------\n")
-            write(file, "\n\n--------------------INSTANCE "*string(version)*"------------------------")
+            #println("\n\n--------------------INSTANCE ", version, "------------------------\n")
+            #write(file, "\n\n--------------------INSTANCE "*string(version)*"------------------------")
             
             file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
             instance_dict = init.gen_instance(p,t, fp=file_path); 
@@ -94,8 +95,8 @@ for rfSize in 3:3
             mtn_cost = instance_dict["mtn_cost"]
             set_up_cost = instance_dict["set_up_cost"]
 
-            println("RELAX AND FIX ")
-            write(file, "\nRELAX AND FIX")
+            #println("RELAX AND FIX ")
+            #write(file, "\nRELAX AND FIX")
             rfmodel = buildM(instance_dict,"RF")
             
             begin_time = time()
@@ -110,14 +111,14 @@ for rfSize in 3:3
             sc = result_rf["sc"]
 
             rf_obj = round(result_rf["obj"], digits = 2)
-            println("Objectif = ", rf_obj)
-            write(file, "\nObjectif = "*string(rf_obj))
+            #println("Objectif = ", rf_obj)
+            #write(file, "\nObjectif = "*string(rf_obj))
 
             push!(rfObjectifs, rf_obj)
             push!(rf_times, rf_timeElapsed)
 
-            println("FIX AND OPTIMIZE ")
-            write(file, "\nFIX AND OPTIMIZE")
+            #println("FIX AND OPTIMIZE ")
+            #write(file, "\nFIX AND OPTIMIZE")
 
             fomodel = buildM(instance_dict,"FO")
             
@@ -132,10 +133,10 @@ for rfSize in 3:3
             sz = result_fo["sz"]
             sc = result_fo["sc"]
             fo_obj = round(result_fo["obj"], digits  = 2)
-            println("Objectif = ", fo_obj)
-            write(file, "\nObjectif = "*string(fo_obj))
-            println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
-            write(file, "\nFeasibility of solution : "*string(verify_solution(sx, sI, sy, sz, sc, instance_dict)))
+            #println("Objectif = ", fo_obj)
+            #write(file, "\nObjectif = "*string(fo_obj))
+            #println("Feasibility of solution : ", verify_solution(sx, sI, sy, sz, sc, instance_dict))
+            #write(file, "\nFeasibility of solution : "*string(verify_solution(sx, sI, sy, sz, sc, instance_dict)))
             push!(foObjectifs, fo_obj)
             push!(fo_times, fo_timeElapsed)     
             rf_temp = round((rf_obj-milp_obj[version])/milp_obj[version]*100, digits = 2)
@@ -160,7 +161,7 @@ for rfSize in 3:3
         println("rfStep = ", rfStep)
         println("foSize = ", foSize)
         println("foStep = ", foStep)
-
+        #=
         write(file, "\n\n--------------------RESULTATS--------------------")
         println("\nMoyenne des objectifs pour le relax-and-fix = ", rf_obj_mean)
         write(file, "\nMoyenne des objectifs pour le relax-and-fix = "*string(rf_obj_mean))
@@ -179,15 +180,16 @@ for rfSize in 3:3
 
         println("Moyenne des temps pour le fix-and-optimize = ", fot_mean)
         write(file, "\nMoyenne des temps pour le fix-and-optimize = "*string(fot_mean))
-
+        =#
         time_total = rft_mean + fot_mean
         push!(list_rfSize, rfSize)
         push!(list_rfStep, "step = " * string(rfStep))
-        push!(list_gap, fog_mean)
-        push!(list_temps, time_total)
-        println("Les objectifs avec FO : ", foObjectifs)
+        list_gap[nkey] = fog_mean
+        list_temps[nkey] = time_total
+        #println("Les objectifs avec FO : ", foObjectifs)
     end
 end
+#=
 println("\nListe des Size")
 write(file, "\n\nListe des Size")
 println(list_rfSize)
@@ -197,6 +199,21 @@ println("\nListe des Step")
 write(file, "\nListe des Step")
 println(list_rfStep)
 write(file, "\n"*string(list_rfStep))
+=#
+
+list_gap = sort(list_gap, by=x -> list_gap[x])
+list_key_zero = []
+for key in keys(list_gap)
+    if list_gap[key] == 0.0
+        push!(list_key_zero, key)
+    end
+end
+
+zero_time = Dict()
+for key in list_key_zero
+    zero_time[key] = list_temps[key]
+end 
+zero_time = sort(zero_time, by=x -> zero_time[x])
 
 println("\nListe des gap")
 write(file, "\nListe des gap")
@@ -204,5 +221,5 @@ println(list_gap)
 write(file, "\n"*string(list_gap))
 println("\nListe des temps")
 write(file, "\nListe des temps")
-println(list_temps)
-write(file, "\n"*string(list_temps))
+println(zero_time)
+write(file, "\n"*string(zero_time))

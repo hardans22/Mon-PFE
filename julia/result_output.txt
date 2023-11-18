@@ -1,0 +1,6 @@
+p = 5
+t = 5
+Liste des gap
+OrderedCollections.OrderedDict{Any, Any}("3_1" => 0.0, "4_1" => 0.0, "2_1" => 0.11, "4_2" => 0.15, "3_2" => 0.2, "4_4" => 0.2, "4_3" => 0.2, "3_3" => 0.3, "2_2" => 2.25)
+Liste des temps
+OrderedCollections.OrderedDict{Any, Any}("4_1" => 0.026199999999999998, "3_1" => 0.0297)

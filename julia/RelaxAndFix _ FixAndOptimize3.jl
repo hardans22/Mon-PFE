@@ -227,9 +227,8 @@ function RelaxAndFix(mdl, rfSize, step, instance_dict)
     while true
         #println("YYYYYYYYYYYYYYYYYYEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSS")
         iter+=1
-        
-        println("\t\t-------------------Itération ", iter, "--------------------")
         #=
+        println("\t\t-------------------Itération ", iter, "--------------------")
         println("window : ",window)
         println("w_fix : ", w_fix)
         #println("w_mip : ", w_mip)
@@ -240,7 +239,7 @@ function RelaxAndFix(mdl, rfSize, step, instance_dict)
         sz = result["sz"]
         sc = result["sc"]
         mdl = result["model"]
-        display(sy)
+        #display(sy)
         curseur += ceil(Int64, step)  #On déplace le curseur
         #println("curseur = ", curseur)
         if curseur + rfSize <= t #On vérifie si depuis curseur on peut avoir rfSize variables
