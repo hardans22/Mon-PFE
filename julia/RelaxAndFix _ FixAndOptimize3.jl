@@ -115,6 +115,7 @@ function buildM(instance_dict,rf_or_fo)
     obj += sum(coef*u[t] for t in T)
 
     @objective(model, Min, obj)
+    set_time_limit_sec(model, 7200.0)
     
     return model
 end
@@ -379,50 +380,75 @@ function RelaxAndFix_1(mdl, rfSize, step, instance_dict)
     #println(sol_window)
     #sol_window = order_variable(sol_window, instance_dict)
     #println(sol_window)
-    if p+1 <= t
-        window = [(i,j) for i in 1:p+1 for j in 1:p+2-i] #Initialisation de window
-        w_fix = [] #Ensemble de variables fixées
-        w_mip = window #Ensemble des variables binaires libres dans le modèle
-        w_lp = [(i,j) for i in 1:p+1 for j in p+1-i+2:t] #Ensemble des variables relaxées daans le modèle
-    end
+    
+    all_window = [(i,j) for i in 1:p+1 for j in 1:t]
+
+    window = [(i,j) for i in 1:rfSize for j in 1:rfSize]
+    w_fix = []
+    w_mip = window
+    w_lp = [elt for elt in all_window if !(elt in window)]
+
     rf_or_fo = "RF"
     iter = 0
+
+    curseur_t = rfSize+1
+    curseur_p = 1
+    change = 0
+
     while true
         #println("YYYYYYYYYYYYYYYYYYEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSS")
         iter+=1
-        
+        #=
         println("\t\t-------------------Itération ", iter, "--------------------")
         
         println("window : ",window)
         println("w_fix : ", w_fix)
         #println("w_mip : ", w_mip)
         println("w_lp : ", w_lp)
-        
+        =#
         result = solve_model(mdl, w_fix, w_mip, sy, sz, rf_or_fo)
         sy = result["sy"]
         sz = result["sz"]
         sc = result["sc"]
         mdl = result["model"]
-        display(sy)
-        curseur += ceil(Int64, step)  #On déplace le curseur
-        #println("curseur = ", curseur)
-        if p+1 <= t
-            if curseur + p+2 <= t #On vérifie si depuis curseur on peut avoir rfSize variables
-                window = [(i,j) for i in 1:p+1 for j in curseur:curseur-1 + p+2 - i]
-            else  #Sinon on prend de curseur jusqu'à la fin
-                window = [(i,j) for i in 1:p+1 for j in curseur:t+1-i] 
-            end
-        end
-
-        #Mise en jour des ensembles 
-        w_fix = vcat(w_fix, [elt for elt in w_mip if !(elt in window)])
-        w_mip = window
-        w_lp = [elt for elt in w_lp if !(elt in window)]
         obj = result["obj"]
         sx = result["sx"]
         sI = result["sI"]
         su = result["su"]
         #println("Objectif : ", obj)
+        #display(sy)
+        #println("curseur = ", curseur)
+
+        
+        if curseur_t + rfSize -1  <= t && curseur_p + rfSize - 1  <= p+1 #On vérifie si depuis curseur on peut avoir rfSize variables
+            if change == 1
+                window = [(i,j) for i in curseur_p:curseur_p+rfSize-1 for j in curseur_t-rfSize:curseur_t-1]
+                change = 0
+                curseur_t -= step
+            else
+                window = [(i,j) for i in curseur_p:curseur_p-1+rfSize for j in curseur_t + (curseur_p-i):curseur_t  + (rfSize-1) + (curseur_p-i)]
+            end
+
+        else  #Sinon on prend de curseur jusqu'à la fin
+            if curseur_p + rfSize <= p+1
+                window = [(i,j) for i in curseur_p:curseur_p-1+rfSize for j in curseur_t -i + curseur_p+(t-curseur_t-step):t]
+                curseur_p += rfSize - step
+            else
+                window = w_lp            
+            end
+            curseur_t = rfSize +1
+            change = 1
+        end
+
+        
+        w_fix = vcat([elt for elt in w_fix if !(elt in window)], [elt for elt in w_mip if !(elt in window)])
+        w_mip = window
+        w_lp = [elt for elt in w_lp if !(elt in window)]
+        
+        if change == 0
+            curseur_t += step
+        end    
+      
         if all(isinteger, sy) && all(isinteger, sz)
             return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "sz" => sz, "sc" => sc, "su" => su)
         end
@@ -561,6 +587,110 @@ function FixAndOptimize_0(mdl, sol_y, sol_z, foSize, step, instance_dict)
 end 
 
 
+
+function FixAndOptimize_1(mdl, sol_y, sol_z, foSize, step, instance_dict)
+    begin_time = time()
+    t = instance_dict["t"]
+    p = instance_dict["p"]
+    #display(sol_y)
+    sy = sol_y
+    sz = sol_z
+    sc = []
+    sx, sI, su = [], [], []
+    obj = 0
+    
+    #step = overlap*foSize
+    #println("step = ", step)
+
+    rf_or_fo = "FO"
+    
+    #println("windowType = ", windowType)
+    all_window = [(i,j) for i in 1:p+1 for j in 1:t]
+
+    window = [(i,j) for i in 1:foSize for j in 1:foSize]
+    w_mip = window
+    w_fix = [elt for elt in all_window if !(elt in window)]
+
+
+
+    curseur_t = foSize+1
+    curseur_p = 1
+    change = 0
+   
+    iter = 0
+    while true
+        iter+=1
+        
+        println("\t-------------------Itération ", iter, "--------------------")
+        println("AVANT")
+        println("window : ", length(window))
+        println("w_fix : ", length(w_fix))
+        println("w_mip : ", w_mip)
+        
+        println("curseur_p = ", curseur_p)
+        println("curseur_t = ", curseur_t)
+        result = solve_model(mdl, w_fix, w_mip, sy, sz, rf_or_fo)
+        sy = result["sy"]
+        sz = result["sz"]
+        sc = result["sc"]
+        mdl = result["model"]
+        obj = result["obj"]
+        sx = result["sx"]
+        sI = result["sI"]
+        su = result["su"]
+        #println("\tObjectif : ", obj)
+        #display(sy)
+        
+        if curseur_t + foSize -1  <= t && curseur_p + foSize - 1  <= p+1 #On vérifie si depuis curseur on peut avoir rfSize variables
+            println("YES")
+            if change == 1
+                window = [(i,j) for i in curseur_p:curseur_p+foSize-1 for j in curseur_t-foSize:curseur_t-1]
+                change = 0
+                curseur_t -= step
+            else
+                window = [(i,j) for i in curseur_p:curseur_p-1+foSize for j in curseur_t + (curseur_p-i):curseur_t  + (foSize-1) + (curseur_p-i)]
+            end
+
+        else  #Sinon on prend de curseur jusqu'à la fin
+            println("NO")
+            if curseur_p + foSize <= p+1
+                println("NOOOOOOOO")
+                window = [(i,j) for i in curseur_p:curseur_p-1+foSize for j in curseur_t -i + curseur_p+(t-curseur_t-step):t]
+                curseur_p += foSize - step
+            else
+                println("NO NO NO NO NO NO NO NO")
+                window = [(i,j) for i in curseur_p:p+1 for j in curseur_t-foSize:t]   
+                curseur_p += foSize  
+            end
+            curseur_t = foSize +1
+            change = 1
+        end
+
+        
+        
+        w_mip = window
+        w_fix = [elt for elt in all_window if !(elt in window)]
+        
+        if change == 0
+            curseur_t += step
+        end    
+      
+        println("APRÈS")
+        println("window : ", length(window))
+        println("w_fix : ", length(w_fix))
+        println("w_mip : ", w_mip)
+        
+        println("curseur_p = ", curseur_p)
+        println("curseur_t = ", curseur_t)
+        
+        if curseur_p >= p+1
+            println("STOPPPPPP")
+            break
+        end 
+    end
+
+    return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "sz" => sz, "sc" => sc, "su" => su)
+end 
 
 
 function IFO(sol, foSize, foOverlap, sizeLimit, inc, instance_dict )

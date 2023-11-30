@@ -6,8 +6,8 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 5
-t = 5
+p = 20
+t = 25
 println("p = ", p)
 println("t = ", t)
 allobj = []
@@ -34,7 +34,7 @@ milp_obj = all_milp_obj[key]
 
 for version in 1:10
     println("\n--------------------------------------------------INSTANCE ", version, "-----------------------------------------------------------\n")
-    file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+    file_path = "instances/instances_alpha0.8_bis/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
     instance_dict = init.gen_instance(p,t, fp=file_path); 
     instance_dict["P"] = 1:p;
     instance_dict["T"] = 1:t;

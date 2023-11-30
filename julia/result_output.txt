@@ -1,6 +1,93 @@
-p = 5
-t = 5
+p = 100
+t = 10
+Size = 5
+Step = 2
+
+--------------------INSTANCE 1------------------------
+RELAX AND FIX
+Objectif = 658502.0
+FIX AND OPTIMIZE
+Objectif = 658054.0
+Feasibility of solution : true
+
+--------------------INSTANCE 2------------------------
+RELAX AND FIX
+Objectif = 660887.0
+FIX AND OPTIMIZE
+Objectif = 660427.0
+Feasibility of solution : true
+
+--------------------INSTANCE 3------------------------
+RELAX AND FIX
+Objectif = 676096.0
+FIX AND OPTIMIZE
+Objectif = 674580.8
+Feasibility of solution : true
+
+--------------------INSTANCE 4------------------------
+RELAX AND FIX
+Objectif = 648825.0
+FIX AND OPTIMIZE
+Objectif = 648341.0
+Feasibility of solution : true
+
+--------------------INSTANCE 5------------------------
+RELAX AND FIX
+Objectif = 629587.2
+FIX AND OPTIMIZE
+Objectif = 629072.0
+Feasibility of solution : true
+
+--------------------INSTANCE 6------------------------
+RELAX AND FIX
+Objectif = 622232.63
+FIX AND OPTIMIZE
+Objectif = 621967.63
+Feasibility of solution : true
+
+--------------------INSTANCE 7------------------------
+RELAX AND FIX
+Objectif = 626157.0
+FIX AND OPTIMIZE
+Objectif = 625852.0
+Feasibility of solution : true
+
+--------------------INSTANCE 8------------------------
+RELAX AND FIX
+Objectif = 644987.0
+FIX AND OPTIMIZE
+Objectif = 644297.8
+Feasibility of solution : true
+
+--------------------INSTANCE 9------------------------
+RELAX AND FIX
+Objectif = 644194.2
+FIX AND OPTIMIZE
+Objectif = 643964.0
+Feasibility of solution : true
+
+--------------------INSTANCE 10------------------------
+RELAX AND FIX
+Objectif = 660957.0
+FIX AND OPTIMIZE
+Objectif = 660588.0
+Feasibility of solution : true
+
+--------------------RESULTATS--------------------
+Moyenne des objectifs pour le relax-and-fix = 647242.5
+Moyenne des gaps pour le relax-and-fix = 0.1
+Moyenne des temps pour le relax-and-fix = 3.5251
+
+
+Moyenne des objectifs pour le fix-and-optimize = 646714.42
+Moyenne des gaps pour le fix-and-optimize = 0.02
+Moyenne des temps pour le fix-and-optimize = 3.2107
+
+Liste des Size
+Any[5]
+Liste des Step
+Any["step = 2"]
 Liste des gap
-OrderedCollections.OrderedDict{Any, Any}("3_1" => 0.0, "4_1" => 0.0, "2_1" => 0.11, "4_2" => 0.15, "3_2" => 0.2, "4_4" => 0.2, "4_3" => 0.2, "3_3" => 0.3, "2_2" => 2.25)
+Any[0.02]
 Liste des temps
-OrderedCollections.OrderedDict{Any, Any}("4_1" => 0.026199999999999998, "3_1" => 0.0297)
+Any[6.7358]

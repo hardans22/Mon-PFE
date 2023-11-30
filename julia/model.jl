@@ -45,7 +45,7 @@ function model_mip(instance_dict, milp_obj, pl = false)
     @constraint(model, c7[t in T], sum(z[k,t] for k in 1:t) <= 1)
     
 
-    @constraint(model, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T) + sum(mtn_cost[t]*z[t,t] for t in T) >= milp_obj)
+    #@constraint(model, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T) + sum(mtn_cost[t]*z[t,t] for t in T) >= milp_obj)
     
     @objective(model, Min, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T) + sum(mtn_cost[t]*z[t,t] for t in T))
     #set_silent(model)

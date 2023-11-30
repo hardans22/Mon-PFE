@@ -20,14 +20,14 @@ def gen_instance(p, t, fp=False, complexity=False, cyclic=False):
         variable_prod_cost = [[rd.randint(10, 14) for _ in T] for _ in P]
         holding_cost = [[rd.randint(5, 10) for _ in T] for _ in P]
         temp = int(p/3)
-        p_A = temp
-        p_B = temp
+        p_A = int(0.15*p)
+        p_B = int(0.25*p)
         p_C = p - p_A - p_B
         demand_A = [[rd.randint(0, 50) if rd.random() >= 0.05 else 0 for _ in T] for _ in range(p_A)]
         demand_B = [[rd.randint(0, 30) if rd.random() >= 0.05 else 0 for _ in T] for _ in range(p_B)]
         demand_C = [[rd.randint(0, 10) if rd.random() >= 0.05 else 0 for _ in T] for _ in range(p_C)]
         demand = np.concatenate((np.array(demand_A), np.array(demand_B), np.array(demand_C)), axis = 0)
-        print(demand)
+        #print(demand)
         demand = demand.tolist()
 
         #demand = [[rd.randint(0, 50) if rd.random() >= 0.05 else 0 for _ in T] for _ in P]
