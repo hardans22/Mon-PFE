@@ -1,93 +1,93 @@
-p = 100
+p = 50
 t = 10
-Size = 5
-Step = 2
+Size = 9
+Step = 1
 
 --------------------INSTANCE 1------------------------
 RELAX AND FIX
-Objectif = 658502.0
+Objectif = 326886.0
 FIX AND OPTIMIZE
-Objectif = 658054.0
+Objectif = 326303.0
 Feasibility of solution : true
 
 --------------------INSTANCE 2------------------------
 RELAX AND FIX
-Objectif = 660887.0
+Objectif = 327263.0
 FIX AND OPTIMIZE
-Objectif = 660427.0
+Objectif = 325872.08
 Feasibility of solution : true
 
 --------------------INSTANCE 3------------------------
 RELAX AND FIX
-Objectif = 676096.0
+Objectif = 333946.0
 FIX AND OPTIMIZE
-Objectif = 674580.8
+Objectif = 333335.0
 Feasibility of solution : true
 
 --------------------INSTANCE 4------------------------
 RELAX AND FIX
-Objectif = 648825.0
+Objectif = 332266.0
 FIX AND OPTIMIZE
-Objectif = 648341.0
+Objectif = 331963.0
 Feasibility of solution : true
 
 --------------------INSTANCE 5------------------------
 RELAX AND FIX
-Objectif = 629587.2
+Objectif = 331466.0
 FIX AND OPTIMIZE
-Objectif = 629072.0
+Objectif = 330489.0
 Feasibility of solution : true
 
 --------------------INSTANCE 6------------------------
 RELAX AND FIX
-Objectif = 622232.63
+Objectif = 334319.0
 FIX AND OPTIMIZE
-Objectif = 621967.63
+Objectif = 333080.0
 Feasibility of solution : true
 
 --------------------INSTANCE 7------------------------
 RELAX AND FIX
-Objectif = 626157.0
+Objectif = 334427.0
 FIX AND OPTIMIZE
-Objectif = 625852.0
+Objectif = 333621.4
 Feasibility of solution : true
 
 --------------------INSTANCE 8------------------------
 RELAX AND FIX
-Objectif = 644987.0
+Objectif = 349212.0
 FIX AND OPTIMIZE
-Objectif = 644297.8
+Objectif = 348156.0
 Feasibility of solution : true
 
 --------------------INSTANCE 9------------------------
 RELAX AND FIX
-Objectif = 644194.2
+Objectif = 314585.0
 FIX AND OPTIMIZE
-Objectif = 643964.0
+Objectif = 313874.0
 Feasibility of solution : true
 
 --------------------INSTANCE 10------------------------
 RELAX AND FIX
-Objectif = 660957.0
+Objectif = 340156.0
 FIX AND OPTIMIZE
-Objectif = 660588.0
+Objectif = 339479.0
 Feasibility of solution : true
 
 --------------------RESULTATS--------------------
-Moyenne des objectifs pour le relax-and-fix = 647242.5
-Moyenne des gaps pour le relax-and-fix = 0.1
-Moyenne des temps pour le relax-and-fix = 3.5251
+Moyenne des objectifs pour le relax-and-fix = 332452.6
+Moyenne des gaps pour le relax-and-fix = 1.07
+Moyenne des temps pour le relax-and-fix = 0.3267
 
 
-Moyenne des objectifs pour le fix-and-optimize = 646714.42
-Moyenne des gaps pour le fix-and-optimize = 0.02
-Moyenne des temps pour le fix-and-optimize = 3.2107
+Moyenne des objectifs pour le fix-and-optimize = 331617.25
+Moyenne des gaps pour le fix-and-optimize = 0.82
+Moyenne des temps pour le fix-and-optimize = 0.1937
 
 Liste des Size
-Any[5]
+Any[9]
 Liste des Step
-Any["step = 2"]
+Any["step = 1"]
 Liste des gap
-Any[0.02]
+Any[0.82]
 Liste des temps
-Any[6.7358]
+Any[0.5204]

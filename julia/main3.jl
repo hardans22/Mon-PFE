@@ -8,7 +8,7 @@ init  = pyimport("__init__")
 path_file = "result_output.txt"
 file = open(path_file, "w")
 
-p = 100
+p = 50
 t = 10
 version = 1
 println("p = ", p)
@@ -30,13 +30,13 @@ for version in 1:2
 
     model = buildM(instance,"RF")
 
-    @time rslt = RelaxAndFix(model, wSize, step, instance)
+    @time rslt = RelaxAndFix_1(model, wSize, step, instance)
     sl = create_solution(rslt)
     ssy = rslt["sy"]
     ssz = rslt["sz"]
     mdl = buildM(instance,"FO")
 
-    @time rslt_rf = FixAndOptimize(mdl, ssy, ssz, wSize, step, instance)
+    @time rslt_rf = FixAndOptimize_1(mdl, ssy, ssz, wSize, step, instance)
 end    
 
 all_milp_obj = Dict("5_5" => [15460.0, 20440.0, 19552.0, 18307.0, 20538.4, 17449.0, 18948.48, 21885.0, 22656.4, 19269.88],
@@ -64,15 +64,15 @@ list_rfSize = []
 list_rfStep = []
 list_gap = []
 list_temps = []
-for rfSize in 5:5
+for rfSize in 7:7
     println("rfSize = ", rfSize)
     write(file, "\nSize = "*string(rfSize))
-    for rfStep in 2:2
+    for rfStep in 1:1
         println("rfStep = ", rfStep)
         write(file, "\nStep = "*string(rfStep))
 
-        foSize = 5
-        foStep = 2
+        foSize = 7
+        foStep = 1
         rfObjectifs = []
         foObjectifs = []
         rf_times = []
@@ -99,7 +99,7 @@ for rfSize in 5:5
             rfmodel = buildM(instance_dict,"RF")
             
             begin_time = time()
-            @time result_rf = RelaxAndFix(rfmodel, rfSize, rfStep, instance_dict)
+            @time result_rf = RelaxAndFix_1(rfmodel, rfSize, rfStep, instance_dict)
             rf_timeElapsed = round(time() - begin_time, digits = 4)
     
             sx = result_rf["sx"]
@@ -122,7 +122,7 @@ for rfSize in 5:5
             fomodel = buildM(instance_dict,"FO")
             
             begin_time = time()
-            @time result_fo = FixAndOptimize(fomodel, sy, sz, foSize, foStep, instance_dict)
+            @time result_fo = FixAndOptimize_1(fomodel, sy, sz, foSize, foStep, instance_dict)
             fo_timeElapsed = round(time() - begin_time, digits = 4)
         
             sx = result_fo["sx"]

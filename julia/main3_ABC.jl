@@ -8,7 +8,7 @@ init  = pyimport("__init__")
 path_file = "result_output.txt"
 file = open(path_file, "w")
 
-p = 20
+p = 5
 t = 5
 version = 1
 println("p = ", p)

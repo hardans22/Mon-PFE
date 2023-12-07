@@ -88,10 +88,10 @@ function buildM(instance_dict,rf_or_fo)
 
     if rf_or_fo == "RF"
         model[:y] = @variable(model, 0 <= y[P,T] <= 1)
-        model[:z] = @variable(model, 0 <= z[T] <= 1)
+        model[:z] = @variable(model, 0 <= z[i in T, j in i:len_T] <=1)
     elseif rf_or_fo == "FO"
         model[:y] = @variable(model, 0 <= y[P,T], Bin)
-        model[:z] = @variable(model, 0 <= z[T], Bin)
+        model[:z] = @variable(model, 0 <= z[i in T, j in i:len_T] <=1, Bin)
     end
 
     #Les contraintes
@@ -103,14 +103,18 @@ function buildM(instance_dict,rf_or_fo)
     @constraint(model, c3[i in P, t in T], x[i,t] <= (sum(demand[i,s] for s in t:len_T))*y[i,t])
 
     model[:c4] = @constraint(model, c4[t in T], sum(x[i,t] for i in P) - u[t] <= c[t])
-    
+    #=
     @constraint(model, c5[t in T], c[t] <= cmax)
-    @constraint(model, z[1] == 1)
-    
+    @constraint(model, z[1] == 1) 
     @constraint(model, c6[t in 2:len_T], c[t] <= alpha*c[t-1] + cmax*z[t])
-   
+    =#
+
+    @constraint(model, c5[k in T, t in k+1:len_T], z[k,t] <= z[k,k])
+    @constraint(model, c6[t in T], c[t] <= cmax*(sum(alpha^(t-k)*z[k,t] for k in 1:t)))
+    @constraint(model, c7[t in T], sum(z[k,t] for k in 1:t) <= 1)
+
     #objective
-    obj = sum(set_up_cost .* y + variable_prod_cost .*x + holding_cost .*I) + dot(mtn_cost, z) 
+    obj = sum(set_up_cost .* y + variable_prod_cost .*x + holding_cost .*I) + sum(mtn_cost[t]*z[t,t] for t in T)
     coef = sum(mtn_cost)/(len_T)
     obj += sum(coef*u[t] for t in T)
 
@@ -121,7 +125,7 @@ function buildM(instance_dict,rf_or_fo)
 end
 
 
-function solve_model(model, w_fix, w_mip, sy, sz, rf_or_fo)
+function solve_model(model, y_fix, y_mip, z_fix, z_mip, sy, sz, rf_or_fo)
     #=
         Résolution du modèle
         model : le modèle crée
@@ -141,25 +145,29 @@ function solve_model(model, w_fix, w_mip, sy, sz, rf_or_fo)
     u = model[:u]
 
     cts = []
+    z_cts = []
     #Ajout des contraintes pour fixer les variables
-    for elt in w_fix
+    for elt in y_fix
         i, t = elt[1], elt[2]
-        if i == 1 # Si i =1 alors c'est une variable de maintenance
-            ct = @constraint(model, z[t] == sz[t])
-        else # Sinon c'est une variable de mise en route 
-            ct = @constraint(model, y[i-1,t] == sy[i-1,t])
-        end
+        ct = @constraint(model, y[i,t] == sy[i,t])
         push!(cts,ct)  #On ajoute à la liste des contraintes 
     end
+
+    for elt in z_fix
+        k, t = elt[1], elt[2]
+        ct = @constraint(model, z[k,t] == sz[k,t])
+        push!(z_cts,ct)  #On ajoute à la liste des contraintes 
+    end 
     
     if rf_or_fo == "RF"  #Si c'est le Relax-and-fix, on ajoute ceci
         for elt in w_mip 
             i, t = elt[1], elt[2]
-            if i == 1
-                set_binary(z[t])
-            else
-                set_binary(y[i-1,t])
-            end
+            set_binary(y[i,t])
+        end 
+
+        for elt in z_mip
+            k, t = elt[1], elt[2]
+            set_binary(z[k,t])
         end 
     end
     
@@ -179,6 +187,9 @@ function solve_model(model, w_fix, w_mip, sy, sz, rf_or_fo)
         for ct in cts
             delete(model, ct)
         end
+        for ct in z_cts
+            delete(model, ct)
+        end 
     end 
 
     return Dict("obj" => obj, "sx" => sx, "sI" => sI, "sy" => sy, "sz" => sz, "sc" => sc, "su" => su, "model" => model)
@@ -218,11 +229,14 @@ function RelaxAndFix(mdl, rfSize, step, instance_dict)
     #println(sol_window)
     #sol_window = order_variable(sol_window, instance_dict)
     #println(sol_window)
-
-    window = [(i,j) for i in 1:p+1 for j in 1:rfSize] #Initialisation de window
-    w_fix = [] #Ensemble de variables fixées
-    w_mip = window #Ensemble des variables binaires libres dans le modèle
-    w_lp = [(i,j) for i in 1:p+1 for j in rfSize+1:t] #Ensemble des variables relaxées daans le modèle
+    z_window = [(k,t) for t in 1:rfSize for k in 1:t]
+    z_fix = []
+    z_mip = z_window
+    z_lp = [(k,t) for t in rfSize for k in 1:t]
+    y_window = [(i,j) for i in 1:p for j in 1:rfSize] #Initialisation de window
+    y_fix = [] #Ensemble de variables fixées
+    y_mip = y_window #Ensemble des variables binaires libres dans le modèle
+    y_lp = [(i,j) for i in 1:p+1 for j in rfSize+1:t] #Ensemble des variables relaxées daans le modèle
     rf_or_fo = "RF"
     iter = 0
     while true
@@ -235,7 +249,7 @@ function RelaxAndFix(mdl, rfSize, step, instance_dict)
         #println("w_mip : ", w_mip)
         println("w_lp : ", w_lp)
         =#
-        result = solve_model(mdl, w_fix, w_mip, sy, sz, rf_or_fo)
+        result = solve_model(mdl, y_fix, y_mip, z_fix, z_mip, sy, sz, rf_or_fo)
         sy = result["sy"]
         sz = result["sz"]
         sc = result["sc"]
