@@ -6,8 +6,8 @@ pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
 
-p = 5
-t = 5
+p = 20
+t = 10
 println("p = ", p)
 println("t = ", t)
 allobj = []
@@ -53,6 +53,7 @@ for version in 1:10
     obj = result["obj"]
     time = result["time"]
     gap = result["gap"]
+    println(z)
     push!(allobj, round(obj, digits = 2))
     push!(alltime, round(time, digits = 4))
     push!(allgap,round(gap, digits = 4))
