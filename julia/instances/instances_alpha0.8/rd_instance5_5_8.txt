@@ -1,0 +1,22 @@
+Set of periods in the planning horizon T: 
+5
+Set of products P: 
+5
+Capacity reduction coefficient alpha: 
+0.8
+Relative decrease of capacity per set up gamma: 
+0.33
+Capacity reduction coefficient due to product types beta: 
+[0.38, 0.31, 0.36, 0.27, 0.21]
+Fixed production cost of each product in each period f: 
+[[685, 846, 824, 798, 677], [682, 839, 556, 754, 637], [777, 628, 710, 583, 923], [543, 952, 630, 784, 594], [664, 736, 728, 924, 889]]
+Variable production cost per unit of each product in each period p: 
+[[12, 13, 13, 10, 12], [12, 13, 11, 12, 12], [13, 12, 10, 11, 13], [13, 10, 10, 13, 10], [13, 13, 13, 12, 12]]
+Inventory holding cost per unit of each product by the end of each period h: 
+[[7, 9, 5, 6, 9], [5, 8, 5, 8, 8], [6, 5, 6, 7, 8], [5, 9, 8, 8, 5], [7, 6, 9, 6, 9]]
+Demand for each product in each period d: 
+[[4, 28, 25, 48, 32], [37, 42, 32, 17, 18], [5, 11, 48, 35, 46], [36, 16, 28, 10, 19], [14, 36, 9, 2, 15]]
+Maintenance cost in each period m: 
+[4264, 3299, 4514, 3675, 2798]
+Maximum capacity of the machine cmax: 
+210
