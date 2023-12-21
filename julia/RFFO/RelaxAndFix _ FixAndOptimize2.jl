@@ -1,7 +1,16 @@
 using JuMP, Gurobi, CPLEX, LinearAlgebra
-include("functions.jl")
+include("../Genetic algorithm/functions.jl")
 
-#Cette version combine les variables de mintenances et de setup
+
+#=
+    Here, we combine maintenance variables and setup variables. 
+    Maintenance variables first and setup variables behind.
+    We develop relax-and-fix/fix-and-optimize with z_t model 
+    Cette version est la toute première version qui combine les 
+    variables de maintenances de setup. Son idée est d'aplatir 
+    la grosse matrice en une liste et ensuite de le parcourir 
+    jusqu'à la fin. 
+=#
 
 function initWindow(windowType, instance_dict)
     #= 

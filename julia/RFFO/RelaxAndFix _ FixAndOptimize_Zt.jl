@@ -1,11 +1,17 @@
 using JuMP, Gurobi, CPLEX, LinearAlgebra
-include("functions.jl")
+include("../Genetic algorithm/functions.jl")
 
-#Here, we combine maintenance variables and setup variables. 
-#Maintenance variables first and setup variables behind.
-#We develop relax-and-fix/fix-and-optimize with z_t model 
+#=
+    Here, we combine maintenance variables and setup variables. 
+    Maintenance variables first and setup variables behind.
+    We develop relax-and-fix/fix-and-optimize with z_t model 
+    Une petite légende sur les noms des différents techniques
+    RelaxAndFix et FixAndOptimize : parcours en bloc verticalement
+    RelaxAndFix_0 et FixAndOptimize_0 : parcours en bloc horizontalement
+    RelaxAndFix_1 et FixAndOptimize_1 : parcours en bloc par escalier 
+    ou en parallélogramme (elle ne marche pas très bien)
 
-
+=#
 function initWindow(windowType, instance_dict)
     #= 
         Cette fonction permet d'initialiser 
@@ -195,9 +201,6 @@ function RelaxAndFix(mdl, rfSize, step, instance_dict)
         rfSize = Taille de la fenêtre de variable libres binaires 
         à chaque itération
         step = Nombre de nouvelle variables à ajouter
-        Notons que overlap est également la proportion de nouvelles 
-        variables ajoutées dans la fenêtre. Ainsi 1- overlap est la 
-        proportion de variable par rapport à rf Size qui sont réoptimisées 
     =#
     begin_time = time()
     t = instance_dict["t"] #Nombre de période 
@@ -275,9 +278,7 @@ function RelaxAndFix_0(mdl, rfSize, step, instance_dict)
         rfSize = Taille de la fenêtre de variable libres binaires 
         à chaque itération
         step = Nombre denouvelles variables à ajouter 
-        Notons que overlap est également la proportion de nouvelles 
-        variables ajoutées dans la fenêtre. Ainsi 1- overlap est la 
-        proportion de variable par rapport à rf Size qui sont réoptimisées 
+        
     =#
     begin_time = time()
     t = instance_dict["t"] #Nombre de période 
@@ -357,9 +358,6 @@ function RelaxAndFix_1(mdl, rfSize, step, instance_dict)
         rfSize = Taille de la fenêtre de variable libres binaires 
         à chaque itération
         step = Nombre denouvelles variables à ajouter 
-        Notons que overlap est également la proportion de nouvelles 
-        variables ajoutées dans la fenêtre. Ainsi 1- overlap est la 
-        proportion de variable par rapport à rf Size qui sont réoptimisées 
     =#
     begin_time = time()
     t = instance_dict["t"] #Nombre de période 
@@ -460,6 +458,14 @@ end
 
 
 function FixAndOptimize(mdl, sol_y, sol_z, foSize, step, instance_dict)
+    #=
+        PARCOURS EN COLONNE PAR BLOC
+        mdl = modèle crée 
+        foSize = Taille de la fenêtre de variable libres binaires 
+        à chaque itération
+        step = Nombre de nouvelle variables à ajouter
+    =#
+
     begin_time = time()
     t = instance_dict["t"]
     p = instance_dict["p"]
@@ -526,7 +532,14 @@ end
 
 
 function FixAndOptimize_0(mdl, sol_y, sol_z, foSize, step, instance_dict)
-    begin_time = time()
+    #=
+        PARCOURS EN LIGNE PAR BLOC 
+        mdl = modèle crée 
+        foSize = Taille de la fenêtre de variable libres binaires 
+        à chaque itération
+        step = Nombre denouvelles variables à ajouter 
+    =#
+        begin_time = time()
     t = instance_dict["t"]
     p = instance_dict["p"]
     #display(sol_y)
@@ -592,6 +605,13 @@ end
 
 
 function FixAndOptimize_1(mdl, sol_y, sol_z, foSize, step, instance_dict)
+    #=
+        PARCOURS EN ESCALIER 
+        mdl = modèle crée 
+        rfSize = Taille de la fenêtre de variable libres binaires 
+        à chaque itération
+        step = Nombre denouvelles variables à ajouter 
+    =#
     begin_time = time()
     t = instance_dict["t"]
     p = instance_dict["p"]
@@ -697,7 +717,18 @@ function FixAndOptimize_1(mdl, sol_y, sol_z, foSize, step, instance_dict)
 end 
 
 
-function IFO(sol, foSize, foOverlap, sizeLimit, inc, instance_dict )
+function IFO(sol, foSize, foOverlap, sizeLimit, inc, instance_dict)
+    #=
+        IFO est une idée de base en exploitant l'article de Toledo 
+        mais par la suite. Elle n'est plus très utile pour nous 
+        mais je la conserve quand même.
+        Elle fait plusieurs itérations de FixAndOptimize(...) 
+        en augmentant la taille des variables binaires dans le 
+        modèle à chaque itération de "inc".
+
+        Pour plus d'explication est peut-etre judicieux de revoir 
+        l'article de Toledo
+    =#
     p = instance_dict["p"]
     t = instance_dict["t"]
     begin_time = time()
@@ -732,7 +763,7 @@ function IFO(sol, foSize, foOverlap, sizeLimit, inc, instance_dict )
         dev = abs((sol.obj - prev_cost)/prev_cost)*100
         println("Déviation = ", dev)
         
-        foSize += inc
+        foSize += inc  #augmentation de la taille des variables binaires dans le modèle.
     
         timeElapsed = time() - begin_time
         
@@ -742,8 +773,6 @@ function IFO(sol, foSize, foOverlap, sizeLimit, inc, instance_dict )
     end
     
     println("OBJECTIF = ", result["obj"])
-    
-    return sol
-end
+end 
 
 

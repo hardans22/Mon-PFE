@@ -1,5 +1,15 @@
 using JuMP, Gurobi, CPLEX, LinearAlgebra
-include("functions.jl")
+include("../Genetic algorithm/functions.jl")
+
+
+#=
+    
+    Here, we use only maintennaces variables. 
+    We develop relax-and-fix/fix-and-optimize with z_t model 
+
+    Tu peux être surpris par certaines choses dans ce code. 
+    Normal, c'était un draft :)
+=#
 
 function initWindow(windowType, instance_dict)
     P = instance_dict["P"]

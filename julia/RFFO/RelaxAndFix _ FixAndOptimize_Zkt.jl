@@ -1,8 +1,17 @@
 using JuMP, Gurobi, CPLEX, LinearAlgebra
-include("functions.jl")
+include("../Genetic algorithm/functions.jl")
 
-#Here, we combine maintenance variables and setup variables. 
-#We develop relax-and-fix/fix-and-optimize with z_kt model 
+#=
+    Here, we combine maintenance variables and setup variables. 
+    Maintenance variables first and setup variables behind.
+    We develop relax-and-fix/fix-and-optimize with z_kt model 
+    Une petite légende sur les noms des différents techniques
+    RelaxAndFix et FixAndOptimize : parcours en bloc verticalement
+    RelaxAndFix_0 et FixAndOptimize_0 : parcours en bloc horizontalement
+    RelaxAndFix_1 et FixAndOptimize_1 : parcours en bloc par escalier 
+    ou en parallélogramme (elle ne marche pas très bien)
+
+=#
 
 function initWindow(windowType, instance_dict)
     #= 

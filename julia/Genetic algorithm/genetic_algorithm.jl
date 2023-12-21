@@ -1,11 +1,10 @@
 
-include("./model.jl")
+include("./model_building.jl")
 include("./generate_pop_initial.jl")
 include("./crossover.jl")
 include("./mutation.jl")
 include("./functions.jl")
 include("restart.jl")
-include("RelaxAndFix _ FixAndOptimize.jl")
 
 
 function genetic_algorithm(instance_dict,len_pop, nbr_iteration)

@@ -2,7 +2,7 @@ using JuMP, Random, PyCall, Profile, Statistics
 
 include("methods.jl")
 
-pushfirst!(PyVector(pyimport("sys")."path"), "")
+pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
 
 
@@ -14,7 +14,7 @@ println("p = ", p)
 println("t = ", t)
 
 println("\nEssai pour compilation\n")
-file_p = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+file_p = "../instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 instance = init.gen_instance(p,t, fp=file_p); 
 instance["P"] = 1:p;
 instance["T"] = 1:t;
@@ -55,7 +55,7 @@ objectifs = []
 for version in 1:nbr_instance
 	println("\n--------------------INSTANCE ", version, "------------------------\n")
 	
-	file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+	file_path = "../instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
 	instance_dict = init.gen_instance(p,t, fp=file_path); 
 	instance_dict["P"] = 1:p;
 	instance_dict["T"] = 1:t;

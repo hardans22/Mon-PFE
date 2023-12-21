@@ -1,4 +1,4 @@
-include("./model.jl")
+include("./model_building.jl")
 using Random
 mutable struct solution
     x :: Matrix{Float64}

@@ -1,0 +1,89 @@
+
+
+
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 5
+t = 5
+rfSize = 3
+rfStep = 1
+foSize = 3
+foStep = 1
+
+--------------------RESULTATS--------------------
+Moyenne des objectifs pour le relax-and-fix = 19488.24
+Moyenne des gaps pour le relax-and-fix = 0.18
+Moyenne des temps pour le relax-and-fix = 0.0159
+Les objectifs avec RF :  Any[15460.0, 20440.0, 19552.0, 18307.0, 20590.0, 17449.0, 18948.48, 21885.0, 22819.0, 19431.88]
+
+
+Moyenne des objectifs pour le fix-and-optimize = 19450.62
+Moyenne des gaps pour le fix-and-optimize = 0.0
+Moyenne des temps pour le fix-and-optimize = 0.0147
+Les objectifs avec FO :  Any[15460.0, 20440.0, 19552.0, 18307.0, 20538.4, 17449.0, 18948.48, 21885.0, 22656.4, 19269.88]
+Temps total = 0.030600000000000002
+
+
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 5
+t = 10
+rfSize = 5
+rfStep = 1
+foSize = 5
+foStep = 1
+
+--------------------RESULTATS--------------------
+Moyenne des objectifs pour le relax-and-fix = 37853.34
+Moyenne des gaps pour le relax-and-fix = 0.31
+Moyenne des temps pour le relax-and-fix = 0.1907
+Les objectifs avec RF :  Any[34436.85, 38410.24, 41255.23, 35847.0, 39634.0, 37401.39, 36087.56, 35962.98, 36985.0, 42513.16]
+
+
+Moyenne des objectifs pour le fix-and-optimize = 37784.79
+Moyenne des gaps pour le fix-and-optimize = 0.13
+Moyenne des temps pour le fix-and-optimize = 0.1848
+Les objectifs avec FO :  Any[34436.85, 38300.91, 41255.23, 35847.0, 39604.0, 37237.66, 36087.56, 35852.42, 36894.1, 42332.16]
+Temps total = 0.3755
+
+
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 20
+t = 5
+rfSize = 3
+rfStep = 1
+foSize = 3
+foStep = 1
+
+--------------------RESULTATS--------------------
+Moyenne des objectifs pour le relax-and-fix = 69421.76
+Moyenne des gaps pour le relax-and-fix = 0.03
+Moyenne des temps pour le relax-and-fix = 0.0673
+Les objectifs avec RF :  Any[65821.0, 71523.0, 72914.0, 77478.0, 64474.0, 74472.0, 64012.0, 67394.0, 66741.6, 69388.0]
+
+
+Moyenne des objectifs pour le fix-and-optimize = 69396.58
+Moyenne des gaps pour le fix-and-optimize = 0.0
+Moyenne des temps pour le fix-and-optimize = 0.0521
+Les objectifs avec FO :  Any[65821.0, 71523.0, 72914.0, 77234.8, 64474.0, 74472.0, 64012.0, 67394.0, 66733.0, 69388.0]
+Temps total = 0.1194
+
+
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 20
+t = 10
+rfSize = 6
+rfStep = 2
+foSize = 6
+foStep = 2
+
+--------------------RESULTATS--------------------
+Moyenne des objectifs pour le relax-and-fix = 131348.76
+Moyenne des gaps pour le relax-and-fix = 0.04
+Moyenne des temps pour le relax-and-fix = 0.4377
+Les objectifs avec RF :  Any[131740.16, 132358.0, 132159.0, 131007.0, 126575.0, 131482.0, 135600.0, 129571.0, 132536.0, 130459.41]
+
+
+Moyenne des objectifs pour le fix-and-optimize = 131299.26
+Moyenne des gaps pour le fix-and-optimize = 0.0
+Moyenne des temps pour le fix-and-optimize = 0.18
+Les objectifs avec FO :  Any[131740.16, 132328.0, 132119.0, 130755.0, 126478.0, 131482.0, 135600.0, 129495.0, 132536.0, 130459.41]
+Temps total = 0.6176999999999999

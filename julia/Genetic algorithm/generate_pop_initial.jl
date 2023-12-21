@@ -1,6 +1,6 @@
 using LinearAlgebra
 include("./functions.jl")
-include("./model.jl")
+include("./model_building.jl")
 
 
 function generate_pop_initial(len_pop,instance_dict, model)

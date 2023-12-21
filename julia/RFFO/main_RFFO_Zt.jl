@@ -1,12 +1,17 @@
 using PyCall, Statistics
 
-include("RelaxAndFix _ FixAndOptimize_Zkt.jl")
+include("RelaxAndFix _ FixAndOptimize_Zt.jl")
 
-pushfirst!(PyVector(pyimport("sys")."path"), "")
+pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
 
-path_file = "result_output.txt"
+path_file = "result_RFFO_Zt.txt"
 file = open(path_file, "w")
+
+#Les informations necessaires 
+
+list_p = [5, 20] 
+list_t = [5, 10]
 
 all_milp_obj = Dict("5_5" => [15460.0, 20440.0, 19552.0, 18307.0, 20538.4, 17449.0, 18948.48, 21885.0, 22656.4, 19269.88],
                 "5_10" => [34436.85, 38259.34, 41255.23, 35847.0, 39499.0, 37237.66, 36087.56, 35852.42, 36894.1, 41932.44],
@@ -29,11 +34,6 @@ all_size = Dict("5_5" => 3, "20_5" => 3, "50_5" => 3, "100_5" => 3, "5_10" =>5, 
 all_step = Dict("5_5" => 1, "20_5" => 1, "50_5" => 1, "100_5" => 1, "5_10" => 1, "20_10" => 2, "50_10" => 1, "100_10" => 2,
                 "5_25" => 2, "20_25" => 2, "50_25" => 2, "100_25" => 2)
 
-p = 5
-t = 5
-list_p = [5, 20]
-list_t = [5, 10]
-
 
 for p in list_p
     for t in list_t
@@ -48,7 +48,7 @@ for p in list_p
 
         #println("\nEssai pour compilation")
         for version in 1:2
-            file_p = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt"
+            file_p = "../instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt"
             instance = init.gen_instance(p,t, fp=file_p)
             instance["P"] = 1:p
             instance["T"] = 1:t
@@ -61,7 +61,7 @@ for p in list_p
             model = buildM(instance,"RF")
 
             rslt = RelaxAndFix(model, wSize, step, instance)
-
+            
             ssy = rslt["sy"]
             ssz = rslt["sz"]
             mdl = buildM(instance,"FO")
@@ -92,7 +92,7 @@ for p in list_p
             println("\n\n--------------------INSTANCE ", version, "------------------------\n")
             write(file, "\n\n--------------------INSTANCE "*string(version)*"------------------------")
             =#
-            file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+            file_path = "../instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
             instance_dict = init.gen_instance(p,t, fp=file_path); 
             instance_dict["P"] = 1:p;
             instance_dict["T"] = 1:t;
