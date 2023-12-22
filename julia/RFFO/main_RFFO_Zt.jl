@@ -6,7 +6,11 @@ pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
 
 path_file = "result_RFFO_Zt.txt"
+path_f = "result_RFFO_Zt_1.txt"
+
 file = open(path_file, "w")
+file1 = open(path_f, "w")
+
 
 #Les informations necessaires 
 
@@ -45,6 +49,10 @@ for p in list_p
         println("t = ", t)
         write(file, "\np = "*string(p))
         write(file, "\nt = "*string(t))
+
+        write(file1, "\n"*string(p))
+        write(file1, "\n"*string(t))
+
 
         #println("\nEssai pour compilation")
         for version in 1:2
@@ -87,6 +95,22 @@ for p in list_p
         fo_times = []
         rf_gap_value = []
         fo_gap_value = [] 
+
+        write(file, "\nrfSize = "*string(rfSize))
+        write(file, "\nrfStep = "*string(rfStep))
+        write(file, "\nfoSize = "*string(foSize))
+        write(file, "\nfoStep = "*string(foStep))
+
+        write(file1, "\n"*string(rfSize))
+        write(file1, "\n"*string(rfStep))
+        write(file1, "\n"*string(foSize))
+        write(file1, "\n"*string(foStep))
+
+        println("rfSize = ", rfSize)
+        println("rfStep = ", rfStep)
+        println("foSize = ", foSize)
+        println("foStep = ", foStep)
+
         for version in 1:nbr_instance
             #=
             println("\n\n--------------------INSTANCE ", version, "------------------------\n")
@@ -157,17 +181,7 @@ for p in list_p
             push!(fo_gap_value, fo_temp)
             
         end 
-        println("rfSize = ", rfSize)
-        write(file, "\nrfSize = "*string(rfSize))
         
-        println("rfStep = ", rfStep)
-        write(file, "\nrfStep = "*string(rfStep))
-       
-        println("foSize = ", foSize)
-        write(file, "\nfoSize = "*string(foSize))
-    
-        println("foStep = ", foStep)
-        write(file, "\nfoStep = "*string(foStep))
         
         rf_obj_mean = round(mean(rfObjectifs), digits = 2)
         rfg_mean = round(mean(rf_gap_value),digits = 2)
@@ -175,36 +189,39 @@ for p in list_p
         fo_obj_mean = round(mean(foObjectifs), digits = 2)
         fog_mean = round(mean(fo_gap_value),digits = 2)
         fot_mean = round(mean(fo_times), digits = 4)
+        time_total = rft_mean + fot_mean
         
         write(file, "\n\n--------------------RESULTATS--------------------")
-        println("\nMoyenne des objectifs pour le relax-and-fix = ", rf_obj_mean)
         write(file, "\nMoyenne des objectifs pour le relax-and-fix = "*string(rf_obj_mean))
-
-        println("Moyenne des gaps pour le relax-and-fix = ", rfg_mean)
         write(file, "\nMoyenne des gaps pour le relax-and-fix = "*string(rfg_mean))
-
-        println("Moyenne des temps pour le relax-and-fix = ", rft_mean)
         write(file, "\nMoyenne des temps pour le relax-and-fix = "*string(rft_mean))
-
-        println("\nLes objectifs avec RF : ", rfObjectifs)
         write(file, "\nLes objectifs avec RF :  "*string(rfObjectifs))
-
-
-        println("\nMoyenne des objectifs pour le fix-and-optimize = ", fo_obj_mean)
         write(file, "\n\n\nMoyenne des objectifs pour le fix-and-optimize = "*string(fo_obj_mean))
-
-        println("Moyenne des gaps pour le fix-and-optimize = ", fog_mean)
-        write(file, "\nMoyenne des gaps pour le fix-and-optimize = "*string(fog_mean))
-
-        println("Moyenne des temps pour le fix-and-optimize = ", fot_mean)
         write(file, "\nMoyenne des temps pour le fix-and-optimize = "*string(fot_mean))
+        write(file, "\nMoyenne des gaps pour le fix-and-optimize = "*string(fog_mean))
+        write(file, "\nLes objectifs avec FO :  "*string(foObjectifs))
+        write(file, "\nTemps total = "*string(time_total))
 
-        time_total = rft_mean + fot_mean
+        write(file1, "\n"*string(rf_obj_mean))
+        write(file1, "\n"*string(rfg_mean))
+        write(file1, "\n"*string(rft_mean))
+        write(file1, "\n"*string(rfObjectifs))
+        write(file1, "\n"*string(fo_obj_mean))
+        write(file1, "\n"*string(fot_mean))
+        write(file1, "\n"*string(fog_mean))
+        write(file1, "\n"*string(foObjectifs))
+        write(file1, "\n"*string(time_total))
+
+
+        println("\nMoyenne des objectifs pour le relax-and-fix = ", rf_obj_mean)
+        println("Moyenne des gaps pour le relax-and-fix = ", rfg_mean)
+        println("Moyenne des temps pour le relax-and-fix = ", rft_mean)
+        println("\nLes objectifs avec RF : ", rfObjectifs)
+        println("\nMoyenne des objectifs pour le fix-and-optimize = ", fo_obj_mean)
+        println("Moyenne des gaps pour le fix-and-optimize = ", fog_mean)
+        println("Moyenne des temps pour le fix-and-optimize = ", fot_mean)
         println("\nLes objectifs avec FO : ", foObjectifs)
         #show(foObjectifs)
-        write(file, "\nLes objectifs avec FO :  "*string(foObjectifs))
-
         println("\nTemps total = ",time_total)
-        write(file, "\nTemps total = "*string(time_total))
     end
 end

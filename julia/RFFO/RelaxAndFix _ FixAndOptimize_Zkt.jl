@@ -273,7 +273,7 @@ function RelaxAndFix(mdl, rfSize, step, instance_dict)
         #display(sy)
         curseur += ceil(Int64, step)  #On déplace le curseur
         #println("curseur = ", curseur)
-        if curseur + rfSize <= t #On vérifie si depuis curseur on peut avoir rfSize variables
+        if curseur + rfSize <= len_T #On vérifie si depuis curseur on peut avoir rfSize variables
             y_window = [(i,j) for i in 1:p for j in curseur:curseur+rfSize-1]
             z_window = [(k,t) for t in curseur:curseur+rfSize-1 for k in 1:t] 
         else  #Sinon on prend de curseur jusqu'à la fin
@@ -448,13 +448,13 @@ function FixAndOptimize(mdl, sol_y, sol_z, foSize, step, instance_dict)
         
         curseur += floor(Int64, step)
 
-        if curseur + foSize <= t
+        if curseur + foSize <= len_T
             z_window = [(k,t) for t in curseur:curseur + foSize for k in 1:t]
             y_window = [(i,j) for i in 1:p for j in curseur:curseur + foSize]
         else
             z_window = [(k,t) for t in curseur:len_T for k in 1:t]
             y_window = [(i,j) for i in 1:p for j in curseur:len_T]
-            curseur = t
+            curseur = len_T
         end
 
         z_mip = z_window
@@ -469,7 +469,7 @@ function FixAndOptimize(mdl, sol_y, sol_z, foSize, step, instance_dict)
         su = result["su"]
         #println("\tObjectif : ", obj)
 
-        if curseur == t
+        if curseur == len_T
             break
         end 
     end
