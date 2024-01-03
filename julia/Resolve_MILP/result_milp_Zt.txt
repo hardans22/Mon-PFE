@@ -6,8 +6,8 @@ Liste des objectifs de chaque instance : Any[15460.0, 20440.0, 19552.0, 18307.0,
 Moyenne des objectifs : 19450.62
 Liste des gaps de chaque instance : Any[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 Moyenne des gaps : 0.0
-Liste des temps de résolution de chaque instance : Any[0.006, 0.0225, 0.0052, 0.0056, 0.0095, 0.0038, 0.0058, 0.0058, 0.011, 0.0122]
-Moyenne des temps : 0.0087
+Liste des temps de résolution de chaque instance : Any[0.0159, 0.0233, 0.0053, 0.0055, 0.0108, 0.0041, 0.0065, 0.0066, 0.0115, 0.0147]
+Moyenne des temps : 0.0104
 -------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
 p = 5
 t = 10
@@ -15,8 +15,8 @@ Liste des objectifs de chaque instance : Any[34436.85, 38259.34, 41255.23, 35847
 Moyenne des objectifs : 37730.16
 Liste des gaps de chaque instance : Any[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 Moyenne des gaps : 0.0
-Liste des temps de résolution de chaque instance : Any[0.0624, 0.1087, 0.068, 0.0848, 0.0833, 0.0862, 0.0931, 0.1435, 0.0619, 0.0791]
-Moyenne des temps : 0.0871
+Liste des temps de résolution de chaque instance : Any[0.0624, 0.1151, 0.0629, 0.0812, 0.0811, 0.0831, 0.091, 0.1386, 0.0632, 0.0695]
+Moyenne des temps : 0.0848
 -------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
 p = 20
 t = 5
@@ -24,8 +24,8 @@ Liste des objectifs de chaque instance : Any[65821.0, 71523.0, 72914.0, 77234.8,
 Moyenne des objectifs : 69396.58
 Liste des gaps de chaque instance : Any[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 Moyenne des gaps : 0.0
-Liste des temps de résolution de chaque instance : Any[0.0376, 0.0204, 0.0398, 0.1322, 0.0203, 0.0613, 0.0122, 0.0128, 0.0333, 0.0352]
-Moyenne des temps : 0.0405
+Liste des temps de résolution de chaque instance : Any[0.0364, 0.0198, 0.0364, 0.1328, 0.0199, 0.0617, 0.0127, 0.0137, 0.0329, 0.0347]
+Moyenne des temps : 0.0401
 -------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
 p = 20
 t = 10
@@ -33,5 +33,5 @@ Liste des objectifs de chaque instance : Any[131695.0, 132328.0, 132119.0, 13075
 Moyenne des objectifs : 131292.92
 Liste des gaps de chaque instance : Any[0.0, 0.0, 0.0, 0.0, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0]
 Moyenne des gaps : 0.0
-Liste des temps de résolution de chaque instance : Any[0.5375, 0.1307, 0.2173, 0.3361, 0.1058, 0.2319, 0.2761, 0.1809, 0.1243, 0.1451]
-Moyenne des temps : 0.2286
+Liste des temps de résolution de chaque instance : Any[0.5417, 0.122, 0.2184, 0.3036, 0.1089, 0.2004, 0.2562, 0.1619, 0.1183, 0.1346]
+Moyenne des temps : 0.2166

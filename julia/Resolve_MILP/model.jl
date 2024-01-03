@@ -23,7 +23,7 @@ function model_mip_zkt(instance_dict, pl = false)
     else
         @variable(model, 0 <= y[P,T] <= 1, Bin)
         #@variable(model, 0 <= z[T] <=1, Bin)
-        @variable(model, 0 <= z[i in T, j in i:len_T] <=1, Bin)
+        @variable(model, 0 <= z[k in T, t in k:len_T] <=1, Bin)
     end
     
     @constraint(model, c1[i in P], x[i,1] - I[i,1] == demand[i,1])
@@ -48,7 +48,7 @@ function model_mip_zkt(instance_dict, pl = false)
     #@constraint(model, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T) + sum(mtn_cost[t]*z[t,t] for t in T) >= milp_obj)
     
     @objective(model, Min, sum(set_up_cost[i,t]*y[i,t] + variable_prod_cost[i,t]*x[i,t] + holding_cost[i,t]*I[i,t] for i in P, t in T) + sum(mtn_cost[t]*z[t,t] for t in T))
-    #set_silent(model)
+    set_silent(model)
     set_time_limit_sec(model, 7200.0)
     JuMP.optimize!(model)
     obj = objective_value(model)
@@ -57,16 +57,16 @@ function model_mip_zkt(instance_dict, pl = false)
     sy = JuMP.value.(y)
     sz = JuMP.value.(z)
     sc = JuMP.value.(c)
-    gap = relative_gap(model)
+    gap = relative_gap(model)*100
      #=
     for i in P
         println(sum(sy[i,:]))
     end
     =# 
     nbr_set_up = []
-    println("\nMILP_obj = ", obj)
+    #println("\nMILP_obj = ", obj)
     time = solve_time(model)
-    println("Temps de résolution MILP = ", time, "s")
+    #println("Temps de résolution MILP = ", time, "s")
     
     return Dict("obj" => obj, "z" => sz, "c" => sc, "y" => sy, "x" => sx, "I" => sI, "time" => time, "gap" => gap)
 end
@@ -131,7 +131,7 @@ function model_mip_zt(instance_dict, pl = false)
     sy = JuMP.value.(y)
     sz = JuMP.value.(z)
     sc = JuMP.value.(c)
-    gap = relative_gap(model)
+    gap = relative_gap(model)*100
      #=
     for i in P
         println(sum(sy[i,:]))

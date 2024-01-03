@@ -2,7 +2,7 @@ using PyCall, Statistics
 
 include("model.jl")
 
-pushfirst!(PyVector(pyimport("sys")."path"), "")
+pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
 
 
@@ -39,7 +39,7 @@ for p in list_p
         for version in 1:10
             #println("\n----------------------------INSTANCE ", version, "------------------------------------\n")
             #write(file, "\n----------------------------INSTANCE "*string(version)*"------------------------------------\n")
-            file_path = "instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+            file_path = "../instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
             instance_dict = init.gen_instance(p,t, fp=file_path); 
             instance_dict["P"] = 1:p;
             instance_dict["T"] = 1:t;
