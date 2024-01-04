@@ -58,6 +58,8 @@ function model_mip_zkt(instance_dict, pl = false)
     sz = JuMP.value.(z)
     sc = JuMP.value.(c)
     gap = relative_gap(model)*100
+    nbr_nodes =  MOI.get(model, MOI.NodeCount())
+    dual_obj = objective_bound(model)
      #=
     for i in P
         println(sum(sy[i,:]))
@@ -68,7 +70,7 @@ function model_mip_zkt(instance_dict, pl = false)
     time = solve_time(model)
     #println("Temps de résolution MILP = ", time, "s")
     
-    return Dict("obj" => obj, "z" => sz, "c" => sc, "y" => sy, "x" => sx, "I" => sI, "time" => time, "gap" => gap)
+    return Dict("obj" => obj, "z" => sz, "c" => sc, "y" => sy, "x" => sx, "I" => sI, "time" => time, "gap" => gap, "nbr_nodes" => nbr_nodes, "dual_obj" => dual_obj)
 end
 
 
@@ -132,6 +134,9 @@ function model_mip_zt(instance_dict, pl = false)
     sz = JuMP.value.(z)
     sc = JuMP.value.(c)
     gap = relative_gap(model)*100
+    nbr_nodes =  MOI.get(model, MOI.NodeCount())
+    dual_obj = objective_bound(model)
+
      #=
     for i in P
         println(sum(sy[i,:]))
@@ -142,7 +147,7 @@ function model_mip_zt(instance_dict, pl = false)
     time = solve_time(model)
     #println("Temps de résolution MILP = ", time, "s")
     
-    return Dict("obj" => obj, "z" => sz, "c" => sc, "y" => sy, "x" => sx, "I" => sI, "time" => time, "gap" => gap)
+    return Dict("obj" => obj, "z" => sz, "c" => sc, "y" => sy, "x" => sx, "I" => sI, "time" => time, "gap" => gap, "nbr_nodes" => nbr_nodes, "dual_obj" => dual_obj)
 end
 
 

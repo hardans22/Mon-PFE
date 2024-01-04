@@ -1,4 +1,4 @@
-using PyCall, Statistics
+using PyCall, Statistics, DataFrames, XLSX
 
 include("model.jl")
 
@@ -7,21 +7,33 @@ init  = pyimport("__init__")
 
 
 path_file = "result_milp_Zkt.txt"
-path_f = "result_milp_Zkt_1.txt"
 
 file = open(path_file, "w") 
-file1 = open(path_f, "w") 
 
 
 list_p = [5, 20]
 list_t = [5, 10]
+group_instances = []
+means_obj = []
+means_gap = []
+means_time = []
+means_nodes = []
+means_bounds = []
+
+list_instances = []
+list_obj = []
+list_gap = []
+list_time = []
+list_nodes = []
+list_bounds = []
 
 for p in list_p
     for t in list_t
         allobj = []
         alltime = []
         allgap = []
-
+        allnodes = []
+        allbounds = []
         println("\n-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------")
         write(file, "\n-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------")
 
@@ -32,11 +44,11 @@ for p in list_p
         write(file, "\np = "*string(p))
         write(file, "\nt = "*string(t))
 
-        write(file1, "\n"*string(p))
-        write(file1, "\n"*string(t))
-
+        instance = string(p)*"_"*string(t)
+        push!(group_instances, instance)
 
         for version in 1:10
+            push!(list_instances, instance*"_"*string(version))
             #println("\n----------------------------INSTANCE ", version, "------------------------------------\n")
             #write(file, "\n----------------------------INSTANCE "*string(version)*"------------------------------------\n")
             file_path = "../instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
@@ -58,9 +70,13 @@ for p in list_p
             obj = result["obj"]
             time = result["time"]
             gap = result["gap"]
+            nodes = result["nbr_nodes"]
+            dual_objs = result["dual_obj"]
             push!(allobj, round(obj, digits = 2))
             push!(alltime, round(time, digits = 4))
             push!(allgap,round(gap, digits = 4))
+            push!(allnodes, nodes)
+            push!(allbounds, round(dual_objs, digits = 2))
             z_prime = [floor(Int, z[t,t]) for t in 1:t]
             #=
             println("\nNombre de maintenance : ", sum(z_prime))
@@ -77,14 +93,33 @@ for p in list_p
             #write(file, "\nNombre de setup par produit : ", string(nbr_setup))
             #println(nbr_setup)
         end
+    
+        append!(list_obj, allobj)
+        append!(list_gap, allgap)
+        append!(list_time, alltime)
+        append!(list_nodes, allnodes)
+        append!(list_bounds, allbounds)
+
         m_obj = round(mean(allobj), digits = 2)
         m_gap = round(mean(allgap), digits = 4)
         m_time = round(mean(alltime), digits = 4)
+        m_nodes = round(mean(allnodes), digits = 4)
+        m_bounds = round(mean(allbounds), digits = 4)
+
+        push!(means_obj, m_obj)
+        push!(means_gap, m_gap)
+        push!(means_time, m_time)
+        push!(means_nodes, m_nodes)
+        push!(means_bounds, m_bounds)
 
         println("\nListe des objectifs de chaque instance: ", allobj)
         println("\nMoyenne des objectifs : ",m_obj)
         println("\n \nListe des gaps de chaque instance: ", allgap)
         println("\nMoyenne des gaps : ", m_gap)
+        println("\nListe des objective_bound de chaque instance: ", allbounds)
+        println("\nMoyenne des objective_bound : ",m_bounds)
+        println("\n \nListe des nombres de noeuds explorés pour chaque instance: ", allnodes)
+        println("\nMoyenne du nombre de noeuds explorés : ", m_nodes)
         println("\n\nListe des temps de résolution de chaque instance: ", alltime)
         println("\nMoyenne des temps : ", m_time)
         
@@ -92,14 +127,17 @@ for p in list_p
         write(file, "\nMoyenne des objectifs : "*string(m_obj))
         write(file, "\nListe des gaps de chaque instance : "*string(allgap))
         write(file, "\nMoyenne des gaps : "*string(m_gap))
+        write(file, "\nListe des objective_bound de chaque instance: "*string(allbounds))
+        write(file, "\nMoyenne des objective_bound : "*string(m_bounds))
+        write(file, "\nListe des nombres de noeuds explorés pour chaque instance : "*string(allnodes))
+        write(file, "\nMoyenne du nombre de noeuds explorés : "*string(m_nodes))
         write(file, "\nListe des temps de résolution de chaque instance : "*string(alltime))
         write(file, "\nMoyenne des temps : "*string(m_time))
 
-        write(file1, "\n"*string(allobj))
-        write(file1, "\n"*string(m_obj))
-        write(file1, "\n"*string(allgap))
-        write(file1, "\n"*string(m_gap))
-        write(file1, "\n"*string(alltime))
-        write(file1, "\n"*string(m_time))
     end
 end
+dataframe = DataFrames.DataFrame(Instances = group_instances, ZktObjectif = means_obj, ZktBounds = means_bounds, ZktGap = means_gap, ZktNodes = means_nodes, ZktTime = means_time)
+XLSX.writetable("result_milp_Zkt.xlsx", dataframe, overwrite=true)
+
+dataframe = DataFrames.DataFrame(Instances = list_instances, ZktObjectif = list_obj, ZktBounds = list_bounds, ZktGap = list_gap, ZktNodes = list_nodes, ZktTime = list_time)
+XLSX.writetable("all_instances_result_milp_Zkt.xlsx", dataframe, overwrite=true)

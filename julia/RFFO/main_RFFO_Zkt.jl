@@ -1,4 +1,4 @@
-using PyCall, Statistics
+using PyCall, Statistics, DataFrames, XLSX
 
 include("RelaxAndFix _ FixAndOptimize_Zkt.jl")
 
@@ -9,20 +9,42 @@ option_instance = "ABC"
 
 if option_instance == "ABC"
     path_file = "result_RFFO_Zkt_ABC.txt"
-    path_f = "result_RFFO_Zkt_1_ABC.txt"
 else
     path_file = "result_RFFO_Zkt.txt"
-    path_f = "result_RFFO_Zkt_1.txt"
 end 
 
 file = open(path_file, "w")
-file1 = open(path_f, "w")
 
+#println("\nEssai pour compilation")
+p = 10
+t = 5
+for version in 1:2
+    if option_instance == "ABC"
+        file_p = "../instances/instances_alpha0.8_ABC/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt"
+    else
+        file_p = "../instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt"
+    end    
+    instance = init.gen_instance(p,t, fp=file_p)
+    instance["P"] = 1:p
+    instance["T"] = 1:t
+    instance["t"] = t
+    instance["p"] = p 
+
+    wSize = 3
+    step = 1
+
+    model = buildM(instance,"RF")
+
+    rslt = RelaxAndFix(model, wSize, step, instance)
+    
+    ssy = rslt["sy"]
+    ssz = rslt["sz"]
+    mdl = buildM(instance,"FO")
+
+    rslt_rf = FixAndOptimize(mdl, ssy, ssz, wSize, step, instance)
+end    
 
 #Les informations necessaires 
-
-list_p = [5, 20] 
-list_t = [5, 10]
 
 if option_instance == "ABC"
     all_milp_obj = Dict("5_5" => [14028.0, 11378.0, 11392.0, 13043.0, 13358.0, 12370.0, 9292.0, 11934.0, 13044.0, 9475.0],
@@ -62,6 +84,26 @@ all_size = Dict("5_5" => 3, "20_5" => 3, "50_5" => 3, "100_5" => 3, "5_10" =>5, 
 all_step = Dict("5_5" => 1, "20_5" => 1, "50_5" => 1, "100_5" => 1, "5_10" => 1, "20_10" => 2, "50_10" => 1, "100_10" => 2,
                 "5_25" => 2, "20_25" => 2, "50_25" => 2, "100_25" => 2)
 
+list_p = [5, 20] 
+list_t = [5, 10]
+group_instances = []
+means_rf_obj = []
+means_rf_gap = []
+means_rf_time = []
+means_fo_obj = []
+means_fo_gap = []
+means_fo_time = []
+means_time_total = []
+
+list_instances = []
+list_rf_obj = []
+list_rf_gap = []
+list_rf_time = []
+list_fo_obj = []
+list_fo_gap = []
+list_fo_time = []
+list_time_total = []
+
 
 for p in list_p
     for t in list_t
@@ -74,47 +116,16 @@ for p in list_p
         write(file, "\np = "*string(p))
         write(file, "\nt = "*string(t))
 
-        write(file1, "\n"*string(p))
-        write(file1, "\n"*string(t))
-
-
-        #println("\nEssai pour compilation")
-        for version in 1:2
-            if option_instance == "ABC"
-                file_p = "../instances/instances_alpha0.8_ABC/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt"
-            else
-                file_p = "../instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt"
-            end    
-            instance = init.gen_instance(p,t, fp=file_p)
-            instance["P"] = 1:p
-            instance["T"] = 1:t
-            instance["t"] = t
-            instance["p"] = p 
-
-            wSize = 3
-            step = 1
-
-            model = buildM(instance,"RF")
-
-            rslt = RelaxAndFix(model, wSize, step, instance)
-            
-            ssy = rslt["sy"]
-            ssz = rslt["sz"]
-            mdl = buildM(instance,"FO")
-
-            rslt_rf = FixAndOptimize(mdl, ssy, ssz, wSize, step, instance)
-        end    
-
-
-        instance_key = string(p)*"_"*string(t)
-        milp_obj = all_milp_obj[instance_key]
+        instance = string(p)*"_"*string(t)
+        milp_obj = all_milp_obj[instance]
+        push!(group_instances, instance)
 
         allgap = Dict()
         alltimes = Dict()
         nbr_instance = 10
 
-        rfSize = all_size[instance_key]
-        rfStep = all_step[instance_key]
+        rfSize = all_size[instance]
+        rfStep = all_step[instance]
         foSize = rfSize
         foStep = rfStep
         rfObjectifs = []
@@ -129,22 +140,16 @@ for p in list_p
         write(file, "\nfoSize = "*string(foSize))
         write(file, "\nfoStep = "*string(foStep))
 
-        write(file1, "\n"*string(rfSize))
-        write(file1, "\n"*string(rfStep))
-        write(file1, "\n"*string(foSize))
-        write(file1, "\n"*string(foStep))
-
         println("rfSize = ", rfSize)
         println("rfStep = ", rfStep)
         println("foSize = ", foSize)
         println("foStep = ", foStep)
-        list_instances = []
         for version in 1:nbr_instance
             #=
             println("\n\n--------------------INSTANCE ", version, "------------------------\n")
             write(file, "\n\n--------------------INSTANCE "*string(version)*"------------------------")
             =#
-            push!(list_instances, instance_key*"_"*string(version))
+            push!(list_instances, instance*"_"*string(version))
             if option_instance == "ABC"
                 file_path = "../instances/instances_alpha0.8_ABC/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt"
             else
@@ -215,7 +220,15 @@ for p in list_p
             
         end 
         
-        
+        append!(list_rf_obj, rfObjectifs)
+        append!(list_rf_gap, rf_gap_value)
+        append!(list_rf_time, rf_times)
+        append!(list_fo_obj, foObjectifs)
+        append!(list_fo_gap, fo_gap_value)
+        append!(list_fo_time, fo_times)
+        append!(list_time_total, rf_times .+ fo_times)
+
+
         rf_obj_mean = round(mean(rfObjectifs), digits = 2)
         rfg_mean = round(mean(rf_gap_value),digits = 2)
         rft_mean = round(mean(rf_times), digits = 4)
@@ -223,6 +236,15 @@ for p in list_p
         fog_mean = round(mean(fo_gap_value),digits = 2)
         fot_mean = round(mean(fo_times), digits = 4)
         time_total = rft_mean + fot_mean
+
+        push!(means_rf_obj, rf_obj_mean)
+        push!(means_rf_gap, rfg_mean)
+        push!(means_rf_time, rft_mean)
+        push!(means_fo_obj, fo_obj_mean)
+        push!(means_fo_gap, fog_mean)
+        push!(means_fo_time, fot_mean)
+        push!(means_time_total, time_total)
+        
         
         write(file, "\n\n--------------------RESULTATS--------------------")
         write(file, "\nListe des instances = "*string(list_instances))
@@ -236,16 +258,6 @@ for p in list_p
         write(file, "\nLes objectifs avec FO :  "*string(foObjectifs))
         write(file, "\nTemps total = "*string(time_total))
 
-        write(file1, "\n"*string(list_instances))
-        write(file1, "\n"*string(rf_obj_mean))
-        write(file1, "\n"*string(rfg_mean))
-        write(file1, "\n"*string(rft_mean))
-        write(file1, "\n"*string(rfObjectifs))
-        write(file1, "\n"*string(fo_obj_mean))
-        write(file1, "\n"*string(fot_mean))
-        write(file1, "\n"*string(fog_mean))
-        write(file1, "\n"*string(foObjectifs))
-        write(file1, "\n"*string(time_total))
 
         println("\nListe des instances = "*string(list_instances))
         println("\nMoyenne des objectifs pour le relax-and-fix = ", rf_obj_mean)
@@ -256,7 +268,20 @@ for p in list_p
         println("Moyenne des gaps pour le fix-and-optimize = ", fog_mean)
         println("Moyenne des temps pour le fix-and-optimize = ", fot_mean)
         println("\nLes objectifs avec FO : ", foObjectifs)
-        #show(foObjectifs)
         println("\nTemps total = ",time_total)
     end
+end
+
+dataframe = DataFrames.DataFrame(Instances = group_instances, rfObjectif = means_rf_obj,  rfGap= means_rf_gap, rfTime = means_rf_time, foObjectif = means_fo_obj,  foGap= means_fo_gap, foTime = means_fo_time, RFFOTime = means_time_total)
+if option_instance == "ABC"
+    XLSX.writetable("result_RFFO_Zkt_ABC.xlsx", dataframe, overwrite=true)
+else
+    XLSX.writetable("result_RFFO_Zkt.xlsx", dataframe, overwrite=true)
+end
+
+dataframe = DataFrames.DataFrame(Instances = list_instances, rfObjectif = list_rf_obj,  rfGap= list_rf_gap, rfTime = list_rf_time, foObjectif = list_fo_obj,  foGap= list_fo_gap, foTime = list_fo_time, RFFOTime = list_time_total)
+if option_instance == "ABC"
+    XLSX.writetable("all_instances_result_RFFO_Zkt_ABC.xlsx", dataframe, overwrite=true)
+else
+    XLSX.writetable("all_instances_result_RFFO_Zkt.xlsx", dataframe, overwrite=true)
 end
