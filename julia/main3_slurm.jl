@@ -5,11 +5,11 @@ include("RelaxAndFix _ FixAndOptimize3.jl")
 pushfirst!(PyVector(pyimport("sys")."path"), "")
 init  = pyimport("__init__")
 
-path_file = "result_output.txt"
+path_file = "result_output0.txt"
 file = open(path_file, "w")
 
-p = 5
-t = 5
+p = 20
+t = 25
 version = 1
 #println("p = ", p)
 #println("t = ", t)
@@ -64,10 +64,10 @@ list_rfSize = []
 list_rfStep = []
 list_gap = Dict()
 list_temps = Dict()
-for rfSize in 2:4
+for rfSize in 4:2:12
     #println("rfSize = ", rfSize)
     #write(file, "\nSize = "*string(rfSize))
-    for rfStep in 1:rfSize
+    for rfStep in 2:4:6
         nkey = string(rfSize)*"_"*string(rfStep)
         #println("rfStep = ", rfStep)
         #write(file, "\nStep = "*string(rfStep))

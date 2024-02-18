@@ -5,8 +5,13 @@ include("model.jl")
 pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
 
+option_instance = "ABC"
 
-path_file = "result_milp_Zkt.txt"
+if option_instance == "ABC"
+    path_file = "result_milp_Zkt_ABC.txt"
+else
+    path_file = "result_milp_Zkt.txt"
+end 
 
 file = open(path_file, "w") 
 
@@ -36,8 +41,6 @@ for p in list_p
         allbounds = []
         println("\n-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------")
         write(file, "\n-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------")
-
-        version = 1
         println("p = ", p)
         println("t = ", t)
         
@@ -51,7 +54,11 @@ for p in list_p
             push!(list_instances, instance*"_"*string(version))
             #println("\n----------------------------INSTANCE ", version, "------------------------------------\n")
             #write(file, "\n----------------------------INSTANCE "*string(version)*"------------------------------------\n")
-            file_path = "../instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+            if option_instance == "ABC"
+                file_path = "../instances/instances_alpha0.8_ABC/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+            else
+                file_path = "../instances/instances_alpha0.8/rd_instance" * string(p) * "_" * string(t) * "_" * string(version) *".txt";
+            end
             instance_dict = init.gen_instance(p,t, fp=file_path); 
             instance_dict["P"] = 1:p;
             instance_dict["T"] = 1:t;
@@ -137,7 +144,15 @@ for p in list_p
     end
 end
 dataframe = DataFrames.DataFrame(Instances = group_instances, ZktObjectif = means_obj, ZktBounds = means_bounds, ZktGap = means_gap, ZktNodes = means_nodes, ZktTime = means_time)
-XLSX.writetable("result_milp_Zkt.xlsx", dataframe, overwrite=true)
+if option_instance == "ABC"
+    XLSX.writetable("result_milp_Zkt_ABC.xlsx", dataframe, overwrite=true)
+else
+    XLSX.writetable("result_milp_Zkt.xlsx", dataframe, overwrite=true)
+end 
 
 dataframe = DataFrames.DataFrame(Instances = list_instances, ZktObjectif = list_obj, ZktBounds = list_bounds, ZktGap = list_gap, ZktNodes = list_nodes, ZktTime = list_time)
-XLSX.writetable("all_instances_result_milp_Zkt.xlsx", dataframe, overwrite=true)
+if option_instance == "ABC"
+    XLSX.writetable("all_instances_result_milp_Zkt_ABC.xlsx", dataframe, overwrite=true)
+else
+    XLSX.writetable("all_instances_result_milp_Zkt.xlsx", dataframe, overwrite=true)
+end

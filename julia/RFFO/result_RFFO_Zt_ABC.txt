@@ -1,0 +1,85 @@
+
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 5
+t = 5
+rfSize = 3
+rfStep = 1
+foSize = 3
+foStep = 1
+
+--------------------RESULTATS--------------------
+Liste des instances = Any["5_5_1", "5_5_2", "5_5_3", "5_5_4", "5_5_5", "5_5_6", "5_5_7", "5_5_8", "5_5_9", "5_5_10"]
+Moyenne des objectifs pour le relax-and-fix = 11931.4
+Moyenne des gaps pour le relax-and-fix = 0.0
+Moyenne des temps pour le relax-and-fix = 0.0036
+Les objectifs avec RF :  Any[14028.0, 11378.0, 11392.0, 13043.0, 13358.0, 12370.0, 9292.0, 11934.0, 13044.0, 9475.0]
+
+
+Moyenne des objectifs pour le fix-and-optimize = 11931.4
+Moyenne des temps pour le fix-and-optimize = 0.0042
+Moyenne des gaps pour le fix-and-optimize = 0.0
+Les objectifs avec FO :  Any[14028.0, 11378.0, 11392.0, 13043.0, 13358.0, 12370.0, 9292.0, 11934.0, 13044.0, 9475.0]
+Temps total = 0.0078
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 5
+t = 10
+rfSize = 5
+rfStep = 1
+foSize = 5
+foStep = 1
+
+--------------------RESULTATS--------------------
+Liste des instances = Any["5_5_1", "5_5_2", "5_5_3", "5_5_4", "5_5_5", "5_5_6", "5_5_7", "5_5_8", "5_5_9", "5_5_10", "5_10_1", "5_10_2", "5_10_3", "5_10_4", "5_10_5", "5_10_6", "5_10_7", "5_10_8", "5_10_9", "5_10_10"]
+Moyenne des objectifs pour le relax-and-fix = 21998.96
+Moyenne des gaps pour le relax-and-fix = 0.08
+Moyenne des temps pour le relax-and-fix = 0.04
+Les objectifs avec RF :  Any[22940.81, 22326.0, 19925.78, 22242.49, 19613.0, 22534.25, 20632.31, 23455.49, 20817.44, 25502.0]
+
+
+Moyenne des objectifs pour le fix-and-optimize = 21980.17
+Moyenne des temps pour le fix-and-optimize = 0.0471
+Moyenne des gaps pour le fix-and-optimize = 0.0
+Les objectifs avec FO :  Any[22940.81, 22286.0, 19925.78, 22155.21, 19613.0, 22532.32, 20632.31, 23396.85, 20817.44, 25502.0]
+Temps total = 0.08710000000000001
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 20
+t = 5
+rfSize = 3
+rfStep = 1
+foSize = 3
+foStep = 1
+
+--------------------RESULTATS--------------------
+Liste des instances = Any["5_5_1", "5_5_2", "5_5_3", "5_5_4", "5_5_5", "5_5_6", "5_5_7", "5_5_8", "5_5_9", "5_5_10", "5_10_1", "5_10_2", "5_10_3", "5_10_4", "5_10_5", "5_10_6", "5_10_7", "5_10_8", "5_10_9", "5_10_10", "20_5_1", "20_5_2", "20_5_3", "20_5_4", "20_5_5", "20_5_6", "20_5_7", "20_5_8", "20_5_9", "20_5_10"]
+Moyenne des objectifs pour le relax-and-fix = 38858.6
+Moyenne des gaps pour le relax-and-fix = 0.0
+Moyenne des temps pour le relax-and-fix = 0.0106
+Les objectifs avec RF :  Any[34940.0, 33986.0, 38217.0, 37979.0, 40884.0, 38477.0, 42836.0, 41040.0, 38223.0, 42004.0]
+
+
+Moyenne des objectifs pour le fix-and-optimize = 38858.6
+Moyenne des temps pour le fix-and-optimize = 0.0136
+Moyenne des gaps pour le fix-and-optimize = 0.0
+Les objectifs avec FO :  Any[34940.0, 33986.0, 38217.0, 37979.0, 40884.0, 38477.0, 42836.0, 41040.0, 38223.0, 42004.0]
+Temps total = 0.0242
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 20
+t = 10
+rfSize = 6
+rfStep = 2
+foSize = 6
+foStep = 2
+
+--------------------RESULTATS--------------------
+Liste des instances = Any["5_5_1", "5_5_2", "5_5_3", "5_5_4", "5_5_5", "5_5_6", "5_5_7", "5_5_8", "5_5_9", "5_5_10", "5_10_1", "5_10_2", "5_10_3", "5_10_4", "5_10_5", "5_10_6", "5_10_7", "5_10_8", "5_10_9", "5_10_10", "20_5_1", "20_5_2", "20_5_3", "20_5_4", "20_5_5", "20_5_6", "20_5_7", "20_5_8", "20_5_9", "20_5_10", "20_10_1", "20_10_2", "20_10_3", "20_10_4", "20_10_5", "20_10_6", "20_10_7", "20_10_8", "20_10_9", "20_10_10"]
+Moyenne des objectifs pour le relax-and-fix = 74412.39
+Moyenne des gaps pour le relax-and-fix = 0.0
+Moyenne des temps pour le relax-and-fix = 0.0671
+Les objectifs avec RF :  Any[75649.0, 75318.0, 70349.0, 73523.0, 75122.0, 76479.95, 72585.0, 73843.0, 77075.0, 74180.0]
+
+
+Moyenne des objectifs pour le fix-and-optimize = 74409.1
+Moyenne des temps pour le fix-and-optimize = 0.0449
+Moyenne des gaps pour le fix-and-optimize = -0.0
+Les objectifs avec FO :  Any[75649.0, 75318.0, 70349.0, 73523.0, 75122.0, 76450.95, 72581.0, 73843.0, 77075.0, 74180.0]
+Temps total = 0.11200000000000002

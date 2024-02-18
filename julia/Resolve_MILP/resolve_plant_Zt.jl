@@ -1,16 +1,17 @@
 using PyCall, Statistics, DataFrames, XLSX
 
-include("model.jl")
+include("model_plant.jl")
 
 pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
-println(init)
-option_instance = ""
+print(init)
+
+option_instance = "ABC"
 
 if option_instance == "ABC"
-    path_file = "result_milp_Zt_ABC.txt"
+    path_file = "result_plant_Zt_ABC.txt"
 else
-    path_file = "result_milp_Zt.txt"
+    path_file = "result_plant_Zt.txt"
 end
 
 file = open(path_file, "w") 
@@ -71,7 +72,6 @@ for p in list_p
             result = model_mip_zt(instance_dict)
 
             x = result["x"]
-            I = result["I"]
             z = result["z"]
             y = result["y"]
             obj = result["obj"]
@@ -145,14 +145,14 @@ end
 
 dataframe = DataFrames.DataFrame(Instances = group_instances, ZtObjectif = means_obj, ZtBounds = means_bounds, ZtGap = means_gap, ZtNodes = means_nodes, ZtTime = means_time)
 if option_instance == "ABC"
-    XLSX.writetable("result_milp_Zt_ABC.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("result_plant_Zt_ABC.xlsx", dataframe, overwrite=true)
 else
-    XLSX.writetable("result_milp_Zt.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("result_plant_Zt.xlsx", dataframe, overwrite=true)
 end
 
 dataframe = DataFrames.DataFrame(Instances = list_instances, ZtObjectif = list_obj, ZtBounds = list_bounds, ZtGap = list_gap, ZtNodes = list_nodes, ZtTime = list_time)
 if option_instance == "ABC"
-    XLSX.writetable("all_instances_result_milp_Zt_ABC.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("all_instances_result_plant_Zt_ABC.xlsx", dataframe, overwrite=true)
 else
-    XLSX.writetable("all_instances_result_milp_Zt.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("all_instances_result_plant_Zt.xlsx", dataframe, overwrite=true)
 end

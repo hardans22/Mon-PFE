@@ -1,0 +1,53 @@
+
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 5
+t = 5
+Liste des objectifs de chaque instance : Any[14028.0, 11378.0, 11392.0, 13043.0, 13358.0, 12370.0, 9292.0, 11934.0, 13044.0, 9475.0]
+Moyenne des objectifs : 11931.4
+Liste des gaps de chaque instance : Any[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Moyenne des gaps : 0.0
+Liste des objective_bound de chaque instance: Any[14028.0, 11378.0, 11392.0, 13043.0, 13358.0, 12370.0, 9292.0, 11934.0, 13044.0, 9475.0]
+Moyenne des objective_bound : 11931.4
+Liste des nombres de noeuds explorés pour chaque instance : Any[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Moyenne du nombre de noeuds explorés : 1.0
+Liste des temps de résolution de chaque instance : Any[0.0193, 0.0024, 0.0017, 0.0025, 0.0017, 0.0015, 0.002, 0.0018, 0.0032, 0.001]
+Moyenne des temps : 0.0037
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 5
+t = 10
+Liste des objectifs de chaque instance : Any[22940.81, 22286.0, 19925.78, 22155.21, 19613.0, 22532.32, 20632.31, 23396.85, 20817.44, 25502.0]
+Moyenne des objectifs : 21980.17
+Liste des gaps de chaque instance : Any[0.0, 0.0, 0.0029, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0007, 0.0]
+Moyenne des gaps : 0.0004
+Liste des objective_bound de chaque instance: Any[22940.81, 22286.0, 19925.2, 22155.21, 19613.0, 22532.32, 20632.31, 23396.85, 20817.29, 25502.0]
+Moyenne des objective_bound : 21980.099
+Liste des nombres de noeuds explorés pour chaque instance : Any[1, 1, 1, 1, 1, 18, 1, 1, 1, 9]
+Moyenne du nombre de noeuds explorés : 3.5
+Liste des temps de résolution de chaque instance : Any[0.0145, 0.0188, 0.0056, 0.0454, 0.0096, 0.0288, 0.0181, 0.0545, 0.0103, 0.0427]
+Moyenne des temps : 0.0248
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 20
+t = 5
+Liste des objectifs de chaque instance : Any[34940.0, 33986.0, 38217.0, 37979.0, 40884.0, 38477.0, 42836.0, 41040.0, 38223.0, 42004.0]
+Moyenne des objectifs : 38858.6
+Liste des gaps de chaque instance : Any[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Moyenne des gaps : 0.0
+Liste des objective_bound de chaque instance: Any[34940.0, 33986.0, 38217.0, 37979.0, 40884.0, 38477.0, 42836.0, 41040.0, 38223.0, 42004.0]
+Moyenne des objective_bound : 38858.6
+Liste des nombres de noeuds explorés pour chaque instance : Any[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Moyenne du nombre de noeuds explorés : 1.0
+Liste des temps de résolution de chaque instance : Any[0.0044, 0.0053, 0.0047, 0.0031, 0.0041, 0.0045, 0.0047, 0.0054, 0.0048, 0.0055]
+Moyenne des temps : 0.0046
+-------------------------------NOUVELLE TAILLE D'INSTANCES-------------------------
+p = 20
+t = 10
+Liste des objectifs de chaque instance : Any[75649.0, 75318.0, 70349.0, 73523.0, 75122.0, 76450.95, 72585.0, 73843.0, 77075.0, 74180.0]
+Moyenne des objectifs : 74409.5
+Liste des gaps de chaque instance : Any[0.0076, 0.0012, 0.0, 0.0, 0.0, 0.0, 0.0055, 0.0, 0.0, 0.0]
+Moyenne des gaps : 0.0014
+Liste des objective_bound de chaque instance: Any[75643.27, 75317.11, 70349.0, 73523.0, 75122.0, 76450.95, 72581.0, 73843.0, 77075.0, 74180.0]
+Moyenne des objective_bound : 74408.433
+Liste des nombres de noeuds explorés pour chaque instance : Any[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Moyenne du nombre de noeuds explorés : 1.0
+Liste des temps de résolution de chaque instance : Any[0.0373, 0.0466, 0.0228, 0.0249, 0.0242, 0.0886, 0.0255, 0.0248, 0.0356, 0.0294]
+Moyenne des temps : 0.036
