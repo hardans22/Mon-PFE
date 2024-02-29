@@ -5,7 +5,7 @@ include("model.jl")
 pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
 
-option_instance = "ABC"
+option_instance = ""
 
 if option_instance == "ABC"
     path_file = "result_milp_Zkt_ABC.txt"

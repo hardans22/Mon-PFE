@@ -6,7 +6,7 @@ pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
 print(init)
 
-option_instance = "ABC"
+option_instance = ""
 
 if option_instance == "ABC"
     path_file = "result_plant_Zt_ABC.txt"
@@ -85,13 +85,13 @@ for p in list_p
             push!(allnodes, nodes)
             push!(allbounds, round(dual_objs, digits = 2))
             z_prime = [floor(Int, z[t]) for t in 1:t]
-            
+            #=
             println("\nNombre de maintenance : ", sum(z_prime))
             write(file, "\nNombre de maintenance : "*string(z_prime))
             println("Plan de maintenance optimal : ")
             write(file, "\nPlan de maintenance optimal : "*string(z_prime))
             println(z_prime)
-            
+            =#
             nbr_setup = []
             for i in 1:p
                 push!(nbr_setup, floor(Int,sum(y[i,:])))

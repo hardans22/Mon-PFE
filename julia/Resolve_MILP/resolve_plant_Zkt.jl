@@ -1,17 +1,17 @@
 using PyCall, Statistics, DataFrames, XLSX
 
-include("model.jl")
+include("model_plant.jl")
 
 pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
-println(init)
+
 option_instance = ""
 
-if option_instance == ""
-    path_file = "result_milp_Zt_ABC.txt"
+if option_instance == "ABC"
+    path_file = "result_plant_Zkt_ABC.txt"
 else
-    path_file = "result_milp_Zt.txt"
-end
+    path_file = "result_plant_Zkt.txt"
+end 
 
 file = open(path_file, "w") 
 
@@ -68,10 +68,10 @@ for p in list_p
             #println("alpha = ", alpha)
             #write(file, "\nalpha = "*string(alpha))
 
-            result = model_mip_zt(instance_dict)
+            result = model_mip_zkt(instance_dict)
 
             x = result["x"]
-            I = result["I"]
+
             z = result["z"]
             y = result["y"]
             obj = result["obj"]
@@ -84,14 +84,14 @@ for p in list_p
             push!(allgap,round(gap, digits = 4))
             push!(allnodes, nodes)
             push!(allbounds, round(dual_objs, digits = 2))
-            z_prime = [floor(Int, z[t]) for t in 1:t]
-            
+            z_prime = [floor(Int, z[t,t]) for t in 1:t]
+            #=
             println("\nNombre de maintenance : ", sum(z_prime))
             write(file, "\nNombre de maintenance : "*string(z_prime))
             println("Plan de maintenance optimal : ")
             write(file, "\nPlan de maintenance optimal : "*string(z_prime))
             println(z_prime)
-            
+            =#
             nbr_setup = []
             for i in 1:p
                 push!(nbr_setup, floor(Int,sum(y[i,:])))
@@ -100,7 +100,7 @@ for p in list_p
             #write(file, "\nNombre de setup par produit : ", string(nbr_setup))
             #println(nbr_setup)
         end
-
+    
         append!(list_obj, allobj)
         append!(list_gap, allgap)
         append!(list_time, alltime)
@@ -140,19 +140,19 @@ for p in list_p
         write(file, "\nMoyenne du nombre de noeuds explorés : "*string(m_nodes))
         write(file, "\nListe des temps de résolution de chaque instance : "*string(alltime))
         write(file, "\nMoyenne des temps : "*string(m_time))
+
     end
 end
-
-dataframe = DataFrames.DataFrame(Instances = group_instances, ZtObjectif = means_obj, ZtBounds = means_bounds, ZtGap = means_gap, ZtNodes = means_nodes, ZtTime = means_time)
+dataframe = DataFrames.DataFrame(Instances = group_instances, ZktObjectif = means_obj, ZktBounds = means_bounds, ZktGap = means_gap, ZktNodes = means_nodes, ZktTime = means_time)
 if option_instance == "ABC"
-    XLSX.writetable("result_milp_Zt_ABC.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("result_plant_Zkt_ABC.xlsx", dataframe, overwrite=true)
 else
-    XLSX.writetable("result_milp_Zt.xlsx", dataframe, overwrite=true)
-end
+    XLSX.writetable("result_plant_Zkt.xlsx", dataframe, overwrite=true)
+end 
 
-dataframe = DataFrames.DataFrame(Instances = list_instances, ZtObjectif = list_obj, ZtBounds = list_bounds, ZtGap = list_gap, ZtNodes = list_nodes, ZtTime = list_time)
+dataframe = DataFrames.DataFrame(Instances = list_instances, ZktObjectif = list_obj, ZktBounds = list_bounds, ZktGap = list_gap, ZktNodes = list_nodes, ZktTime = list_time)
 if option_instance == "ABC"
-    XLSX.writetable("all_instances_result_milp_Zt_ABC.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("all_instances_result_plant_Zkt_ABC.xlsx", dataframe, overwrite=true)
 else
-    XLSX.writetable("all_instances_result_milp_Zt.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("all_instances_result_plant_Zkt.xlsx", dataframe, overwrite=true)
 end
