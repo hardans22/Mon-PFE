@@ -1,16 +1,16 @@
 using PyCall, Statistics, DataFrames, XLSX
 
-include("RF_FO_Zkt.jl")
+include("RF_FO_plant_Zt.jl")
 
 pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
 
-option_instance = "ABC"
+option_instance = ""
 
 if option_instance == "ABC"
-    path_file = "result_RFFO_Zkt_ABC.txt"
+    path_file = "result_RFFO_Zt_ABC.txt"
 else
-    path_file = "result_RFFO_Zkt.txt"
+    path_file = "result_RFFO_Zt.txt"
 end 
 
 file = open(path_file, "w")
@@ -77,14 +77,14 @@ else
 end
 
 
-all_size = Dict("5_5" => 3, "20_5" => 3, "50_5" => 3, "100_5" => 3, "5_10" =>5, "20_10" => 6, "50_10" => 5, "100_10" => 5,
+all_size = Dict("5_5" => 3, "20_5" => 3, "50_5" => 3, "100_5" => 3, "5_10" =>6, "20_10" => 6, "50_10" => 5, "100_10" => 5,
                 "5_25" => 12, "20_25" => 12, "50_25" => 12, "100_25" => 12
 )
 
 all_step = Dict("5_5" => 1, "20_5" => 1, "50_5" => 1, "100_5" => 1, "5_10" => 1, "20_10" => 2, "50_10" => 1, "100_10" => 2,
                 "5_25" => 2, "20_25" => 2, "50_25" => 2, "100_25" => 2)
 
-list_p = [5, 20] 
+list_p = [5] 
 list_t = [5, 10]
 group_instances = []
 means_rf_obj = []
@@ -115,7 +115,7 @@ for p in list_p
         println("t = ", t)
         write(file, "\np = "*string(p))
         write(file, "\nt = "*string(t))
-
+       
         instance = string(p)*"_"*string(t)
         milp_obj = all_milp_obj[instance]
         push!(group_instances, instance)
@@ -175,7 +175,6 @@ for p in list_p
             rf_timeElapsed = round(time() - begin_time, digits = 4)
 
             sx = result_rf["sx"]
-            sI = result_rf["sI"]
             sy = result_rf["sy"]
             su = result_rf["su"]
             sz = result_rf["sz"]
@@ -199,7 +198,6 @@ for p in list_p
             fo_timeElapsed = round(time() - begin_time, digits = 4)
 
             sx = result_fo["sx"]
-            sI = result_fo["sI"]
             sy = result_fo["sy"]
             su = result_fo["su"]
             sz = result_fo["sz"]
@@ -258,7 +256,6 @@ for p in list_p
         write(file, "\nLes objectifs avec FO :  "*string(foObjectifs))
         write(file, "\nTemps total = "*string(time_total))
 
-
         println("\nListe des instances = "*string(list_instances))
         println("\nMoyenne des objectifs pour le relax-and-fix = ", rf_obj_mean)
         println("Moyenne des gaps pour le relax-and-fix = ", rfg_mean)
@@ -268,20 +265,21 @@ for p in list_p
         println("Moyenne des gaps pour le fix-and-optimize = ", fog_mean)
         println("Moyenne des temps pour le fix-and-optimize = ", fot_mean)
         println("\nLes objectifs avec FO : ", foObjectifs)
+        #show(foObjectifs)
         println("\nTemps total = ",time_total)
     end
 end
 
 dataframe = DataFrames.DataFrame(Instances = group_instances, rfObjectif = means_rf_obj,  rfGap= means_rf_gap, rfTime = means_rf_time, foObjectif = means_fo_obj,  foGap= means_fo_gap, foTime = means_fo_time, RFFOTime = means_time_total)
 if option_instance == "ABC"
-    XLSX.writetable("result_RFFO_Zkt_ABC.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("result_RFFO_Zt_ABC.xlsx", dataframe, overwrite=true)
 else
-    XLSX.writetable("result_RFFO_Zkt.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("result_RFFO_Zt.xlsx", dataframe, overwrite=true)
 end
 
 dataframe = DataFrames.DataFrame(Instances = list_instances, rfObjectif = list_rf_obj,  rfGap= list_rf_gap, rfTime = list_rf_time, foObjectif = list_fo_obj,  foGap= list_fo_gap, foTime = list_fo_time, RFFOTime = list_time_total)
 if option_instance == "ABC"
-    XLSX.writetable("all_instances_result_RFFO_Zkt_ABC.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("all_instances_result_RFFO_Zt_ABC.xlsx", dataframe, overwrite=true)
 else
-    XLSX.writetable("all_instances_result_RFFO_Zkt.xlsx", dataframe, overwrite=true)
+    XLSX.writetable("all_instances_result_RFFO_Zt.xlsx", dataframe, overwrite=true)
 end

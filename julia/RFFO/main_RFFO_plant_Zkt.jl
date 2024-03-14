@@ -1,11 +1,11 @@
 using PyCall, Statistics, DataFrames, XLSX
 
-include("RF_FO_Zkt.jl")
+include("RF_FO_plant_Zkt.jl")
 
 pushfirst!(PyVector(pyimport("sys")."path"), "../")
 init  = pyimport("__init__")
 
-option_instance = "ABC"
+option_instance = ""
 
 if option_instance == "ABC"
     path_file = "result_RFFO_Zkt_ABC.txt"
@@ -175,7 +175,6 @@ for p in list_p
             rf_timeElapsed = round(time() - begin_time, digits = 4)
 
             sx = result_rf["sx"]
-            sI = result_rf["sI"]
             sy = result_rf["sy"]
             su = result_rf["su"]
             sz = result_rf["sz"]
@@ -199,7 +198,6 @@ for p in list_p
             fo_timeElapsed = round(time() - begin_time, digits = 4)
 
             sx = result_fo["sx"]
-            sI = result_fo["sI"]
             sy = result_fo["sy"]
             su = result_fo["su"]
             sz = result_fo["sz"]

@@ -14,7 +14,11 @@ function model_mip_zkt(instance_dict)
     cmax = instance_dict["cmax"]
     
     model = Model(optimizer_with_attributes(Gurobi.Optimizer, "Threads" => 1))
+    
     @variable(model, 0 <= x[i in P, k in T, t in k:len_T])
+    @variable(model, 0 <= c[T])
+
+   
     @variable(model, 0 <= c[T])
 
     @variable(model, 0 <= y[P,T] <= 1, Bin)
@@ -36,7 +40,7 @@ function model_mip_zkt(instance_dict)
     set_time_limit_sec(model, 7200.0)
     JuMP.optimize!(model)
     obj = objective_value(model)
-    sx = JuMP.value.(x)
+    sx = JuMP.value.(x) 
     sy = JuMP.value.(y)
     sz = JuMP.value.(z)
     sc = JuMP.value.(c)
